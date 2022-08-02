@@ -8,16 +8,11 @@ namespace WoodsOfIdle
     {
         protected ISaveService saveService;
 
-        [HideInInspector]
         public SaveState currentSaveState;
 
         private void Awake()
         {
             saveService = new SaveService();
-        }
-
-        private void Start()
-        {
             currentSaveState = saveService.LoadOrCreate("test");
         }
 

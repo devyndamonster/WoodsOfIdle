@@ -7,9 +7,10 @@ namespace WoodsOfIdle
     [System.Serializable]
     public class SaveState
     {
-        public string SaveName { get; set; }
+        public string SaveName;
 
-        public int WoodCount { get; set; }
+        public Dictionary<NodeType, int> StoredItems = new Dictionary<NodeType, int>();
 
+        public Dictionary<int, FarmingNodeState> FarmingNodes = new Dictionary<int, FarmingNodeState>();
     }
 }
