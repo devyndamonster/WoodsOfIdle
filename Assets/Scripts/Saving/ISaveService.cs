@@ -12,5 +12,9 @@ namespace WoodsOfIdle
 
         public void SaveGame(SaveState saveState);
 
+        public void DeleteSave(string saveName);
+
+        public bool DoesSaveExist(string saveName);
+
     }
 }

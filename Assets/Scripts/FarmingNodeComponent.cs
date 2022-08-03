@@ -9,7 +9,7 @@ namespace WoodsOfIdle
     {
         public Button activateButton;
 
-        public FarmingNodeState state;
+        public FarmingNodeState state = new FarmingNodeState();
 
         private GameController gameController;
 

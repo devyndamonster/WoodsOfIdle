@@ -13,8 +13,6 @@ namespace WoodsOfIdle
         {
             string savePath = GetSavePath(saveName);
 
-            Debug.Log(savePath);
-
             if (!File.Exists(savePath))
             {
                 return new SaveState()
@@ -44,6 +42,21 @@ namespace WoodsOfIdle
             string savePath = GetSavePath(saveState.SaveName);
             string saveJson = JsonConvert.SerializeObject(saveState);
             File.WriteAllText(savePath, saveJson);
+        }
+
+        public void DeleteSave(string saveName)
+        {
+            string savePath = GetSavePath(saveName);
+
+            if (File.Exists(savePath))
+            {
+                File.Delete(savePath);
+            }
+        }
+
+        public bool DoesSaveExist(string saveName)
+        {
+            return File.Exists(GetSavePath(saveName));
         }
 
         private string GetSavePath(string saveName)
