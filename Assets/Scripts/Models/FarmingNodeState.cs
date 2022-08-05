@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +13,10 @@ namespace WoodsOfIdle
         public NodeType NodeType;
 
         public bool IsActive;
+
+        [HideInInspector]
+        public DateTime TimeLastHarvested;
+
+        public float TimeToHarvest;
     }
 }

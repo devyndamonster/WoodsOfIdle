@@ -15,14 +15,14 @@ public class SaveTests
         string saveName = "FarmingNodeLinksSaveState";
         saveService.DeleteSave(saveName);
 
+        GameObject farmingNodeObject = new GameObject();
+        FarmingNodeController farmingNodeComponent = farmingNodeObject.AddComponent<FarmingNodeController>();
+        farmingNodeComponent.state.NodeId = 6;
+        farmingNodeComponent.state.NodeType = NodeType.Dirt;
+
         GameObject controllerObject = new GameObject();
         GameController controllerComp = controllerObject.AddComponent<GameController>();
         controllerComp.SetSave(saveName);
-        GameObject farmingNodeObject = new GameObject();
-
-        FarmingNodeComponent farmingNodeComponent = farmingNodeObject.AddComponent<FarmingNodeComponent>();
-        farmingNodeComponent.state.NodeId = 6;
-        farmingNodeComponent.state.NodeType = NodeType.Dirt;
 
         yield return null;
 
@@ -42,10 +42,6 @@ public class SaveTests
         GameObject controllerObject = new GameObject();
         GameController controllerComp = controllerObject.AddComponent<GameController>();
         controllerComp.SetSave(saveName);
-
-        GameObject farmingNodeObject = new GameObject();
-        FarmingNodeComponent farmingNodeComponent = farmingNodeObject.AddComponent<FarmingNodeComponent>();
-        
 
         Assert.That(saveService.DoesSaveExist(saveName), Is.False);
 
