@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace WoodsOfIdle
         public Button activateButton;
 
         public FarmingNodeState state = new FarmingNodeState();
+
+        protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
 
         public void ConnectToSaveState(SaveState saveState)
         {
@@ -30,6 +33,8 @@ namespace WoodsOfIdle
 
         public void UpdateState()
         {
+            int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(state, DateTime.Now);
+            state.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(state, numberOfHarvests);
 
         }
 

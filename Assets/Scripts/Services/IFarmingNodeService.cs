@@ -5,14 +5,11 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class IFarmingNodeService
+    public interface IFarmingNodeService
     {
-        public int GetNumberOfHarvests(FarmingNodeState state, DateTime currentTime)
-        {
-            double timePassed = (state.TimeLastHarvested - currentTime).TotalSeconds;
+        public int CalculateNumberOfHarvests(FarmingNodeState state, DateTime currentTime);
 
-            return (int)(timePassed / state.TimeToHarvest);
-        }
+        public DateTime CalculateLastHarvestTime(FarmingNodeState state, int numberOfHarvests);
     }
 }
 
