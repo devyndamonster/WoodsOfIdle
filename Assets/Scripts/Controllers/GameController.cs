@@ -10,14 +10,14 @@ namespace WoodsOfIdle
     {
         protected ISaveService saveService;
 
-        public SaveState currentSaveState;
-        public List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
-        public Text testText;
+        protected List<FarmingNodeController> farmingNodes;
+        protected GameMenuController gameMenuController;
+        protected SaveState currentSaveState;
 
         private void Awake()
         {
-            InitializeNodes();
             InitializeServices();
+            CollectDependancies();
         }
 
         private void Start()
@@ -30,9 +30,10 @@ namespace WoodsOfIdle
             saveService = new SaveService();
         }
 
-        private void InitializeNodes()
+        private void CollectDependancies()
         {
             farmingNodes = FindObjectsOfType<FarmingNodeController>().ToList();
+            gameMenuController = FindObjectOfType<GameMenuController>();
         }
 
         public void SetSave(string levelName)
@@ -54,10 +55,10 @@ namespace WoodsOfIdle
             }
         }
 
-
         private void Update()
         {
             UpdateFarmingNodes();
+            gameMenuController.UpdateDisplayFromState(currentSaveState);
         }
 
         private void UpdateFarmingNodes()
@@ -66,8 +67,6 @@ namespace WoodsOfIdle
             {
                 farmingNode.UpdateState();
             }
-
-            testText.text = currentSaveState.StoredItems[NodeType.Wood].ToString();
         }
 
 

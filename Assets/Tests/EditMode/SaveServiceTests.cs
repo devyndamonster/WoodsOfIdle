@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
@@ -39,6 +40,18 @@ public class SaveServiceTests
         string saveName = "SaveThatNeverShouldExist";
 
         Assert.That(saveService.DoesSaveExist(saveName), Is.False);
+    }
+
+    [Test]
+    public void SaveHasFieldsInitializedOnCreation()
+    {
+        string saveName = "SaveHasFieldsInitializedOnCreation";
+        SaveState save = saveService.LoadOrCreate(saveName);
+
+        foreach (NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+        {
+            Assert.That(save.StoredItems.ContainsKey(nodeType));
+        }
     }
 
     [Test]

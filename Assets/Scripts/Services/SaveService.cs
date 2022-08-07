@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,13 +13,16 @@ namespace WoodsOfIdle
         public SaveState LoadOrCreate(string saveName)
         {
             string savePath = GetSavePath(saveName);
-
+            
             if (!File.Exists(savePath))
             {
-                return new SaveState()
+                SaveState saveState = new SaveState()
                 {
                     SaveName = saveName
                 };
+
+                InitializeState(saveState);
+                return saveState;
             }
 
             return LoadSave(saveName);
@@ -34,7 +38,9 @@ namespace WoodsOfIdle
             }
 
             string saveJson = File.ReadAllText(savePath);
-            return JsonConvert.DeserializeObject<SaveState>(saveJson);
+            SaveState saveState = JsonConvert.DeserializeObject<SaveState>(saveJson);
+            InitializeState(saveState);
+            return saveState;
         }
 
         public void SaveGame(SaveState saveState)
@@ -62,6 +68,17 @@ namespace WoodsOfIdle
         private string GetSavePath(string saveName)
         {
             return $"{Application.persistentDataPath}/{saveName}.save";
+        }
+
+        private void InitializeState(SaveState state)
+        {
+            foreach(NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+            {
+                if (!state.StoredItems.ContainsKey(nodeType))
+                {
+                    state.StoredItems[nodeType] = 0;
+                }
+            }
         }
     }
 }
