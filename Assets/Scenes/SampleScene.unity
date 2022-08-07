@@ -466,6 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512239780}
+  - component: {fileID: 512239781}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -489,6 +490,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &512239781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512239779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b89a0eb2574d754da453e0ce81b6bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storedItemsTexts:
+  - {fileID: 1107575566}
 --- !u!1 &586188785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,8 +1137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07096b0d8a3f8c84a8331077e3ad97a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSaveState:
-    SaveName: 
 --- !u!4 &1486440786
 Transform:
   m_ObjectHideFlags: 0
@@ -1287,11 +1300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dc563199f1fc64aaf66a64d31a7907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateButton: {fileID: 0}
-  state:
+  State:
     NodeId: 0
-    NodeType: 1
-    IsActive: 0
+    NodeType: 0
+    IsActive: 1
+    TimeToHarvest: 1
+  activateButton: {fileID: 0}
 --- !u!1 &1970955716
 GameObject:
   m_ObjectHideFlags: 0

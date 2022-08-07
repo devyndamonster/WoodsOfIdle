@@ -17,8 +17,8 @@ public class SaveTests
 
         GameObject farmingNodeObject = new GameObject();
         FarmingNodeController farmingNodeComponent = farmingNodeObject.AddComponent<FarmingNodeController>();
-        farmingNodeComponent.state.NodeId = 6;
-        farmingNodeComponent.state.NodeType = NodeType.Dirt;
+        farmingNodeComponent.State.NodeId = 6;
+        farmingNodeComponent.State.NodeType = NodeType.Dirt;
 
         GameObject controllerObject = new GameObject();
         GameController controllerComp = controllerObject.AddComponent<GameController>();
@@ -26,11 +26,11 @@ public class SaveTests
 
         yield return null;
 
-        Assert.AreEqual(controllerComp.currentSaveState.FarmingNodes[6], farmingNodeComponent.state);
+        Assert.AreEqual(controllerComp.CurrentSaveState.FarmingNodes[6], farmingNodeComponent.State);
 
-        controllerComp.currentSaveState.FarmingNodes[6].NodeType = NodeType.Stone;
+        controllerComp.CurrentSaveState.FarmingNodes[6].NodeType = NodeType.Stone;
 
-        Assert.AreEqual(controllerComp.currentSaveState.FarmingNodes[6].NodeType, farmingNodeComponent.state.NodeType);
+        Assert.AreEqual(controllerComp.CurrentSaveState.FarmingNodes[6].NodeType, farmingNodeComponent.State.NodeType);
     }
 
     [UnityTest]

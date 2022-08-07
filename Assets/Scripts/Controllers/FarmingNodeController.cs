@@ -8,39 +8,42 @@ namespace WoodsOfIdle
 {
     public class FarmingNodeController : MonoBehaviour
     {
-        public Button activateButton;
-
-        public FarmingNodeState state = new FarmingNodeState();
+        public FarmingNodeState State = new FarmingNodeState();
+        public event ChangeStorageQuantity NodeHarvested;
 
         protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
 
+        [SerializeField]
+        private Button activateButton;
+
         public void ConnectToSaveState(SaveState saveState)
         {
-            if (saveState.FarmingNodes.ContainsKey(state.NodeId))
+            if (saveState.FarmingNodes.ContainsKey(State.NodeId))
             {
-                state = saveState.FarmingNodes[state.NodeId];
+                State = saveState.FarmingNodes[State.NodeId];
             }
             else
             {
-                saveState.FarmingNodes[state.NodeId] = state;
+                saveState.FarmingNodes[State.NodeId] = State;
             }
         }
 
         public void ToggleActive()
         {
-            SetActive(!state.IsActive);
+            SetActive(!State.IsActive);
         }
 
         public void UpdateState()
         {
-            int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(state, DateTime.Now);
-            state.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(state, numberOfHarvests);
+            int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(State, DateTime.Now);
+            State.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(State, numberOfHarvests);
 
+            if (numberOfHarvests > 0) NodeHarvested(State.NodeType, numberOfHarvests);
         }
 
         private void SetActive(bool isActive)
         {
-            state.IsActive = isActive;
+            State.IsActive = isActive;
         }
     }
 }

@@ -12,12 +12,14 @@ namespace WoodsOfIdle
 
         protected List<FarmingNodeController> farmingNodes;
         protected GameMenuController gameMenuController;
-        protected SaveState currentSaveState;
+
+        public SaveState CurrentSaveState { get; protected set; }
 
         private void Awake()
         {
             InitializeServices();
             CollectDependancies();
+            SetupEvents();
         }
 
         private void Start()
@@ -36,29 +38,26 @@ namespace WoodsOfIdle
             gameMenuController = FindObjectOfType<GameMenuController>();
         }
 
-        public void SetSave(string levelName)
+        private void SetupEvents()
         {
-            if(currentSaveState is not null)
+            foreach(FarmingNodeController farmingNode in farmingNodes)
             {
-                saveService.SaveGame(currentSaveState);
+                farmingNode.NodeHarvested += ChangeStoredItemsQuantity;
             }
-
-            currentSaveState = saveService.LoadOrCreate(levelName);
-            ConnectNodesToCurrentSaveState();
         }
 
         private void ConnectNodesToCurrentSaveState()
         {
             foreach(FarmingNodeController node in farmingNodes)
             {
-                node.ConnectToSaveState(currentSaveState);
+                node.ConnectToSaveState(CurrentSaveState);
             }
         }
 
         private void Update()
         {
             UpdateFarmingNodes();
-            gameMenuController.UpdateDisplayFromState(currentSaveState);
+            gameMenuController.UpdateDisplayFromState(CurrentSaveState);
         }
 
         private void UpdateFarmingNodes()
@@ -69,12 +68,26 @@ namespace WoodsOfIdle
             }
         }
 
-
         private void OnDestroy()
         {
-            saveService.SaveGame(currentSaveState);
+            saveService.SaveGame(CurrentSaveState);
         }
 
+        private void ChangeStoredItemsQuantity(NodeType nodeType, int quantityChange)
+        {
+            CurrentSaveState.StoredItems[nodeType] += quantityChange;
+        }
+
+        public void SetSave(string levelName)
+        {
+            if (CurrentSaveState is not null)
+            {
+                saveService.SaveGame(CurrentSaveState);
+            }
+
+            CurrentSaveState = saveService.LoadOrCreate(levelName);
+            ConnectNodesToCurrentSaveState();
+        }
 
     }
 }

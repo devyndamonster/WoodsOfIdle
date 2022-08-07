@@ -15,7 +15,7 @@ namespace WoodsOfIdle
         public bool IsActive;
 
         [HideInInspector]
-        public DateTime TimeLastHarvested;
+        public DateTime TimeLastHarvested = DateTime.Now;
 
         public float TimeToHarvest;
     }
