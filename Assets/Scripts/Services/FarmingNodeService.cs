@@ -20,6 +20,16 @@ namespace WoodsOfIdle
         {
             return state.TimeLastHarvested.AddSeconds(state.TimeToHarvest * numberOfHarvests);
         }
+
+        public void SetNodeActiveState(FarmingNodeState state, bool isActive)
+        {
+            if(isActive && !state.IsActive)
+            {
+                state.TimeLastHarvested = DateTime.Now;
+            }
+
+            state.IsActive = isActive;
+        }
     }
 }
 

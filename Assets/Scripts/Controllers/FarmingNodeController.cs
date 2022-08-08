@@ -13,9 +13,6 @@ namespace WoodsOfIdle
 
         protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
 
-        [SerializeField]
-        private Button activateButton;
-
         public void ConnectToSaveState(SaveState saveState)
         {
             if (saveState.FarmingNodes.ContainsKey(State.NodeId))
@@ -30,7 +27,7 @@ namespace WoodsOfIdle
 
         public void ToggleActive()
         {
-            SetActive(!State.IsActive);
+            farmingNodeService.SetNodeActiveState(State, !State.IsActive);
         }
 
         public void UpdateState()
@@ -39,11 +36,6 @@ namespace WoodsOfIdle
             State.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(State, numberOfHarvests);
 
             if (numberOfHarvests > 0) NodeHarvested(State.NodeType, numberOfHarvests);
-        }
-
-        private void SetActive(bool isActive)
-        {
-            State.IsActive = isActive;
         }
     }
 }

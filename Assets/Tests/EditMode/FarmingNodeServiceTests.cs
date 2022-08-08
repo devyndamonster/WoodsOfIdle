@@ -64,5 +64,24 @@ public class FarmingNodeServiceTests
         Assert.That(numberOfHarvests, Is.EqualTo(0));
     }
 
+    [Test]
+    public void WontFarmFromBeforeReactivated()
+    {
+        DateTime timeOfReactivation = DateTime.Now;
+        DateTime timeLastHarvested = timeOfReactivation.AddSeconds(-10);
+
+        FarmingNodeState nodeState = new FarmingNodeState
+        {
+            IsActive = false,
+            TimeLastHarvested = timeLastHarvested,
+            TimeToHarvest = 1
+        };
+
+        farmingNodeService.SetNodeActiveState(nodeState, true);
+        int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(nodeState, timeOfReactivation);
+
+        Assert.That(numberOfHarvests, Is.EqualTo(0));
+    }
+
 
 }

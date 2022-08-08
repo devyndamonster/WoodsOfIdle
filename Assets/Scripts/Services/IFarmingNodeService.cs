@@ -10,6 +10,8 @@ namespace WoodsOfIdle
         public int CalculateNumberOfHarvests(FarmingNodeState state, DateTime currentTime);
 
         public DateTime CalculateLastHarvestTime(FarmingNodeState state, int numberOfHarvests);
+
+        public void SetNodeActiveState(FarmingNodeState state, bool isActive);
     }
 }
 
