@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="SaveSelectOption" src="project://database/Assets/UI/Elements/SaveSelectOption.uxml?fileID=9197481963319205126&amp;guid=abf6cf650c067d245a92c13fc39c516d&amp;type=3#SaveSelectOption" />
+    <ui:Button text="Create New Save" display-tooltip-when-elided="true" name="CreateNewSaveButton" style="height: 5%;" />
+    <ui:VisualElement name="SaveSelectContainer">
+        <ui:Instance template="SaveSelectOption" name="SaveSelectOption" />
+    </ui:VisualElement>
+</ui:UXML>

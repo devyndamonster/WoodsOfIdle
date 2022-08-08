@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace WoodsOfIdle
 
         public void UpdateDisplayFromState(SaveState state)
         {
-            storedItemsTexts[0].text = state.StoredItems.First().Value.ToString();
+            foreach (NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+            {
+                storedItemsTexts[(int)nodeType].text = state.StoredItems[nodeType].ToString();
+            }
+                
         }
     }
 }
