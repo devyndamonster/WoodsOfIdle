@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:VisualElement name="SaveSelectOptionContainer" style="height: 100%; width: 100%; flex-basis: auto; flex-wrap: nowrap; flex-direction: row; align-items: stretch; justify-content: flex-start;">
         <ui:Button text="Save Name" display-tooltip-when-elided="true" name="SelectSaveButton" style="flex-grow: 1;" />
-        <ui:Button text="Delete" display-tooltip-when-elided="true" name="DeleteSaveButton" style="flex-grow: 1;" />
+        <ui:Button text="Delete" display-tooltip-when-elided="true" name="DeleteSaveButton" style="flex-grow: 1; max-width: 100px;" />
     </ui:VisualElement>
 </ui:UXML>

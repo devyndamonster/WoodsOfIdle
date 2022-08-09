@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -69,6 +70,27 @@ public class SaveServiceTests
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeType, loadedSave.FarmingNodes[4].NodeType);
         Assert.AreEqual(originalSave.StoredItems[NodeType.Wood], loadedSave.StoredItems[NodeType.Wood]);
         Assert.AreEqual(originalSave.StoredItems[NodeType.Dirt], loadedSave.StoredItems[NodeType.Dirt]);
+    }
+
+    [Test]
+    public void SavesAreInSaveList()
+    {
+        List<string> saveNamesToTest = new List<string>()
+        {
+            "ACoolSave", "AnotherCoolSave", "WowWhatACoolSave", "IsThisACoolSave"
+        };
+
+        List<SaveState> saveStatesToTest = saveNamesToTest
+            .Select(saveName => new SaveState { SaveName = saveName })
+            .ToList();
+
+        saveStatesToTest.ForEach(saveState => saveService.DeleteSave(saveState));
+        IEnumerable<string> returnedSaveNames = saveService.GetSaveNames();
+        Assert.That(!saveNamesToTest.Any(saveName => returnedSaveNames.Contains(saveName)));
+
+        saveStatesToTest.ForEach(saveState => saveService.SaveGame(saveState));
+        returnedSaveNames = saveService.GetSaveNames();
+        Assert.That(saveNamesToTest.All(saveName => returnedSaveNames.Contains(saveName)));
     }
 
     private SaveState GetSampleSaveState()

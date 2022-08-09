@@ -14,7 +14,11 @@ namespace WoodsOfIdle
 
         public void DeleteSave(string saveName);
 
+        public void DeleteSave(SaveState saveState);
+
         public bool DoesSaveExist(string saveName);
+
+        public IEnumerable<string> GetSaveNames();
 
     }
 }

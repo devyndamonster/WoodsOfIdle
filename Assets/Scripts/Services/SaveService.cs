@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace WoodsOfIdle
@@ -50,6 +51,11 @@ namespace WoodsOfIdle
             File.WriteAllText(savePath, saveJson);
         }
 
+        public void DeleteSave(SaveState saveState)
+        {
+            DeleteSave(saveState.SaveName);
+        }
+
         public void DeleteSave(string saveName)
         {
             string savePath = GetSavePath(saveName);
@@ -79,6 +85,13 @@ namespace WoodsOfIdle
                     state.StoredItems[nodeType] = 0;
                 }
             }
+        }
+
+        public IEnumerable<string> GetSaveNames()
+        {
+            return Directory
+                .GetFiles(Application.persistentDataPath, "*.save")
+                .Select(path => Path.GetFileNameWithoutExtension(path));
         }
     }
 }
