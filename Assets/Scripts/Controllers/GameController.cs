@@ -8,34 +8,26 @@ namespace WoodsOfIdle
 {
     public class GameController : MonoBehaviour
     {
-        protected ISaveService saveService;
-
         protected List<FarmingNodeController> farmingNodes;
         protected GameMenuController gameMenuController;
-
-        public SaveState CurrentSaveState { get; protected set; }
+        protected SaveController saveController;
 
         private void Awake()
         {
-            InitializeServices();
             CollectDependancies();
             SetupEvents();
         }
 
         private void Start()
         {
-            SetSave("test");
-        }
-
-        private void InitializeServices()
-        {
-            saveService = new SaveService();
+            saveController.OpenSave();
         }
 
         private void CollectDependancies()
         {
             farmingNodes = FindObjectsOfType<FarmingNodeController>().ToList();
             gameMenuController = FindObjectOfType<GameMenuController>();
+            saveController = FindObjectOfType<SaveController>();
         }
 
         private void SetupEvents()
@@ -46,18 +38,10 @@ namespace WoodsOfIdle
             }
         }
 
-        private void ConnectNodesToCurrentSaveState()
-        {
-            foreach(FarmingNodeController node in farmingNodes)
-            {
-                node.ConnectToSaveState(CurrentSaveState);
-            }
-        }
-
         private void Update()
         {
             UpdateFarmingNodes();
-            gameMenuController.UpdateDisplayFromState(CurrentSaveState);
+            gameMenuController.UpdateDisplayFromState(saveController.CurrentSaveState);
         }
 
         private void UpdateFarmingNodes()
@@ -68,26 +52,12 @@ namespace WoodsOfIdle
             }
         }
 
-        private void OnDestroy()
-        {
-            saveService.SaveGame(CurrentSaveState);
-        }
-
         private void ChangeStoredItemsQuantity(NodeType nodeType, int quantityChange)
         {
-            CurrentSaveState.StoredItems[nodeType] += quantityChange;
+            saveController.CurrentSaveState.StoredItems[nodeType] += quantityChange;
         }
 
-        public void SetSave(string levelName)
-        {
-            if (CurrentSaveState is not null)
-            {
-                saveService.SaveGame(CurrentSaveState);
-            }
-
-            CurrentSaveState = saveService.LoadOrCreate(levelName);
-            ConnectNodesToCurrentSaveState();
-        }
+        
 
     }
 }

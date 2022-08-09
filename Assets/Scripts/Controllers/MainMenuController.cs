@@ -81,6 +81,7 @@ namespace WoodsOfIdle
 
             selectSaveButton.clicked += () =>
             {
+                SaveController.SetNextSaveToOpen(saveName);
                 SceneManager.LoadScene("EmptyIdleScene", LoadSceneMode.Single);
             };
         }
@@ -104,7 +105,7 @@ namespace WoodsOfIdle
             Button cancelNewSaveButton = popupContainer.Q<Button>("CancelSaveCreationButton");
 
             cancelNewSaveButton.clicked += HideSaveCreationPopup;
-
+            createNewSaveButton.clicked += () => { CreateNewSave(saveNameField.text); };
         }
 
         private void HideSaveCreationPopup()
@@ -112,7 +113,13 @@ namespace WoodsOfIdle
             popupContainer.visible = false;
         }
 
-
+        private void CreateNewSave(string saveName)
+        {
+            SaveState newSave = saveService.LoadOrCreate(saveName);
+            saveService.SaveGame(newSave);
+            HideSaveCreationPopup();
+            PopulateSaveContainer();
+        }
     }
 }
 
