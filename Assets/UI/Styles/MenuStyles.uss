@@ -1,0 +1,31 @@
+.CenterScreenContainer {
+    position: absolute;
+    top: 591px;
+    align-items: stretch;
+    justify-content: flex-start;
+    right: 149px;
+    left: 137px;
+    bottom: 514px;
+}
+
+.ScreenAlignedTop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: flex-start;
+}
+
+.ScreenAlignedCenter {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}

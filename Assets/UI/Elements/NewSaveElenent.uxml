@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="NewSaveContainer" style="padding-left: 3px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; background-color: rgba(0, 0, 0, 0.2); flex-wrap: nowrap; flex-direction: row;">
+        <ui:TextField picking-mode="Ignore" value="filler text" name="NewSaveNameField" style="min-height: 40px; align-items: stretch; flex-direction: row; bottom: auto; top: auto; position: relative; flex-grow: 1;" />
+        <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateNewSaveButton" />
+        <ui:Button text="Cancel" display-tooltip-when-elided="true" name="CancelSaveCreationButton" />
+    </ui:VisualElement>
+</ui:UXML>

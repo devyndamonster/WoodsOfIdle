@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
@@ -11,7 +13,9 @@ namespace WoodsOfIdle
 
         protected UIDocument rootDocument;
         protected VisualElement rootElement;
-        protected VisualElement saveContainer;
+        protected ListView saveContainer;
+        protected VisualElement popupContainer;
+        protected List<string> loadedSaveNames = new List<string>();
 
         protected ISaveService saveService;
 
@@ -20,6 +24,11 @@ namespace WoodsOfIdle
             InitializeServices();
             InitializeRoot();
             InitializeSaveContainer();
+            InitializeSaveCreation();
+        }
+
+        private void Start()
+        {
             PopulateSaveContainer();
         }
 
@@ -36,27 +45,71 @@ namespace WoodsOfIdle
 
         private void InitializeSaveContainer()
         {
-            saveContainer = rootElement.Q<VisualElement>("SaveSelectContainer");
-            saveContainer.RemoveAllChildren();
+            saveContainer = rootElement.Q<ListView>("SaveSelectContainer");
+            saveContainer.makeItem = MakeSaveListItem;
+            saveContainer.bindItem = BindSaveListItem;
+            saveContainer.itemsSource = loadedSaveNames;
+        }
+
+        private void InitializeSaveCreation()
+        {
+            popupContainer = rootElement.Q<VisualElement>("ScreenCenterPopups");
+            HideSaveCreationPopup();
+
+            Button saveCreationButton = rootElement.Q<Button>("CreateNewSaveButton");
+            saveCreationButton.clicked += DisplaySaveCreationPopup;
+        }
+
+        private VisualElement MakeSaveListItem()
+        {
+            return SaveSelectOption.CloneTree();
+        }
+
+        private void BindSaveListItem(VisualElement saveSelectOption, int index)
+        {
+            string saveName = loadedSaveNames[index];
+            Button deleteSaveButton = saveSelectOption.Q<Button>("DeleteSaveButton");
+            Button selectSaveButton = saveSelectOption.Q<Button>("SelectSaveButton");
+
+            selectSaveButton.text = saveName;
+
+            deleteSaveButton.clicked += () =>
+            {
+                saveService.DeleteSave(saveName);
+                PopulateSaveContainer();
+            };
+
+            selectSaveButton.clicked += () =>
+            {
+                SceneManager.LoadScene("EmptyIdleScene", LoadSceneMode.Single);
+            };
         }
 
         private void PopulateSaveContainer()
         {
-            foreach (string saveName in saveService.GetSaveNames())
-            {
-                VisualElement saveSelectOption = SaveSelectOption.CloneTree();
-                Button deleteSaveButton = saveSelectOption.Q<Button>("DeleteSaveButton");
-                Button selectSaveButton = saveSelectOption.Q<Button>("SelectSaveButton");
+            loadedSaveNames = saveService.GetSaveNames().ToList();
+            saveContainer.itemsSource = loadedSaveNames;
 
-                deleteSaveButton.clicked += () =>
-                {
-                    Debug.Log("Lol deleted!");
-                };
+            Debug.Log(string.Join(',', loadedSaveNames));
 
-                selectSaveButton.text = saveName;
+            saveContainer.Rebuild();
+        }
 
-                saveContainer.Add(saveSelectOption);
-            }
+        private void DisplaySaveCreationPopup()
+        {
+            popupContainer.visible = true;
+
+            TextField saveNameField = popupContainer.Q<TextField>("NewSaveNameField");
+            Button createNewSaveButton = popupContainer.Q<Button>("CreateNewSaveButton");
+            Button cancelNewSaveButton = popupContainer.Q<Button>("CancelSaveCreationButton");
+
+            cancelNewSaveButton.clicked += HideSaveCreationPopup;
+
+        }
+
+        private void HideSaveCreationPopup()
+        {
+            popupContainer.visible = false;
         }
 
 
