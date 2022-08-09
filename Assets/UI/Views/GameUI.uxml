@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="BottomMenu" style="bottom: 0; flex-direction: row; align-items: stretch; justify-content: flex-start; position: absolute; width: 100%; height: 800px; background-color: rgba(82, 91, 83, 0.82); border-top-width: 10px; border-top-color: rgb(45, 99, 48); border-left-color: rgb(45, 99, 48); border-right-color: rgb(45, 99, 48); border-bottom-color: rgb(45, 99, 48); flex-grow: 1; flex-wrap: wrap;" />
+    <DragAndDropGrid style="max-width: none; max-height: none; width: 100px; height: 100px;" />
+</ui:UXML>
