@@ -1,0 +1,11 @@
+.DragDropGridTile {
+    background-color: rgba(103, 103, 103, 0.52);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-right-color: rgba(0, 0, 0, 255);
+    border-top-color: rgba(0, 0, 0, 255);
+    border-bottom-color: rgba(0, 0, 0, 255);
+}

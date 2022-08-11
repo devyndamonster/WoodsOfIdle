@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,13 +11,16 @@ using UnityEngine.UIElements;
 
 public class DragAndDropGrid : VisualElement
 {
-    internal Clickable m_Clickable;
+    public int Columns { get; set; }
+    public int Rows { get; set; }
+
 
     public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
     public new class UxmlTraits : VisualElement.UxmlTraits
     {
-        UxmlIntAttributeDescription m_Int = new UxmlIntAttributeDescription { name = "int-attr", defaultValue = 2 };
+        UxmlIntAttributeDescription ColumnsAttr = new UxmlIntAttributeDescription { name = "Columns", defaultValue = 4 };
+        UxmlIntAttributeDescription RowsAttr = new UxmlIntAttributeDescription { name = "Rows", defaultValue = 4 };
 
         public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
         {
@@ -28,22 +32,61 @@ public class DragAndDropGrid : VisualElement
             base.Init(visualElement, bag, context);
             var dragAndDrop = visualElement as DragAndDropGrid;
 
+            dragAndDrop.Columns = ColumnsAttr.GetValueFromBag(bag, context);
+            dragAndDrop.Rows = RowsAttr.GetValueFromBag(bag, context);
+
             dragAndDrop.Clear();
 
-            dragAndDrop.intAttr = m_Int.GetValueFromBag(bag, context);
+            for(int index = 0; index < dragAndDrop.Columns * dragAndDrop.Rows; index++)
+            {
+                VisualElement element = new VisualElement();
+                element.name = "DragDropGridTile";
+                element.AddToClassList("DragDropGridTile");
+                dragAndDrop.Add(element);
+            }
+
+            dragAndDrop.RefreshGridSizes();
         }
     }
 
     public DragAndDropGrid()
     {
-        RegisterCallback<MouseMoveEvent>(OnClickEvent);
+        RefreshGridSizes();
+        RegisterCallback<GeometryChangedEvent>(OnGeometryUpdate);
     }
 
-    private void OnClickEvent(EventBase eventBase)
+    private void OnGeometryUpdate(EventBase eventBase)
     {
-        style.backgroundColor = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+        RefreshGridSizes();
     }
 
-    public int intAttr { get; set; }
+    public void RefreshGridSizes()
+    {
+        foreach (VisualElement element in Children().Where(child => child.name == "DragDropGridTile"))
+        {
+            element.style.width = resolvedStyle.width / Columns;
+            element.style.height = element.style.width;
+        }
+    }
+
+    /*
+    private StyleLength GetTileWidth()
+    {
+        Length length = new Length()
+        {
+            unit = LengthUnit.Pixel,
+            value = 
+        }
+
+
+        return new StyleLength(new Length { value });
+    }
+
+    private StyleLength GetTileHeight()
+    {
+
+    }
+    */
+    
 
 }
