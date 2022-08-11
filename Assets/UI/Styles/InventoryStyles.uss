@@ -9,3 +9,9 @@
     border-top-color: rgba(0, 0, 0, 255);
     border-bottom-color: rgba(0, 0, 0, 255);
 }
+
+.DragDropGridElement {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 255);
+}

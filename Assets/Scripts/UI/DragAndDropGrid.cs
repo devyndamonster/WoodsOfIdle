@@ -14,6 +14,7 @@ public class DragAndDropGrid : VisualElement
     public int Columns { get; set; }
     public int Rows { get; set; }
 
+    public Vector2 MousePosition;
 
     public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
@@ -35,24 +36,32 @@ public class DragAndDropGrid : VisualElement
             dragAndDrop.Columns = ColumnsAttr.GetValueFromBag(bag, context);
             dragAndDrop.Rows = RowsAttr.GetValueFromBag(bag, context);
 
-            dragAndDrop.Clear();
-
-            for(int index = 0; index < dragAndDrop.Columns * dragAndDrop.Rows; index++)
-            {
-                VisualElement element = new VisualElement();
-                element.name = "DragDropGridTile";
-                element.AddToClassList("DragDropGridTile");
-                dragAndDrop.Add(element);
-            }
-
-            dragAndDrop.RefreshGridSizes();
+            dragAndDrop.Initialize();
         }
     }
 
     public DragAndDropGrid()
     {
-        RefreshGridSizes();
+        Initialize();
         RegisterCallback<GeometryChangedEvent>(OnGeometryUpdate);
+        RegisterCallback<MouseMoveEvent>(e => MousePosition = e.localMousePosition);
+    }
+
+    public void Initialize()
+    {
+        Clear();
+
+        for (int index = 0; index < Columns * Rows; index++)
+        {
+            VisualElement element = new VisualElement();
+            element.name = "DragDropGridTile";
+            element.AddToClassList("DragDropGridTile");
+            Add(element);
+
+            if (index == 0) element.Add(new DragAndDropElement(this));
+        }
+
+        RefreshGridSizes();
     }
 
     private void OnGeometryUpdate(EventBase eventBase)
@@ -68,25 +77,4 @@ public class DragAndDropGrid : VisualElement
             element.style.height = element.style.width;
         }
     }
-
-    /*
-    private StyleLength GetTileWidth()
-    {
-        Length length = new Length()
-        {
-            unit = LengthUnit.Pixel,
-            value = 
-        }
-
-
-        return new StyleLength(new Length { value });
-    }
-
-    private StyleLength GetTileHeight()
-    {
-
-    }
-    */
-    
-
 }
