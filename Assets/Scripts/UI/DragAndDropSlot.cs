@@ -19,17 +19,7 @@ public class DragAndDropSlot : VisualElement
         {
             base.Init(visualElement, bag, context);
             var dragAndDrop = visualElement as DragAndDropSlot;
-            dragAndDrop.Initialize();
+            dragAndDrop.Clear();
         }
-    }
-
-    public DragAndDropSlot()
-    {
-        Initialize();
-    }
-
-    public void Initialize()
-    {
-        Clear();
     }
 }

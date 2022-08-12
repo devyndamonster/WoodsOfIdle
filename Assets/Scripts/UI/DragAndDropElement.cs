@@ -24,14 +24,6 @@ public class DragAndDropElement : VisualElement
 
     private void OnMouseDown(MouseDownEvent mouseEvent)
     {
-        Debug.Log("Mouse pos: " + mouseEvent.mousePosition);
-        Debug.Log("Our world pos: " + this.GetScreenPosition());
-
-        VisualElement root = this.GetRoot();
-
-        Debug.Log("Mouse pos within root: " + root.WorldToLocal(mouseEvent.mousePosition));
-        Debug.Log("Our pos within root: " + root.WorldToLocal(this.GetScreenPosition()));
-
         StartDragging(mouseEvent.mousePosition);
     }
 
@@ -42,8 +34,6 @@ public class DragAndDropElement : VisualElement
 
     private void OnMouseLeave(MouseLeaveEvent mouseEvent)
     {
-        Debug.Log("It Left!");
-
         StopDragging();
     }
 
@@ -60,16 +50,10 @@ public class DragAndDropElement : VisualElement
     {
         if (!isDragging)
         {
-            Debug.Log("Starting drag!");
-
-            style.position = new StyleEnum<Position>(Position.Absolute);
-            style.width = parent.resolvedStyle.width;
-            style.height = parent.resolvedStyle.height;
-
-            this.GetRoot().Add(this);
-
-            SetPosition(this.GetRoot().WorldToLocal(mousePosition));
-
+            SetStyleDragging();
+            VisualElement root = this.GetRoot();
+            root.Add(this);
+            SetPosition(root.WorldToLocal(mousePosition));
             isDragging = true;
         }
     }
@@ -78,23 +62,14 @@ public class DragAndDropElement : VisualElement
     {
         if (isDragging)
         {
-            Debug.Log("Stopping drag!");
-
             DragAndDropSlot destinationSlot = GetOverlappingSlot();
-
             if(destinationSlot is null)
             {
                 destinationSlot = previousSlot;
             }
 
             destinationSlot.Add(this);
-
-            style.position = new StyleEnum<Position>(Position.Relative);
-            style.left = new StyleLength(StyleKeyword.Auto);
-            style.top = new StyleLength(StyleKeyword.Auto);
-            style.width = new StyleLength(new Length(100, LengthUnit.Percent));
-            style.height = new StyleLength(new Length(100, LengthUnit.Percent));
-
+            SetStyleNotDragging();
             isDragging = false;
         }
     }
@@ -115,13 +90,25 @@ public class DragAndDropElement : VisualElement
         return null;
     }
 
+    private void SetStyleDragging()
+    {
+        style.position = new StyleEnum<Position>(Position.Absolute);
+        style.width = parent.resolvedStyle.width;
+        style.height = parent.resolvedStyle.height;
+    }
+
+    private void SetStyleNotDragging()
+    {
+        style.position = new StyleEnum<Position>(Position.Relative);
+        style.left = new StyleLength(StyleKeyword.Auto);
+        style.top = new StyleLength(StyleKeyword.Auto);
+        style.width = new StyleLength(new Length(100, LengthUnit.Percent));
+        style.height = new StyleLength(new Length(100, LengthUnit.Percent));
+    }
+
+
     private void SetPosition(Vector2 pos)
     {
-        Debug.Log("Previous x: " + resolvedStyle.left);
-        Debug.Log("Previous y: " + resolvedStyle.top);
-
-        Debug.Log("Setting position: " + pos);
-
         style.left = pos.x - resolvedStyle.width / 2;
         style.top = pos.y - resolvedStyle.height / 2;
     }

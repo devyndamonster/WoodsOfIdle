@@ -71,7 +71,7 @@ public class DragAndDropGrid : VisualElement
 
     public void RefreshGridSizes()
     {
-        foreach (VisualElement element in Children().Where(child => child.name == "DragAndDropSlot"))
+        foreach (VisualElement element in this.Query<DragAndDropSlot>().ToList())
         {
             element.style.width = resolvedStyle.width / Columns;
             element.style.height = element.style.width;
