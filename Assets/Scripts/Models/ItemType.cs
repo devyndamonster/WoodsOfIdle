@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public enum NodeType
+    public enum ItemType
     {
         Wood,
         Stone,

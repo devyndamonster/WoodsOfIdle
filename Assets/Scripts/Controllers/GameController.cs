@@ -52,7 +52,7 @@ namespace WoodsOfIdle
             }
         }
 
-        private void ChangeStoredItemsQuantity(NodeType nodeType, int quantityChange)
+        private void ChangeStoredItemsQuantity(ItemType nodeType, int quantityChange)
         {
             saveController.CurrentSaveState.StoredItems[nodeType] += quantityChange;
         }

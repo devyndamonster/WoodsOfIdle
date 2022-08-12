@@ -49,7 +49,7 @@ public class SaveServiceTests
         string saveName = "SaveHasFieldsInitializedOnCreation";
         SaveState save = saveService.LoadOrCreate(saveName);
 
-        foreach (NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+        foreach (ItemType nodeType in Enum.GetValues(typeof(ItemType)))
         {
             Assert.That(save.StoredItems.ContainsKey(nodeType));
         }
@@ -68,8 +68,8 @@ public class SaveServiceTests
         Assert.AreEqual(originalSave.FarmingNodes[4].IsActive, loadedSave.FarmingNodes[4].IsActive);
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeId, loadedSave.FarmingNodes[4].NodeId);
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeType, loadedSave.FarmingNodes[4].NodeType);
-        Assert.AreEqual(originalSave.StoredItems[NodeType.Wood], loadedSave.StoredItems[NodeType.Wood]);
-        Assert.AreEqual(originalSave.StoredItems[NodeType.Dirt], loadedSave.StoredItems[NodeType.Dirt]);
+        Assert.AreEqual(originalSave.StoredItems[ItemType.Wood], loadedSave.StoredItems[ItemType.Wood]);
+        Assert.AreEqual(originalSave.StoredItems[ItemType.Dirt], loadedSave.StoredItems[ItemType.Dirt]);
     }
 
     [Test]
@@ -99,16 +99,16 @@ public class SaveServiceTests
         {
             IsActive = true,
             NodeId = 4,
-            NodeType = NodeType.Dirt
+            NodeType = ItemType.Dirt
         };
 
         SaveState save = new SaveState
         {
             SaveName = "DataIsSavedProperly",
-            StoredItems = new Dictionary<NodeType, int>
+            StoredItems = new Dictionary<ItemType, int>
             {
-                { NodeType.Wood, 3 },
-                { NodeType.Dirt, 7 }
+                { ItemType.Wood, 3 },
+                { ItemType.Dirt, 7 }
             },
             FarmingNodes = new Dictionary<int, FarmingNodeState>
             {

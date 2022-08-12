@@ -14,7 +14,7 @@ namespace WoodsOfIdle
 
         public void UpdateDisplayFromState(SaveState state)
         {
-            foreach (NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+            foreach (ItemType nodeType in Enum.GetValues(typeof(ItemType)))
             {
                 storedItemsTexts[(int)nodeType].text = state.StoredItems[nodeType].ToString();
             }

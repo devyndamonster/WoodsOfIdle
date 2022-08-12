@@ -78,7 +78,7 @@ namespace WoodsOfIdle
 
         private void InitializeState(SaveState state)
         {
-            foreach(NodeType nodeType in Enum.GetValues(typeof(NodeType)))
+            foreach(ItemType nodeType in Enum.GetValues(typeof(ItemType)))
             {
                 if (!state.StoredItems.ContainsKey(nodeType))
                 {
