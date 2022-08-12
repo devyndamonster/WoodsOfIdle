@@ -1,11 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="NewSaveElenent" src="project://database/Assets/UI/Elements/NewSaveElenent.uxml?fileID=9197481963319205126&amp;guid=027014c2cc7803c459317d77f2495b5d&amp;type=3#NewSaveElenent" />
     <Style src="project://database/Assets/UI/Styles/MenuStyles.uss?fileID=7433441132597879392&amp;guid=9dd35561442886b49b7d782bc1f5c902&amp;type=3#MenuStyles" />
-    <ui:VisualElement name="ScreenSaveListing" class="ScreenAlignedTop">
-        <ui:Button text="Create New Save" display-tooltip-when-elided="true" name="CreateNewSaveButton" style="height: 5%;" />
-        <ui:ListView focusable="true" name="SaveSelectContainer" />
+    <ui:VisualElement name="ScreenSaveListing" class="ScreenAlignedTop" style="background-image: url(&apos;project://database/Assets/Icons/devyndamonster_The_woods_of_idle_c681bddd-5bbd-480a-9701-ca346929b947.png?fileID=2800000&amp;guid=96e909690f969934f88fbfe62cb7e57b&amp;type=3#devyndamonster_The_woods_of_idle_c681bddd-5bbd-480a-9701-ca346929b947&apos;); align-items: center; justify-content: center; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+        <ui:VisualElement name="InnerListingContainer" style="height: 100%; width: 100%; padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px; background-color: rgba(0, 0, 0, 0.72);">
+            <ui:Button text="Create New Save" display-tooltip-when-elided="true" name="CreateNewSaveButton" style="height: 5%;" />
+            <ui:ListView focusable="true" name="SaveSelectContainer" />
+        </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="ScreenCenterPopups" class="ScreenAlignedCenter" style="margin-right: 0; margin-left: 0; margin-top: 0; margin-bottom: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; height: auto; width: auto; align-items: stretch; background-color: rgba(0, 0, 0, 0.87); display: flex;">
+    <ui:VisualElement name="ScreenCenterPopups" class="ScreenAlignedCenter" style="margin-right: 0; margin-left: 0; margin-top: 0; margin-bottom: 0; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; height: auto; width: auto; align-items: stretch; background-color: rgba(0, 0, 0, 0.87); display: flex; -unity-background-scale-mode: stretch-to-fill;">
         <ui:Instance template="NewSaveElenent" name="NewSaveElenent" />
     </ui:VisualElement>
 </ui:UXML>

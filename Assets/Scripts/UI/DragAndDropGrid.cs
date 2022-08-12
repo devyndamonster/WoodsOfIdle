@@ -1,11 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.UIElements;
-using UnityEngine;
 using UnityEngine.UIElements;
-
-
 
 //This was a nice resource: https://forum.unity.com/threads/ui-builder-and-custom-elements.785129/
 
@@ -13,8 +8,9 @@ public class DragAndDropGrid : VisualElement
 {
     public int Columns { get; set; }
     public int Rows { get; set; }
+    public VisualTreeAsset SaveSelectOption { get; set; }
 
-    public Vector2 MousePosition;
+    //public Vector2 MousePosition;
 
     public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
@@ -44,7 +40,6 @@ public class DragAndDropGrid : VisualElement
     {
         Initialize();
         RegisterCallback<GeometryChangedEvent>(OnGeometryUpdate);
-        RegisterCallback<MouseMoveEvent>(e => MousePosition = e.localMousePosition);
     }
 
     public void Initialize()

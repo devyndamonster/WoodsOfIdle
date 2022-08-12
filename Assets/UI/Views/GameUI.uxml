@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=2e9fcc388a5f0fd47a1c0dad0559150d&amp;type=3#InventoryStyles" />
-    <ui:VisualElement name="ScreenContainer" style="position: absolute; height: 100%; width: 100%;">
+    <ui:VisualElement name="ScreenContainer" picking-mode="Ignore" style="position: absolute; height: 100%; width: 100%; overflow: visible; opacity: 1; visibility: visible;">
         <ui:VisualElement name="BottomMenu" style="bottom: 0; flex-direction: row; align-items: stretch; justify-content: flex-start; position: absolute; width: 100%; height: auto; background-color: rgba(82, 91, 83, 0); border-top-width: 10px; border-top-color: rgb(66, 79, 66); border-left-color: rgb(66, 79, 66); border-right-color: rgb(66, 79, 66); border-bottom-color: rgb(66, 79, 66); flex-grow: 1; flex-wrap: wrap;">
-            <DragAndDropGrid Rows="6" Columns="6" style="max-width: none; max-height: none; width: 100%; height: 100%; flex-direction: row; flex-wrap: wrap;" />
+            <DragAndDropGrid Rows="3" Columns="8" style="max-width: none; max-height: none; width: 100%; height: 100%; flex-direction: row; flex-wrap: wrap;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

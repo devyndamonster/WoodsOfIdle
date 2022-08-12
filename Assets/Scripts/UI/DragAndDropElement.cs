@@ -69,6 +69,7 @@ public class DragAndDropElement : VisualElement
             }
 
             destinationSlot.Add(this);
+            previousSlot = destinationSlot;
             SetStyleNotDragging();
             isDragging = false;
         }
