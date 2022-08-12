@@ -27,3 +27,9 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+.DragAndDropInventoryGrid {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

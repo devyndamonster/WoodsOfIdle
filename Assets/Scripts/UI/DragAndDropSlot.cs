@@ -4,22 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DragAndDropSlot : VisualElement
+namespace WoodsOfIdle
 {
-    public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
-
-    public new class UxmlTraits : VisualElement.UxmlTraits
+    public class DragAndDropSlot : VisualElement
     {
-        public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
-        {
-            get { yield break; }
-        }
+        public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
-        public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
+        public new class UxmlTraits : VisualElement.UxmlTraits
         {
-            base.Init(visualElement, bag, context);
-            var dragAndDrop = visualElement as DragAndDropSlot;
-            dragAndDrop.Clear();
+            public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
+            {
+                get { yield break; }
+            }
+
+            public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
+            {
+                base.Init(visualElement, bag, context);
+                var dragAndDrop = visualElement as DragAndDropSlot;
+                dragAndDrop.Clear();
+            }
         }
     }
+
 }
