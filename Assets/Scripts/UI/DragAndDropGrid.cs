@@ -53,12 +53,12 @@ public class DragAndDropGrid : VisualElement
 
         for (int index = 0; index < Columns * Rows; index++)
         {
-            VisualElement element = new VisualElement();
-            element.name = "DragDropGridTile";
-            element.AddToClassList("DragDropGridTile");
+            DragAndDropSlot element = new DragAndDropSlot();
+            element.name = "DragAndDropSlot";
+            element.AddToClassList("DragAndDropSlot");
             Add(element);
 
-            if (index == 0) element.Add(new DragAndDropElement(this));
+            if (index == 0) element.Add(new DragAndDropElement(element));
         }
 
         RefreshGridSizes();
@@ -71,7 +71,7 @@ public class DragAndDropGrid : VisualElement
 
     public void RefreshGridSizes()
     {
-        foreach (VisualElement element in Children().Where(child => child.name == "DragDropGridTile"))
+        foreach (VisualElement element in Children().Where(child => child.name == "DragAndDropSlot"))
         {
             element.style.width = resolvedStyle.width / Columns;
             element.style.height = element.style.width;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,30 @@ using UnityEngine.UIElements;
 
 public class DragAndDropSlot : VisualElement
 {
-    // Start is called before the first frame update
-    void Start()
+    public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
+
+    public new class UxmlTraits : VisualElement.UxmlTraits
     {
-        
+        public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
+        {
+            get { yield break; }
+        }
+
+        public override void Init(VisualElement visualElement, IUxmlAttributes bag, CreationContext context)
+        {
+            base.Init(visualElement, bag, context);
+            var dragAndDrop = visualElement as DragAndDropSlot;
+            dragAndDrop.Initialize();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public DragAndDropSlot()
     {
-        
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        Clear();
     }
 }

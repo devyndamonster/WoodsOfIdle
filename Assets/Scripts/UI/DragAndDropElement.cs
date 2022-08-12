@@ -6,15 +6,15 @@ using UnityEngine.UIElements;
 
 public class DragAndDropElement : VisualElement
 {
-    private DragAndDropGrid parentGrid;
+    private DragAndDropSlot previousSlot;
     private bool isDragging;
 
-    public DragAndDropElement(DragAndDropGrid grid)
+    public DragAndDropElement(DragAndDropSlot slot)
     {
-        parentGrid = grid;
-        
+        previousSlot = slot;
+
         Clear();
-        AddToClassList("DragDropElement");
+        AddToClassList("DragAndDropElement");
 
         RegisterCallback<MouseDownEvent>(OnMouseDown);
         RegisterCallback<MouseUpEvent>(OnMouseUp);
@@ -22,55 +22,106 @@ public class DragAndDropElement : VisualElement
         RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
     }
 
-    private void OnMouseDown(EventBase eventBase)
+    private void OnMouseDown(MouseDownEvent mouseEvent)
     {
-        StartDragging();
+        Debug.Log("Mouse pos: " + mouseEvent.mousePosition);
+        Debug.Log("Our world pos: " + this.GetScreenPosition());
+
+        VisualElement root = this.GetRoot();
+
+        Debug.Log("Mouse pos within root: " + root.WorldToLocal(mouseEvent.mousePosition));
+        Debug.Log("Our pos within root: " + root.WorldToLocal(this.GetScreenPosition()));
+
+        StartDragging(mouseEvent.mousePosition);
     }
 
-    private void OnMouseUp(EventBase eventBase)
+    private void OnMouseUp(MouseUpEvent mouseEvent)
     {
         StopDragging();
     }
 
-    private void OnMouseLeave(EventBase eventBase)
+    private void OnMouseLeave(MouseLeaveEvent mouseEvent)
     {
-        Debug.Log("Left!");
+        Debug.Log("It Left!");
 
         StopDragging();
     }
 
-    private void OnMouseMove(MouseMoveEvent moveEvent)
+    private void OnMouseMove(MouseMoveEvent mouseEvent)
     {
         if (isDragging)
         {
-            SetPosition(parentGrid.MousePosition);
+            Vector2 localMousePosition = this.GetRoot().WorldToLocal(mouseEvent.mousePosition);
+            SetPosition(localMousePosition);
         }
     }
 
-    private void StartDragging()
+    private void StartDragging(Vector2 mousePosition)
     {
-        isDragging = true;
-        style.position = new StyleEnum<Position>(Position.Absolute);
-        style.width = parent.resolvedStyle.width;
-        style.height = parent.resolvedStyle.height;
+        if (!isDragging)
+        {
+            Debug.Log("Starting drag!");
 
-        parentGrid.Add(this);
+            style.position = new StyleEnum<Position>(Position.Absolute);
+            style.width = parent.resolvedStyle.width;
+            style.height = parent.resolvedStyle.height;
+
+            this.GetRoot().Add(this);
+
+            SetPosition(this.GetRoot().WorldToLocal(mousePosition));
+
+            isDragging = true;
+        }
     }
 
     private void StopDragging()
     {
-        isDragging = false;
-        style.position = new StyleEnum<Position>(Position.Relative);
+        if (isDragging)
+        {
+            Debug.Log("Stopping drag!");
 
-        parentGrid.Children().First(child => child.name == "DragDropGridTile").Add(this);
-        style.left = new StyleLength(StyleKeyword.Auto);
-        style.top = new StyleLength(StyleKeyword.Auto);
-        style.width = new StyleLength(new Length(100, LengthUnit.Percent));
-        style.height = new StyleLength(new Length(100, LengthUnit.Percent));
+            DragAndDropSlot destinationSlot = GetOverlappingSlot();
+
+            if(destinationSlot is null)
+            {
+                destinationSlot = previousSlot;
+            }
+
+            destinationSlot.Add(this);
+
+            style.position = new StyleEnum<Position>(Position.Relative);
+            style.left = new StyleLength(StyleKeyword.Auto);
+            style.top = new StyleLength(StyleKeyword.Auto);
+            style.width = new StyleLength(new Length(100, LengthUnit.Percent));
+            style.height = new StyleLength(new Length(100, LengthUnit.Percent));
+
+            isDragging = false;
+        }
+    }
+
+    private DragAndDropSlot GetOverlappingSlot()
+    {
+        foreach(DragAndDropSlot slot in this.GetRoot().Query<DragAndDropSlot>().ToList())
+        {
+            Vector2 screenPos = this.GetScreenPosition(VisualElementPosition.Center);
+            Vector2 localPos = slot.WorldToLocal(screenPos);
+
+            if (slot.ContainsPoint(localPos))
+            {
+                return slot;
+            }
+        }
+
+        return null;
     }
 
     private void SetPosition(Vector2 pos)
     {
+        Debug.Log("Previous x: " + resolvedStyle.left);
+        Debug.Log("Previous y: " + resolvedStyle.top);
+
+        Debug.Log("Setting position: " + pos);
+
         style.left = pos.x - resolvedStyle.width / 2;
         style.top = pos.y - resolvedStyle.height / 2;
     }
