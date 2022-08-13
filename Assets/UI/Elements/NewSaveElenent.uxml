@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/MenuStyles.uss?fileID=7433441132597879392&amp;guid=9dd35561442886b49b7d782bc1f5c902&amp;type=3#MenuStyles" />
     <ui:VisualElement name="NewSaveContainer" style="padding-left: 3px; padding-right: 3px; padding-top: 3px; padding-bottom: 3px; background-color: rgba(0, 0, 0, 0.2); flex-wrap: nowrap; flex-direction: row;">
-        <ui:TextField picking-mode="Ignore" value="filler text" name="NewSaveNameField" style="min-height: 40px; align-items: stretch; flex-direction: row; bottom: auto; top: auto; position: relative; flex-grow: 1;" />
-        <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateNewSaveButton" />
-        <ui:Button text="Cancel" display-tooltip-when-elided="true" name="CancelSaveCreationButton" />
+        <ui:TextField picking-mode="Ignore" value="filler text" name="NewSaveNameField" style="min-height: 40px; align-items: stretch; flex-direction: row; bottom: auto; top: auto; position: relative; flex-grow: 1; -unity-font: url(&apos;project://database/Assets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&amp;guid=e067c50297c6b0141a9beb5cd8f1a555&amp;type=3#Montserrat-ExtraBold&apos;); -unity-font-definition: url(&apos;project://database/Assets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&amp;guid=6385fbd835d6bc94da41bb843b0b1953&amp;type=2#Montserrat-ExtraBold SDF&apos;); font-size: 50px;" />
+        <ui:Button text="Create" display-tooltip-when-elided="true" name="CreateNewSaveButton" class="MenuButton" style="border-top-right-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; margin-right: 5px;" />
+        <ui:Button text="Cancel" display-tooltip-when-elided="true" name="CancelSaveCreationButton" class="MenuButton" style="border-bottom-left-radius: 0; border-top-left-radius: 0;" />
     </ui:VisualElement>
 </ui:UXML>

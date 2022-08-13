@@ -29,3 +29,55 @@
     height: 100%;
     justify-content: center;
 }
+
+.MenuButton {
+    font-size: 50px;
+    -unity-font-style: normal;
+    -unity-font: url('project://database/Assets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
+    background-color: rgb(112, 149, 128);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(196, 255, 224);
+    border-right-color: rgb(196, 255, 224);
+    border-top-color: rgb(196, 255, 224);
+    border-bottom-color: rgb(196, 255, 224);
+    -unity-font-definition: url('project://database/Assets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
+    color: rgb(255, 255, 255);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.MenuButton:hover {
+    font-size: 50px;
+    -unity-font-style: normal;
+    -unity-font: url('project://database/Assets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
+    background-color: rgb(85, 108, 95);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-color: rgb(196, 255, 224);
+    border-right-color: rgb(196, 255, 224);
+    border-top-color: rgb(196, 255, 224);
+    border-bottom-color: rgb(196, 255, 224);
+    -unity-font-definition: url('project://database/Assets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
+    color: rgb(255, 255, 255);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
