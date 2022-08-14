@@ -9,12 +9,14 @@ namespace WoodsOfIdle
     public class DragAndDropSlot : VisualElement
     {
         public string SlotId { get; set; }
+        public bool BelongsToPlayer { get; set; }
 
         public new class UxmlFactory : UxmlFactory<DragAndDropSlot, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
             UxmlStringAttributeDescription SlotIdAttr = new UxmlStringAttributeDescription { name = "Slot Id", defaultValue = "" };
+            UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "Belongs To Player", defaultValue = false };
 
             public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
             {
@@ -25,19 +27,32 @@ namespace WoodsOfIdle
             {
                 base.Init(visualElement, bag, context);
                 var dragAndDrop = visualElement as DragAndDropSlot;
+
                 dragAndDrop.SlotId = SlotIdAttr.GetValueFromBag(bag, context);
+                dragAndDrop.BelongsToPlayer = BelongsToPlayerAttr.GetValueFromBag(bag, context);
+
                 dragAndDrop.Clear();
             }
         }
 
-        public DragAndDropElement AddItemToSlot(ItemData item, int quantity)
+        public void SetSlotState(ItemData item, int quantity)
         {
-            DragAndDropElement element = new DragAndDropElement(this);
+            if(quantity <= 0)
+            {
+                Clear();
+            }
 
-            element.style.backgroundImage = new StyleBackground(item.ItemIcon);
-            Add(element);
+            if(quantity > 0)
+            {
+                DragAndDropElement element = this.Q<DragAndDropElement>();
+                if (element is null)
+                {
+                    element = new DragAndDropElement(this);
+                }
 
-            return element;
+                element.style.backgroundImage = new StyleBackground(item.ItemIcon);
+                Add(element);
+            }
         }
     }
 

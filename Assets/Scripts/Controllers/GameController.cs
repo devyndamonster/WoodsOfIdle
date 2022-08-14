@@ -9,13 +9,12 @@ namespace WoodsOfIdle
     public class GameController : MonoBehaviour
     {
         protected List<FarmingNodeController> farmingNodes;
-        protected GameMenuController gameMenuController;
         protected SaveController saveController;
+        protected InventoryController inventoryController;
 
         private void Awake()
         {
             CollectDependancies();
-            SetupEvents();
         }
 
         private void Start()
@@ -26,22 +25,13 @@ namespace WoodsOfIdle
         private void CollectDependancies()
         {
             farmingNodes = FindObjectsOfType<FarmingNodeController>().ToList();
-            gameMenuController = FindObjectOfType<GameMenuController>();
             saveController = FindObjectOfType<SaveController>();
-        }
-
-        private void SetupEvents()
-        {
-            foreach(FarmingNodeController farmingNode in farmingNodes)
-            {
-                farmingNode.NodeHarvested += ChangeStoredItemsQuantity;
-            }
+            inventoryController = FindObjectOfType<InventoryController>();
         }
 
         private void Update()
         {
             UpdateFarmingNodes();
-            gameMenuController.UpdateDisplayFromState(saveController.CurrentSaveState);
         }
 
         private void UpdateFarmingNodes()
@@ -51,13 +41,5 @@ namespace WoodsOfIdle
                 farmingNode.UpdateState();
             }
         }
-
-        private void ChangeStoredItemsQuantity(ItemType nodeType, int quantityChange)
-        {
-            saveController.CurrentSaveState.StoredItems[nodeType] += quantityChange;
-        }
-
-        
-
     }
 }

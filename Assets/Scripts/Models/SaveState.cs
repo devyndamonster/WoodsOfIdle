@@ -9,8 +9,8 @@ namespace WoodsOfIdle
     {
         public string SaveName;
 
-        public Dictionary<ItemType, int> StoredItems = new Dictionary<ItemType, int>();
-
         public Dictionary<int, FarmingNodeState> FarmingNodes = new Dictionary<int, FarmingNodeState>();
+
+        public Dictionary<string, InventorySlotState> InventoryInSlots = new Dictionary<string, InventorySlotState>();
     }
 }

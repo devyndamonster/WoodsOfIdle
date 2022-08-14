@@ -44,18 +44,6 @@ public class SaveServiceTests
     }
 
     [Test]
-    public void SaveHasFieldsInitializedOnCreation()
-    {
-        string saveName = "SaveHasFieldsInitializedOnCreation";
-        SaveState save = saveService.LoadOrCreate(saveName);
-
-        foreach (ItemType nodeType in Enum.GetValues(typeof(ItemType)))
-        {
-            Assert.That(save.StoredItems.ContainsKey(nodeType));
-        }
-    }
-
-    [Test]
     public void DataIsSavedProperly()
     {
         SaveState originalSave = GetSampleSaveState();
@@ -68,8 +56,8 @@ public class SaveServiceTests
         Assert.AreEqual(originalSave.FarmingNodes[4].IsActive, loadedSave.FarmingNodes[4].IsActive);
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeId, loadedSave.FarmingNodes[4].NodeId);
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeType, loadedSave.FarmingNodes[4].NodeType);
-        Assert.AreEqual(originalSave.StoredItems[ItemType.Wood], loadedSave.StoredItems[ItemType.Wood]);
-        Assert.AreEqual(originalSave.StoredItems[ItemType.Dirt], loadedSave.StoredItems[ItemType.Dirt]);
+        Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].Quantity, loadedSave.InventoryInSlots["InventorySlot1"].Quantity);
+        Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].ItemType, loadedSave.InventoryInSlots["InventorySlot1"].ItemType);
     }
 
     [Test]
@@ -102,13 +90,18 @@ public class SaveServiceTests
             NodeType = ItemType.Dirt
         };
 
+        InventorySlotState slotState = new InventorySlotState
+        {
+            ItemType = ItemType.Stone,
+            Quantity = 5
+        };
+
         SaveState save = new SaveState
         {
             SaveName = "DataIsSavedProperly",
-            StoredItems = new Dictionary<ItemType, int>
+            InventoryInSlots = new Dictionary<string, InventorySlotState>
             {
-                { ItemType.Wood, 3 },
-                { ItemType.Dirt, 7 }
+                { "InventorySlot1", slotState }
             },
             FarmingNodes = new Dictionary<int, FarmingNodeState>
             {

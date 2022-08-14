@@ -9,7 +9,8 @@ namespace WoodsOfIdle
     public class FarmingNodeController : MonoBehaviour
     {
         public FarmingNodeState State = new FarmingNodeState();
-        public event ChangeStorageQuantity NodeHarvested;
+
+        public static event ChangeStorageQuantity NodeHarvested;
 
         protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
 

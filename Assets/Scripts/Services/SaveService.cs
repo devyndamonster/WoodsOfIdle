@@ -22,7 +22,6 @@ namespace WoodsOfIdle
                     SaveName = saveName
                 };
 
-                InitializeState(saveState);
                 return saveState;
             }
 
@@ -40,7 +39,6 @@ namespace WoodsOfIdle
 
             string saveJson = File.ReadAllText(savePath);
             SaveState saveState = JsonConvert.DeserializeObject<SaveState>(saveJson);
-            InitializeState(saveState);
             return saveState;
         }
 
@@ -74,17 +72,6 @@ namespace WoodsOfIdle
         private string GetSavePath(string saveName)
         {
             return $"{Application.persistentDataPath}/{saveName}.save";
-        }
-
-        private void InitializeState(SaveState state)
-        {
-            foreach(ItemType nodeType in Enum.GetValues(typeof(ItemType)))
-            {
-                if (!state.StoredItems.ContainsKey(nodeType))
-                {
-                    state.StoredItems[nodeType] = 0;
-                }
-            }
         }
 
         public IEnumerable<string> GetSaveNames()
