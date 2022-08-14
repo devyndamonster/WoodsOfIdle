@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 249ff9f670628be4cb48c6cea2487f95, type: 3}
-  m_Name: StoneData
+  m_Name: DirtData
   m_EditorClassIdentifier: 
-  ItemType: 1
-  ItemIcon: {fileID: 0}
+  ItemType: 2
+  ItemIcon: {fileID: 21300000, guid: ecb244f8ecfc36a4f825b14d4b70786f, type: 3}

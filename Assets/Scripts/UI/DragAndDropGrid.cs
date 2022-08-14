@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 //This was a nice resource: https://forum.unity.com/threads/ui-builder-and-custom-elements.785129/
@@ -9,9 +10,6 @@ namespace WoodsOfIdle
     {
         public int Columns { get; set; }
         public int Rows { get; set; }
-        public VisualTreeAsset SaveSelectOption { get; set; }
-
-        //public Vector2 MousePosition;
 
         public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
@@ -49,12 +47,10 @@ namespace WoodsOfIdle
 
             for (int index = 0; index < Columns * Rows; index++)
             {
-                DragAndDropSlot element = new DragAndDropSlot();
-                element.name = "DragAndDropSlot";
-                element.AddToClassList("DragAndDropSlot");
-                Add(element);
-
-                if (index == 0) element.Add(new DragAndDropElement(element));
+                DragAndDropSlot slot = new DragAndDropSlot();
+                slot.name = "DragAndDropSlot";
+                slot.AddToClassList("DragAndDropSlot");
+                Add(slot);
             }
 
             RefreshGridSizes();
