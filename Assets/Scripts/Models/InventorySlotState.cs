@@ -9,6 +9,8 @@ namespace WoodsOfIdle
 {
     public class InventorySlotState
     {
+        public string SlotId;
+
         public ItemType ItemType;
 
         public int Quantity;

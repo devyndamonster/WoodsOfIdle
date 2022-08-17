@@ -11,7 +11,7 @@ namespace WoodsOfIdle
         public UIDocument InventoryPanel;
 
         private SaveController saveController;
-        private List<DragAndDropSlot> dragAndDropSlots;
+        private Dictionary<string, DragAndDropSlot> dragAndDropSlots;
         private Dictionary<ItemType, ItemData> itemData;
 
         private IInventoryService inventoryService = new InventoryService();
@@ -30,24 +30,33 @@ namespace WoodsOfIdle
 
         private void Start()
         {
-            dragAndDropSlots = InventoryPanel.rootVisualElement
+            InventoryPanel.rootVisualElement
                 .Query<DragAndDropSlot>()
-                .ToList();
+                .ToList()
+                .ForEach(slot => dragAndDropSlots[slot.SlotId] = slot);
 
             var inventoryInSlots = saveController.CurrentSaveState.InventoryInSlots;
-            foreach (DragAndDropSlot slot in dragAndDropSlots)
+            foreach (var slotPair in dragAndDropSlots)
             {
-                if (inventoryInSlots.ContainsKey(slot.SlotId))
+                if (inventoryInSlots.ContainsKey(slotPair.Value.SlotId))
                 {
-                    InventorySlotState slotState = inventoryInSlots[slot.SlotId];
-                    slot.SetSlotState(itemData[slotState.ItemType], slotState.Quantity);
+                    InventorySlotState slotState = inventoryInSlots[slotPair.Value.SlotId];
+                    slotPair.Value.SetSlotState(itemData[slotState.ItemType], slotState.Quantity);
                 }
             }
         }
 
-        public void ChangeStoredItemsQuantity(ItemType nodeType, int quantityChange)
+        public void ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
         {
-            inventoryService.ChangeStoredItemsQuantity(saveController.CurrentSaveState, nodeType, quantityChange);
+            Dictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
+            List<InventorySlotState> targetSlotStates = dragAndDropSlots.Select(slot => savedSlotStates[slot.Key]).ToList();
+
+            List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(targetSlotStates, itemType, quantityChange);
+            foreach(InventoryChangeRequest change in changes)
+            {
+                inventoryService.ApplyInventoryChange(change, targetSlotStates);
+                dragAndDropSlots[change.SlotId].SetSlotState(itemData[change.ItemType], change.NewQuantity);
+            }
         }
     }
 }

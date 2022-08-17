@@ -7,25 +7,12 @@ namespace WoodsOfIdle
 {
     public class InventoryService : IInventoryService
     {
-        public void ChangeStoredItemsQuantity(SaveState saveState, ItemType type, int quantity)
+        public List<InventoryChangeRequest> GetInventoryChanges(List<InventorySlotState> slotStates, ItemType itemType, int quantityChange)
         {
-            if(quantity > 0)
-            {
-                AddItemsToInventory(saveState, type, quantity);
-            }
-
-            else if(quantity < 0)
-            {
-                RemoveItemsFromInventory(saveState, type, quantity);
-            }
+            return null;
         }
 
-        private void AddItemsToInventory(SaveState saveState, ItemType type, int quantity)
-        {
-            
-        }
-
-        private void RemoveItemsFromInventory(SaveState saveState, ItemType type, int quantity)
+        public void ApplyInventoryChange(InventoryChangeRequest changeRequest, List<InventorySlotState> slotStates)
         {
 
         }
