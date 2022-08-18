@@ -87,7 +87,9 @@ namespace WoodsOfIdle
 
         public void ApplyInventoryChange(InventoryChangeRequest changeRequest, List<InventorySlotState> slotStates)
         {
-
+            InventorySlotState targetSlotState = slotStates.First(slot => slot.SlotId == changeRequest.SlotId);
+            targetSlotState.Quantity = changeRequest.NewQuantity;
+            targetSlotState.ItemType = changeRequest.ItemType;
         }
     }
 }

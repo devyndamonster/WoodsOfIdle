@@ -104,6 +104,20 @@ public class InventoryServiceTests
         Assert.That(changes.First().NewQuantity == targetedSlot.Quantity + itemsChange);
     }
 
+    [Test]
+    public void ApplyingChangesEffectsCorrectSlot()
+    {
+        int itemsChange = 100;
+        List<InventorySlotState> inventoryState = GetEmptyInventory();
+
+        List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(inventoryState, ItemType.Dirt, itemsChange);
+        inventoryService.ApplyInventoryChange(changes.First(), inventoryState);
+
+        InventorySlotState targetedSlot = inventoryState.First(o => o.SlotId == changes.First().SlotId);
+        Assert.That(targetedSlot.Quantity == itemsChange);
+        Assert.That(targetedSlot.ItemType == ItemType.Dirt);
+    }
+
 
     private List<InventorySlotState> GetEmptyInventory()
     {
