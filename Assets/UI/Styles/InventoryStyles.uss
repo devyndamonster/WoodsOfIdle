@@ -14,10 +14,10 @@
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
-    border-left-color: rgba(212, 212, 212, 255);
-    border-right-color: rgba(212, 212, 212, 255);
-    border-top-color: rgba(212, 212, 212, 255);
-    border-bottom-color: rgba(212, 212, 212, 255);
+    border-left-color: rgb(212, 212, 212);
+    border-right-color: rgb(212, 212, 212);
+    border-top-color: rgb(212, 212, 212);
+    border-bottom-color: rgb(212, 212, 212);
     border-left-width: 5px;
     border-right-width: 5px;
     border-top-width: 5px;
@@ -32,4 +32,24 @@
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.DragAndDropElementLabel {
+    font-size: 50px;
+    -unity-text-align: middle-center;
+    background-color: rgba(0, 0, 0, 0.46);
+    align-items: stretch;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: auto;
+    position: absolute;
+    left: 0;
+    top: 60%;
+    right: 0;
+    bottom: 0;
+    flex-grow: 0;
+    color: rgba(255, 255, 255, 255);
+    -unity-font-style: normal;
+    -unity-font: url('project://database/Assets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
+    -unity-font-definition: url('project://database/Assets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
 }
