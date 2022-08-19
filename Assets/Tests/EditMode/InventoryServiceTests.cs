@@ -93,14 +93,15 @@ public class InventoryServiceTests
     public void ChangesAddToSlotThatAlreadyHasItems()
     {
         int itemsChange = 100;
-        List<InventorySlotState> inventoryState = GetEmptyInventory();
+        List<InventorySlotState> inventoryState = GetDiverseQuantitySameTypeInventory();
 
-        List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(inventoryState, ItemType.Dirt, itemsChange);
+        List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(inventoryState, ItemType.Wood, itemsChange);
 
         InventorySlotState targetedSlot = inventoryState.First(o => o.SlotId == changes.First().SlotId);
 
         Assert.That(changes.Count() == 1);
-        Assert.That(changes.First().ItemType == ItemType.Dirt);
+        Assert.That(targetedSlot.Quantity > 0);
+        Assert.That(changes.First().ItemType == ItemType.Wood);
         Assert.That(changes.First().NewQuantity == targetedSlot.Quantity + itemsChange);
     }
 
@@ -143,6 +144,34 @@ public class InventoryServiceTests
                 Quantity = 0,
                 CanAutoInsert = true,
                 ItemType = ItemType.Stone
+            }
+        };
+    }
+
+    private List<InventorySlotState> GetDiverseQuantitySameTypeInventory()
+    {
+        return new List<InventorySlotState>
+        {
+            new InventorySlotState
+            {
+                SlotId = "First",
+                Quantity = 0,
+                CanAutoInsert = true,
+                ItemType = ItemType.Wood
+            },
+            new InventorySlotState
+            {
+                SlotId = "Second",
+                Quantity = 50,
+                CanAutoInsert = true,
+                ItemType = ItemType.Wood
+            },
+            new InventorySlotState
+            {
+                SlotId = "Third",
+                Quantity = 0,
+                CanAutoInsert = true,
+                ItemType = ItemType.Wood
             }
         };
     }

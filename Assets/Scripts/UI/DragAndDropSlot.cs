@@ -42,15 +42,23 @@ namespace WoodsOfIdle
 
         public void SetSlotState(ItemData item, int quantity)
         {
-            Clear();
-            currentElement = null;
-
+            //If element should show
             if(quantity > 0)
             {
-                currentElement = new DragAndDropElement(this);
+                if (currentElement is null)
+                {
+                    currentElement = new DragAndDropElement(this);
+                    Add(currentElement);
+                }
+
                 currentElement.style.backgroundImage = new StyleBackground(item.ItemIcon);
                 currentElement.SetQuantity(quantity);
-                Add(currentElement);
+            }
+            else
+            {
+                //Destroy the current element
+                Clear();
+                currentElement = null;
             }
         }
     }

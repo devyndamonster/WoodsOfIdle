@@ -79,24 +79,15 @@ namespace WoodsOfIdle
 
         public void ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
         {
-            Debug.Log($"Changing inventory: {itemType} changed by {quantityChange}");
-
             Dictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
             List<InventorySlotState> targetSlotStates = dragAndDropSlots.Select(slot => savedSlotStates[slot.Key]).ToList();
 
             List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(targetSlotStates, itemType, quantityChange);
 
-            Debug.Log(
-                $"Saved slots count: {savedSlotStates.Count}," +
-                $" target slot states count: {targetSlotStates.Count}," +
-                $" drag and drop slots count: {dragAndDropSlots.Count()}," +
-                $" changes count: {changes.Count()}");
-
             foreach (InventoryChangeRequest change in changes)
             {
                 inventoryService.ApplyInventoryChange(change, targetSlotStates);
                 dragAndDropSlots[change.SlotId].SetSlotState(itemData[change.ItemType], change.NewQuantity);
-                Debug.Log($"Set slot state for slot: {change.SlotId} set to quantity by {change.NewQuantity}");
             }
         }
 
@@ -109,8 +100,10 @@ namespace WoodsOfIdle
             InventorySlotState slotStateTo = savedSlotStates[slotTo.SlotId];
             InventorySlotState slotStateFrom = savedSlotStates[slotFrom.SlotId];
 
-            slotTo.SetSlotState(itemData[slotStateFrom.ItemType], slotStateFrom.Quantity);
-            slotFrom.SetSlotState(itemData[slotStateTo.ItemType], slotStateTo.Quantity);
+            inventoryService.SwapInventoryContents(slotStateFrom, slotStateTo);
+
+            slotTo.SetSlotState(itemData[slotStateTo.ItemType], slotStateTo.Quantity);
+            slotFrom.SetSlotState(itemData[slotStateFrom.ItemType], slotStateFrom.Quantity);
         }
     }
 }

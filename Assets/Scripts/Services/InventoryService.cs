@@ -26,8 +26,15 @@ namespace WoodsOfIdle
         private List<InventoryChangeRequest> GetInventoryChangesFromAddition(List<InventorySlotState> slotStates, ItemType itemType, int quantityToAdd)
         {
             List<InventoryChangeRequest> changes = new List<InventoryChangeRequest>();
-            List<InventorySlotState> slotsWithItem = slotStates.Where(slot => slot.ItemType == itemType && slot.CanAutoInsert).ToList();
-            List<InventorySlotState> emptySlots = slotStates.Where(slot => slot.Quantity == 0 && slot.CanAutoInsert).ToList();
+
+            List<InventorySlotState> slotsWithItem = slotStates
+                .Where(slot => slot.ItemType == itemType && slot.CanAutoInsert)
+                .OrderByDescending(slot => slot.Quantity)
+                .ToList();
+
+            List<InventorySlotState> emptySlots = slotStates
+                .Where(slot => slot.Quantity == 0 && slot.CanAutoInsert)
+                .ToList();
 
             if (slotsWithItem.Count > 0)
             {
@@ -90,6 +97,18 @@ namespace WoodsOfIdle
             InventorySlotState targetSlotState = slotStates.First(slot => slot.SlotId == changeRequest.SlotId);
             targetSlotState.Quantity = changeRequest.NewQuantity;
             targetSlotState.ItemType = changeRequest.ItemType;
+        }
+
+        public void SwapInventoryContents(InventorySlotState slotFrom, InventorySlotState slotTo)
+        {
+            int tempQuantity = slotFrom.Quantity;
+            ItemType tempType = slotFrom.ItemType;
+
+            slotFrom.Quantity = slotTo.Quantity;
+            slotFrom.ItemType = slotTo.ItemType;
+
+            slotTo.Quantity = tempQuantity;
+            slotTo.ItemType = tempType;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace WoodsOfIdle
         public List<InventoryChangeRequest> GetInventoryChanges(List<InventorySlotState> slotStates, ItemType itemType, int quantityChange);
 
         public void ApplyInventoryChange(InventoryChangeRequest changeRequest, List<InventorySlotState> slotStates);
+
+        public void SwapInventoryContents(InventorySlotState slotFrom, InventorySlotState slotTo);
     }
 }
 
