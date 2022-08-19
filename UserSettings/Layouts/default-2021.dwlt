@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: -156
-    y: 318
-    width: 3440
-    height: 1349
+    x: 8
+    y: 51
+    width: 3424
+    height: 1333
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Project
   m_RootView: {fileID: 9}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -39,12 +39,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 462
+    x: 460
     y: 0
-    width: 505
-    height: 865
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 502
+    height: 854
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -69,12 +69,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 967
-    height: 865
+    width: 962
+    height: 854
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 115
+  controlID: 20
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -91,9 +91,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 865
-    width: 967
-    height: 434
+    y: 854
+    width: 962
+    height: 429
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 15}
@@ -122,12 +122,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 967
-    height: 1299
+    width: 962
+    height: 1283
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 114
+  controlID: 27
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,12 +143,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 2399
+    x: 2387
     y: 0
-    width: 1041
-    height: 1299
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 1037
+    height: 1283
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -172,12 +172,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 3440
-    height: 1299
+    width: 3424
+    height: 1283
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 112
+  controlID: 109
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,10 +195,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 462
-    height: 865
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 460
+    height: 854
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -224,8 +224,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3440
-    height: 1349
+    width: 3424
+    height: 1333
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -249,7 +249,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3440
+    width: 3424
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1329
-    width: 3440
+    y: 1313
+    width: 3424
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -295,12 +295,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3440
-    height: 1299
+    width: 3424
+    height: 1283
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 113
+  controlID: 110
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,12 +316,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 967
+    x: 962
     y: 0
-    width: 1432
-    height: 1299
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+    width: 1425
+    height: 1283
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 18}
@@ -348,21 +348,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 938
-    width: 967
-    height: 413
+    x: 8
+    y: 935
+    width: 961
+    height: 408
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 4225
+    ID: 551
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
-    - 257
-    - 86
+    - 253
+    - 85
     relativeSizes:
     - 0.75
     - 0.25
@@ -372,7 +372,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 343
+    lastTotalSize: 338
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -380,7 +380,7 @@ MonoBehaviour:
     oldMinSizes: 
     oldMaxSizes: 
     oldSplitSize: 0
-  m_TestTypeToolbarIndex: 0
+  m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
     m_Window: {fileID: 14}
     m_NewResultList:
@@ -461,7 +461,7 @@ MonoBehaviour:
       name: WoodsOfIdle
       fullName: WoodsOfIdle
       resultStatus: 1
-      duration: 0.1465183
+      duration: 0.0463248
       messages: 
       output: 
       stacktrace: 
@@ -477,7 +477,7 @@ MonoBehaviour:
       name: EditModeTests.dll
       fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll
       resultStatus: 1
-      duration: 0.1192412
+      duration: 0.0207245
       messages: 
       output: 
       stacktrace: 
@@ -493,7 +493,7 @@ MonoBehaviour:
       name: FarmingNodeServiceTests
       fullName: FarmingNodeServiceTests
       resultStatus: 1
-      duration: 0.0294863
+      duration: 0.024278
       messages: 
       output: 
       stacktrace: 
@@ -509,7 +509,7 @@ MonoBehaviour:
       name: WillFarmTenItemsInTenSeconds
       fullName: FarmingNodeServiceTests.WillFarmTenItemsInTenSeconds
       resultStatus: 1
-      duration: 0.0137325
+      duration: 0.0109522
       messages: 
       output: 
       stacktrace: 
@@ -526,7 +526,7 @@ MonoBehaviour:
       name: WillSetTimeLastHarvestedCorrectly
       fullName: FarmingNodeServiceTests.WillSetTimeLastHarvestedCorrectly
       resultStatus: 1
-      duration: 0.0012085
+      duration: 0.0012611
       messages: 
       output: 
       stacktrace: 
@@ -543,7 +543,7 @@ MonoBehaviour:
       name: WontFarmFromBeforeReactivated
       fullName: FarmingNodeServiceTests.WontFarmFromBeforeReactivated
       resultStatus: 1
-      duration: 0.0002435
+      duration: 0.0003955
       messages: 
       output: 
       stacktrace: 
@@ -560,7 +560,7 @@ MonoBehaviour:
       name: WontFarmWhenInactive
       fullName: FarmingNodeServiceTests.WontFarmWhenInactive
       resultStatus: 1
-      duration: 0.000166
+      duration: 0.0001896
       messages: 
       output: 
       stacktrace: 
@@ -572,12 +572,164 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1001
       parentUniqueId: EditModeTests.dll/[EditModeTests][FarmingNodeServiceTests][suite]
+    - id: 1008
+      uniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+      name: InventoryServiceTests
+      fullName: InventoryServiceTests
+      resultStatus: 1
+      duration: 0.0196069
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: '[EditModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll][suite]'
+    - id: 1014
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ApplyingChangesEffectsCorrectSlot]
+      name: ApplyingChangesEffectsCorrectSlot
+      fullName: InventoryServiceTests.ApplyingChangesEffectsCorrectSlot
+      resultStatus: 1
+      duration: 0.0083628
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1012
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ChangesAddToOnlyOneSlot]
+      name: ChangesAddToOnlyOneSlot
+      fullName: InventoryServiceTests.ChangesAddToOnlyOneSlot
+      resultStatus: 1
+      duration: 0.0016002
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1013
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ChangesAddToSlotThatAlreadyHasItems]
+      name: ChangesAddToSlotThatAlreadyHasItems
+      fullName: InventoryServiceTests.ChangesAddToSlotThatAlreadyHasItems
+      resultStatus: 1
+      duration: 0.0002506
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1008
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ChangesRemoveFromCorrectSlot]
+      name: ChangesRemoveFromCorrectSlot
+      fullName: InventoryServiceTests.ChangesRemoveFromCorrectSlot
+      resultStatus: 1
+      duration: 0.0005218
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1011
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ChangesRemoveFromMultipleSlots]
+      name: ChangesRemoveFromMultipleSlots
+      fullName: InventoryServiceTests.ChangesRemoveFromMultipleSlots
+      resultStatus: 1
+      duration: 0.0002813
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1010
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.ChangesRemoveFromOnlyOneSlot]
+      name: ChangesRemoveFromOnlyOneSlot
+      fullName: InventoryServiceTests.ChangesRemoveFromOnlyOneSlot
+      resultStatus: 1
+      duration: 0.0001978
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1007
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.RemovingFromEmptyInventoryHasNoChanges]
+      name: RemovingFromEmptyInventoryHasNoChanges
+      fullName: InventoryServiceTests.RemovingFromEmptyInventoryHasNoChanges
+      resultStatus: 1
+      duration: 0.0001002
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
+    - id: 1008
+      uniqueId: EditModeTests.dll/InventoryServiceTests/[EditModeTests][InventoryServiceTests.RemovingNothingHasNoChanges]
+      name: RemovingNothingHasNoChanges
+      fullName: InventoryServiceTests.RemovingNothingHasNoChanges
+      resultStatus: 1
+      duration: 0.0000877
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1006
+      parentUniqueId: EditModeTests.dll/[EditModeTests][InventoryServiceTests][suite]
     - id: 1007
       uniqueId: EditModeTests.dll/[EditModeTests][SaveServiceTests][suite]
       name: SaveServiceTests
       fullName: SaveServiceTests
       resultStatus: 1
-      duration: 0.0884593
+      duration: 0.0835981
       messages: 
       output: 
       stacktrace: 
@@ -593,7 +745,7 @@ MonoBehaviour:
       name: DataIsSavedProperly
       fullName: SaveServiceTests.DataIsSavedProperly
       resultStatus: 1
-      duration: 0.0779726
+      duration: 0.0725582
       messages: 
       output: 
       stacktrace: 
@@ -610,7 +762,7 @@ MonoBehaviour:
       name: SaveDeletesProperly
       fullName: SaveServiceTests.SaveDeletesProperly
       resultStatus: 1
-      duration: 0.001463
+      duration: 0.0011945
       messages: 
       output: 
       stacktrace: 
@@ -627,7 +779,7 @@ MonoBehaviour:
       name: SaveDoesNotExist
       fullName: SaveServiceTests.SaveDoesNotExist
       resultStatus: 1
-      duration: 0.0002354
+      duration: 0.0002789
       messages: 
       output: 
       stacktrace: 
@@ -644,7 +796,7 @@ MonoBehaviour:
       name: SaveExists
       fullName: SaveServiceTests.SaveExists
       resultStatus: 1
-      duration: 0.0005556
+      duration: 0.0030411
       messages: 
       output: 
       stacktrace: 
@@ -661,7 +813,7 @@ MonoBehaviour:
       name: SavesAreInSaveList
       fullName: SaveServiceTests.SavesAreInSaveList
       resultStatus: 1
-      duration: 0.0030698
+      duration: 0.0031634
       messages: 
       output: 
       stacktrace: 
@@ -673,13 +825,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1012
       parentUniqueId: EditModeTests.dll/[EditModeTests][SaveServiceTests][suite]
-    m_ResultText: WoodsOfIdle (0.147s)
+    m_ResultText: ApplyingChangesEffectsCorrectSlot (0.008s)
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a3cf7f41
-      m_LastClickedID: 1098895267
-      m_ExpandedIDs: 7d194fc7a3cf7f417976355238cbd96190e7d471ffffff7f
+      scrollPos: {x: 0, y: 87}
+      m_SelectedIDs: 378259a8
+      m_LastClickedID: -1470528969
+      m_ExpandedIDs: 7d194fc7776521eda3cf7f417976355238cbd96190e7d471ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -726,10 +878,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 884
-    width: 966
-    height: 413
+    x: 8
+    y: 935
+    width: 961
+    height: 408
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -747,22 +899,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Models
+    - Assets/UI/Views
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Models
+  - Assets/UI/Views
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Unity\Projects\WoodsOfIdle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 59}
-    m_SelectedIDs: fe6a0000
-    m_LastClickedID: 27390
-    m_ExpandedIDs: 00000000606a0000626a0000646a0000666a0000686a00006a6a00006c6a00006e6a000000ca9a3b
+    scrollPos: {x: 0, y: 76}
+    m_SelectedIDs: a46a0000
+    m_LastClickedID: 27300
+    m_ExpandedIDs: 00000000666a0000686a00006a6a00006c6a00006e6a0000706a0000726a0000746a00009c6a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -790,7 +942,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000606a0000626a0000646a0000666a0000686a00006a6a00006c6a00006e6a0000
+    m_ExpandedIDs: 00000000666a0000686a00006a6a00006c6a00006e6a0000706a0000726a0000746a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -867,10 +1019,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 306
-    y: 348
-    width: 503
-    height: 844
+    x: 468
+    y: 81
+    width: 500
+    height: 833
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -909,10 +1061,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: -156
-    y: 348
-    width: 461
-    height: 844
+    x: 8
+    y: 81
+    width: 459
+    height: 833
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -920,7 +1072,7 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 246b0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: 30fbffff
       m_RenameOverlay:
@@ -967,10 +1119,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 968
-    y: 73
-    width: 1355
-    height: 1278
+    x: 970
+    y: 81
+    width: 1423
+    height: 1262
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1223,7 +1375,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.164539, y: 0.3340274, z: -0.059270065, w: 0.92621547}
     speed: 2
-    m_Value: {x: 0.16453609, y: 0.3340215, z: -0.05926902, w: 0.92619914}
+    m_Value: {x: -0.16453901, y: -0.3340274, z: 0.059270065, w: -0.9262155}
   m_Size:
     m_Target: 8.036616
     speed: 2
@@ -1273,10 +1425,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 938
-    width: 967
-    height: 413
+    x: 8
+    y: 935
+    width: 961
+    height: 408
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1296,16 +1448,15 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: UI Builder
-    m_Image: {fileID: 8683992553321208622, guid: 0000000000000000d000000000000000,
-      type: 0}
+    m_Text: Builder
+    m_Image: {fileID: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 968
-    y: 19
-    width: 1430
-    height: 1278
+    x: 970
+    y: 81
+    width: 1423
+    height: 1262
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1331,10 +1482,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2243
-    y: 348
-    width: 1040
-    height: 1278
+    x: 2395
+    y: 81
+    width: 1036
+    height: 1262
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1372,7 +1523,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -1383,23 +1534,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1040
-      height: 1257
-    m_Scale: {x: 0.52375, y: 0.52375}
-    m_Translation: {x: 520, y: 628.5}
+      width: 1036
+      height: 1241
+    m_Scale: {x: 0.5258333, y: 0.5258333}
+    m_Translation: {x: 518, y: 620.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -992.8401
-      y: -1200
-      width: 1985.6802
-      height: 2400
+      x: -985.103
+      y: -1180.0317
+      width: 1970.206
+      height: 2360.0635
     m_MinimalGUI: 1
-  m_defaultScale: 0.52375
-  m_LastWindowPixelSize: {x: 1040, y: 1278}
+  m_defaultScale: 0.5258333
+  m_LastWindowPixelSize: {x: 1036, y: 1262}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000

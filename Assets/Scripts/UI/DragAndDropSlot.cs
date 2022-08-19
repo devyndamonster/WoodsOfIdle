@@ -10,13 +10,17 @@ namespace WoodsOfIdle
     {
         public string SlotId { get; set; }
         public bool BelongsToPlayer { get; set; }
+        public bool CanAutoInsert { get; set; }
+
+        public DragAndDropElement currentElement;
 
         public new class UxmlFactory : UxmlFactory<DragAndDropSlot, UxmlTraits> { }
 
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
             UxmlStringAttributeDescription SlotIdAttr = new UxmlStringAttributeDescription { name = "Slot Id", defaultValue = "" };
-            UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "Belongs To Player", defaultValue = false };
+            UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "BelongsToPlayer", defaultValue = false };
+            UxmlBoolAttributeDescription CanAutoInsertAttr = new UxmlBoolAttributeDescription { name = "CanAutoInsert", defaultValue = false };
 
             public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
             {
@@ -30,6 +34,7 @@ namespace WoodsOfIdle
 
                 dragAndDrop.SlotId = SlotIdAttr.GetValueFromBag(bag, context);
                 dragAndDrop.BelongsToPlayer = BelongsToPlayerAttr.GetValueFromBag(bag, context);
+                dragAndDrop.CanAutoInsert = CanAutoInsertAttr.GetValueFromBag(bag, context);
 
                 dragAndDrop.Clear();
             }
@@ -40,18 +45,19 @@ namespace WoodsOfIdle
             if(quantity <= 0)
             {
                 Clear();
+                if (currentElement != null) currentElement.parent.Remove(currentElement);
+                currentElement = null;
             }
 
             if(quantity > 0)
             {
-                DragAndDropElement element = this.Q<DragAndDropElement>();
-                if (element is null)
+                if (currentElement is null)
                 {
-                    element = new DragAndDropElement(this);
+                    currentElement = new DragAndDropElement(this);
+                    Add(currentElement);
                 }
 
-                element.style.backgroundImage = new StyleBackground(item.ItemIcon);
-                Add(element);
+                currentElement.style.backgroundImage = new StyleBackground(item.ItemIcon);
             }
         }
     }

@@ -10,6 +10,8 @@ namespace WoodsOfIdle
 {
     public class DragAndDropElement : VisualElement
     {
+        public static event InventorySlotDragged InventorySlotDragged;
+
         private DragAndDropSlot previousSlot;
         private bool isDragging;
 
@@ -72,8 +74,12 @@ namespace WoodsOfIdle
                     destinationSlot = previousSlot;
                 }
 
-                destinationSlot.Add(this);
-                previousSlot = destinationSlot;
+                if (!destinationSlot.Equals(previousSlot))
+                {
+                    InventorySlotDragged(destinationSlot, previousSlot);
+                }
+
+                previousSlot.Add(this);
                 SetStyleNotDragging();
                 isDragging = false;
             }

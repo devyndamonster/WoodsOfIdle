@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/Styles/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=2e9fcc388a5f0fd47a1c0dad0559150d&amp;type=3#InventoryStyles" />
     <ui:VisualElement name="ScreenContainer" picking-mode="Ignore" style="position: absolute; height: 100%; width: 100%; overflow: visible; opacity: 1; visibility: visible;">
         <ui:VisualElement name="BottomMenu" style="bottom: 0; flex-direction: row; align-items: stretch; justify-content: flex-start; position: absolute; width: 100%; height: auto; background-color: rgba(82, 91, 83, 0); border-top-width: 10px; border-top-color: rgb(66, 79, 66); border-left-color: rgb(66, 79, 66); border-right-color: rgb(66, 79, 66); border-bottom-color: rgb(66, 79, 66); flex-grow: 1; flex-wrap: wrap;">
-            <WoodsOfIdle.DragAndDropGrid Rows="3" Columns="6" class="DragAndDropInventoryGrid" />
+            <WoodsOfIdle.DragAndDropGrid Rows="3" Columns="6" CanAutoInsert="true" BelongsToPlayer="true" class="DragAndDropInventoryGrid" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -45,7 +45,7 @@ namespace WoodsOfIdle
         public void SaveGame(SaveState saveState)
         {
             string savePath = GetSavePath(saveState.SaveName);
-            string saveJson = JsonConvert.SerializeObject(saveState);
+            string saveJson = JsonConvert.SerializeObject(saveState, Formatting.Indented);
             File.WriteAllText(savePath, saveJson);
         }
 

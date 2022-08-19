@@ -11,6 +11,7 @@ namespace WoodsOfIdle
         public int Columns { get; set; }
         public int Rows { get; set; }
         public bool BelongsToPlayer { get; set; }
+        public bool CanAutoInsert { get; set; }
 
         public new class UxmlFactory : UxmlFactory<DragAndDropGrid, UxmlTraits> { }
 
@@ -18,7 +19,8 @@ namespace WoodsOfIdle
         {
             UxmlIntAttributeDescription ColumnsAttr = new UxmlIntAttributeDescription { name = "Columns", defaultValue = 4 };
             UxmlIntAttributeDescription RowsAttr = new UxmlIntAttributeDescription { name = "Rows", defaultValue = 4 };
-            UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "Belongs To Player", defaultValue = false };
+            UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "BelongsToPlayer", defaultValue = false };
+            UxmlBoolAttributeDescription CanAutoInsertAttr = new UxmlBoolAttributeDescription { name = "CanAutoInsert", defaultValue = false };
 
             public override IEnumerable<UxmlChildElementDescription> uxmlChildElementsDescription
             {
@@ -33,6 +35,7 @@ namespace WoodsOfIdle
                 dragAndDrop.Columns = ColumnsAttr.GetValueFromBag(bag, context);
                 dragAndDrop.Rows = RowsAttr.GetValueFromBag(bag, context);
                 dragAndDrop.BelongsToPlayer = BelongsToPlayerAttr.GetValueFromBag(bag, context);
+                dragAndDrop.CanAutoInsert = CanAutoInsertAttr.GetValueFromBag(bag, context);
 
                 dragAndDrop.Initialize();
             }
@@ -52,6 +55,8 @@ namespace WoodsOfIdle
             {
                 DragAndDropSlot slot = new DragAndDropSlot();
                 slot.BelongsToPlayer = BelongsToPlayer;
+                slot.SlotId = "Grid-" + index;
+                slot.CanAutoInsert = CanAutoInsert;
                 slot.name = "DragAndDropSlot";
                 slot.AddToClassList("DragAndDropSlot");
                 Add(slot);
