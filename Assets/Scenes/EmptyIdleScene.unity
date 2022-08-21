@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 330585545}
-  moveScale: {x: 0.00085, y: 0.0018}
+  moveScale: {x: 0.00085, y: 0.001}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

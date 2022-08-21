@@ -40,10 +40,8 @@ namespace WoodsOfIdle
         private void OnPointerPressed(InputAction.CallbackContext context)
         {
             isPointerPressed = true;
-            mousePositionStart = Mouse.current.position.ReadValue();
+            mousePositionStart = GetPointPosition();
             cameraPositionStart = playerCamera.transform.position;
-
-            Debug.Log("Mouse start pos: " + mousePositionStart);
         }
 
         private void OnPointerReleased(InputAction.CallbackContext context)
@@ -55,13 +53,20 @@ namespace WoodsOfIdle
         {
             if (isPointerPressed)
             {
-                Vector2 mouseDelta = mousePositionStart - Mouse.current.position.ReadValue();
-
-                Debug.Log("Mouse delta: " + mouseDelta);
-                Vector3 cameraDeltaX = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up) * mouseDelta.x * moveScale.x * playerCamera.orthographicSize;
-                Vector3 cameraDeltaZ = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up) * mouseDelta.y * moveScale.y * playerCamera.orthographicSize;
+                Vector2 mouseDelta = mousePositionStart - GetPointPosition();
+                Vector3 cameraDeltaX = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up).normalized * mouseDelta.x * moveScale.x * playerCamera.orthographicSize;
+                Vector3 cameraDeltaZ = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up).normalized * mouseDelta.y * moveScale.y * playerCamera.orthographicSize;
                 playerCamera.transform.position = cameraPositionStart + cameraDeltaX + cameraDeltaZ;
             }
+        }
+
+        private Vector2 GetPointPosition()
+        {
+            #if UNITY_EDITOR
+            return Mouse.current.position.ReadValue();
+            #elif UNITY_ANDROID || UNITY_IOS
+            return Touchscreen.current.primaryTouch.position.ReadValue();
+            #endif
         }
     }
 }
