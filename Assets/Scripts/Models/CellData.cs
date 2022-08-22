@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class CellData
 {
-    public Color Color { get; set; }
-    public CellType Type { get; set; }
+    public Color Color;
+    public CellType Type;
 }

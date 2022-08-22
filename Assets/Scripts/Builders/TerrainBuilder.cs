@@ -8,10 +8,17 @@ namespace WoodsOfIdle
     {
         private int seed;
         private CellData[,] cells;
+        private System.Random random;
+
+        public TerrainBuilder()
+        {
+            random = new System.Random(0);
+        }
 
         public TerrainBuilder SetSeed(int seed)
         {
             this.seed = seed;
+            random = new System.Random(seed);
             return this;
         }
 
@@ -33,12 +40,11 @@ namespace WoodsOfIdle
 
         public TerrainBuilder RandomizeColors()
         {
-            //Randomize the colors of every cell
             for (int x = 0; x < cells.GetLength(0); x++)
             {
                 for (int y = 0; y < cells.GetLength(1); y++)
                 {
-                    cells[x, y].Color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                    cells[x, y].Color = new Color(random.NextFloat(), random.NextFloat(), random.NextFloat());
                 }
             }
 
