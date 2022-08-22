@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ITerrainService
+namespace WoodsOfIdle
 {
-    public CellData[,] GenerateTerrainData(TerrainBuilder builder, TerrainGenerationSettings settings);
+    public interface ITerrainService
+    {
+        public CellData[,] GenerateTerrainData(TerrainGenerationSettings settings);
 
-    public Texture2D GetTextureFromTerrainData(CellData[,] cells);
+        public Texture2D GetTextureFromTerrainData(CellData[,] cells);
+    }
 }
+

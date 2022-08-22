@@ -1,0 +1,16 @@
+{
+    "name": "WoodsOfIdleEditor",
+    "rootNamespace": "WoodOfIdle",
+    "references": [
+        "GUID:57410f12f50d5554f883ba1d63abcdbc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

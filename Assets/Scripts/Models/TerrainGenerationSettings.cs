@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class TerrainGenerationSettings
+
+namespace WoodsOfIdle
 {
-    public int MinCoordX { get; set; }
-    public int MaxCoordX { get; set; }
-    public int MinCoordY { get; set; }
-    public int MaxCoordY { get; set; }
-    public int Seed { get; set; }
-    
+    [System.Serializable]
+    public class TerrainGenerationSettings
+    {
+        public int MinX;
+        public int MaxX;
+        public int MinY;
+        public int MaxY;
+        public int Seed;
+
+    }
 }
+
+

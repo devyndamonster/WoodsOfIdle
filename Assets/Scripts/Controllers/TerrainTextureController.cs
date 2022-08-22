@@ -2,32 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerrainTextureController : MonoBehaviour
+namespace WoodsOfIdle
 {
-    public MeshRenderer meshRenderer;
-    public TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings();
-
-    private ITerrainService terrainService = new TerrainService();
-
-    public void GenerateTextureToMesh()
+    public class TerrainTextureController : MonoBehaviour
     {
-        TerrainGenerationSettings settings = new TerrainGenerationSettings
+        public MeshRenderer meshRenderer;
+        public TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings();
+
+        private ITerrainService terrainService = new TerrainService();
+
+        private void Awake()
         {
-            MinCoordX = 0,
-            MinCoordY = 0,
-            MaxCoordX = 100,
-            MaxCoordY = 100,
-            Seed = 1
-        };
+            GenerateTextureToMesh();
+        }
 
-        TerrainBuilder terrainBuilder = new TerrainBuilder(settings);
-        CellData[,] cells = terrainService.GenerateTerrainData(terrainBuilder, settings);
-        Texture2D texture = terrainService.GetTextureFromTerrainData(cells);
-        SetMeshTexture(texture);
-    }
-    
-    private void SetMeshTexture(Texture2D texture)
-    {
-        meshRenderer.sharedMaterial.mainTexture = texture;
+        public void GenerateTextureToMesh()
+        {
+            TerrainGenerationSettings settings = new TerrainGenerationSettings
+            {
+                MinX = 0,
+                MinY = 0,
+                MaxX = 100,
+                MaxY = 100,
+                Seed = 1
+            };
+
+            CellData[,] cells = terrainService.GenerateTerrainData(settings);
+            Texture2D texture = terrainService.GetTextureFromTerrainData(cells);
+            SetMeshTexture(texture);
+        }
+
+        private void SetMeshTexture(Texture2D texture)
+        {
+            meshRenderer.sharedMaterial.mainTexture = texture;
+        }
     }
 }
+
