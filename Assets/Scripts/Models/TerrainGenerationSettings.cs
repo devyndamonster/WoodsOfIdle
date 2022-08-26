@@ -13,6 +13,7 @@ namespace WoodsOfIdle
         public int MinY;
         public int MaxY;
         public int Seed;
+        public float HeightNoiseScale;
 
     }
 }

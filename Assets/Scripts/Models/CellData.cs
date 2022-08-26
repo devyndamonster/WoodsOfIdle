@@ -6,4 +6,5 @@ public class CellData
 {
     public Color Color;
     public CellType Type;
+    public float Height;
 }

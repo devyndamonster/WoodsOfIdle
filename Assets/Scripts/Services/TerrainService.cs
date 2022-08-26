@@ -13,10 +13,11 @@ namespace WoodsOfIdle
             return terrainBuilder
                 .SetSeed(settings.Seed)
                 .CreateCells(settings.MinX, settings.MinY, settings.MaxX, settings.MaxY)
-                .RandomizeColors()
+                .GenerateCellHeightsFromPerlinNoise(settings.HeightNoiseScale, 0)
+                .MapHeightToColor()
                 .GetCells();
         }
-
+        
         public Texture2D GetTextureFromTerrainData(CellData[,] cells)
         {
             int width = cells.GetLength(0);

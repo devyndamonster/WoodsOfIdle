@@ -36,6 +36,43 @@ namespace WoodsOfIdle
 
             return this;
         }
+        
+        
+        public TerrainBuilder GenerateCellHeightsFromPerlinNoise(float scale, float offset)
+        {
+            int width = cells.GetLength(0);
+            int height = cells.GetLength(1);
+            float[,] noiseMap = GetNoiseMap(width, height, scale, offset);
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    cells[x, y].Height = noiseMap[x, y];
+                    //Debug.Log(cells[x, y].Height);
+                }
+            }
+
+            return this;
+        }
+
+        
+        public TerrainBuilder MapHeightToColor()
+        {
+            int width = cells.GetLength(0);
+            int height = cells.GetLength(1);
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    cells[x, y].Color = new Color(cells[x, y].Height, cells[x, y].Height, cells[x, y].Height);
+                }
+            }
+
+            return this;
+        }
+
 
 
         public TerrainBuilder RandomizeColors()
@@ -55,6 +92,26 @@ namespace WoodsOfIdle
         {
             return cells;
         }
+        
+        private float[,] GetNoiseMap(int width, int height, float scale, float offset)
+        {
+            float[,] noiseMap = new float[width, height];
+                
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    float sampleX = (x * scale) + offset;
+                    float sampleY = (y * scale) + offset;
+                    noiseMap[x, y] = Mathf.PerlinNoise(sampleX, sampleY);
+
+                    Debug.Log($"Samplex: {sampleX}, Sampley: {sampleY}, Noise: {noiseMap[x, y]}");
+                }
+            }
+            
+            return noiseMap;
+        }
+        
     }
 }
 
