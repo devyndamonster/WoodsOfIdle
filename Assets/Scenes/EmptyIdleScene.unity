@@ -315,7 +315,7 @@ MonoBehaviour:
     MinY: 0
     MaxY: 100
     Seed: 6
-    HeightNoiseScale: 0.1
+    HeightNoiseScale: 20.1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

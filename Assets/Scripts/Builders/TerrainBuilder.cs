@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,12 @@ namespace WoodsOfIdle
         private int seed;
         private CellData[,] cells;
         private System.Random random;
+        
+        private List<Action<CellData, int, int>> cellBuildingActions;
 
         public TerrainBuilder()
         {
+            cellBuildingActions = new List<Action<CellData, int, int>>();
             random = new System.Random(0);
         }
 
@@ -40,25 +44,37 @@ namespace WoodsOfIdle
         
         public TerrainBuilder GenerateCellHeightsFromPerlinNoise(float scale, float offset)
         {
-            int width = cells.GetLength(0);
-            int height = cells.GetLength(1);
-            float[,] noiseMap = GetNoiseMap(width, height, scale, offset);
-
-            for (int x = 0; x < width; x++)
+            cellBuildingActions.Add((CellData cellData, int x, int y) =>
             {
-                for (int y = 0; y < height; y++)
-                {
-                    cells[x, y].Height = noiseMap[x, y];
-                    //Debug.Log(cells[x, y].Height);
-                }
-            }
-
+                cellData.Height = GetPerlinNoise(x, y, scale, offset);
+            });
+            
             return this;
         }
 
         
         public TerrainBuilder MapHeightToColor()
         {
+            cellBuildingActions.Add((CellData cellData, int x, int y) =>
+            {
+                cellData.Color = new Color(cellData.Height, cellData.Height, cellData.Height);
+            });
+
+            return this;
+        }
+        
+        public TerrainBuilder RandomizeColors()
+        {
+            cellBuildingActions.Add((CellData cellData, int x, int y) =>
+            {
+                cellData.Color = new Color(random.NextFloat(), random.NextFloat(), random.NextFloat());
+            });
+
+            return this;
+        }
+
+        public CellData[,] GetCells()
+        {
             int width = cells.GetLength(0);
             int height = cells.GetLength(1);
 
@@ -66,50 +82,31 @@ namespace WoodsOfIdle
             {
                 for (int y = 0; y < height; y++)
                 {
-                    cells[x, y].Color = new Color(cells[x, y].Height, cells[x, y].Height, cells[x, y].Height);
-                }
-            }
-
-            return this;
-        }
-
-
-
-        public TerrainBuilder RandomizeColors()
-        {
-            for (int x = 0; x < cells.GetLength(0); x++)
-            {
-                for (int y = 0; y < cells.GetLength(1); y++)
-                {
-                    cells[x, y].Color = new Color(random.NextFloat(), random.NextFloat(), random.NextFloat());
-                }
-            }
-
-            return this;
-        }
-
-        public CellData[,] GetCells()
-        {
-            return cells;
-        }
-        
-        private float[,] GetNoiseMap(int width, int height, float scale, float offset)
-        {
-            float[,] noiseMap = new float[width, height];
-                
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    float sampleX = (x * scale) + offset;
-                    float sampleY = (y * scale) + offset;
-                    noiseMap[x, y] = Mathf.PerlinNoise(sampleX, sampleY);
-
-                    Debug.Log($"Samplex: {sampleX}, Sampley: {sampleY}, Noise: {noiseMap[x, y]}");
+                    cells[x, y] = GetCellDataAtPosition(x, y, cellBuildingActions);
                 }
             }
             
-            return noiseMap;
+            return cells;
+        }
+
+        private CellData GetCellDataAtPosition(int x, int y, List<Action<CellData, int, int>> actions)
+        {
+            CellData cellData = new CellData();
+            
+            foreach (Action<CellData, int, int> action in actions)
+            {
+                action(cellData, x, y);
+            }
+
+            return cellData;
+        }
+
+
+        private float GetPerlinNoise(int x, int y, float scale, float offset)
+        {
+            float sampleX = (x / scale) + offset;
+            float sampleY = (y / scale) + offset;
+            return Mathf.PerlinNoise(sampleX, sampleY);
         }
         
     }
