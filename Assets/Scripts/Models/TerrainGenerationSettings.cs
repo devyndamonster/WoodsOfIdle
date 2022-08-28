@@ -17,7 +17,8 @@ namespace WoodsOfIdle
     [System.Serializable]
     public class PerlinNoiseSettings
     {
-        public float Scale;
+        public float Scale = 20;
+        [Range(0, 1)] public float Strength = 1;
         public Vector2 Offset;
     }
 }

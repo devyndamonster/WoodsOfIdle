@@ -12,10 +12,11 @@ namespace WoodsOfIdle
 
             foreach (PerlinNoiseSettings heightMapSetting in settings.HeightMapSettings)
             {
-                terrainBuilder.AddPerlinNoiseToHeight(heightMapSetting.Scale, heightMapSetting.Offset);
+                terrainBuilder.AddPerlinNoiseToHeight(heightMapSetting.Scale, heightMapSetting.Strength, heightMapSetting.Offset);
             }
 
             return terrainBuilder
+                .NormalizeCellHeights()
                 .MapHeightToColor()
                 .GetCells();
         }

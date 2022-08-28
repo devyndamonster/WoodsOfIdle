@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WoodsOfIdle
@@ -14,14 +15,14 @@ namespace WoodsOfIdle
         private Vector2Int origin;
         private Vector2Int size;
 
-        private List<Action<CellData, int, int>> cellBuildingActions;
+        private List<TerrainGenerationStep> terrainGenerationSteps;
 
         public TerrainBuilder(Vector2Int origin, Vector2Int size, int seed)
         {
             this.origin = origin;
             this.size = size;
 
-            cellBuildingActions = new List<Action<CellData, int, int>>();
+            terrainGenerationSteps = new List<TerrainGenerationStep>();
             random = new System.Random(seed);
             globalOffset = new Vector2(random.Next(100000), random.Next(100000));
             
@@ -44,11 +45,11 @@ namespace WoodsOfIdle
         }
         
         
-        public TerrainBuilder AddPerlinNoiseToHeight(float scale, Vector2 offset)
+        public TerrainBuilder AddPerlinNoiseToHeight(float scale, float strength, Vector2 offset)
         {
-            cellBuildingActions.Add((CellData cellData, int x, int y) =>
+            AddTerrainGenerationStep((CellData cellData, int x, int y) =>
             {
-                cellData.Height += GetPerlinNoise(x, y, scale, offset);
+                cellData.Height += GetPerlinNoise(x, y, scale, offset) * strength;
             });
             
             return this;
@@ -57,7 +58,7 @@ namespace WoodsOfIdle
         
         public TerrainBuilder MapHeightToColor()
         {
-            cellBuildingActions.Add((CellData cellData, int x, int y) =>
+            AddTerrainGenerationStep((CellData cellData, int x, int y) =>
             {
                 cellData.Color = new Color(cellData.Height, cellData.Height, cellData.Height);
             });
@@ -67,7 +68,7 @@ namespace WoodsOfIdle
         
         public TerrainBuilder RandomizeColors()
         {
-            cellBuildingActions.Add((CellData cellData, int x, int y) =>
+            AddTerrainGenerationStep((CellData cellData, int x, int y) =>
             {
                 cellData.Color = new Color(random.NextFloat(), random.NextFloat(), random.NextFloat());
             });
@@ -75,37 +76,111 @@ namespace WoodsOfIdle
             return this;
         }
 
+        public TerrainBuilder NormalizeCellHeights()
+        {
+            AddTerrainGenerationStep((CellData[,] cells) =>
+            {
+                float minHeight = cells.Cast<CellData>().Min(cell => cell.Height);
+                float maxHeight = cells.Cast<CellData>().Max(cell => cell.Height);
+
+                foreach (CellData cell in cells)
+                {
+                    cell.Height = (cell.Height - minHeight) / (maxHeight - minHeight);
+                }
+            });
+
+            return this;
+        }
+
         public CellData[,] GetCells()
         {
-            for (int x = 0; x < size.x; x++)
+            foreach (TerrainGenerationStep step in terrainGenerationSteps)
             {
-                for (int y = 0; y < size.y; y++)
-                {
-                    cells[x, y] = GetCellDataAtPosition(x, y, cellBuildingActions);
-                }
+                step.ExecuteStep(cells);
             }
-            
+
             return cells;
         }
-
-        private CellData GetCellDataAtPosition(int x, int y, List<Action<CellData, int, int>> actions)
-        {
-            CellData cellData = new CellData();
-            
-            foreach (Action<CellData, int, int> action in actions)
-            {
-                action(cellData, x, y);
-            }
-
-            return cellData;
-        }
-
         
         private float GetPerlinNoise(int x, int y, float scale, Vector2 offset)
         {
             float sampleX = (x + origin.x + globalOffset.x + offset.x) / scale;
             float sampleY = (y + origin.y + globalOffset.y + offset.y) / scale;
             return Mathf.PerlinNoise(sampleX, sampleY);
+        }
+
+        private void AddTerrainGenerationStep(Action<CellData, int, int> action)
+        {
+            if(terrainGenerationSteps.Count == 0)
+            {
+                TerrainGenerationStep step = new TerrainGenerationStep();
+                step.singleCellActions.Add(action);
+                terrainGenerationSteps.Add(step);
+            }
+
+            else if(terrainGenerationSteps.Last().multiCellActions.Count == 0)
+            {
+                terrainGenerationSteps.Last().singleCellActions.Add(action);
+            }
+
+            else
+            {
+                TerrainGenerationStep step = new TerrainGenerationStep();
+                step.singleCellActions.Add(action);
+                terrainGenerationSteps.Add(step);
+            }
+        }
+
+
+        private void AddTerrainGenerationStep(Action<CellData[,]> action)
+        {
+            if (terrainGenerationSteps.Count == 0)
+            {
+                TerrainGenerationStep step = new TerrainGenerationStep();
+                step.multiCellActions.Add(action);
+                terrainGenerationSteps.Add(step);
+            }
+
+            else if (terrainGenerationSteps.Last().singleCellActions.Count == 0)
+            {
+                terrainGenerationSteps.Last().multiCellActions.Add(action);
+            }
+
+            else
+            {
+                TerrainGenerationStep step = new TerrainGenerationStep();
+                step.multiCellActions.Add(action);
+                terrainGenerationSteps.Add(step);
+            }
+        }
+
+
+        private class TerrainGenerationStep
+        {
+            public List<Action<CellData, int, int>> singleCellActions = new List<Action<CellData, int, int>>();
+            public List<Action<CellData[,]>> multiCellActions = new List<Action<CellData[,]>>();
+
+            public void ExecuteStep(CellData[,] cells)
+            {
+                foreach (Action<CellData[,]> action in multiCellActions)
+                {
+                    action(cells);
+                }
+
+                if(singleCellActions.Count > 0)
+                {
+                    for (int x = 0; x < cells.GetLength(0); x++)
+                    {
+                        for (int y = 0; y < cells.GetLength(1); y++)
+                        {
+                            foreach (Action<CellData, int, int> action in singleCellActions)
+                            {
+                                action(cells[x, y], x, y);
+                            }
+                        }
+                    }
+                }
+            }
         }
         
     }
