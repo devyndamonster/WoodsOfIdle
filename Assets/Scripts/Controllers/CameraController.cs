@@ -9,11 +9,17 @@ namespace WoodsOfIdle
     {
         public Camera playerCamera;
         public Vector2 moveScale = new Vector2(0.00085f, 0.0018f);
+        public float scrollZoomScale = .001f;
+        public float touchZoomScale = .05f;
 
         private PlayerInputActions playerInput;
-        private bool isPointerPressed;
-        private Vector2 mousePositionStart;
         private Vector3 cameraPositionStart;
+        private Vector2 pointerPositionStart;
+        private float touchDistanceStart;
+        private float cameraZoomStart;
+        private bool isPointerActive;
+        private bool isTouchZoomActive;
+        
 
         private void Awake()
         {
@@ -35,38 +41,87 @@ namespace WoodsOfIdle
             playerInput.Player.PointerPressed.performed += OnPointerPressed;
             playerInput.Player.PointerPressed.canceled += OnPointerReleased;
             playerInput.Player.PointerMoved.performed += OnPointerMoved;
+            playerInput.Player.MouseScrolled.performed += OnMouseScrolled;
+            playerInput.Player.SecondTouchContact.performed += OnSecondTouchPressed;
+            playerInput.Player.SecondTouchContact.canceled += OnSecondTouchReleased;
+            playerInput.Player.SecondTouchMoved.performed += OnSecondTouchMoved;
         }
 
         private void OnPointerPressed(InputAction.CallbackContext context)
         {
-            isPointerPressed = true;
-            mousePositionStart = GetPointPosition();
+            isPointerActive = true;
+            pointerPositionStart = GetPointerPosition();
             cameraPositionStart = playerCamera.transform.position;
         }
 
         private void OnPointerReleased(InputAction.CallbackContext context)
         {
-            isPointerPressed = false;
+            isPointerActive = false;
+            isTouchZoomActive = false;
         }
 
         private void OnPointerMoved(InputAction.CallbackContext context)
         {
-            if (isPointerPressed)
+            if (isTouchZoomActive)
             {
-                Vector2 mouseDelta = mousePositionStart - GetPointPosition();
+                UpdateTouchZoom();
+            }
+
+            else if(isPointerActive)
+            {
+                Vector2 mouseDelta = pointerPositionStart - GetPointerPosition();
                 Vector3 cameraDeltaX = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up).normalized * mouseDelta.x * moveScale.x * playerCamera.orthographicSize;
                 Vector3 cameraDeltaZ = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up).normalized * mouseDelta.y * moveScale.y * playerCamera.orthographicSize;
                 playerCamera.transform.position = cameraPositionStart + cameraDeltaX + cameraDeltaZ;
             }
         }
 
-        private Vector2 GetPointPosition()
+        private void OnMouseScrolled(InputAction.CallbackContext context)
         {
-            #if UNITY_EDITOR
+            float zoomDelta = -context.ReadValue<Vector2>().y * scrollZoomScale;
+            Debug.Log(zoomDelta);
+            playerCamera.orthographicSize = Mathf.Clamp(playerCamera.orthographicSize + zoomDelta, 0.5f, 10);
+        }
+
+        private void OnSecondTouchPressed(InputAction.CallbackContext context)
+        {
+            isTouchZoomActive = true;
+            touchDistanceStart = GetDistanceBetweenTouchPointers();
+            cameraZoomStart = playerCamera.orthographicSize;
+        }
+
+        private void OnSecondTouchReleased(InputAction.CallbackContext context)
+        {
+            isTouchZoomActive = false;
+        }
+
+        private void OnSecondTouchMoved(InputAction.CallbackContext context)
+        {
+            if (isTouchZoomActive)
+            {
+                UpdateTouchZoom();
+            }
+        }
+
+        private void UpdateTouchZoom()
+        {
+            float touchDelta = (touchDistanceStart - GetDistanceBetweenTouchPointers()) * touchZoomScale;
+            playerCamera.orthographicSize = Mathf.Clamp(cameraZoomStart + touchDelta, 0.5f, 10);
+        }
+
+        private float GetDistanceBetweenTouchPointers()
+        {
+            return Vector2.Distance(GetPointerPosition(0), GetPointerPosition(1));
+        }
+        
+
+        private Vector2 GetPointerPosition(int index = 0)
+        {
+#if UNITY_EDITOR
             return Mouse.current.position.ReadValue();
-            #elif UNITY_ANDROID || UNITY_IOS
-            return Touchscreen.current.primaryTouch.position.ReadValue();
-            #endif
+#elif UNITY_ANDROID || UNITY_IOS
+            return Touchscreen.current.touches[index].position.ReadValue();
+#endif
         }
     }
 }

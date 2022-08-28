@@ -24,13 +24,31 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Zoom",
-                    "type": "PassThrough",
+                    "name": "MouseScrolled",
+                    "type": "Value",
                     "id": "5f6baa16-23f4-4446-a083-0664acb0c273",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SecondTouchContact",
+                    "type": "Button",
+                    "id": "86cee61a-259e-4d29-ba15-c7dfac0ba432",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SecondTouchMoved",
+                    "type": "Value",
+                    "id": "fd45b6ad-f870-4594-8bfa-ee385a0a0d5a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -48,7 +66,7 @@
                 {
                     "name": "",
                     "id": "18d0b58c-ee00-4fb0-be66-c572e66ce61f",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Touchscreen>/touch0/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,7 +88,7 @@
                 {
                     "name": "",
                     "id": "234c5e10-66cb-4e31-aba9-fbc9830da7e0",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -85,7 +103,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Zoom",
+                    "action": "MouseScrolled",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "512de2c5-fe1f-426d-898c-38c362f14d86",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondTouchContact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e2213663-4ae8-499d-9062-097b554f1716",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondTouchMoved",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
