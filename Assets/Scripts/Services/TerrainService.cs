@@ -16,7 +16,6 @@ namespace WoodsOfIdle
             }
 
             return terrainBuilder
-                .NormalizeCellHeights()
                 .MapHeightToColor()
                 .GetCells();
         }
