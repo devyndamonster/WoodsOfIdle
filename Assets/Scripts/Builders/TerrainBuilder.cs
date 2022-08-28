@@ -7,32 +7,34 @@ namespace WoodsOfIdle
 {
     public class TerrainBuilder
     {
-        private int seed;
-        private CellData[,] cells;
         private System.Random random;
         
+        private CellData[,] cells;
+        private Vector2 globalOffset;
+        private Vector2Int origin;
+        private Vector2Int size;
+
         private List<Action<CellData, int, int>> cellBuildingActions;
 
-        public TerrainBuilder()
+        public TerrainBuilder(Vector2Int origin, Vector2Int size, int seed)
         {
+            this.origin = origin;
+            this.size = size;
+
             cellBuildingActions = new List<Action<CellData, int, int>>();
-            random = new System.Random(0);
-        }
-
-        public TerrainBuilder SetSeed(int seed)
-        {
-            this.seed = seed;
             random = new System.Random(seed);
-            return this;
+            globalOffset = new Vector2(random.Next(100000), random.Next(100000));
+            
+            CreateCells(size);
         }
 
-        public TerrainBuilder CreateCells(int minX, int minY, int maxX, int maxY)
+        private TerrainBuilder CreateCells(Vector2Int size)
         {
-            cells = new CellData[maxX - minX, maxY - minY];
+            cells = new CellData[size.x, size.y];
 
-            for (int x = minX; x < maxX; x++)
+            for (int x = 0; x < size.x; x++)
             {
-                for (int y = minY; y < maxY; y++)
+                for (int y = 0; y < size.y; y++)
                 {
                     cells[x, y] = new CellData();
                 }
@@ -42,11 +44,11 @@ namespace WoodsOfIdle
         }
         
         
-        public TerrainBuilder GenerateCellHeightsFromPerlinNoise(float scale, float offset)
+        public TerrainBuilder AddPerlinNoiseToHeight(float scale, Vector2 offset)
         {
             cellBuildingActions.Add((CellData cellData, int x, int y) =>
             {
-                cellData.Height = GetPerlinNoise(x, y, scale, offset);
+                cellData.Height += GetPerlinNoise(x, y, scale, offset);
             });
             
             return this;
@@ -75,12 +77,9 @@ namespace WoodsOfIdle
 
         public CellData[,] GetCells()
         {
-            int width = cells.GetLength(0);
-            int height = cells.GetLength(1);
-
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < size.x; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = 0; y < size.y; y++)
                 {
                     cells[x, y] = GetCellDataAtPosition(x, y, cellBuildingActions);
                 }
@@ -101,11 +100,11 @@ namespace WoodsOfIdle
             return cellData;
         }
 
-
-        private float GetPerlinNoise(int x, int y, float scale, float offset)
+        
+        private float GetPerlinNoise(int x, int y, float scale, Vector2 offset)
         {
-            float sampleX = (x / scale) + offset;
-            float sampleY = (y / scale) + offset;
+            float sampleX = (x + origin.x + globalOffset.x + offset.x) / scale;
+            float sampleY = (y + origin.y + globalOffset.y + offset.y) / scale;
             return Mathf.PerlinNoise(sampleX, sampleY);
         }
         

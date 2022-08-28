@@ -31,7 +31,7 @@ namespace WoodsOfIdle
 
         private void SetMeshScale(TerrainGenerationSettings settings)
         {
-            meshRenderer.transform.localScale = new Vector3(settings.MaxX - settings.MinX, 1, settings.MaxY - settings.MinY) / 10;
+            meshRenderer.transform.localScale = new Vector3(settings.Size.x, 1, settings.Size.y) / 10;
         }
     }
 }

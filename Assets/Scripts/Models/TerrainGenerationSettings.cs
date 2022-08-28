@@ -8,13 +8,17 @@ namespace WoodsOfIdle
     [System.Serializable]
     public class TerrainGenerationSettings
     {
-        public int MinX;
-        public int MaxX;
-        public int MinY;
-        public int MaxY;
+        public Vector2Int Origin;
+        public Vector2Int Size;
         public int Seed;
-        public float HeightNoiseScale;
+        public List<PerlinNoiseSettings> HeightMapSettings = new List<PerlinNoiseSettings>();
+    }
 
+    [System.Serializable]
+    public class PerlinNoiseSettings
+    {
+        public float Scale;
+        public Vector2 Offset;
     }
 }
 

@@ -8,12 +8,14 @@ namespace WoodsOfIdle
     {
         public CellData[,] GenerateTerrainData(TerrainGenerationSettings settings)
         {
-            TerrainBuilder terrainBuilder = new TerrainBuilder();
+            TerrainBuilder terrainBuilder = new TerrainBuilder(settings.Origin, settings.Size, settings.Seed);
+
+            foreach (PerlinNoiseSettings heightMapSetting in settings.HeightMapSettings)
+            {
+                terrainBuilder.AddPerlinNoiseToHeight(heightMapSetting.Scale, heightMapSetting.Offset);
+            }
 
             return terrainBuilder
-                .SetSeed(settings.Seed)
-                .CreateCells(settings.MinX, settings.MinY, settings.MaxX, settings.MaxY)
-                .GenerateCellHeightsFromPerlinNoise(settings.HeightNoiseScale, 0)
                 .MapHeightToColor()
                 .GetCells();
         }
