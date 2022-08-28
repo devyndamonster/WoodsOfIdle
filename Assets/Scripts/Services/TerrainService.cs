@@ -15,9 +15,17 @@ namespace WoodsOfIdle
                 terrainBuilder.AddPerlinNoiseToHeight(heightMapSetting.Scale, heightMapSetting.Strength, heightMapSetting.Offset);
             }
 
-            return terrainBuilder
-                .MapHeightToColor()
-                .GetCells();
+            foreach (TileMapSettings tileMapSettings in settings.TileMapSettings)
+            {
+                terrainBuilder.MapValueRangesToCellType(tileMapSettings.CellType, tileMapSettings.HeightRange);
+            }
+            
+            foreach (TileColorSettings tileColorSettings in settings.TileColorSettings)
+            {
+                terrainBuilder.MapCellTypeToColor(tileColorSettings.CellType, tileColorSettings.Color);
+            }
+
+            return terrainBuilder.GetCells();
         }
         
         public Texture2D GetTextureFromTerrainData(CellData[,] cells)

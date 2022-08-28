@@ -311,18 +311,40 @@ MonoBehaviour:
   meshRenderer: {fileID: 753034074}
   terrainSettings:
     Origin: {x: 0, y: 0}
-    Size: {x: 50, y: 50}
-    Seed: 8
+    Size: {x: 300, y: 300}
+    Seed: 3
     HeightMapSettings:
-    - Scale: 33.4
-      Strength: 1
-      Offset: {x: 1.9, y: 0}
-    - Scale: 6.93
-      Strength: 0.135
-      Offset: {x: 12.5, y: 0}
+    - Scale: 95.2
+      Strength: 0.888
+      Offset: {x: 13.36, y: 58.9}
+    - Scale: 30
+      Strength: 0.293
+      Offset: {x: 13.4, y: 0}
+    - Scale: 10
+      Strength: 0.018
+      Offset: {x: 13.4, y: 0}
     TileMapSettings:
     - CellType: 0
-      HeightRange: {x: 0, y: 0}
+      HeightRange: {x: 0, y: 0.5}
+    - CellType: 1
+      HeightRange: {x: 0.5, y: 1}
+    - CellType: 4
+      HeightRange: {x: 0.4, y: 0.5}
+    - CellType: 5
+      HeightRange: {x: 0.7, y: 1}
+    - CellType: 6
+      HeightRange: {x: 0.8, y: 1}
+    TileColorSettings:
+    - CellType: 0
+      Color: {r: 0.18534178, g: 0.65855944, b: 0.8018868, a: 0}
+    - CellType: 1
+      Color: {r: 0.5071645, g: 0.8207547, b: 0.5231514, a: 0}
+    - CellType: 4
+      Color: {r: 0.845817, g: 0.8679245, b: 0.53631186, a: 0}
+    - CellType: 5
+      Color: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0}
+    - CellType: 6
+      Color: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,7 +957,7 @@ Transform:
   m_GameObject: {fileID: 753034072}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.604905, y: -9.314363, z: 0.9560718}
-  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_LocalScale: {x: 30, y: 0.1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 586188786}

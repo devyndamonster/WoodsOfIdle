@@ -76,6 +76,32 @@ namespace WoodsOfIdle
             return this;
         }
 
+        public TerrainBuilder MapValueRangesToCellType(CellType type, Vector2 heightRange)
+        {
+            AddTerrainGenerationStep((CellData cellData, int x, int y) =>
+            {
+                if (cellData.Height >= heightRange.x && cellData.Height <= heightRange.y)
+                {
+                    cellData.Type = type;
+                }
+            });
+
+            return this;
+        }
+        
+        public TerrainBuilder MapCellTypeToColor(CellType type, Color color)
+        {
+            AddTerrainGenerationStep((CellData cellData, int x, int y) =>
+            {
+                if (cellData.Type == type)
+                {
+                    cellData.Color = color;
+                }
+            });
+            
+            return this;
+        }
+
         public TerrainBuilder NormalizeCellHeights()
         {
             AddTerrainGenerationStep((CellData[,] cells) =>

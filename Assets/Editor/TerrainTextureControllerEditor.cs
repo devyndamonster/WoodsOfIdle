@@ -18,7 +18,7 @@ namespace WoodsOfIdle
             InspectorElement.FillDefaultInspector(container, serializedObject, this);
 
             Button generateButton = new Button { text = "Generate Terrain"};
-        generateButton.clicked += terrainTextureController.GenerateTextureToMesh;
+            generateButton.clicked += terrainTextureController.GenerateTextureToMesh;
             container.Add(generateButton);
 
             return container;

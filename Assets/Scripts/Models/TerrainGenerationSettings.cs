@@ -12,7 +12,8 @@ namespace WoodsOfIdle
         public Vector2Int Size;
         public int Seed;
         public List<PerlinNoiseSettings> HeightMapSettings = new List<PerlinNoiseSettings>();
-        public List<TerrainTileMapSettings> TileMapSettings = new List<TerrainTileMapSettings>();
+        public List<TileMapSettings> TileMapSettings = new List<TileMapSettings>();
+        public List<TileColorSettings> TileColorSettings = new List<TileColorSettings>();
     }
 
     [System.Serializable]
@@ -24,10 +25,17 @@ namespace WoodsOfIdle
     }
 
     [System.Serializable]
-    public class TerrainTileMapSettings
+    public class TileMapSettings
     {
         public CellType CellType;
         public Vector2 HeightRange;
+    }
+
+    [System.Serializable]
+    public class TileColorSettings
+    {
+        public CellType CellType;
+        public Color Color;
     }
 }
 
