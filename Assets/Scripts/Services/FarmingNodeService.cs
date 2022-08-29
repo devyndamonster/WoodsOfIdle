@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
 namespace WoodsOfIdle
 {
@@ -29,6 +27,25 @@ namespace WoodsOfIdle
             }
 
             state.IsActive = isActive;
+        }
+
+        public ItemType GetItemHarvested(FarmingNodeData data)
+        {
+            float combinedProbability = data.HarvestableItems.Sum(x => x.ChanceToFarm);
+            float randomValue = UnityEngine.Random.Range(0f, combinedProbability);
+            float probabilitySum = 0f;
+
+            foreach (var harvestableItem in data.HarvestableItems)
+            {
+                probabilitySum += harvestableItem.ChanceToFarm;
+
+                if (probabilitySum >= randomValue)
+                {
+                    return harvestableItem.ItemType;
+                }
+            }
+
+            return data.HarvestableItems.Last().ItemType;
         }
     }
 }

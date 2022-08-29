@@ -87,7 +87,7 @@ public class SaveServiceTests
         {
             IsActive = true,
             NodeId = 4,
-            NodeType = ItemType.Dirt
+            NodeType = FarmingNodeType.Dirt
         };
 
         InventorySlotState slotState = new InventorySlotState

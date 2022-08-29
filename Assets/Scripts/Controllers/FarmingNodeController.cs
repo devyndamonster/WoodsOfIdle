@@ -9,6 +9,7 @@ namespace WoodsOfIdle
     public class FarmingNodeController : MonoBehaviour
     {
         public FarmingNodeState State = new FarmingNodeState();
+        [HideInInspector] public FarmingNodeData Data;
 
         public static event ChangeStorageQuantity NodeHarvested;
 
@@ -35,8 +36,13 @@ namespace WoodsOfIdle
         {
             int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(State, DateTime.Now);
             State.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(State, numberOfHarvests);
-
-            if (numberOfHarvests > 0) NodeHarvested(State.NodeType, numberOfHarvests);
+            
+            if (numberOfHarvests > 0)
+            {
+                ItemType harvestedItem = farmingNodeService.GetItemHarvested(Data);
+                NodeHarvested(harvestedItem, numberOfHarvests);
+            }
+            
         }
     }
 }

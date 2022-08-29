@@ -10,7 +10,7 @@ namespace WoodsOfIdle
     {
         public int NodeId;
 
-        public ItemType NodeType;
+        public FarmingNodeType NodeType;
 
         public bool IsActive;
 
