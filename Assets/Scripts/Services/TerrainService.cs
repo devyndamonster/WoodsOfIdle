@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WoodsOfIdle
@@ -49,6 +50,25 @@ namespace WoodsOfIdle
             texture.Apply();
 
             return texture;
+        }
+
+        public List<Vector2> GetSpawnPositionsForFarmingNode(FarmingNodeData nodeData, CellData[,] cells, int seed)
+        {
+            List<Vector2> spawnPositions = new List<Vector2>();
+            System.Random random = new System.Random(seed);
+            
+            for(int x = 0; x < cells.GetLength(0); x++)
+            {
+                for(int y = 0; y < cells.GetLength(1); y++)
+                {
+                    if (nodeData.AllowedCellTypes.Contains(cells[x, y].Type) && nodeData.SpawnChance > random.NextFloat())
+                    {
+                        spawnPositions.Add(new Vector2(x, y));
+                    }
+                }
+            }
+            
+            return spawnPositions;
         }
     }
 }

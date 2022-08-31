@@ -8,8 +8,8 @@ namespace WoodsOfIdle
 {
     public class FarmingNodeController : MonoBehaviour
     {
+        public FarmingNodeData Data;
         public FarmingNodeState State = new FarmingNodeState();
-        [HideInInspector] public FarmingNodeData Data;
 
         public static event ChangeStorageQuantity NodeHarvested;
 

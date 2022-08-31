@@ -55,7 +55,6 @@ public class SaveServiceTests
         Assert.AreEqual(originalSave.SaveName, loadedSave.SaveName);
         Assert.AreEqual(originalSave.FarmingNodes[4].IsActive, loadedSave.FarmingNodes[4].IsActive);
         Assert.AreEqual(originalSave.FarmingNodes[4].NodeId, loadedSave.FarmingNodes[4].NodeId);
-        Assert.AreEqual(originalSave.FarmingNodes[4].NodeType, loadedSave.FarmingNodes[4].NodeType);
         Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].Quantity, loadedSave.InventoryInSlots["InventorySlot1"].Quantity);
         Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].ItemType, loadedSave.InventoryInSlots["InventorySlot1"].ItemType);
     }
@@ -86,8 +85,7 @@ public class SaveServiceTests
         FarmingNodeState nodeState = new FarmingNodeState
         {
             IsActive = true,
-            NodeId = 4,
-            NodeType = FarmingNodeType.Dirt
+            NodeId = 4
         };
 
         InventorySlotState slotState = new InventorySlotState

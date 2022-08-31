@@ -10,8 +10,6 @@ namespace WoodsOfIdle
     {
         public int NodeId;
 
-        public FarmingNodeType NodeType;
-
         public bool IsActive;
 
         [HideInInspector]

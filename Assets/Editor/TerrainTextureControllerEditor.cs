@@ -18,10 +18,18 @@ namespace WoodsOfIdle
             InspectorElement.FillDefaultInspector(container, serializedObject, this);
 
             Button generateButton = new Button { text = "Generate Terrain"};
-            generateButton.clicked += terrainTextureController.GenerateTextureToMesh;
+            generateButton.clicked += OnGenerateButtonClicked;
             container.Add(generateButton);
 
             return container;
+        }
+
+        private void OnGenerateButtonClicked()
+        {
+            TerrainTextureController terrainTextureController = (TerrainTextureController)target;
+            ITerrainService terrainService = new TerrainService();
+            CellData[,] cells = terrainService.GenerateTerrainData(terrainTextureController.terrainSettings);
+            terrainTextureController.GenerateTextureToMesh(cells);
         }
     }
 }

@@ -10,15 +10,34 @@ namespace WoodsOfIdle
         public TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings();
 
         private ITerrainService terrainService = new TerrainService();
+        private SaveController saveController;
 
-        private void Awake()
+
+        /* TODO
+         * - Have controller generate its own mesh and mesh components
+         * - Pass values into init call for dependancy inversion
+         * - Unit test this!
+         */
+
+
+        public TerrainTextureController Init(ITerrainService terrainService, SaveController saveController)
         {
-            GenerateTextureToMesh();
+            this.terrainService = terrainService;
+            this.saveController = saveController;
+
+            return this;
         }
 
-        public void GenerateTextureToMesh()
+        private void Start()
         {
             CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
+            GenerateTextureToMesh(cells);
+
+            //Generate all the nodes and link them to the save data
+        }
+
+        public void GenerateTextureToMesh(CellData[,] cells)
+        {
             Texture2D texture = terrainService.GetTextureFromTerrainData(cells);
             SetMeshTexture(texture);
             SetMeshScale(terrainSettings);
