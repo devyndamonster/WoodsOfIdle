@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace WoodsOfIdle
 {
-    public class CameraController : MonoBehaviour
+    public class CameraControllerComponent : MonoBehaviour
     {
         public Camera playerCamera;
         public Vector2 moveScale = new Vector2(0.00085f, 0.0018f);

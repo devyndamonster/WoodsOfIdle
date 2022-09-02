@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: RockNode
   m_EditorClassIdentifier: 
   NodeType: 1
+  DefaultTimeToHarvest: 5
+  SpawnChance: 0.001
+  AllowedCellTypes: 
   HarvestableItems:
   - ItemType: 1
     ChanceToFarm: 1

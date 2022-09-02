@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
 {
-    public class MainMenuController : MonoBehaviour
+    public class MainMenuComponent : MonoBehaviour
     {
         public VisualTreeAsset SaveSelectOption;
 
@@ -81,7 +81,7 @@ namespace WoodsOfIdle
 
             selectSaveButton.clicked += () =>
             {
-                SaveController.SetNextSaveToOpen(saveName);
+                SceneManagerComponent.SetNextSaveToOpen(saveName);
                 SceneManager.LoadScene("EmptyIdleScene", LoadSceneMode.Single);
             };
         }

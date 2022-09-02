@@ -4,24 +4,15 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class SaveController : MonoBehaviour
+    public class SaveController
     {
+        [HideInInspector] public SaveState CurrentSaveState { get; protected set; }
         
-        [HideInInspector]
-        public SaveState CurrentSaveState { get; protected set; }
-
-        protected ISaveService saveService = new SaveService();
-
-        private static string nextSaveToOpen;
-
-        public static void SetNextSaveToOpen(string saveName)
+        protected ISaveService saveService;
+        
+        public SaveController(ISaveService saveService)
         {
-            nextSaveToOpen = saveName;
-        }
-
-        public void OpenSave()
-        {
-            OpenSave(nextSaveToOpen);
+            this.saveService = saveService;
         }
 
         public void OpenSave(string saveName)
@@ -32,23 +23,14 @@ namespace WoodsOfIdle
             }
 
             CurrentSaveState = saveService.LoadOrCreate(saveName);
-            ConnectNodesToCurrentSaveState();
         }
-
-        private void ConnectNodesToCurrentSaveState()
-        {
-            foreach (FarmingNodeController node in FindObjectsOfType<FarmingNodeController>())
-            {
-                node.ConnectToSaveState(CurrentSaveState);
-            }
-        }
-
-        private void OnDestroy()
+        
+        public void OnDestroy()
         {
             saveService.SaveGame(CurrentSaveState);
         }
 
-        private void OnApplicationPause(bool pause)
+        public void OnApplicationPause(bool pause)
         {
             if (!Application.isEditor && pause)
             {
@@ -56,7 +38,7 @@ namespace WoodsOfIdle
             }
         }
 
-        private void OnApplicationFocus(bool focus)
+        public void OnApplicationFocus(bool focus)
         {
             if (!Application.isEditor && !focus)
             {

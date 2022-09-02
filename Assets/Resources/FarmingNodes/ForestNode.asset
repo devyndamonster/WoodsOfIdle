@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: ForestNode
   m_EditorClassIdentifier: 
   NodeType: 0
+  DefaultTimeToHarvest: 1
+  SpawnChance: 0.001
+  AllowedCellTypes: 
   HarvestableItems:
   - ItemType: 0
     ChanceToFarm: 1

@@ -4,53 +4,44 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class TerrainTextureController : MonoBehaviour
+    public class TerrainTextureController
     {
-        public MeshRenderer meshRenderer;
-        public TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings();
-
-        private ITerrainService terrainService = new TerrainService();
+        private ITerrainService terrainService;
         private SaveController saveController;
-
-
-        /* TODO
-         * - Have controller generate its own mesh and mesh components
-         * - Pass values into init call for dependancy inversion
-         * - Unit test this!
-         */
-
-
-        public TerrainTextureController Init(ITerrainService terrainService, SaveController saveController)
+        
+        public TerrainTextureController(ITerrainService terrainService, SaveController saveController)
         {
             this.terrainService = terrainService;
             this.saveController = saveController;
-
-            return this;
         }
 
-        private void Start()
+        public void GenerateTerrain(TerrainGenerationSettings settings, MeshRenderer targetMesh)
         {
-            CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
-            GenerateTextureToMesh(cells);
-
-            //Generate all the nodes and link them to the save data
+            CellData[,] cells = terrainService.GenerateTerrainData(settings);
+            GenerateTextureToMesh(settings, targetMesh, cells);
+            GenerateFarmingNodes(settings, cells);
         }
 
-        public void GenerateTextureToMesh(CellData[,] cells)
+        public void GenerateTextureToMesh(TerrainGenerationSettings settings, MeshRenderer targetMesh, CellData[,] cells)
         {
             Texture2D texture = terrainService.GetTextureFromTerrainData(cells);
-            SetMeshTexture(texture);
-            SetMeshScale(terrainSettings);
+            SetMeshTexture(texture, targetMesh);
+            SetMeshScale(settings, targetMesh);
         }
 
-        private void SetMeshTexture(Texture2D texture)
+        public void GenerateFarmingNodes(TerrainGenerationSettings settings, CellData[,] cells)
         {
-            meshRenderer.sharedMaterial.mainTexture = texture;
+            
         }
 
-        private void SetMeshScale(TerrainGenerationSettings settings)
+        private void SetMeshTexture(Texture2D texture, MeshRenderer targetMesh)
         {
-            meshRenderer.transform.localScale = new Vector3(settings.Size.x, 1, settings.Size.y) / 10;
+            targetMesh.sharedMaterial.mainTexture = texture;
+        }
+
+        private void SetMeshScale(TerrainGenerationSettings settings, MeshRenderer targetMesh)
+        {
+            targetMesh.transform.localScale = new Vector3(settings.Size.x, 1, settings.Size.y) / 10;
         }
     }
 }

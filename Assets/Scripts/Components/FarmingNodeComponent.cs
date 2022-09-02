@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace WoodsOfIdle
 {
-    public class FarmingNodeController : MonoBehaviour
+    public class FarmingNodeComponent : MonoBehaviour
     {
         public FarmingNodeData Data;
         public FarmingNodeState State = new FarmingNodeState();

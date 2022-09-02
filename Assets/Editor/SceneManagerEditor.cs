@@ -7,12 +7,12 @@ using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
 {
-    [CustomEditor(typeof(TerrainTextureController))]
-    public class TerrainTextureControllerEditor : Editor
+    [CustomEditor(typeof(SceneManagerComponent))]
+    public class SceneStartupControllerEditor : Editor
     {
         public override VisualElement CreateInspectorGUI()
         {
-            TerrainTextureController terrainTextureController = (TerrainTextureController)target;
+            SceneManagerComponent sceneManager = (SceneManagerComponent)target;
             
             var container = new VisualElement();
             InspectorElement.FillDefaultInspector(container, serializedObject, this);
@@ -26,10 +26,14 @@ namespace WoodsOfIdle
 
         private void OnGenerateButtonClicked()
         {
-            TerrainTextureController terrainTextureController = (TerrainTextureController)target;
+            SceneManagerComponent sceneManager = (SceneManagerComponent)target;
+            
             ITerrainService terrainService = new TerrainService();
-            CellData[,] cells = terrainService.GenerateTerrainData(terrainTextureController.terrainSettings);
-            terrainTextureController.GenerateTextureToMesh(cells);
+            ISaveService saveService = new SaveService();
+            SaveController saveController = new SaveController(saveService);
+            TerrainTextureController terrainController = new TerrainTextureController(terrainService, saveController);
+            
+            terrainController.GenerateTerrain(sceneManager.TerrainSettings, sceneManager.TerrainMeshRenderer);
         }
     }
 }

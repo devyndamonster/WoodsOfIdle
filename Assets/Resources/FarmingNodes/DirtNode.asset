@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: DirtNode
   m_EditorClassIdentifier: 
   NodeType: 2
+  DefaultTimeToHarvest: 2
+  SpawnChance: 0.001
+  AllowedCellTypes: 
   HarvestableItems:
   - ItemType: 2
     ChanceToFarm: 1

@@ -6,45 +6,36 @@ using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
 {
-    public class InventoryController : MonoBehaviour
+    public class InventoryController
     {
-        public UIDocument InventoryPanel;
-
-        private SaveController saveController;
-        private Dictionary<string, DragAndDropSlot> dragAndDropSlots;
-        private Dictionary<ItemType, ItemData> itemData;
-
-        private IInventoryService inventoryService = new InventoryService();
-
-        private void Awake()
+        protected IInventoryService inventoryService;
+        protected SaveController saveController;
+        protected UIDocument inventoryPanel;
+        protected Dictionary<string, DragAndDropSlot> dragAndDropSlots;
+        protected Dictionary<ItemType, ItemData> itemData;
+        
+        public InventoryController(SaveController saveController, IInventoryService inventoryService, IEnumerable<ItemData> itemData, UIDocument inventoryPanel)
         {
+            this.saveController = saveController;
+            this.inventoryService = inventoryService;
+            this.inventoryPanel = inventoryPanel;
+
             SetupEvents();
-            CollectDependancies();
-            PopulateItemData();
-        }
-
-        private void Start()
-        {
+            PopulateItemData(itemData);
             PopulateDragAndDropSlots();
             ApplySlotStates(saveController.CurrentSaveState.InventoryInSlots);
         }
 
         private void SetupEvents()
         {
-            FarmingNodeController.NodeHarvested += ChangeStoredItemsQuantity;
+            FarmingNodeComponent.NodeHarvested += ChangeStoredItemsQuantity;
             DragAndDropElement.InventorySlotDragged += SwapInventorySlots;
         }
 
-        private void CollectDependancies()
-        {
-            saveController = FindObjectOfType<SaveController>();
-        }
-
-        private void PopulateItemData()
+        private void PopulateItemData(IEnumerable<ItemData> loadedItemData)
         {
             itemData = new Dictionary<ItemType, ItemData>();
-            List<ItemData> itemDataList = Resources.LoadAll<ItemData>("Items/Data").ToList();
-            foreach (ItemData item in itemDataList)
+            foreach (ItemData item in loadedItemData)
             {
                 itemData[item.ItemType] = item;
             }
@@ -53,7 +44,7 @@ namespace WoodsOfIdle
         private void PopulateDragAndDropSlots()
         {
             dragAndDropSlots = new Dictionary<string, DragAndDropSlot>();
-            InventoryPanel.rootVisualElement
+            inventoryPanel.rootVisualElement
                 .Query<DragAndDropSlot>()
                 .ToList()
                 .ForEach(slot => dragAndDropSlots[slot.SlotId] = slot);

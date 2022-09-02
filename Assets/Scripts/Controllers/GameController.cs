@@ -6,37 +6,24 @@ using UnityEngine.UI;
 
 namespace WoodsOfIdle
 {
-    public class GameController : MonoBehaviour
+    public class GameController
     {
-        protected List<FarmingNodeController> farmingNodes;
         protected SaveController saveController;
-        protected InventoryController inventoryController;
-
-        private void Awake()
+        protected List<FarmingNodeComponent> farmingNodes = new List<FarmingNodeComponent>();
+        
+        public GameController(SaveController saveController)
         {
-            CollectDependancies();
+            this.saveController = saveController;
         }
 
-        private void Start()
-        {
-            saveController.OpenSave();
-        }
-
-        private void CollectDependancies()
-        {
-            farmingNodes = FindObjectsOfType<FarmingNodeController>().ToList();
-            saveController = FindObjectOfType<SaveController>();
-            inventoryController = FindObjectOfType<InventoryController>();
-        }
-
-        private void Update()
+        public void Update()
         {
             UpdateFarmingNodes();
         }
 
         private void UpdateFarmingNodes()
         {
-            foreach(FarmingNodeController farmingNode in farmingNodes)
+            foreach(FarmingNodeComponent farmingNode in farmingNodes)
             {
                 farmingNode.UpdateState();
             }
