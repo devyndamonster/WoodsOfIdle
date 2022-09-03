@@ -9,6 +9,7 @@ namespace WoodsOfIdle
     {
         public UIDocument InventoryPanel;
         public MeshRenderer TerrainMeshRenderer;
+        public AssetReferenceCollection AssetCollection;
         public TerrainGenerationSettings TerrainSettings = new TerrainGenerationSettings();
 
         protected SaveController saveController;
@@ -23,6 +24,7 @@ namespace WoodsOfIdle
             IInventoryService inventoryService = new InventoryService();
             ITerrainService terrainService = new TerrainService();
 
+            //TODO Replace with addressables
             IEnumerable<ItemData> items = Resources.LoadAll<ItemData>("Items/Data");
 
             saveController = new SaveController(saveService);

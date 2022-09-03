@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WorldScene
+  m_EditorClassIdentifier: 
+  m_GroupName: WorldScene
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 96e0c741d2821fd42948374f964fb3e3
+  m_SerializeEntries:
+  - m_GUID: bddd87e5fece4c7409b9b7f7c8fa8426
+    m_Address: Assets/Prefabs/ResourceNodes/DirtNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03067260adc041849a92dc233829c64d
+    m_Address: Assets/Prefabs/ResourceNodes/ForestNodePrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 540c990ef65b4b54a8142f6f60e41f87
+    m_Address: Assets/Prefabs/ResourceNodes/StoneNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 74a624550d1df84448828dd13e96bdd6
+    m_Address: Assets/Data/FarmingNodes/DirtNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7ab50814b545fc848ad6fb72d5844741
+    m_Address: Assets/Data/FarmingNodes/ForestNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ce8ec4e51ec1b546998f13a2f310c16
+    m_Address: Assets/Data/FarmingNodes/RockNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6b851734ba57aae45ae7941c8511a7cf
+    m_Address: Assets/Data/Items/Data/DirtData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b507365036ed0234c900414489007c04
+    m_Address: Assets/Data/Items/Data/StoneData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3cf70420d6dd2c849b0abd6f876d825a
+    m_Address: Assets/Data/Items/Data/WoodData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 41b70bcb4b1a77b48a5e4fb591206fe1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6c82496fb05b1834987ee8c45e43e91d, type: 2}
+    - {fileID: 11400000, guid: 662aefae478e5884d82dc199c2d67458, type: 2}
