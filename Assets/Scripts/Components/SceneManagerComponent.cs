@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
@@ -16,29 +18,42 @@ namespace WoodsOfIdle
         protected InventoryController inventoryController;
         protected GameController gameController;
         protected TerrainTextureController terrainTextureController;
+        protected IAddressableLoaderService addressableLoaderService;
         protected static string nextSaveToOpen;
 
+        protected event Action OnUpdated;
+        protected event Action OnDestroyed;
+        protected event Action<bool> OnApplicationPauseChanged;
+        protected event Action<bool> OnApplicationFocusChanged;
+
         private void Awake()
+        {
+            addressableLoaderService = new AddressableLoaderService();
+            IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection, (loadedAssetCollection) => InitScene(loadedAssetCollection));
+            StartCoroutine(routine);
+        }
+
+        private void InitScene(AssetReferenceCollection assetCollection)
         {
             ISaveService saveService = new SaveService();
             IInventoryService inventoryService = new InventoryService();
             ITerrainService terrainService = new TerrainService();
 
-            //TODO Replace with addressables
-            IEnumerable<ItemData> items = Resources.LoadAll<ItemData>("Items/Data");
-
             saveController = new SaveController(saveService);
             saveController.OpenSave(nextSaveToOpen);
+            OnApplicationPauseChanged += saveController.OnApplicationPause;
+            OnApplicationFocusChanged += saveController.OnApplicationPause;
+            OnDestroyed += saveController.OnDestroy;
 
             terrainTextureController = new TerrainTextureController(terrainService, saveController);
             terrainTextureController.GenerateTerrain(TerrainSettings, TerrainMeshRenderer);
 
-            inventoryController = new InventoryController(saveController, inventoryService, items, InventoryPanel);
+            inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
+            
             gameController = new GameController(saveController);
-            
-            
+            OnUpdated += gameController.Update;
         }
-
+        
         public static void SetNextSaveToOpen(string saveName)
         {
             nextSaveToOpen = saveName;
@@ -46,22 +61,22 @@ namespace WoodsOfIdle
 
         private void Update()
         {
-            gameController.Update();
+            OnUpdated?.Invoke();
         }
 
-        public void OnDestroy()
+        private void OnDestroy()
         {
-            saveController.OnDestroy();
+            OnDestroyed?.Invoke();
         }
 
-        public void OnApplicationPause(bool pause)
+        private void OnApplicationPause(bool pause)
         {
-            saveController.OnApplicationPause(pause);
+            OnApplicationPauseChanged?.Invoke(pause);
         }
 
-        public void OnApplicationFocus(bool focus)
+        private void OnApplicationFocus(bool focus)
         {
-            saveController.OnApplicationFocus(focus);
+            OnApplicationFocusChanged?.Invoke(focus);
         }
     }
 }

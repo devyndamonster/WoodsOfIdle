@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086a9ca294df1074894c8d6ddd3b4516, type: 3}
   m_Name: DefaultWorldAssets
   m_EditorClassIdentifier: 
-  ItemData:
+  ItemDataReferences:
   - m_AssetGUID: 6b851734ba57aae45ae7941c8511a7cf
     m_SubObjectName: 
     m_SubObjectType: 
@@ -25,7 +25,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  FarmingNodePrefabs:
+  FarmingNodePrefabReferences:
   - m_AssetGUID: bddd87e5fece4c7409b9b7f7c8fa8426
     m_SubObjectName: 
     m_SubObjectType: 
@@ -38,3 +38,5 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  LoadedItemData: []
+  LoadedFarmingNodePrefabs: []
