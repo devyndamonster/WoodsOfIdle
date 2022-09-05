@@ -31,7 +31,7 @@ namespace WoodsOfIdle
             ITerrainService terrainService = new TerrainService();
             ISaveService saveService = new SaveService();
             SaveController saveController = new SaveController(saveService);
-            TerrainTextureController terrainController = new TerrainTextureController(terrainService, saveController);
+            TerrainTextureController terrainController = new TerrainTextureController(terrainService, saveController, sceneManager.AssetCollection);
             
             terrainController.GenerateTerrain(sceneManager.TerrainSettings, sceneManager.TerrainMeshRenderer);
         }

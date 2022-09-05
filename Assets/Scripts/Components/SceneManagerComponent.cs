@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
@@ -38,14 +39,14 @@ namespace WoodsOfIdle
             ISaveService saveService = new SaveService();
             IInventoryService inventoryService = new InventoryService();
             ITerrainService terrainService = new TerrainService();
-
+            
             saveController = new SaveController(saveService);
             saveController.OpenSave(nextSaveToOpen);
             OnApplicationPauseChanged += saveController.OnApplicationPause;
             OnApplicationFocusChanged += saveController.OnApplicationPause;
             OnDestroyed += saveController.OnDestroy;
 
-            terrainTextureController = new TerrainTextureController(terrainService, saveController);
+            terrainTextureController = new TerrainTextureController(terrainService, saveController, assetCollection);
             terrainTextureController.GenerateTerrain(TerrainSettings, TerrainMeshRenderer);
 
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
