@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellData
+namespace WoodsOfIdle
 {
-    public Color Color;
-    public CellType Type;
-    public float Height;
+    public class CellData
+    {
+        public Color Color;
+        public CellType Type;
+        public float Height;
+        public string FarmingNodeId;
+    }
 }
+

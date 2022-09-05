@@ -8,8 +8,8 @@ namespace WoodsOfIdle
     public class SaveState
     {
         public string SaveName;
-
-        public Dictionary<int, FarmingNodeState> FarmingNodes = new Dictionary<int, FarmingNodeState>();
+        
+        public Dictionary<string, FarmingNodeState> FarmingNodes = new Dictionary<string, FarmingNodeState>();
 
         public Dictionary<string, InventorySlotState> InventoryInSlots = new Dictionary<string, InventorySlotState>();
     }

@@ -53,8 +53,8 @@ public class SaveServiceTests
         SaveState loadedSave = saveService.LoadOrCreate(originalSave.SaveName);
 
         Assert.AreEqual(originalSave.SaveName, loadedSave.SaveName);
-        Assert.AreEqual(originalSave.FarmingNodes[4].IsActive, loadedSave.FarmingNodes[4].IsActive);
-        Assert.AreEqual(originalSave.FarmingNodes[4].NodeId, loadedSave.FarmingNodes[4].NodeId);
+        Assert.AreEqual(originalSave.FarmingNodes["Node1"].IsActive, loadedSave.FarmingNodes["Node1"].IsActive);
+        Assert.AreEqual(originalSave.FarmingNodes["Node1"].NodeId, loadedSave.FarmingNodes["Node1"].NodeId);
         Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].Quantity, loadedSave.InventoryInSlots["InventorySlot1"].Quantity);
         Assert.AreEqual(originalSave.InventoryInSlots["InventorySlot1"].ItemType, loadedSave.InventoryInSlots["InventorySlot1"].ItemType);
     }
@@ -85,7 +85,7 @@ public class SaveServiceTests
         FarmingNodeState nodeState = new FarmingNodeState
         {
             IsActive = true,
-            NodeId = 4
+            NodeId = "Node1"
         };
 
         InventorySlotState slotState = new InventorySlotState
@@ -101,9 +101,9 @@ public class SaveServiceTests
             {
                 { "InventorySlot1", slotState }
             },
-            FarmingNodes = new Dictionary<int, FarmingNodeState>
+            FarmingNodes = new Dictionary<string, FarmingNodeState>
             {
-                { 4, nodeState }
+                { "Node1", nodeState }
             }
         };
 

@@ -10,6 +10,7 @@ namespace WoodsOfIdle
     {
         public Vector2Int Origin;
         public Vector2Int Size;
+        public float CellSize = 1;
         public int Seed;
         public List<PerlinNoiseSettings> HeightMapSettings = new List<PerlinNoiseSettings>();
         public List<TileMapSettings> TileMapSettings = new List<TileMapSettings>();

@@ -29,20 +29,39 @@ namespace WoodsOfIdle
             Texture2D texture = terrainService.GetTextureFromTerrainData(cells);
             SetMeshTexture(texture, targetMesh);
             SetMeshScale(settings, targetMesh);
+            SetMeshPosition(settings, targetMesh);
         }
+        
+
+        /* TODO
+         * This needs to be refactored to do the following, but in seperate parts:
+         * - Gets list of spawn positions for farming nodes
+         * - Spawns the nodes
+         * - Adds the spawned node ID to the cell data\
+         * - - - - Maybe the cells shouldn't know about that node that's in it? Node knows what cell it is in?
+         * - - - - Need data structure to quickly know if a node is inside a given cell
+         */
         
         public void GenerateFarmingNodes(TerrainGenerationSettings settings, CellData[,] cells, List<GameObject> farmingNodePrefabs)
         {
             foreach (GameObject prefab in farmingNodePrefabs)
             {
-                Debug.Log($"Spawning prefab: {prefab.name}");
-                FarmingNodeComponent farmingNode = prefab.GetComponent<FarmingNodeComponent>();
-                List<Vector2> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(farmingNode.Data, cells, settings.Seed);
+                FarmingNodeComponent prefabComp = prefab.GetComponent<FarmingNodeComponent>();
+                SpawnFarmingNodePrefab(prefabComp, cells, settings);
+            }
+        }
+        
+        private void SpawnFarmingNodePrefab(FarmingNodeComponent prefab, CellData[,] cells, TerrainGenerationSettings settings)
+        {
+            List<Vector2> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(settings, prefab.Data, cells);
+            
+            foreach (Vector2 position in spawnPositions)
+            {
+                GameObject node = GameObject.Instantiate(prefab.gameObject, new Vector3(position.x, 0, position.y), Quaternion.identity);
+                FarmingNodeComponent nodeComp = node.GetComponent<FarmingNodeComponent>();
 
-                foreach (Vector2 position in spawnPositions)
-                {
-                    GameObject.Instantiate(prefab, new Vector3(position.x, 0, position.y), Quaternion.identity);
-                }
+                nodeComp.State.NodeId = position.ToString("F0");
+                nodeComp.ConnectToSaveState(saveController.CurrentSaveState);
             }
         }
 
@@ -53,7 +72,12 @@ namespace WoodsOfIdle
 
         private void SetMeshScale(TerrainGenerationSettings settings, MeshRenderer targetMesh)
         {
-            targetMesh.transform.localScale = new Vector3(settings.Size.x, 1, settings.Size.y) / 10;
+            targetMesh.transform.localScale = new Vector3(settings.Size.x, 1, settings.Size.y) * settings.CellSize / 10;
+        }
+
+        private void SetMeshPosition(TerrainGenerationSettings settings, MeshRenderer targetMesh)
+        {
+            targetMesh.gameObject.transform.position = new Vector3(settings.Origin.x + settings.Size.x / 2, 0, settings.Origin.y + settings.Size.y / 2);
         }
     }
 }
