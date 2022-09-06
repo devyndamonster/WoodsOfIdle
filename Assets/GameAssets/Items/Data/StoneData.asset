@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StoneData
   m_EditorClassIdentifier: 
   ItemType: 1
-  ItemIcon: {fileID: 21300000, guid: bd02001ccf3ea4140aeb2c42cbe6e933, type: 3}
+  ItemIcon: {fileID: 21300000, guid: f85bd531fa420fc41b349426d3d86a56, type: 3}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: WoodData
   m_EditorClassIdentifier: 
   ItemType: 0
-  ItemIcon: {fileID: 21300000, guid: 5499aa1b4d89d6047b421ecd0960aa90, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 58cdfc0054b69a240881a345beab19e1, type: 3}

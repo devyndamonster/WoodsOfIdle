@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DirtData
   m_EditorClassIdentifier: 
   ItemType: 2
-  ItemIcon: {fileID: 21300000, guid: ecb244f8ecfc36a4f825b14d4b70786f, type: 3}
+  ItemIcon: {fileID: 21300000, guid: edb4db4e64a23104d8f413b6729568e5, type: 3}
