@@ -10,6 +10,11 @@ namespace WoodsOfIdle
 {
     public class SaveService : ISaveService
     {
+        private JsonConverter[] converters = 
+        { 
+            new Vector2IntConverter(),
+            new DictionaryToListConverter()
+        };
 
         public SaveState LoadOrCreate(string saveName)
         {
@@ -38,14 +43,14 @@ namespace WoodsOfIdle
             }
 
             string saveJson = File.ReadAllText(savePath);
-            SaveState saveState = JsonConvert.DeserializeObject<SaveState>(saveJson);
+            SaveState saveState = JsonConvert.DeserializeObject<SaveState>(saveJson, converters);
             return saveState;
         }
 
         public void SaveGame(SaveState saveState)
         {
             string savePath = GetSavePath(saveState.SaveName);
-            string saveJson = JsonConvert.SerializeObject(saveState, Formatting.Indented);
+            string saveJson = JsonConvert.SerializeObject(saveState, Formatting.Indented, converters);
             File.WriteAllText(savePath, saveJson);
         }
 

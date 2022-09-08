@@ -50,7 +50,7 @@ namespace WoodsOfIdle
                 .ForEach(slot => dragAndDropSlots[slot.SlotId] = slot);
         }
 
-        private void ApplySlotStates(Dictionary<string, InventorySlotState> inventoryInSlots)
+        private void ApplySlotStates(IDictionary<string, InventorySlotState> inventoryInSlots)
         {
             foreach (var slotPair in dragAndDropSlots)
             {
@@ -70,7 +70,7 @@ namespace WoodsOfIdle
 
         public void ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
         {
-            Dictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
+            IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
             List<InventorySlotState> targetSlotStates = dragAndDropSlots.Select(slot => savedSlotStates[slot.Key]).ToList();
 
             List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(targetSlotStates, itemType, quantityChange);
@@ -84,7 +84,7 @@ namespace WoodsOfIdle
 
         public void SwapInventorySlots(DragAndDropSlot slotTo, DragAndDropSlot slotFrom)
         {
-            Dictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
+            IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
 
             if (!savedSlotStates.ContainsKey(slotTo.SlotId) || !savedSlotStates.ContainsKey(slotFrom.SlotId)) return;
 

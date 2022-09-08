@@ -17,13 +17,13 @@ namespace WoodsOfIdle
 
         public void ConnectToSaveState(SaveState saveState)
         {
-            if (saveState.FarmingNodes.ContainsKey(State.NodeId))
+            if (saveState.FarmingNodes.ContainsKey(State.Position))
             {
-                State = saveState.FarmingNodes[State.NodeId];
+                State = saveState.FarmingNodes[State.Position];
             }
             else
             {
-                saveState.FarmingNodes[State.NodeId] = State;
+                saveState.FarmingNodes[State.Position] = State;
             }
         }
 

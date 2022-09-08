@@ -8,7 +8,7 @@ namespace WoodsOfIdle
     [System.Serializable]
     public class FarmingNodeState
     {
-        public string NodeId;
+        public Vector2Int Position;
 
         public FarmingNodeType NodeType;
 
