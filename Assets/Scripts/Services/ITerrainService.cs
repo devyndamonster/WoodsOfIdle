@@ -12,7 +12,9 @@ namespace WoodsOfIdle
 
         public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells);
 
-        public Vector2 GetSpawnPositionOffset(TerrainGenerationSettings settings);
+        public Vector3 GetSpawnPositionOffset(TerrainGenerationSettings settings);
+
+        public Vector3 GetWorldPositionFromCellPosition(TerrainGenerationSettings settings, Vector2Int cellPosition);
     }
 }
 

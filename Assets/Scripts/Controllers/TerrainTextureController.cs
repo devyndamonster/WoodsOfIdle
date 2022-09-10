@@ -54,11 +54,12 @@ namespace WoodsOfIdle
         private void SpawnFarmingNodePrefab(FarmingNodeComponent prefab, CellData[,] cells, TerrainGenerationSettings settings)
         {
             List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(settings, prefab.Data, cells);
-            Vector2 spawnOffset = terrainService.GetSpawnPositionOffset(settings);
+            Vector3 spawnOffset = terrainService.GetSpawnPositionOffset(settings);
             
             foreach (Vector2Int cellPosition in spawnPositions)
             {
-                GameObject node = GameObject.Instantiate(prefab.gameObject, cellPosition + spawnOffset, Quaternion.identity);
+                Vector3 spawnPosition = terrainService.GetWorldPositionFromCellPosition(settings, cellPosition);
+                GameObject node = GameObject.Instantiate(prefab.gameObject, spawnPosition + spawnOffset, Quaternion.identity);
                 FarmingNodeComponent nodeComp = node.GetComponent<FarmingNodeComponent>();
 
                 nodeComp.State.Position = cellPosition;

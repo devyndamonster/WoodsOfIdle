@@ -71,9 +71,14 @@ namespace WoodsOfIdle
             return spawnPositions;
         }
         
-        public Vector2 GetSpawnPositionOffset(TerrainGenerationSettings settings)
+        public Vector3 GetSpawnPositionOffset(TerrainGenerationSettings settings)
         {
-            return new Vector2(settings.Size.x / 2f, settings.Size.y / 2f);
+            return new Vector3(settings.CellSize / 2f, 0, settings.CellSize / 2f);
+        }
+
+        public Vector3 GetWorldPositionFromCellPosition(TerrainGenerationSettings settings, Vector2Int cellPosition)
+        {
+            return new Vector3(cellPosition.x * settings.CellSize, 0, cellPosition.y * settings.CellSize);
         }
     }
 }
