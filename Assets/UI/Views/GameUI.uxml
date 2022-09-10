@@ -1,6 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="FarmingNodeMenu" src="project://database/Assets/UI/Elements/FarmingNodeMenu.uxml?fileID=9197481963319205126&amp;guid=675a377446186eb4083c13fee9641cc9&amp;type=3#FarmingNodeMenu" />
     <Style src="project://database/Assets/UI/Styles/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=2e9fcc388a5f0fd47a1c0dad0559150d&amp;type=3#InventoryStyles" />
     <ui:VisualElement name="ScreenContainer" picking-mode="Ignore" style="position: absolute; height: 100%; width: 100%; overflow: visible; opacity: 1; visibility: visible;">
+        <ui:VisualElement name="TopMenu" style="background-color: rgb(0, 0, 0);">
+            <ui:VisualElement name="TimeDisplay" style="height: 150px; background-color: rgb(188, 222, 236); border-top-width: 10px; border-bottom-width: 10px; border-left-color: rgb(135, 135, 135); border-right-color: rgb(135, 135, 135); border-top-color: rgb(135, 135, 135); border-bottom-color: rgb(135, 135, 135);" />
+            <ui:VisualElement name="MenuOptionContainer" style="flex-direction: row; flex-wrap: nowrap; flex-grow: 0; height: 100px;">
+                <ui:Button text="Equipment" display-tooltip-when-elided="true" name="EquipmentMenuButton" class="GameMenuNavButton" style="width: 25%;" />
+                <ui:Button text="Craft" display-tooltip-when-elided="true" name="CraftingMenuButton" class="GameMenuNavButton" style="flex-grow: 0; width: 25%;" />
+                <ui:Button text="Skills" display-tooltip-when-elided="true" name="SkillsMenuButton" class="GameMenuNavButton" style="width: 25%;" />
+                <ui:Button text="Research" display-tooltip-when-elided="true" name="ResearchMenuButton" class="GameMenuNavButton" style="width: 25%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="TopMenuPopoutContainer">
+                <ui:Instance template="FarmingNodeMenu" name="FarmingNodeMenu" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="BottomMenu" style="bottom: 0; flex-direction: row; align-items: stretch; justify-content: flex-start; position: absolute; width: 100%; height: auto; background-color: rgba(82, 91, 83, 0); border-top-width: 10px; border-top-color: rgb(66, 79, 66); border-left-color: rgb(66, 79, 66); border-right-color: rgb(66, 79, 66); border-bottom-color: rgb(66, 79, 66); flex-grow: 1; flex-wrap: wrap;">
             <WoodsOfIdle.DragAndDropGrid Rows="3" Columns="6" CanAutoInsert="true" BelongsToPlayer="true" class="DragAndDropInventoryGrid" />
         </ui:VisualElement>

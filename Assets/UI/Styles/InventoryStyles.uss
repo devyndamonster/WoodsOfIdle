@@ -48,8 +48,32 @@
     right: 0;
     bottom: 0;
     flex-grow: 0;
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     -unity-font-style: normal;
-    -unity-font: url('project://database/Assets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
-    -unity-font-definition: url('project://database/Assets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
+    -unity-font: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
+    -unity-font-definition: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
+}
+
+.GameMenuNavButton {
+    flex-grow: 1;
+    -unity-font-style: normal;
+    -unity-font: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
+    -unity-font-definition: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
+    font-size: 40px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }

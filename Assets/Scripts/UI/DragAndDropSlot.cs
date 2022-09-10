@@ -18,7 +18,7 @@ namespace WoodsOfIdle
 
         public new class UxmlTraits : VisualElement.UxmlTraits
         {
-            UxmlStringAttributeDescription SlotIdAttr = new UxmlStringAttributeDescription { name = "Slot Id", defaultValue = "" };
+            UxmlStringAttributeDescription SlotIdAttr = new UxmlStringAttributeDescription { name = "SlotId", defaultValue = "" };
             UxmlBoolAttributeDescription BelongsToPlayerAttr = new UxmlBoolAttributeDescription { name = "BelongsToPlayer", defaultValue = false };
             UxmlBoolAttributeDescription CanAutoInsertAttr = new UxmlBoolAttributeDescription { name = "CanAutoInsert", defaultValue = false };
 
