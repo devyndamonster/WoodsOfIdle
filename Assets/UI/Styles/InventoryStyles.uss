@@ -55,7 +55,7 @@
 }
 
 .GameMenuNavButton {
-    flex-grow: 1;
+    flex-grow: 0;
     -unity-font-style: normal;
     -unity-font: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&guid=e067c50297c6b0141a9beb5cd8f1a555&type=3#Montserrat-ExtraBold');
     -unity-font-definition: url('project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&guid=6385fbd835d6bc94da41bb843b0b1953&type=2#Montserrat-ExtraBold SDF');
@@ -64,8 +64,8 @@
     margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-top: 0;
     padding-bottom: 0;
     border-left-width: 3px;
@@ -76,6 +76,7 @@
     border-bottom-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    flex-shrink: 0;
 }
 
 .HarvestProgressBar {
@@ -90,5 +91,35 @@
 .HarvestProgressBar VisualElement {
     width: auto;
     height: 100%;
-    background-color: rgba(255, 0, 0, 255);
+    background-color: rgb(255, 0, 0);
+}
+
+.HarvestOptionUpperContainer {
+    flex-direction: row;
+    flex-grow: 1;
+    border-left-color: rgb(128, 128, 128);
+    border-right-color: rgb(128, 128, 128);
+    border-top-color: rgb(128, 128, 128);
+    border-bottom-color: rgb(128, 128, 128);
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+.HarvestOptionItemContainer {
+    flex-grow: 1;
+    flex-direction: row;
+    border-left-color: rgb(149, 149, 149);
+    border-right-color: rgb(149, 149, 149);
+    border-top-color: rgb(149, 149, 149);
+    border-bottom-color: rgb(149, 149, 149);
+    background-color: rgb(79, 79, 79);
+}
+
+.HarvestOptionItemIcon {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(123, 123, 123);
+    background-image: url('project://database/Assets/GameAssets/Items/Icons/icon_stiick.png?fileID=2800000&guid=58cdfc0054b69a240881a345beab19e1&type=3#icon_stiick');
 }

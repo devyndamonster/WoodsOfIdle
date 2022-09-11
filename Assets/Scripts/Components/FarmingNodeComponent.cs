@@ -12,6 +12,8 @@ namespace WoodsOfIdle
         public FarmingNodeState State = new FarmingNodeState();
 
         public static event ChangeStorageQuantity NodeHarvested;
+        public static event Action<FarmingNodeComponent> NodeClicked;
+        public event Action<float> HarvestProgressChanged;
 
         protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
 
@@ -32,6 +34,9 @@ namespace WoodsOfIdle
             farmingNodeService.SetNodeActiveState(State, !State.IsActive);
         }
 
+
+
+        //TODO: Should the process of updating state be totally removed from the component itself?
         public void UpdateState()
         {
             int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(State, DateTime.Now);
@@ -42,7 +47,8 @@ namespace WoodsOfIdle
                 ItemType harvestedItem = farmingNodeService.GetItemHarvested(Data);
                 NodeHarvested(harvestedItem, numberOfHarvests);
             }
-            
+
+            HarvestProgressChanged(farmingNodeService.CalculateHarvestProgress(State, DateTime.Now));
         }
     }
 }

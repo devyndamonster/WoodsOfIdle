@@ -17,6 +17,7 @@ namespace WoodsOfIdle
 
         protected SaveController saveController;
         protected InventoryController inventoryController;
+        protected GameUIController gameUIController;
         protected GameController gameController;
         protected TerrainTextureController terrainTextureController;
         protected IAddressableLoaderService addressableLoaderService;
@@ -50,6 +51,7 @@ namespace WoodsOfIdle
             terrainTextureController.GenerateTerrain(TerrainSettings, TerrainMeshRenderer);
 
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
+            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData);
             
             gameController = new GameController(saveController);
             OnUpdated += gameController.Update;

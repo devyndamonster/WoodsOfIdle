@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using UnityEngine;
 
 namespace WoodsOfIdle
 {
@@ -46,6 +47,11 @@ namespace WoodsOfIdle
             }
 
             return data.HarvestableItems.Last().ItemType;
+        }
+
+        public float CalculateHarvestProgress(FarmingNodeState state, DateTime currentTime)
+        {
+            return Mathf.Clamp01((float)((currentTime - state.TimeLastHarvested).TotalSeconds / state.TimeToHarvest));
         }
     }
 }

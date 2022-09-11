@@ -32,16 +32,6 @@ namespace WoodsOfIdle
             SetMeshPosition(settings, targetMesh);
         }
         
-
-        /* TODO
-         * This needs to be refactored to do the following, but in seperate parts:
-         * - Gets list of spawn positions for farming nodes
-         * - Spawns the nodes
-         * - Adds the spawned node ID to the cell data\
-         * - - - - Maybe the cells shouldn't know about that node that's in it? Node knows what cell it is in?
-         * - - - - Need data structure to quickly know if a node is inside a given cell
-         */
-        
         public void GenerateFarmingNodes(TerrainGenerationSettings settings, CellData[,] cells, List<GameObject> farmingNodePrefabs)
         {
             foreach (GameObject prefab in farmingNodePrefabs)

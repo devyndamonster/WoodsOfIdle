@@ -1,13 +1,14 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=2e9fcc388a5f0fd47a1c0dad0559150d&amp;type=3#InventoryStyles" />
     <ui:VisualElement name="FarmingOption" style="background-color: rgb(213, 255, 230); height: auto; border-bottom-width: 10px; border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128); border-top-width: 10px; flex-direction: column;">
-        <ui:VisualElement name="ItemContainer" style="flex-direction: row; flex-grow: 1; border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128); border-bottom-width: 10px;">
-            <ui:Button text="Collect Wood" display-tooltip-when-elided="true" name="HarvestButton" style="-unity-font: url(&apos;project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold.ttf?fileID=12800000&amp;guid=e067c50297c6b0141a9beb5cd8f1a555&amp;type=3#Montserrat-ExtraBold&apos;); -unity-font-definition: url(&apos;project://database/Assets/GameAssets/Fonts/Montserrat-ExtraBold%20SDF.asset?fileID=11400000&amp;guid=6385fbd835d6bc94da41bb843b0b1953&amp;type=2#Montserrat-ExtraBold SDF&apos;); font-size: 40px; border-left-width: 0; border-right-width: 10px; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 20px; padding-right: 20px; padding-top: 0; padding-bottom: 0; border-left-color: rgb(96, 96, 96); border-right-color: rgb(96, 96, 96); border-top-color: rgb(96, 96, 96); border-bottom-color: rgb(96, 96, 96);" />
-            <ui:VisualElement name="HarvestedItemContainer" style="flex-grow: 1; flex-direction: row;">
-                <ui:VisualElement name="FarmingLocationIcon" style="width: 100px; height: 100px; background-color: rgb(123, 123, 123); background-image: url(&apos;project://database/Assets/GameAssets/Items/Icons/icon_stiick.png?fileID=2800000&amp;guid=58cdfc0054b69a240881a345beab19e1&amp;type=3#icon_stiick&apos;);" />
+        <ui:VisualElement name="ItemContainer" class="HarvestOptionUpperContainer">
+            <ui:Button text="Collect Wood" display-tooltip-when-elided="true" name="HarvestButton" class="GameMenuNavButton" />
+            <ui:VisualElement name="HarvestedItemContainer" class="HarvestOptionItemContainer">
+                <ui:VisualElement name="FarmingLocationIcon" class="HarvestOptionItemIcon" />
                 <ui:VisualElement name="FarmingLocationIcon" style="width: 100px; height: 100px; background-color: rgb(123, 123, 123); background-image: url(&apos;project://database/Assets/GameAssets/Items/Icons/icon_thatch.png?fileID=2800000&amp;guid=30ce1c9ed92f7b345be9cb992e288d9c&amp;type=3#icon_thatch&apos;);" />
             </ui:VisualElement>
         </ui:VisualElement>
         <WoodsOfIdle.SimpleProgressBar Progress="0.45" class="HarvestProgressBar" />
     </ui:VisualElement>
+    <WoodsOfIdle.HarvestOptionElement Sample_Image_Count="3" Option_Text="Collect Sticks" />
 </ui:UXML>

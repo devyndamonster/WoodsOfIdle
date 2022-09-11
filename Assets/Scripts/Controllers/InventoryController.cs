@@ -19,9 +19,9 @@ namespace WoodsOfIdle
             this.saveController = saveController;
             this.inventoryService = inventoryService;
             this.inventoryPanel = inventoryPanel;
+            this.itemData = itemData.ToDictionary(item => item.ItemType);
 
             SetupEvents();
-            PopulateItemData(itemData);
             PopulateDragAndDropSlots();
             ApplySlotStates(saveController.CurrentSaveState.InventoryInSlots);
         }
@@ -30,15 +30,6 @@ namespace WoodsOfIdle
         {
             FarmingNodeComponent.NodeHarvested += ChangeStoredItemsQuantity;
             DragAndDropElement.InventorySlotDragged += SwapInventorySlots;
-        }
-
-        private void PopulateItemData(IEnumerable<ItemData> loadedItemData)
-        {
-            itemData = new Dictionary<ItemType, ItemData>();
-            foreach (ItemData item in loadedItemData)
-            {
-                itemData[item.ItemType] = item;
-            }
         }
 
         private void PopulateDragAndDropSlots()
