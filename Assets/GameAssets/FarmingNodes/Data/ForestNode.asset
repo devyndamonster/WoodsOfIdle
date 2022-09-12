@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NodeType: 0
   DefaultTimeToHarvest: 1
-  SpawnChance: 0.001
-  AllowedCellTypes: 
+  SpawnChance: 0.01
+  AllowedCellTypes: 01000000
   HarvestableItems:
   - ItemType: 0
     ChanceToFarm: 1

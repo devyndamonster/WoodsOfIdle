@@ -13,6 +13,7 @@ namespace WoodsOfIdle
         public float touchZoomScale = .05f;
 
         private PlayerInputActions playerInput;
+        private IPointerInfoService pointerInfoService;
         private Vector3 cameraPositionStart;
         private Vector2 pointerPositionStart;
         private float touchDistanceStart;
@@ -24,6 +25,7 @@ namespace WoodsOfIdle
         private void Awake()
         {
             playerInput = new PlayerInputActions();
+            pointerInfoService = new PointerInfoService();
         }
 
         private void OnEnable()
@@ -50,7 +52,7 @@ namespace WoodsOfIdle
         private void OnPointerPressed(InputAction.CallbackContext context)
         {
             isPointerActive = true;
-            pointerPositionStart = GetPointerPosition();
+            pointerPositionStart = pointerInfoService.GetPointerPosition();
             cameraPositionStart = playerCamera.transform.position;
         }
 
@@ -69,7 +71,7 @@ namespace WoodsOfIdle
 
             else if(isPointerActive)
             {
-                Vector2 mouseDelta = pointerPositionStart - GetPointerPosition();
+                Vector2 mouseDelta = pointerPositionStart - pointerInfoService.GetPointerPosition();
                 Vector3 cameraDeltaX = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up).normalized * mouseDelta.x * moveScale.x * playerCamera.orthographicSize;
                 Vector3 cameraDeltaZ = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up).normalized * mouseDelta.y * moveScale.y * playerCamera.orthographicSize;
                 playerCamera.transform.position = cameraPositionStart + cameraDeltaX + cameraDeltaZ;
@@ -111,18 +113,9 @@ namespace WoodsOfIdle
 
         private float GetDistanceBetweenTouchPointers()
         {
-            return Vector2.Distance(GetPointerPosition(0), GetPointerPosition(1));
+            return Vector2.Distance(pointerInfoService.GetPointerPosition(0), pointerInfoService.GetPointerPosition(1));
         }
         
-
-        private Vector2 GetPointerPosition(int index = 0)
-        {
-#if UNITY_EDITOR
-            return Mouse.current.position.ReadValue();
-#elif UNITY_ANDROID || UNITY_IOS
-            return Touchscreen.current.touches[index].position.ReadValue();
-#endif
-        }
     }
 }
 

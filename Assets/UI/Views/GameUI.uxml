@@ -9,9 +9,7 @@
                 <ui:Button text="Skills" display-tooltip-when-elided="true" name="SkillsMenuButton" class="GameMenuNavButton" style="width: 25%;" />
                 <ui:Button text="Research" display-tooltip-when-elided="true" name="ResearchMenuButton" class="GameMenuNavButton" style="width: 25%;" />
             </ui:VisualElement>
-            <ui:VisualElement name="TopMenuPopoutContainer">
-                <WoodsOfIdle.HarvestOptionElement style="border-left-color: rgb(135, 135, 135); border-right-color: rgb(135, 135, 135); border-top-color: rgb(135, 135, 135); border-bottom-color: rgb(135, 135, 135); border-bottom-width: 10px;" />
-            </ui:VisualElement>
+            <ui:VisualElement name="TopMenuPopoutContainer" />
         </ui:VisualElement>
         <ui:VisualElement name="BottomMenu" style="bottom: 0; flex-direction: row; align-items: stretch; justify-content: flex-start; position: absolute; width: 100%; height: auto; background-color: rgba(82, 91, 83, 0); border-top-width: 10px; border-top-color: rgb(66, 79, 66); border-left-color: rgb(66, 79, 66); border-right-color: rgb(66, 79, 66); border-bottom-color: rgb(66, 79, 66); flex-grow: 1; flex-wrap: wrap;">
             <WoodsOfIdle.DragAndDropGrid Rows="3" Columns="6" CanAutoInsert="true" BelongsToPlayer="true" class="DragAndDropInventoryGrid" />

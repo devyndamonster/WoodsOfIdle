@@ -10,7 +10,7 @@ namespace WoodsOfIdle
 
         public Texture2D GetTextureFromTerrainData(CellData[,] cells);
 
-        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells);
+        public List<Vector2Int> GetSpawnPositionsForFarmingNode(int seed, FarmingNodeData nodeData, CellData[,] cells);
 
         public Vector3 GetSpawnPositionOffset(TerrainGenerationSettings settings);
 

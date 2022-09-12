@@ -10,10 +10,11 @@ namespace WoodsOfIdle
     {
         protected SaveController saveController;
         protected List<FarmingNodeComponent> farmingNodes = new List<FarmingNodeComponent>();
-        
-        public GameController(SaveController saveController)
+
+        public GameController(SaveController saveController, IEnumerable<FarmingNodeComponent> farmingNodes)
         {
             this.saveController = saveController;
+            this.farmingNodes = farmingNodes.ToList();
         }
 
         public void Update()

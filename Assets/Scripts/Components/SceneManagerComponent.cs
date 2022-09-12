@@ -53,7 +53,7 @@ namespace WoodsOfIdle
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
             gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData);
             
-            gameController = new GameController(saveController);
+            gameController = new GameController(saveController, terrainTextureController.FarmingNodes);
             OnUpdated += gameController.Update;
         }
         

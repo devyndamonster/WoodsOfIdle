@@ -6,6 +6,8 @@ namespace WoodsOfIdle
 {
     public class TerrainTextureController
     {
+        public List<FarmingNodeComponent> FarmingNodes { get; private set; }
+        
         private ITerrainService terrainService;
         private SaveController saveController;
         private AssetReferenceCollection assetReferences;
@@ -34,16 +36,22 @@ namespace WoodsOfIdle
         
         public void GenerateFarmingNodes(TerrainGenerationSettings settings, CellData[,] cells, List<GameObject> farmingNodePrefabs)
         {
+            FarmingNodes = new List<FarmingNodeComponent>();
+
             foreach (GameObject prefab in farmingNodePrefabs)
             {
                 FarmingNodeComponent prefabComp = prefab.GetComponent<FarmingNodeComponent>();
-                SpawnFarmingNodePrefab(prefabComp, cells, settings);
+                var spawnedNodes = SpawnFarmingNodePrefabs(prefabComp, cells, settings);
+                FarmingNodes.AddRange(spawnedNodes);
             }
         }
         
-        private void SpawnFarmingNodePrefab(FarmingNodeComponent prefab, CellData[,] cells, TerrainGenerationSettings settings)
+        private List<FarmingNodeComponent> SpawnFarmingNodePrefabs(FarmingNodeComponent prefab, CellData[,] cells, TerrainGenerationSettings settings)
         {
-            List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(settings, prefab.Data, cells);
+            List<FarmingNodeComponent> farmingNodes = new List<FarmingNodeComponent>();
+            
+            int nodeSeed = settings.Seed + (int)prefab.Data.NodeType;
+            List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(nodeSeed, prefab.Data, cells);
             Vector3 spawnOffset = terrainService.GetSpawnPositionOffset(settings);
             
             foreach (Vector2Int cellPosition in spawnPositions)
@@ -51,10 +59,13 @@ namespace WoodsOfIdle
                 Vector3 spawnPosition = terrainService.GetWorldPositionFromCellPosition(settings, cellPosition);
                 GameObject node = GameObject.Instantiate(prefab.gameObject, spawnPosition + spawnOffset, Quaternion.identity);
                 FarmingNodeComponent nodeComp = node.GetComponent<FarmingNodeComponent>();
+                farmingNodes.Add(nodeComp);
 
                 nodeComp.State.Position = cellPosition;
                 nodeComp.ConnectToSaveState(saveController.CurrentSaveState);
             }
+
+            return farmingNodes;
         }
 
         private void SetMeshTexture(Texture2D texture, MeshRenderer targetMesh)

@@ -52,10 +52,10 @@ namespace WoodsOfIdle
             return texture;
         }
 
-        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells)
+        public List<Vector2Int> GetSpawnPositionsForFarmingNode(int seed, FarmingNodeData nodeData, CellData[,] cells)
         {
             List<Vector2Int> spawnPositions = new List<Vector2Int>();
-            System.Random random = new System.Random(settings.Seed);
+            System.Random random = new System.Random(seed);
             
             for(int x = 0; x < cells.GetLength(0); x++)
             {

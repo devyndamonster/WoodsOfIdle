@@ -38,7 +38,7 @@ namespace WoodsOfIdle
         public void SetProgress(float progress)
         {
             Progress = progress;
-            VisualElement barElement = Children().First();
+            VisualElement barElement = this.Q<SimpleProgressBar>();
             barElement.style.width = new StyleLength(Length.Percent(Progress * 100));
         }
     }

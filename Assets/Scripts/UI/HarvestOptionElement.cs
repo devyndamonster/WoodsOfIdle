@@ -29,33 +29,9 @@ namespace WoodsOfIdle
                 var harvestOption = visualElement as HarvestOptionElement;
 
                 harvestOption.HarvestOptionText = HarvestOptionTextAttr.GetValueFromBag(bag, context);
-
-                harvestOption.Clear();
-
-                VisualElement upperContainer = new VisualElement();
-                upperContainer.name = "HarvestOptionUpperContainer";
-                upperContainer.AddToClassList("HarvestOptionUpperContainer");
-                harvestOption.Add(upperContainer);
-
-                Button harvestButton = new Button();
-                harvestButton.name = "HarvestOptionButton";
-                harvestButton.text = harvestOption.HarvestOptionText;
-                harvestButton.AddToClassList("GameMenuNavButton");
-                upperContainer.Add(harvestButton);
-                harvestOption.HarvestButton = harvestButton;
-
-                VisualElement itemIconContainer = new VisualElement();
-                itemIconContainer.name = "HarvestOptionItemContainer";
-                itemIconContainer.AddToClassList("HarvestOptionItemContainer");
-                upperContainer.Add(itemIconContainer);
-
+                harvestOption.Init();
                 AddSampleIcons(harvestOption, SampleImageCountAttr.GetValueFromBag(bag, context));
-                
-                SimpleProgressBar progressBar = new SimpleProgressBar();
-                progressBar.name = "HarvestOptionProgressBar";
-                progressBar.AddToClassList("HarvestProgressBar");
-                harvestOption.Add(progressBar);
-                harvestOption.ProgressBar = progressBar;
+
             }
 
             private void AddSampleIcons(HarvestOptionElement harvestOption, int sampleImageCount)
@@ -70,6 +46,39 @@ namespace WoodsOfIdle
                 harvestOption.SetItemIcons(textures);
             }
         }
+
+        public HarvestOptionElement()
+        {
+            Init();
+        }
+        
+        public void Init()
+        {
+            Clear();
+
+            VisualElement upperContainer = new VisualElement();
+            upperContainer.name = "HarvestOptionUpperContainer";
+            upperContainer.AddToClassList("HarvestOptionUpperContainer");
+            Add(upperContainer);
+
+            HarvestButton = new Button();
+            HarvestButton.name = "HarvestOptionButton";
+            HarvestButton.text = "Test";
+            HarvestButton.AddToClassList("GameMenuNavButton");
+            upperContainer.Add(HarvestButton);
+
+            VisualElement itemIconContainer = new VisualElement();
+            itemIconContainer.name = "HarvestOptionItemContainer";
+            itemIconContainer.AddToClassList("HarvestOptionItemContainer");
+            upperContainer.Add(itemIconContainer);
+            
+            SimpleProgressBar progressBar = new SimpleProgressBar();
+            progressBar.name = "HarvestOptionProgressBar";
+            progressBar.AddToClassList("HarvestProgressBar");
+            Add(progressBar);
+            ProgressBar = progressBar;
+        }
+
         
         public void SetItemIcons(IEnumerable<Texture> icons)
         {

@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 147722184}
   - component: {fileID: 147722185}
+  - component: {fileID: 147722186}
   m_Layer: 0
   m_Name: GlobalControllers
   m_TagString: Untagged
@@ -189,6 +190,20 @@ MonoBehaviour:
       Color: {r: 0, g: 0.19896173, b: 1, a: 0}
     - CellType: 1
       Color: {r: 0.14076638, g: 1, b: 0, a: 0}
+--- !u!114 &147722186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147722180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c197ad3fb66ca54595692a51ddeb563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 330585545}
+  clickMaxReleaseDistance: 100
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

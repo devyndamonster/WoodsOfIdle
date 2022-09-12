@@ -107,7 +107,7 @@ public class TerrainServiceTests
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
+        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings.Seed, nodeData, cells);
 
         Assert.That(spawnPositions, Is.Empty);
     }
@@ -149,7 +149,7 @@ public class TerrainServiceTests
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
+        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings.Seed, nodeData, cells);
 
         Assert.That(spawnPositions.All(spawnPosition => cells[spawnPosition.x, spawnPosition.y].Type == CellType.Grass));
     }

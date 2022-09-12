@@ -48,7 +48,12 @@ namespace WoodsOfIdle
                 NodeHarvested(harvestedItem, numberOfHarvests);
             }
 
-            HarvestProgressChanged(farmingNodeService.CalculateHarvestProgress(State, DateTime.Now));
+            HarvestProgressChanged?.Invoke(farmingNodeService.CalculateHarvestProgress(State, DateTime.Now));
+        }
+
+        public void Click()
+        {
+            NodeClicked(this);
         }
     }
 }
