@@ -17,9 +17,15 @@ namespace WoodsOfIdle
 #endif
         }
 
-        public bool IsPointerOverUIObject(VisualElement rootElement)
+        public VisualElement GetVisualElementAtScreenPosition(VisualElement rootElement, Vector2 screenPosition)
         {
-            throw new System.NotImplementedException();
+            Vector2 uiPosition = new Vector2(screenPosition.x, Screen.height - screenPosition.y);
+            return rootElement.panel.Pick(uiPosition);
+        }
+
+        public bool IsScreenPositionOverUIObject(VisualElement rootElement, Vector2 screenPosition)
+        {
+            return GetVisualElementAtScreenPosition(rootElement, screenPosition) != null;
         }
     }
 }

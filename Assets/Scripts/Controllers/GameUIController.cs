@@ -22,12 +22,18 @@ namespace WoodsOfIdle
         private void SetupEvents()
         {
             FarmingNodeComponent.NodeClicked += OnNodeClicked;
+            WorldClickListenerComponent.WorldClicked += OnNothingClicked;
         }
-
+        
         private void OnNodeClicked(FarmingNodeComponent farmingNode)
         {
             HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNode);
             SetTopPopoutMenuContent(harvestOption);
+        }
+
+        private void OnNothingClicked(Vector2 screenPosition)
+        {
+            ClearTopPopoutMenuContent();
         }
 
         private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeComponent farmingNode)
@@ -50,6 +56,12 @@ namespace WoodsOfIdle
             VisualElement popoutContainer = gameUIPanel.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
             popoutContainer.Clear();
             popoutContainer.Add(element);
+        }
+        
+        public void ClearTopPopoutMenuContent()
+        {
+            VisualElement popoutContainer = gameUIPanel.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
+            popoutContainer.Clear();
         }
     }
 }

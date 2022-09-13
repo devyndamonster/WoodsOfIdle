@@ -7,7 +7,9 @@ namespace WoodsOfIdle
 {
     public interface IPointerInfoService
     {
-        public bool IsPointerOverUIObject(VisualElement rootElement);
+        public bool IsScreenPositionOverUIObject(VisualElement rootElement, Vector2 screenPosition);
+
+        public VisualElement GetVisualElementAtScreenPosition(VisualElement rootElement, Vector2 screenPosition);
 
         public Vector2 GetPointerPosition(int index = 0);
     }
