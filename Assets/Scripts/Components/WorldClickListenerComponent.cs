@@ -56,12 +56,11 @@ namespace WoodsOfIdle
         private void TryClick()
         {
             Vector2 screenPositionEndClick = pointerInfoService.GetPointerPosition();
-            Vector2 pointerUIPosition = new Vector2(screenPositionEndClick.x, Screen.height - screenPositionEndClick.y);
             float clickDistance = Vector2.Distance(screenPositionStartClick, screenPositionEndClick);
 
             if (clickDistance <= clickMaxReleaseDistance)
             {
-                VisualElement clickedUI = pointerInfoService.GetVisualElementAtScreenPosition(uiContainer.rootVisualElement, pointerUIPosition);
+                VisualElement clickedUI = pointerInfoService.GetVisualElementAtScreenPosition(uiContainer.rootVisualElement, screenPositionEndClick);
                 IClickable clickable = TryGetClickableComponent(screenPositionEndClick);
                 
                 if (clickedUI != null)
