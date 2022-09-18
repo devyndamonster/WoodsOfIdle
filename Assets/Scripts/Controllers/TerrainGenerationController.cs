@@ -29,8 +29,6 @@ namespace WoodsOfIdle
             List<FarmingNodeController> farmingNodeControllers = GetGeneratedFarmingNodeControllers(cells, settings);
             Dictionary<Vector2Int, GameObject> farmingNodePrefabs = GetGeneratedFarmingNodePrefabs(farmingNodeControllers);
 
-            Debug.Log("Farming nodes: " + farmingNodeControllers.Count);
-
             saveController.CurrentSaveState.Cells = cells;
             saveController.CurrentSaveState.FarmingNodes = farmingNodeControllers.ToDictionary(node => node.State.Position, node => node.State);
 

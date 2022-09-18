@@ -34,11 +34,10 @@ namespace WoodsOfIdle
 
         private void PopulateDragAndDropSlots()
         {
-            dragAndDropSlots = new Dictionary<string, DragAndDropSlot>();
-            inventoryPanel.rootVisualElement
+            dragAndDropSlots = inventoryPanel.rootVisualElement
                 .Query<DragAndDropSlot>()
                 .ToList()
-                .ForEach(slot => dragAndDropSlots[slot.SlotId] = slot);
+                .ToDictionary(slot => slot.SlotId);
         }
 
         private void ApplySlotStates(IDictionary<string, InventorySlotState> inventoryInSlots)

@@ -69,13 +69,8 @@ namespace WoodsOfIdle
                 .Select(state => new FarmingNodeController(farmingNodeService, data[state.NodeType], state))
                 .ToList();
         }
-
-        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells)
-        {
-            return GetSpawnPositionsForFarmingNode(settings, nodeData, cells, Enumerable.Empty<Vector2Int>());
-        }
-
-        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells, IEnumerable<Vector2Int> excludedPositions)
+        
+        private List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells, IEnumerable<Vector2Int> excludedPositions)
         {
             var spawnPositions = new List<Vector2Int>();
             var seed = GetFarmingNodeGenerationSeed(settings.Seed, nodeData);
@@ -105,7 +100,7 @@ namespace WoodsOfIdle
             return new Vector3(cellPosition.x * settings.CellSize, 0, cellPosition.y * settings.CellSize);
         }
 
-        public int GetFarmingNodeGenerationSeed(int seed, FarmingNodeData nodeData)
+        private int GetFarmingNodeGenerationSeed(int seed, FarmingNodeData nodeData)
         {
             return seed + (int)nodeData.NodeType;
         }

@@ -14,12 +14,9 @@ public class TerrainServiceTests
     [Test]
     public void CellsWillBeCorrectDimensions()
     {
-        TerrainGenerationSettings settings = new TerrainGenerationSettings
-        {
-            Seed = 0,
-            Size = new Vector2Int(50, 100)
-        };
-
+        TerrainGenerationSettings settings = GetSettingsSplitType(CellType.Water, CellType.Grass, 0);
+        settings.Size = new Vector2Int(50, 100);
+        
         CellData [,] cells = terrainService.GenerateTerrainData(settings);
         
         Assert.That(cells.GetLength(0) == 50);
@@ -29,12 +26,8 @@ public class TerrainServiceTests
     [Test]
     public void CellsWillBeSameOnSameSeed()
     {
-        TerrainGenerationSettings settings = new TerrainGenerationSettings
-        {
-            Seed = 0,
-            Size = new Vector2Int(50, 50)
-        };
-
+        TerrainGenerationSettings settings = GetSettingsSplitType(CellType.Water, CellType.Grass, 0);
+        
         CellData[,] firstCells = terrainService.GenerateTerrainData(settings);
         CellData[,] secondCells = terrainService.GenerateTerrainData(settings);
         
@@ -51,18 +44,9 @@ public class TerrainServiceTests
     [Test]
     public void CellsWillBeDifferentOnDifferentSeed()
     {
-        TerrainGenerationSettings firstSettings = new TerrainGenerationSettings
-        {
-            Seed = 0,
-            Size = new Vector2Int(50, 50)
-        };
-
-        TerrainGenerationSettings secondSettings = new TerrainGenerationSettings
-        {
-            Seed = 1,
-            Size = new Vector2Int(50, 50)
-        };
-
+        TerrainGenerationSettings firstSettings = GetSettingsSplitType(CellType.Water, CellType.Grass, 0);
+        TerrainGenerationSettings secondSettings = GetSettingsSplitType(CellType.Water, CellType.Grass, 1);
+        
         CellData[,] firstCells = terrainService.GenerateTerrainData(firstSettings);
         CellData[,] secondCells = terrainService.GenerateTerrainData(secondSettings);
 
@@ -79,82 +63,84 @@ public class TerrainServiceTests
     [Test]
     public void NodesWontSpawnWhenNoValidCells()
     {
-        TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings
-        {
-            Seed = 0,
-            Size = new Vector2Int(50, 50),
-            HeightMapSettings = new List<PerlinNoiseSettings>
-            {
-                new PerlinNoiseSettings
-                {
-                    Scale = 0.1f,
-                    Strength = 1f,
-                    Offset = new Vector2(0, 0)
-                }
-            },
-            TileMapSettings = new List<TileMapSettings>
-            {
-                new TileMapSettings
-                {
-                    CellType = CellType.Water,
-                    HeightRange = new Vector2(0, 1)
-                }
-            }
-        };
-
+        TerrainGenerationSettings terrainSettings = GetSettingsAllSameType(CellType.Water);
         CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
+
         FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
+        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
 
-        Assert.That(spawnPositions, Is.Empty);
+        Assert.That(nodes, Is.Empty);
     }
 
 
     [Test]
     public void NodesWillOnlySpawnOnValidCells()
     {
-        TerrainGenerationSettings terrainSettings = new TerrainGenerationSettings
-        {
-            Seed = 0,
-            Size = new Vector2Int(50, 50),
-            HeightMapSettings = new List<PerlinNoiseSettings>
-            {
-                new PerlinNoiseSettings
-                {
-                    Scale = 0.1f,
-                    Strength = 1f,
-                    Offset = new Vector2(0, 0)
-                }
-            },
-            TileMapSettings = new List<TileMapSettings>
-            {
-                new TileMapSettings
-                {
-                    CellType = CellType.Water,
-                    HeightRange = new Vector2(0, .5f)
-                },
-                new TileMapSettings
-                {
-                    CellType = CellType.Grass,
-                    HeightRange = new Vector2(0.5f, 1)
-                }
-            }
-        };
-
+        TerrainGenerationSettings terrainSettings = GetSettingsSplitType(CellType.Water, CellType.Grass);
         CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
+        
         FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
+        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
 
-        Assert.That(spawnPositions.All(spawnPosition => cells[spawnPosition.x, spawnPosition.y].Type == CellType.Grass));
+        Assert.That(nodes.All(node => cells[node.State.Position.x, node.State.Position.y].Type == CellType.Grass));
     }
 
-    
+
+    [Test]
+    public void NodesWillNotOverlap()
+    {
+        TerrainGenerationSettings terrainSettings = GetSettingsAllSameType(CellType.Grass);
+        terrainSettings.Size = new Vector2Int(10, 10);
+        CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
+        
+        FarmingNodeData firstNodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
+        firstNodeData.SpawnChance = 1f;
+        firstNodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
+        firstNodeData.NodeType = FarmingNodeType.Forest;
+
+        FarmingNodeData secondNodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
+        secondNodeData.SpawnChance = 1f;
+        secondNodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
+        secondNodeData.NodeType = FarmingNodeType.Boulder;
+
+        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { firstNodeData, secondNodeData });
+        Vector2Int[] positions = nodes.Select(node => node.State.Position).ToArray();
+        
+        Assert.That(positions, Is.Unique);
+    }
+
+
+    [Test]
+    public void NodesWilLoadFromStateCorrectly()
+    {
+        FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
+        nodeData.NodeType = FarmingNodeType.Dirt;
+        Dictionary<FarmingNodeType, FarmingNodeData> dataDict = (new FarmingNodeData[] { nodeData }).ToDictionary(node => node.NodeType);
+
+        List<FarmingNodeState> states = new List<FarmingNodeState>()
+        {
+            new FarmingNodeState()
+            {
+                Position = new Vector2Int(0, 0),
+                TimeToHarvest = 7f,
+                NodeType = FarmingNodeType.Dirt
+            }
+        };
+
+        List<FarmingNodeController> nodes = terrainService.GetFarmingNodeControllersFromState(states, dataDict);
+
+        Assert.That(nodes.Count() == 1);
+        Assert.That(nodes[0].State.Equals(states[0]));
+        Assert.That(nodes[0].Data.Equals(nodeData));
+    }
+
+
     [Test]
     public void SpawnPositionCorrectOnCellSizeOne()
     {
@@ -205,5 +191,63 @@ public class TerrainServiceTests
         Assert.That(terrainService.GetWorldPositionFromCellPosition(terrainSettings, Vector2Int.right), Is.EqualTo(new Vector3(2, 0, 0)));
         Assert.That(terrainService.GetWorldPositionFromCellPosition(terrainSettings, Vector2Int.down), Is.EqualTo(new Vector3(0, 0, -2)));
         Assert.That(terrainService.GetWorldPositionFromCellPosition(terrainSettings, Vector2Int.left), Is.EqualTo(new Vector3(-2, 0, 0)));
+    }
+
+
+    private TerrainGenerationSettings GetSettingsAllSameType(CellType cellType, int seed = 0)
+    {
+        return new TerrainGenerationSettings
+        {
+            Seed = seed,
+            Size = new Vector2Int(50, 50),
+            HeightMapSettings = new List<PerlinNoiseSettings>
+            {
+                new PerlinNoiseSettings
+                {
+                    Scale = 0.1f,
+                    Strength = 1f,
+                    Offset = new Vector2(0, 0)
+                }
+            },
+            TileMapSettings = new List<TileMapSettings>
+            {
+                new TileMapSettings
+                {
+                    CellType = cellType,
+                    HeightRange = new Vector2(0, 1)
+                }
+            }
+        };
+    }
+
+    private TerrainGenerationSettings GetSettingsSplitType(CellType firstCellType, CellType secondCellType, int seed = 0)
+    {
+        return new TerrainGenerationSettings
+        {
+            Seed = seed,
+            Size = new Vector2Int(50, 50),
+            HeightMapSettings = new List<PerlinNoiseSettings>
+            {
+                new PerlinNoiseSettings
+                {
+                    Scale = 0.1f,
+                    Strength = 1f,
+                    Offset = new Vector2(0, 0)
+                }
+            },
+            TileMapSettings = new List<TileMapSettings>
+            {
+                new TileMapSettings
+                {
+                    CellType = firstCellType,
+                    HeightRange = new Vector2(0, 0.5f)
+                },
+                new TileMapSettings
+                {
+                    CellType = secondCellType,
+                    HeightRange = new Vector2(0.5f, 1)
+                }
+            }
+        };
     }
 }
