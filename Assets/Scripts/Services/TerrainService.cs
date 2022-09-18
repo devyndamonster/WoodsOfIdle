@@ -7,6 +7,13 @@ namespace WoodsOfIdle
 {
     public class TerrainService : ITerrainService
     {
+        private IFarmingNodeService farmingNodeService;
+
+        public TerrainService(IFarmingNodeService farmingNodeService)
+        {
+            this.farmingNodeService = farmingNodeService;
+        }
+        
         public CellData[,] GenerateTerrainData(TerrainGenerationSettings settings)
         {
             TerrainBuilder terrainBuilder = new TerrainBuilder(settings.Origin, settings.Size, settings.Seed);
@@ -29,48 +36,65 @@ namespace WoodsOfIdle
             return terrainBuilder.GetCells();
         }
         
-        public Texture2D GetTextureFromTerrainData(CellData[,] cells)
+        public List<FarmingNodeController> GenerateFarmingNodeControllers(TerrainGenerationSettings settings, CellData[,] cells, IEnumerable<FarmingNodeData> farmingNodeData)
         {
-            int width = cells.GetLength(0);
-            int height = cells.GetLength(1);
+            List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
 
-            Color[] colorMap = new Color[width * height];
-            for (int x = 0; x < width; x++)
+            foreach (var nodeData in farmingNodeData)
             {
-                for (int y = 0; y < height; y++)
-                {
-                    colorMap[y * width + x] = cells[x, y].Color;
-                }
+                var spawnedNodes = GenerateFarmingNodeControllers(settings, cells, nodeData, farmingNodes.Select(node => node.State.Position));
+                farmingNodes.AddRange(spawnedNodes);
             }
 
-            Texture2D texture = new Texture2D(width, height);
-            texture.SetPixels(colorMap);
-            texture.wrapMode = TextureWrapMode.Clamp;
-            texture.filterMode = FilterMode.Point;
-            texture.Apply();
-
-            return texture;
+            return farmingNodes;
         }
 
-        public List<Vector2Int> GetSpawnPositionsForFarmingNode(int seed, FarmingNodeData nodeData, CellData[,] cells)
+        private List<FarmingNodeController> GenerateFarmingNodeControllers(TerrainGenerationSettings settings, CellData[,] cells,  FarmingNodeData data, IEnumerable<Vector2Int> excludedPositions)
         {
-            List<Vector2Int> spawnPositions = new List<Vector2Int>();
-            System.Random random = new System.Random(seed);
-            
-            for(int x = 0; x < cells.GetLength(0); x++)
+            List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
+            List<Vector2Int> spawnPositions = GetSpawnPositionsForFarmingNode(settings, data, cells, excludedPositions);
+
+            foreach (Vector2Int cellPosition in spawnPositions)
             {
-                for(int y = 0; y < cells.GetLength(1); y++)
+                FarmingNodeController nodeController = new FarmingNodeController(farmingNodeService, data, cellPosition);
+                farmingNodes.Add(nodeController);
+            }
+
+            return farmingNodes;
+        }
+
+        public List<FarmingNodeController> GetFarmingNodeControllersFromState(IEnumerable<FarmingNodeState> states, IDictionary<FarmingNodeType, FarmingNodeData> data)
+        {
+            return states
+                .Select(state => new FarmingNodeController(farmingNodeService, data[state.NodeType], state))
+                .ToList();
+        }
+
+        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells)
+        {
+            return GetSpawnPositionsForFarmingNode(settings, nodeData, cells, Enumerable.Empty<Vector2Int>());
+        }
+
+        public List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells, IEnumerable<Vector2Int> excludedPositions)
+        {
+            var spawnPositions = new List<Vector2Int>();
+            var seed = GetFarmingNodeGenerationSeed(settings.Seed, nodeData);
+            System.Random random = new System.Random(seed);
+
+            for (int x = 0; x < cells.GetLength(0); x++)
+            {
+                for (int y = 0; y < cells.GetLength(1); y++)
                 {
-                    if (nodeData.AllowedCellTypes.Contains(cells[x, y].Type) && nodeData.SpawnChance > random.NextFloat())
+                    if (nodeData.AllowedCellTypes.Contains(cells[x, y].Type) && nodeData.SpawnChance > random.NextFloat() && !excludedPositions.Any(pos => pos.x == x && pos.y == y))
                     {
                         spawnPositions.Add(new Vector2Int(x, y));
                     }
                 }
             }
-            
+
             return spawnPositions;
         }
-        
+
         public Vector3 GetSpawnPositionOffset(TerrainGenerationSettings settings)
         {
             return new Vector3(settings.CellSize / 2f, 0, settings.CellSize / 2f);
@@ -79,6 +103,11 @@ namespace WoodsOfIdle
         public Vector3 GetWorldPositionFromCellPosition(TerrainGenerationSettings settings, Vector2Int cellPosition)
         {
             return new Vector3(cellPosition.x * settings.CellSize, 0, cellPosition.y * settings.CellSize);
+        }
+
+        public int GetFarmingNodeGenerationSeed(int seed, FarmingNodeData nodeData)
+        {
+            return seed + (int)nodeData.NodeType;
         }
     }
 }

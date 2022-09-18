@@ -9,7 +9,7 @@ using WoodsOfIdle;
 
 public class TerrainServiceTests
 {
-    private ITerrainService terrainService = new TerrainService();
+    private ITerrainService terrainService = new TerrainService(new FarmingNodeService());
 
     [Test]
     public void CellsWillBeCorrectDimensions()
@@ -107,7 +107,7 @@ public class TerrainServiceTests
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings.Seed, nodeData, cells);
+        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
 
         Assert.That(spawnPositions, Is.Empty);
     }
@@ -149,7 +149,7 @@ public class TerrainServiceTests
         nodeData.SpawnChance = 1f;
         nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
 
-        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings.Seed, nodeData, cells);
+        List<Vector2Int> spawnPositions = terrainService.GetSpawnPositionsForFarmingNode(terrainSettings, nodeData, cells);
 
         Assert.That(spawnPositions.All(spawnPosition => cells[spawnPosition.x, spawnPosition.y].Type == CellType.Grass));
     }

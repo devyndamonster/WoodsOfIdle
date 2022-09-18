@@ -19,7 +19,7 @@ namespace WoodsOfIdle
         protected InventoryController inventoryController;
         protected GameUIController gameUIController;
         protected GameController gameController;
-        protected TerrainTextureController terrainTextureController;
+        protected TerrainGenerationController terrainGenerationController;
         protected IAddressableLoaderService addressableLoaderService;
         protected static string nextSaveToOpen;
 
@@ -39,21 +39,22 @@ namespace WoodsOfIdle
         {
             ISaveService saveService = new SaveService();
             IInventoryService inventoryService = new InventoryService();
-            ITerrainService terrainService = new TerrainService();
+            IFarmingNodeService farmingNodeService = new FarmingNodeService();
+            ITerrainService terrainService = new TerrainService(farmingNodeService);
             
             saveController = new SaveController(saveService);
             saveController.OpenSave(nextSaveToOpen);
             OnApplicationPauseChanged += saveController.OnApplicationPause;
             OnApplicationFocusChanged += saveController.OnApplicationPause;
             OnDestroyed += saveController.OnDestroy;
-
-            terrainTextureController = new TerrainTextureController(terrainService, saveController, assetCollection);
-            terrainTextureController.GenerateTerrain(TerrainSettings, TerrainMeshRenderer);
+            
+            terrainGenerationController = new TerrainGenerationController(terrainService, saveController, assetCollection);
+            (CellData[,], List<FarmingNodeController>) generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
 
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
-            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData);
-            
-            gameController = new GameController(saveController, terrainTextureController.FarmingNodes);
+            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData, generatedTerrainData.Item2.ToDictionary(node => node.State.Position));
+
+            gameController = new GameController(saveController, generatedTerrainData.Item2);
             OnUpdated += gameController.Update;
         }
         

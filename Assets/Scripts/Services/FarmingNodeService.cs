@@ -53,6 +53,17 @@ namespace WoodsOfIdle
         {
             return Mathf.Clamp01((float)((currentTime - state.TimeLastHarvested).TotalSeconds / state.TimeToHarvest));
         }
+
+        public FarmingNodeState GetDefaultFarmingNodeState(FarmingNodeData data)
+        {
+            return new FarmingNodeState
+            {
+                IsActive = false,
+                TimeLastHarvested = DateTime.Now,
+                TimeToHarvest = data.DefaultTimeToHarvest,
+                NodeType = data.NodeType
+            };
+        }
     }
 }
 

@@ -97,12 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dc563199f1fc64aaf66a64d31a7907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Data: {fileID: 11400000, guid: 74a624550d1df84448828dd13e96bdd6, type: 2}
-  State:
-    Position: {x: 0, y: 0}
-    NodeType: 2
-    IsActive: 0
-    TimeToHarvest: 1
+  NodeType: 2
+  Position: {x: 0, y: 0}
 --- !u!65 &6177837568123607470
 BoxCollider:
   m_ObjectHideFlags: 0

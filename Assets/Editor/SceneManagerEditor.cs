@@ -27,13 +27,14 @@ namespace WoodsOfIdle
         private void OnGenerateButtonClicked()
         {
             SceneManagerComponent sceneManager = (SceneManagerComponent)target;
-            
-            ITerrainService terrainService = new TerrainService();
+
+            IFarmingNodeService farmingNodeService = new FarmingNodeService();
+            ITerrainService terrainService = new TerrainService(farmingNodeService);
             ISaveService saveService = new SaveService();
             SaveController saveController = new SaveController(saveService);
-            TerrainTextureController terrainController = new TerrainTextureController(terrainService, saveController, sceneManager.AssetCollection);
+            TerrainGenerationController terrainController = new TerrainGenerationController(terrainService, saveController, sceneManager.AssetCollection);
             
-            terrainController.GenerateTerrain(sceneManager.TerrainSettings, sceneManager.TerrainMeshRenderer);
+            terrainController.GenerateTerrain(sceneManager.TerrainSettings);
         }
     }
 }

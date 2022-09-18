@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -15,12 +16,17 @@ namespace WoodsOfIdle
         {
             yield return LoadAssets<ItemData>(assetCollection.ItemDataReferences, (loadedItemData) =>
             {
-                assetCollection.LoadedItemData = new List<ItemData>(loadedItemData);
+                assetCollection.LoadedItemData = loadedItemData.ToDictionary(itemData => itemData.ItemType);
             });
 
             yield return LoadAssets<GameObject>(assetCollection.FarmingNodePrefabReferences, (loadedFarmingNodePrefabs) =>
             {
-                assetCollection.LoadedFarmingNodePrefabs = new List<GameObject>(loadedFarmingNodePrefabs);
+                assetCollection.LoadedFarmingNodePrefabs = loadedFarmingNodePrefabs.ToDictionary(farmingNodePrefab => farmingNodePrefab.GetComponent<FarmingNodeComponent>().NodeType);
+            });
+
+            yield return LoadAssets<FarmingNodeData>(assetCollection.FarmingNodeDataReferences, (loadedFarmingNodeData) =>
+            {
+                assetCollection.LoadedFarmingNodeData = loadedFarmingNodeData.ToDictionary(farmingNodeData => farmingNodeData.NodeType);
             });
 
             onLoaded(assetCollection);

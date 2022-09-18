@@ -14,12 +14,12 @@ namespace WoodsOfIdle
         protected Dictionary<string, DragAndDropSlot> dragAndDropSlots;
         protected Dictionary<ItemType, ItemData> itemData;
         
-        public InventoryController(SaveController saveController, IInventoryService inventoryService, IEnumerable<ItemData> itemData, UIDocument inventoryPanel)
+        public InventoryController(SaveController saveController, IInventoryService inventoryService, Dictionary<ItemType, ItemData> itemData, UIDocument inventoryPanel)
         {
             this.saveController = saveController;
             this.inventoryService = inventoryService;
             this.inventoryPanel = inventoryPanel;
-            this.itemData = itemData.ToDictionary(item => item.ItemType);
+            this.itemData = itemData;
 
             SetupEvents();
             PopulateDragAndDropSlots();
@@ -28,7 +28,7 @@ namespace WoodsOfIdle
 
         private void SetupEvents()
         {
-            FarmingNodeComponent.NodeHarvested += ChangeStoredItemsQuantity;
+            FarmingNodeController.Harvested += ChangeStoredItemsQuantity;
             DragAndDropElement.InventorySlotDragged += SwapInventorySlots;
         }
 

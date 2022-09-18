@@ -10,12 +10,14 @@ namespace WoodsOfIdle
     {
         protected UIDocument gameUIPanel;
         protected Dictionary<ItemType, ItemData> itemData;
+        protected Dictionary<Vector2Int, FarmingNodeController> farmingNodes;
 
-        public GameUIController(UIDocument gameUIPanel, IEnumerable<ItemData> itemData)
+        public GameUIController(UIDocument gameUIPanel, Dictionary<ItemType, ItemData> itemData, Dictionary<Vector2Int, FarmingNodeController> farmingNodes)
         {
             this.gameUIPanel = gameUIPanel;
-            this.itemData = itemData.ToDictionary(item => item.ItemType);
-            
+            this.itemData = itemData;
+            this.farmingNodes = farmingNodes;
+
             SetupEvents();
         }
         
@@ -25,9 +27,9 @@ namespace WoodsOfIdle
             WorldClickListenerComponent.WorldClicked += OnNothingClicked;
         }
         
-        private void OnNodeClicked(FarmingNodeComponent farmingNode)
+        private void OnNodeClicked(Vector2Int nodePosition)
         {
-            HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNode);
+            HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNodes[nodePosition]);
             SetTopPopoutMenuContent(harvestOption);
         }
 
@@ -36,7 +38,7 @@ namespace WoodsOfIdle
             ClearTopPopoutMenuContent();
         }
 
-        private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeComponent farmingNode)
+        private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeController farmingNode)
         {
             HarvestOptionElement harvestOption = new HarvestOptionElement();
 

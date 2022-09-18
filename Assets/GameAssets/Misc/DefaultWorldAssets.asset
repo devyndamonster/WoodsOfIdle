@@ -25,6 +25,19 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  FarmingNodeDataReferences:
+  - m_AssetGUID: 74a624550d1df84448828dd13e96bdd6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 7ab50814b545fc848ad6fb72d5844741
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 6ce8ec4e51ec1b546998f13a2f310c16
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   FarmingNodePrefabReferences:
   - m_AssetGUID: bddd87e5fece4c7409b9b7f7c8fa8426
     m_SubObjectName: 
@@ -38,5 +51,3 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  LoadedItemData: []
-  LoadedFarmingNodePrefabs: []

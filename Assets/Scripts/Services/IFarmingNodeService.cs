@@ -16,6 +16,8 @@ namespace WoodsOfIdle
         public ItemType GetItemHarvested(FarmingNodeData data);
 
         public float CalculateHarvestProgress(FarmingNodeState state, DateTime currentTime);
+
+        public FarmingNodeState GetDefaultFarmingNodeState(FarmingNodeData data);
     }
 }
 

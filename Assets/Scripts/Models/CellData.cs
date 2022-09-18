@@ -9,7 +9,6 @@ namespace WoodsOfIdle
         public Color Color;
         public CellType Type;
         public float Height;
-        public string FarmingNodeId;
     }
 }
 

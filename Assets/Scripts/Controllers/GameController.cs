@@ -9,9 +9,9 @@ namespace WoodsOfIdle
     public class GameController
     {
         protected SaveController saveController;
-        protected List<FarmingNodeComponent> farmingNodes = new List<FarmingNodeComponent>();
+        protected List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
 
-        public GameController(SaveController saveController, IEnumerable<FarmingNodeComponent> farmingNodes)
+        public GameController(SaveController saveController, IEnumerable<FarmingNodeController> farmingNodes)
         {
             this.saveController = saveController;
             this.farmingNodes = farmingNodes.ToList();
@@ -24,7 +24,7 @@ namespace WoodsOfIdle
 
         private void UpdateFarmingNodes()
         {
-            foreach(FarmingNodeComponent farmingNode in farmingNodes)
+            foreach(FarmingNodeController farmingNode in farmingNodes)
             {
                 farmingNode.UpdateState();
             }

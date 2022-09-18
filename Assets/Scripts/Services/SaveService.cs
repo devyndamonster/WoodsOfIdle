@@ -5,15 +5,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using Newtonsoft.Json.UnityConverters.Math;
 
 namespace WoodsOfIdle
 {
     public class SaveService : ISaveService
     {
-        private JsonConverter[] converters = 
-        { 
+        private JsonConverter[] converters =
+        {
             new Vector2IntConverter(),
-            new DictionaryToListConverter()
+            new DictionaryToListConverter(),
+            new ColorConverter()
         };
 
         public SaveState LoadOrCreate(string saveName)
