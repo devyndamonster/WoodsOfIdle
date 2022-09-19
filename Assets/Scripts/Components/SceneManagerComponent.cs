@@ -21,6 +21,10 @@ namespace WoodsOfIdle
         protected GameController gameController;
         protected TerrainGenerationController terrainGenerationController;
         protected IAddressableLoaderService addressableLoaderService;
+        protected ISaveService saveService;
+        protected IInventoryService inventoryService;
+        protected IFarmingNodeService farmingNodeService;
+        protected ITerrainService terrainService;
         protected static string nextSaveToOpen;
 
         protected event Action OnUpdated;
@@ -30,33 +34,44 @@ namespace WoodsOfIdle
 
         private void Start()
         {
-            addressableLoaderService = new AddressableLoaderService();
+            InitServices();
             IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection, (loadedAssetCollection) => InitScene(loadedAssetCollection));
             StartCoroutine(routine);
         }
 
+        private void InitServices()
+        {
+            addressableLoaderService = new AddressableLoaderService();
+            saveService = new SaveService();
+            inventoryService = new InventoryService();
+            farmingNodeService = new FarmingNodeService();
+            terrainService = new TerrainService(farmingNodeService);
+        }
+
         private void InitScene(AssetReferenceCollection assetCollection)
         {
-            ISaveService saveService = new SaveService();
-            IInventoryService inventoryService = new InventoryService();
-            IFarmingNodeService farmingNodeService = new FarmingNodeService();
-            ITerrainService terrainService = new TerrainService(farmingNodeService);
             IEnumerable<ITerrainReceiver> terrainReceivers = FindObjectsOfType<MonoBehaviour>().OfType<ITerrainReceiver>();
 
             saveController = new SaveController(saveService);
             saveController.OpenSave(nextSaveToOpen);
-            OnApplicationPauseChanged += saveController.OnApplicationPause;
-            OnApplicationFocusChanged += saveController.OnApplicationPause;
-            OnDestroyed += saveController.OnDestroy;
             
             terrainGenerationController = new TerrainGenerationController(terrainService, saveController, assetCollection);
-            TerrainGenerationController.TerrainResult generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
+            var generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
             
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
             gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData, generatedTerrainData.FarmingNodes);
-
             gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
+
+            InitEvents();
+        }
+
+        private void InitEvents()
+        {
+            OnApplicationPauseChanged += saveController.OnApplicationPause;
+            OnApplicationFocusChanged += saveController.OnApplicationPause;
+            OnDestroyed += saveController.OnDestroy;
+
             OnUpdated += gameController.Update;
         }
 
