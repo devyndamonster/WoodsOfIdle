@@ -28,7 +28,7 @@ namespace WoodsOfIdle
         protected event Action<bool> OnApplicationPauseChanged;
         protected event Action<bool> OnApplicationFocusChanged;
 
-        private void Awake()
+        private void Start()
         {
             addressableLoaderService = new AddressableLoaderService();
             IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection, (loadedAssetCollection) => InitScene(loadedAssetCollection));
@@ -41,7 +41,8 @@ namespace WoodsOfIdle
             IInventoryService inventoryService = new InventoryService();
             IFarmingNodeService farmingNodeService = new FarmingNodeService();
             ITerrainService terrainService = new TerrainService(farmingNodeService);
-            
+            IEnumerable<ITerrainReceiver> terrainReceivers = FindObjectsOfType<MonoBehaviour>().OfType<ITerrainReceiver>();
+
             saveController = new SaveController(saveService);
             saveController.OpenSave(nextSaveToOpen);
             OnApplicationPauseChanged += saveController.OnApplicationPause;
@@ -49,13 +50,22 @@ namespace WoodsOfIdle
             OnDestroyed += saveController.OnDestroy;
             
             terrainGenerationController = new TerrainGenerationController(terrainService, saveController, assetCollection);
-            (CellData[,], List<FarmingNodeController>) generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
-
+            TerrainGenerationController.TerrainResult generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
+            ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
+            
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
-            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData, generatedTerrainData.Item2.ToDictionary(node => node.State.Position));
+            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData, generatedTerrainData.FarmingNodes);
 
-            gameController = new GameController(saveController, generatedTerrainData.Item2);
+            gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
             OnUpdated += gameController.Update;
+        }
+
+        private void ApplyGeneratedTerrain(IEnumerable<ITerrainReceiver> receivers, CellData[,] cells, Dictionary<Vector2Int, GameObject> farmingNodePrefabs)
+        {
+            foreach (ITerrainReceiver terrainReceiver in receivers)
+            {
+                terrainReceiver.ApplyTerrain(cells, farmingNodePrefabs, TerrainSettings);
+            }
         }
         
         public static void SetNextSaveToOpen(string saveName)

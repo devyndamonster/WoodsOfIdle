@@ -12,11 +12,11 @@ namespace WoodsOfIdle
         protected Dictionary<ItemType, ItemData> itemData;
         protected Dictionary<Vector2Int, FarmingNodeController> farmingNodes;
 
-        public GameUIController(UIDocument gameUIPanel, Dictionary<ItemType, ItemData> itemData, Dictionary<Vector2Int, FarmingNodeController> farmingNodes)
+        public GameUIController(UIDocument gameUIPanel, Dictionary<ItemType, ItemData> itemData, IEnumerable<FarmingNodeController> farmingNodes)
         {
             this.gameUIPanel = gameUIPanel;
             this.itemData = itemData;
-            this.farmingNodes = farmingNodes;
+            this.farmingNodes = farmingNodes.ToDictionary(node => node.State.Position);
 
             SetupEvents();
         }

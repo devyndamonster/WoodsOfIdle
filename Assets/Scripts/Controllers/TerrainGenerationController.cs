@@ -8,14 +8,17 @@ namespace WoodsOfIdle
 {
     public class TerrainGenerationController
     {
-        //Starting to think static events are bad, lets just return the data and let the caller decide what to do with it
-        public static event Action<CellData[,], TerrainGenerationSettings> CellDataLoaded;
-        public static event Action<Dictionary<Vector2Int, GameObject>, TerrainGenerationSettings> FarmingNodePrefabsLoaded;
-        
         private ITerrainService terrainService;
         private SaveController saveController;
         private AssetReferenceCollection assetReferences;
         
+        public class TerrainResult
+        {
+            public CellData[,] CellData;
+            public List<FarmingNodeController> FarmingNodes;
+            public Dictionary<Vector2Int, GameObject> FarmingNodePrefabs;
+        }
+
         public TerrainGenerationController(ITerrainService terrainService, SaveController saveController, AssetReferenceCollection assetReferences)
         {
             this.terrainService = terrainService;
@@ -23,19 +26,13 @@ namespace WoodsOfIdle
             this.assetReferences = assetReferences;
         }
         
-        public (CellData[,], List<FarmingNodeController>) GenerateTerrain(TerrainGenerationSettings settings)
+        public TerrainResult GenerateTerrain(TerrainGenerationSettings settings)
         {
             CellData[,] cells = GetGeneratedCellData(settings);
             List<FarmingNodeController> farmingNodeControllers = GetGeneratedFarmingNodeControllers(cells, settings);
             Dictionary<Vector2Int, GameObject> farmingNodePrefabs = GetGeneratedFarmingNodePrefabs(farmingNodeControllers);
 
-            saveController.CurrentSaveState.Cells = cells;
-            saveController.CurrentSaveState.FarmingNodes = farmingNodeControllers.ToDictionary(node => node.State.Position, node => node.State);
-
-            CellDataLoaded?.Invoke(cells, settings);
-            FarmingNodePrefabsLoaded?.Invoke(farmingNodePrefabs, settings);
-            
-            return (cells, farmingNodeControllers);
+            return new TerrainResult { CellData = cells, FarmingNodes = farmingNodeControllers, FarmingNodePrefabs = farmingNodePrefabs };
         }
 
         private CellData[,] GetGeneratedCellData(TerrainGenerationSettings settings)

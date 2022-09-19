@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class TextureTerrainGenerationComponent : MonoBehaviour
+    public class TextureTerrainGenerationComponent : MonoBehaviour, ITerrainReceiver
     {
         public MeshRenderer terrainMesh;
 
         private ITerrainService terrainService = new TerrainService(new FarmingNodeService());
 
-        private void Awake()
+        public void ApplyTerrain(CellData[,] cellData, Dictionary<Vector2Int, GameObject> farmingNodePrefabs, TerrainGenerationSettings settings)
         {
-            TerrainGenerationController.FarmingNodePrefabsLoaded += SpawnFarmingNodes;
-            TerrainGenerationController.CellDataLoaded += GenerateTerrain;
+            GenerateTerrain(cellData, settings);
+            SpawnFarmingNodes(farmingNodePrefabs, settings);
         }
         
         private void GenerateTerrain(CellData[,] cells, TerrainGenerationSettings settings)
