@@ -9,45 +9,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 086a9ca294df1074894c8d6ddd3b4516, type: 3}
+  m_Script: {fileID: 11500000, guid: b62b533affe878b4289e74e792244265, type: 3}
   m_Name: DefaultWorldAssets
   m_EditorClassIdentifier: 
-  ItemDataReferences:
-  - m_AssetGUID: 6b851734ba57aae45ae7941c8511a7cf
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: b507365036ed0234c900414489007c04
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 3cf70420d6dd2c849b0abd6f876d825a
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  FarmingNodeDataReferences:
-  - m_AssetGUID: 74a624550d1df84448828dd13e96bdd6
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 7ab50814b545fc848ad6fb72d5844741
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 6ce8ec4e51ec1b546998f13a2f310c16
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  FarmingNodePrefabReferences:
-  - m_AssetGUID: bddd87e5fece4c7409b9b7f7c8fa8426
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 03067260adc041849a92dc233829c64d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 540c990ef65b4b54a8142f6f60e41f87
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  Value:
+    ItemDataReferences:
+    - m_AssetGUID: 3d6709f57d9c0824489cbfdd80c107a8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 97d0d7aea24008547bf1cd6a55848211
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ac8ea4a1e6b5ee2409479da31ed70073
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    FarmingNodeDataReferences:
+    - m_AssetGUID: 07a789680538dae45bdf7a31886d92e3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 74a624550d1df84448828dd13e96bdd6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b76724b51029be04991dcea8938b73a7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    FarmingNodePrefabReferences:
+    - m_AssetGUID: bddd87e5fece4c7409b9b7f7c8fa8426
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 03067260adc041849a92dc233829c64d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 540c990ef65b4b54a8142f6f60e41f87
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

@@ -29,28 +29,28 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/ResourceNodes/StoneNode.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 07a789680538dae45bdf7a31886d92e3
+    m_Address: Assets/GameAssets/FarmingNodes/Data/BoulderNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 74a624550d1df84448828dd13e96bdd6
-    m_Address: Assets/Data/FarmingNodes/DirtNode.asset
+    m_Address: Assets/GameAssets/FarmingNodes/Data/DirtNode.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7ab50814b545fc848ad6fb72d5844741
-    m_Address: Assets/Data/FarmingNodes/ForestNode.asset
+  - m_GUID: b76724b51029be04991dcea8938b73a7
+    m_Address: Assets/GameAssets/FarmingNodes/Data/ForestNode.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6ce8ec4e51ec1b546998f13a2f310c16
-    m_Address: Assets/Data/FarmingNodes/RockNode.asset
+  - m_GUID: 3d6709f57d9c0824489cbfdd80c107a8
+    m_Address: Assets/GameAssets/Items/Data/WoodData.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6b851734ba57aae45ae7941c8511a7cf
-    m_Address: Assets/Data/Items/Data/DirtData.asset
+  - m_GUID: 97d0d7aea24008547bf1cd6a55848211
+    m_Address: Assets/GameAssets/Items/Data/StoneData.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b507365036ed0234c900414489007c04
-    m_Address: Assets/Data/Items/Data/StoneData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3cf70420d6dd2c849b0abd6f876d825a
-    m_Address: Assets/Data/Items/Data/WoodData.asset
+  - m_GUID: ac8ea4a1e6b5ee2409479da31ed70073
+    m_Address: Assets/GameAssets/Items/Data/DirtData.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

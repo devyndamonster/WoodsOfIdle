@@ -14,9 +14,9 @@ namespace WoodsOfIdle
 
         public IEnumerator LoadAssets(AssetReferenceCollection assetCollection, Action<AssetReferenceCollection> onLoaded)
         {
-            yield return LoadAssets<ItemData>(assetCollection.ItemDataReferences, (loadedItemData) =>
+            yield return LoadAssets<ItemDataScriptable>(assetCollection.ItemDataReferences, (loadedItemData) =>
             {
-                assetCollection.LoadedItemData = loadedItemData.ToDictionary(itemData => itemData.ItemType);
+                assetCollection.LoadedItemData = loadedItemData.ToDictionary(itemData => itemData.Value.ItemType, ItemData => ItemData.Value);
             });
 
             yield return LoadAssets<GameObject>(assetCollection.FarmingNodePrefabReferences, (loadedFarmingNodePrefabs) =>
@@ -24,9 +24,9 @@ namespace WoodsOfIdle
                 assetCollection.LoadedFarmingNodePrefabs = loadedFarmingNodePrefabs.ToDictionary(farmingNodePrefab => farmingNodePrefab.GetComponent<FarmingNodeComponent>().NodeType);
             });
 
-            yield return LoadAssets<FarmingNodeData>(assetCollection.FarmingNodeDataReferences, (loadedFarmingNodeData) =>
+            yield return LoadAssets<FarmingNodeDataScriptable>(assetCollection.FarmingNodeDataReferences, (loadedFarmingNodeData) =>
             {
-                assetCollection.LoadedFarmingNodeData = loadedFarmingNodeData.ToDictionary(farmingNodeData => farmingNodeData.NodeType);
+                assetCollection.LoadedFarmingNodeData = loadedFarmingNodeData.ToDictionary(farmingNodeData => farmingNodeData.Value.NodeType, farmingNodeData => farmingNodeData.Value);
             });
 
             onLoaded(assetCollection);

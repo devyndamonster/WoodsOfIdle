@@ -11,8 +11,7 @@ namespace WoodsOfIdle
     public class SceneManagerComponent : MonoBehaviour
     {
         public UIDocument InventoryPanel;
-        public MeshRenderer TerrainMeshRenderer;
-        public AssetReferenceCollection AssetCollection;
+        public AssetReferenceCollectionScriptable AssetCollection;
         public TerrainGenerationSettings TerrainSettings = new TerrainGenerationSettings();
 
         protected SaveController saveController;
@@ -35,7 +34,7 @@ namespace WoodsOfIdle
         private void Start()
         {
             InitServices();
-            IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection, (loadedAssetCollection) => InitScene(loadedAssetCollection));
+            IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection.Value, (loadedAssetCollection) => InitScene(loadedAssetCollection));
             StartCoroutine(routine);
         }
 

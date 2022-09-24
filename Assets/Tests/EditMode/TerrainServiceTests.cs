@@ -66,9 +66,11 @@ public class TerrainServiceTests
         TerrainGenerationSettings terrainSettings = GetSettingsAllSameType(CellType.Water);
         CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
 
-        FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
-        nodeData.SpawnChance = 1f;
-        nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
+        FarmingNodeData nodeData = new FarmingNodeData
+        {
+            SpawnChance = 1f,
+            AllowedCellTypes = new List<CellType>() { CellType.Grass }
+        };
 
         List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
 
@@ -81,10 +83,12 @@ public class TerrainServiceTests
     {
         TerrainGenerationSettings terrainSettings = GetSettingsSplitType(CellType.Water, CellType.Grass);
         CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
-        
-        FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
-        nodeData.SpawnChance = 1f;
-        nodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
+
+        FarmingNodeData nodeData = new FarmingNodeData
+        {
+            SpawnChance = 1f,
+            AllowedCellTypes = new List<CellType>() { CellType.Grass }
+        };
 
         List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
 
@@ -99,15 +103,19 @@ public class TerrainServiceTests
         terrainSettings.Size = new Vector2Int(10, 10);
         CellData[,] cells = terrainService.GenerateTerrainData(terrainSettings);
         
-        FarmingNodeData firstNodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
-        firstNodeData.SpawnChance = 1f;
-        firstNodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
-        firstNodeData.NodeType = FarmingNodeType.Forest;
+        FarmingNodeData firstNodeData = new FarmingNodeData
+        {
+            SpawnChance = 1f,
+            AllowedCellTypes = new List<CellType>() { CellType.Grass },
+            NodeType = FarmingNodeType.Forest
+        };
 
-        FarmingNodeData secondNodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
-        secondNodeData.SpawnChance = 1f;
-        secondNodeData.AllowedCellTypes = new List<CellType>() { CellType.Grass };
-        secondNodeData.NodeType = FarmingNodeType.Boulder;
+        FarmingNodeData secondNodeData = new FarmingNodeData
+        {
+            SpawnChance = 1f,
+            AllowedCellTypes = new List<CellType>() { CellType.Grass },
+            NodeType = FarmingNodeType.Boulder
+        };
 
         List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { firstNodeData, secondNodeData });
         Vector2Int[] positions = nodes.Select(node => node.State.Position).ToArray();
@@ -119,8 +127,7 @@ public class TerrainServiceTests
     [Test]
     public void NodesWilLoadFromStateCorrectly()
     {
-        FarmingNodeData nodeData = ScriptableObject.CreateInstance<FarmingNodeData>();
-        nodeData.NodeType = FarmingNodeType.Dirt;
+        FarmingNodeData nodeData = new FarmingNodeData { NodeType = FarmingNodeType.Dirt };
         Dictionary<FarmingNodeType, FarmingNodeData> dataDict = (new FarmingNodeData[] { nodeData }).ToDictionary(node => node.NodeType);
 
         List<FarmingNodeState> states = new List<FarmingNodeState>()

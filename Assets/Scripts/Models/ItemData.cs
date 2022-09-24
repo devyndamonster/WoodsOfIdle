@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    [CreateAssetMenu(fileName = "ItemData", menuName = "Data/ItemData")]
-    public class ItemData : ScriptableObject
+    [System.Serializable]
+    public class ItemData
     {
         public ItemType ItemType;
         public Sprite ItemIcon;

@@ -5,8 +5,8 @@ using UnityEngine.AddressableAssets;
 
 namespace WoodsOfIdle
 {
-    [CreateAssetMenu(fileName = "AssetReferenceCollection", menuName = "Data/AssetReferenceCollection")]
-    public class AssetReferenceCollection : ScriptableObject
+    [System.Serializable]
+    public class AssetReferenceCollection
     {
         public List<AssetReference> ItemDataReferences;
         public List<AssetReference> FarmingNodeDataReferences;

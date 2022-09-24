@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryPanel: {fileID: 1142518525}
-  TerrainMeshRenderer: {fileID: 753034074}
   AssetCollection: {fileID: 11400000, guid: 5c35bd985818c114e8418bc08ffc7fec, type: 2}
   TerrainSettings:
     Origin: {x: 0, y: 0}

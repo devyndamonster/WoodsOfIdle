@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 8
-    y: 51
-    width: 3124
-    height: 1333
+    x: 0
+    y: 43
+    width: 3440
+    height: 1349
   m_ShowMode: 4
-  m_Title: Test Runner
+  m_Title: Console
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 0
+  m_Maximized: 1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -44,8 +44,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3124
-    height: 1333
+    width: 3440
+    height: 1349
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
@@ -69,7 +69,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3124
+    width: 3440
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 1313
-    width: 3124
+    y: 1329
+    width: 3440
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -113,12 +113,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 3124
-    height: 1283
+    width: 3440
+    height: 1299
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 79
+  controlID: 70
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,12 +139,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 3124
-    height: 1283
+    width: 3440
+    height: 1299
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 80
+  controlID: 71
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 703
-    height: 1283
+    width: 774
+    height: 1299
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 21
+  controlID: 82
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,12 +189,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 703
-    height: 852
+    width: 774
+    height: 863
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 22
+  controlID: 112
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,10 +212,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 334
-    height: 852
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 368
+    height: 863
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -236,12 +236,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 334
+    x: 368
     y: 0
-    width: 369
-    height: 852
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 406
+    height: 863
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -257,24 +257,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TestRunnerWindow
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 852
-    width: 703
-    height: 431
+    y: 863
+    width: 774
+    height: 436
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 19}
+  m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
-  m_Selected: 2
-  m_LastSelected: 0
+  m_Selected: 1
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -290,12 +290,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 703
+    x: 774
     y: 0
-    width: 1761
-    height: 1283
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 1939
+    height: 1299
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -318,12 +318,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 2464
+    x: 2713
     y: 0
-    width: 660
-    height: 1283
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 727
+    height: 1299
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -350,10 +350,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2472
-    y: 81
-    width: 659
-    height: 1262
+    x: 2713
+    y: 73
+    width: 726
+    height: 1278
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -402,23 +402,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 659
-      height: 1241
-    m_Scale: {x: 0.51708335, y: 0.51708335}
-    m_Translation: {x: 329.5, y: 620.5}
+      width: 726
+      height: 1257
+    m_Scale: {x: 0.52375, y: 0.52375}
+    m_Translation: {x: 363, y: 628.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -637.228
+      x: -693.07874
       y: -1200
-      width: 1274.456
+      width: 1386.1575
       height: 2400
     m_MinimalGUI: 1
-  m_defaultScale: 0.51708335
-  m_LastWindowPixelSize: {x: 659, y: 1262}
+  m_defaultScale: 0.52375
+  m_LastWindowPixelSize: {x: 726, y: 1278}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
@@ -445,10 +445,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 81
-    width: 333
-    height: 831
+    x: 0
+    y: 73
+    width: 367
+    height: 842
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -456,9 +456,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 60750000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 588effff06a3ffff44a4ffff88a8ffff82aefffff2b9ffff10dbffffccdcffff0cdeffff2afbffff
+      m_ExpandedIDs: c065ffff8266ffff226affffe66dffffa86effff4872ffffcc78ffff8e79ffff2e7dffffd07effffb883fffff284ffffb485ffff5689ffff2afbffff6470000086700000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -503,10 +503,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 342
-    y: 81
-    width: 367
-    height: 831
+    x: 368
+    y: 73
+    width: 404
+    height: 842
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -545,10 +545,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 933
-    width: 702
-    height: 410
+    x: 0
+    y: 936
+    width: 773
+    height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -578,10 +578,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 250}
-    m_SelectedIDs: 56750000
-    m_LastClickedID: 30038
-    m_ExpandedIDs: 0000000040710000427100004471000046710000487100004a7100004c7100004e710000507100005271000054710000567100001272000000ca9a3b
+    scrollPos: {x: 0, y: 261}
+    m_SelectedIDs: 20720000
+    m_LastClickedID: 29216
+    m_ExpandedIDs: 00000000427100004471000046710000487100004a7100004c7100004e7100005071000052710000547100005671000058710000027200001872000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,7 +609,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000040710000427100004471000046710000487100004a7100004c7100004e71000050710000527100005471000056710000
+    m_ExpandedIDs: 00000000427100004471000046710000487100004a7100004c7100004e7100005071000052710000547100005671000058710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -634,9 +634,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 60750000
-    m_LastClickedInstanceID: 30048
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -686,10 +686,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 933
-    width: 702
-    height: 410
+    x: 0
+    y: 936
+    width: 773
+    height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -714,21 +714,21 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 933
-    width: 702
-    height: 410
+    x: 0
+    y: 936
+    width: 773
+    height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 715
+    ID: 1465
     splitterInitialOffset: 197
     currentActiveSplitter: -1
     realSizes:
-    - 130
-    - 210
+    - 132
+    - 213
     relativeSizes:
     - 0.38235295
     - 0.61764705
@@ -738,7 +738,7 @@ MonoBehaviour:
     maxSizes:
     - 0
     - 0
-    lastTotalSize: 340
+    lastTotalSize: 345
     splitSize: 6
     xOffset: 0
     m_Version: 1
@@ -746,7 +746,7 @@ MonoBehaviour:
     oldMinSizes: 
     oldMaxSizes: 
     oldSplitSize: 0
-  m_TestTypeToolbarIndex: 1
+  m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
     m_Window: {fileID: 19}
     m_NewResultList:
@@ -755,7 +755,7 @@ MonoBehaviour:
       name: WoodsOfIdle
       fullName: WoodsOfIdle
       resultStatus: 2
-      duration: 0.2498265
+      duration: 0.1536688
       messages: One or more child tests had errors
       output: 
       stacktrace: 
@@ -766,33 +766,113 @@ MonoBehaviour:
       categories: []
       parentId: 
       parentUniqueId: 
-    m_ResultText: 'FarmingNodeLinksSaveState (0.140s)
+    - id: 1043
+      uniqueId: '[PlayModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll][suite]'
+      name: PlayModeTests.dll
+      fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll
+      resultStatus: 2
+      duration: 0.0592349
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1039
+      parentUniqueId: '[WoodsOfIdle][suite]'
+    - id: 1040
+      uniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
+      name: TerrainInitializationTests
+      fullName: TerrainInitializationTests
+      resultStatus: 2
+      duration: 0.0495898
+      messages: One or more child tests had errors
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1043
+      parentUniqueId: '[PlayModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll][suite]'
+    - id: 1042
+      uniqueId: PlayModeTests.dll/TerrainInitializationTests/[PlayModeTests][TerrainInitializationTests.TerrainWillBeGenerated]
+      name: TerrainWillBeGenerated
+      fullName: TerrainInitializationTests.TerrainWillBeGenerated
+      resultStatus: 2
+      duration: 0.0229774
+      messages: "  Expected: True\r\n  But was:  False\r\n"
+      output: 'Init!
 
-      ---
+        Test 2
 
-      Unhandled
-      log message: ''[Exception] NullReferenceException: Object reference not set
-      to an instance of an object''. Use UnityEngine.TestTools.LogAssert.Expect
+'
+      stacktrace: 'at TerrainInitializationTests+<TerrainWillBeGenerated>d__2.MoveNext
+        () [0x00038] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\PlayMode\TerrainInitializationTests.cs:34
 
-      ---
+        at
+        UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a]
+        in E:\Unity\Projects\WoodsOfIdle\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
 
-      WoodsOfIdle.GameController.Update
-      () (at Assets/Scripts/Controllers/GameController.cs:60)
+'
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1040
+      parentUniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
+    - id: 1041
+      uniqueId: PlayModeTests.dll/TerrainInitializationTests/[PlayModeTests][TerrainInitializationTests.TerrainWillBeLoadedFromSave]
+      name: TerrainWillBeLoadedFromSave
+      fullName: TerrainInitializationTests.TerrainWillBeLoadedFromSave
+      resultStatus: 2
+      duration: 0.0142224
+      messages: "  Expected: True\r\n  But was:  False\r\n"
+      output: 'Init!
 
-      ---
+        Test 1
 
-      NullReferenceException:
-      Object reference not set to an instance of an object'
-    m_ResultStacktrace: 'WoodsOfIdle.GameController.Update () (at Assets/Scripts/Controllers/GameController.cs:60)
+'
+      stacktrace: 'at TerrainInitializationTests+<TerrainWillBeLoadedFromSave>d__1.MoveNext
+        () [0x00038] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\PlayMode\TerrainInitializationTests.cs:24
 
+        at
+        UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a]
+        in E:\Unity\Projects\WoodsOfIdle\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
 
+'
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1040
+      parentUniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
+    m_ResultText: "TerrainWillBeGenerated (0.023s)\n---\nExpected: True\r\n  But
+      was:  False\n---\nat TerrainInitializationTests+<TerrainWillBeGenerated>d__2.MoveNext
+      () [0x00038] in E:\\Unity\\Projects\\WoodsOfIdle\\Assets\\Tests\\PlayMode\\TerrainInitializationTests.cs:34\r\nat
+      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in
+      E:\\Unity\\Projects\\WoodsOfIdle\\Library\\PackageCache\\com.unity.test-framework@1.1.31\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:46\n---\nInit!\r\nTest
+      2"
+    m_ResultStacktrace: 'at TerrainInitializationTests+<TerrainWillBeGenerated>d__2.MoveNext
+      () [0x00038] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\PlayMode\TerrainInitializationTests.cs:34
+
+      at
+      UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in
+      E:\Unity\Projects\WoodsOfIdle\Library\PackageCache\com.unity.test-framework@1.1.31\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:46
 
 '
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 19213d59
-      m_LastClickedID: 1497178393
-      m_ExpandedIDs: 9de349f3bdb958f4a3cf7f41d98f01479d215857b9a1b867ffffff7f
+      m_SelectedIDs: 3176f358
+      m_LastClickedID: 1492350513
+      m_ExpandedIDs: 7f681fe69de349f3bdb958f4a3cf7f41d98f01479d215857b9a1b867ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -826,9 +906,9 @@ MonoBehaviour:
       uniqueId: '[WoodsOfIdle][suite]'
       name: WoodsOfIdle
       fullName: WoodsOfIdle
-      resultStatus: 2
-      duration: 0.2495417
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.248091
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -842,9 +922,9 @@ MonoBehaviour:
       uniqueId: '[EditModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll][suite]'
       name: EditModeTests.dll
       fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll
-      resultStatus: 2
-      duration: 0.190347
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.1872844
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -859,7 +939,7 @@ MonoBehaviour:
       name: FarmingNodeServiceTests
       fullName: FarmingNodeServiceTests
       resultStatus: 1
-      duration: 0.0250692
+      duration: 0.0205802
       messages: 
       output: 
       stacktrace: 
@@ -875,7 +955,7 @@ MonoBehaviour:
       name: WillFarmTenItemsInTenSeconds
       fullName: FarmingNodeServiceTests.WillFarmTenItemsInTenSeconds
       resultStatus: 1
-      duration: 0.0113386
+      duration: 0.0094531
       messages: 
       output: 
       stacktrace: 
@@ -892,7 +972,7 @@ MonoBehaviour:
       name: WillSetTimeLastHarvestedCorrectly
       fullName: FarmingNodeServiceTests.WillSetTimeLastHarvestedCorrectly
       resultStatus: 1
-      duration: 0.0010501
+      duration: 0.0010329
       messages: 
       output: 
       stacktrace: 
@@ -909,7 +989,7 @@ MonoBehaviour:
       name: WontFarmFromBeforeReactivated
       fullName: FarmingNodeServiceTests.WontFarmFromBeforeReactivated
       resultStatus: 1
-      duration: 0.000227
+      duration: 0.0002175
       messages: 
       output: 
       stacktrace: 
@@ -926,7 +1006,7 @@ MonoBehaviour:
       name: WontFarmWhenInactive
       fullName: FarmingNodeServiceTests.WontFarmWhenInactive
       resultStatus: 1
-      duration: 0.0001254
+      duration: 0.0001332
       messages: 
       output: 
       stacktrace: 
@@ -943,7 +1023,7 @@ MonoBehaviour:
       name: InventoryServiceTests
       fullName: InventoryServiceTests
       resultStatus: 1
-      duration: 0.0095323
+      duration: 0.0090484
       messages: 
       output: 
       stacktrace: 
@@ -959,7 +1039,7 @@ MonoBehaviour:
       name: ApplyingChangesEffectsCorrectSlot
       fullName: InventoryServiceTests.ApplyingChangesEffectsCorrectSlot
       resultStatus: 1
-      duration: 0.001718
+      duration: 0.0017252
       messages: 
       output: 
       stacktrace: 
@@ -976,7 +1056,7 @@ MonoBehaviour:
       name: ChangesAddToOnlyOneSlot
       fullName: InventoryServiceTests.ChangesAddToOnlyOneSlot
       resultStatus: 1
-      duration: 0.0002315
+      duration: 0.0002278
       messages: 
       output: 
       stacktrace: 
@@ -993,7 +1073,7 @@ MonoBehaviour:
       name: ChangesAddToSlotThatAlreadyHasItems
       fullName: InventoryServiceTests.ChangesAddToSlotThatAlreadyHasItems
       resultStatus: 1
-      duration: 0.0005378
+      duration: 0.0005245
       messages: 
       output: 
       stacktrace: 
@@ -1010,7 +1090,7 @@ MonoBehaviour:
       name: ChangesRemoveFromCorrectSlot
       fullName: InventoryServiceTests.ChangesRemoveFromCorrectSlot
       resultStatus: 1
-      duration: 0.0004624
+      duration: 0.0004678
       messages: 
       output: 
       stacktrace: 
@@ -1027,7 +1107,7 @@ MonoBehaviour:
       name: ChangesRemoveFromMultipleSlots
       fullName: InventoryServiceTests.ChangesRemoveFromMultipleSlots
       resultStatus: 1
-      duration: 0.0002082
+      duration: 0.0002175
       messages: 
       output: 
       stacktrace: 
@@ -1044,7 +1124,7 @@ MonoBehaviour:
       name: ChangesRemoveFromOnlyOneSlot
       fullName: InventoryServiceTests.ChangesRemoveFromOnlyOneSlot
       resultStatus: 1
-      duration: 0.0001899
+      duration: 0.000191
       messages: 
       output: 
       stacktrace: 
@@ -1061,7 +1141,7 @@ MonoBehaviour:
       name: RemovingFromEmptyInventoryHasNoChanges
       fullName: InventoryServiceTests.RemovingFromEmptyInventoryHasNoChanges
       resultStatus: 1
-      duration: 0.0000992
+      duration: 0.0000929
       messages: 
       output: 
       stacktrace: 
@@ -1078,7 +1158,7 @@ MonoBehaviour:
       name: RemovingNothingHasNoChanges
       fullName: InventoryServiceTests.RemovingNothingHasNoChanges
       resultStatus: 1
-      duration: 0.0000866
+      duration: 0.0000828
       messages: 
       output: 
       stacktrace: 
@@ -1095,7 +1175,7 @@ MonoBehaviour:
       name: SaveServiceTests
       fullName: SaveServiceTests
       resultStatus: 1
-      duration: 0.1066986
+      duration: 0.0953609
       messages: 
       output: 
       stacktrace: 
@@ -1111,7 +1191,7 @@ MonoBehaviour:
       name: DataIsSavedProperly
       fullName: SaveServiceTests.DataIsSavedProperly
       resultStatus: 1
-      duration: 0.0946006
+      duration: 0.0839655
       messages: 
       output: 
       stacktrace: 
@@ -1128,7 +1208,7 @@ MonoBehaviour:
       name: SaveDeletesProperly
       fullName: SaveServiceTests.SaveDeletesProperly
       resultStatus: 1
-      duration: 0.0012562
+      duration: 0.0012172
       messages: 
       output: 
       stacktrace: 
@@ -1145,7 +1225,7 @@ MonoBehaviour:
       name: SaveDoesNotExist
       fullName: SaveServiceTests.SaveDoesNotExist
       resultStatus: 1
-      duration: 0.0001855
+      duration: 0.0001892
       messages: 
       output: 
       stacktrace: 
@@ -1162,7 +1242,7 @@ MonoBehaviour:
       name: SaveExists
       fullName: SaveServiceTests.SaveExists
       resultStatus: 1
-      duration: 0.0008854
+      duration: 0.0009005
       messages: 
       output: 
       stacktrace: 
@@ -1179,7 +1259,7 @@ MonoBehaviour:
       name: SavesAreInSaveList
       fullName: SaveServiceTests.SavesAreInSaveList
       resultStatus: 1
-      duration: 0.0036576
+      duration: 0.0034393
       messages: 
       output: 
       stacktrace: 
@@ -1192,67 +1272,11 @@ MonoBehaviour:
       parentId: 1012
       parentUniqueId: EditModeTests.dll/[EditModeTests][SaveServiceTests][suite]
     - id: 1021
-      uniqueId: EditModeTests.dll/[EditModeTests][TerrainGenerationControllerTests][suite]
-      name: TerrainGenerationControllerTests
-      fullName: TerrainGenerationControllerTests
-      resultStatus: 2
-      duration: 0.0108487
-      messages: One or more child tests had errors
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-      categories: []
-      parentId: 1035
-      parentUniqueId: '[EditModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll][suite]'
-    - id: 1023
-      uniqueId: EditModeTests.dll/TerrainGenerationControllerTests/[EditModeTests][TerrainGenerationControllerTests.TerrainWillBeGenerated]
-      name: TerrainWillBeGenerated
-      fullName: TerrainGenerationControllerTests.TerrainWillBeGenerated
-      resultStatus: 2
-      duration: 0.0037726
-      messages: "  Expected: True\r\n  But was:  False\r\n"
-      output: 
-      stacktrace: 'at TerrainGenerationControllerTests.TerrainWillBeGenerated ()
-        [0x00000] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\EditMode\TerrainGenerationControllerTests.cs:25
-
-'
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: EditModeTests.dll/[EditModeTests][TerrainGenerationControllerTests][suite]
-    - id: 1022
-      uniqueId: EditModeTests.dll/TerrainGenerationControllerTests/[EditModeTests][TerrainGenerationControllerTests.TerrainWillBeLoadedFromSave]
-      name: TerrainWillBeLoadedFromSave
-      fullName: TerrainGenerationControllerTests.TerrainWillBeLoadedFromSave
-      resultStatus: 2
-      duration: 0.0002306
-      messages: "  Expected: True\r\n  But was:  False\r\n"
-      output: 
-      stacktrace: 'at TerrainGenerationControllerTests.TerrainWillBeLoadedFromSave
-        () [0x00000] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\EditMode\TerrainGenerationControllerTests.cs:19
-
-'
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-      categories:
-      - Uncategorized
-      parentId: 1021
-      parentUniqueId: EditModeTests.dll/[EditModeTests][TerrainGenerationControllerTests][suite]
-    - id: 1021
       uniqueId: EditModeTests.dll/[EditModeTests][TerrainServiceTests][suite]
       name: TerrainServiceTests
       fullName: TerrainServiceTests
       resultStatus: 1
-      duration: 0.0364458
+      duration: 0.0602952
       messages: 
       output: 
       stacktrace: 
@@ -1268,7 +1292,7 @@ MonoBehaviour:
       name: CellsWillBeCorrectDimensions
       fullName: TerrainServiceTests.CellsWillBeCorrectDimensions
       resultStatus: 1
-      duration: 0.0029565
+      duration: 0.0032679
       messages: 
       output: 
       stacktrace: 
@@ -1285,7 +1309,7 @@ MonoBehaviour:
       name: CellsWillBeDifferentOnDifferentSeed
       fullName: TerrainServiceTests.CellsWillBeDifferentOnDifferentSeed
       resultStatus: 1
-      duration: 0.0024082
+      duration: 0.027601
       messages: 
       output: 
       stacktrace: 
@@ -1302,7 +1326,7 @@ MonoBehaviour:
       name: CellsWillBeSameOnSameSeed
       fullName: TerrainServiceTests.CellsWillBeSameOnSameSeed
       resultStatus: 1
-      duration: 0.0024225
+      duration: 0.0025596
       messages: 
       output: 
       stacktrace: 
@@ -1319,7 +1343,7 @@ MonoBehaviour:
       name: NodesWillNotOverlap
       fullName: TerrainServiceTests.NodesWillNotOverlap
       resultStatus: 1
-      duration: 0.0162485
+      duration: 0.0154037
       messages: 
       output: 
       stacktrace: 
@@ -1336,7 +1360,7 @@ MonoBehaviour:
       name: NodesWilLoadFromStateCorrectly
       fullName: TerrainServiceTests.NodesWilLoadFromStateCorrectly
       resultStatus: 1
-      duration: 0.0021826
+      duration: 0.002247
       messages: 
       output: 
       stacktrace: 
@@ -1353,7 +1377,7 @@ MonoBehaviour:
       name: NodesWillOnlySpawnOnValidCells
       fullName: TerrainServiceTests.NodesWillOnlySpawnOnValidCells
       resultStatus: 1
-      duration: 0.0009828
+      duration: 0.0008557
       messages: 
       output: 
       stacktrace: 
@@ -1370,7 +1394,7 @@ MonoBehaviour:
       name: NodesWontSpawnWhenNoValidCells
       fullName: TerrainServiceTests.NodesWontSpawnWhenNoValidCells
       resultStatus: 1
-      duration: 0.0011196
+      duration: 0.0010208
       messages: 
       output: 
       stacktrace: 
@@ -1387,7 +1411,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeHalf
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeHalf
       resultStatus: 1
-      duration: 0.0006801
+      duration: 0.0006579
       messages: 
       output: 
       stacktrace: 
@@ -1404,7 +1428,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeOne
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeOne
       resultStatus: 1
-      duration: 0.0003044
+      duration: 0.0002891
       messages: 
       output: 
       stacktrace: 
@@ -1421,7 +1445,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeTwo
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeTwo
       resultStatus: 1
-      duration: 0.0003774
+      duration: 0.0002889
       messages: 
       output: 
       stacktrace: 
@@ -1433,7 +1457,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1021
       parentUniqueId: EditModeTests.dll/[EditModeTests][TerrainServiceTests][suite]
-    m_ResultText: NodesWillNotOverlap (0.016s)
+    m_ResultText: NodesWillNotOverlap (0.015s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -1486,10 +1510,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 711
-    y: 81
-    width: 1759
-    height: 1262
+    x: 774
+    y: 73
+    width: 1937
+    height: 1278
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -1691,9 +1715,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -19.602432, y: 4.8864036, z: 2.124365}
+    m_Target: {x: 0.39022732, y: 18.425892, z: -2.8644562}
     speed: 2
-    m_Value: {x: -19.602432, y: 4.8864036, z: 2.124365}
+    m_Value: {x: 0.39022732, y: 18.425892, z: -2.8644562}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1740,9 +1764,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.1155171, y: -0.65399045, z: 0.1021046, w: 0.7405856}
+    m_Target: {x: 0.19449088, y: 0.42566484, z: -0.094130225, w: 0.8786736}
     speed: 2
-    m_Value: {x: 0.11552057, y: -0.65401006, z: 0.10210766, w: 0.74060786}
+    m_Value: {x: 0.19449623, y: 0.42567652, z: -0.09413281, w: 0.87869775}
   m_Size:
     m_Target: 10.609186
     speed: 2

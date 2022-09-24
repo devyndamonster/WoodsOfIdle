@@ -32,7 +32,7 @@ namespace WoodsOfIdle
             ITerrainService terrainService = new TerrainService(farmingNodeService);
             ISaveService saveService = new SaveService();
             SaveController saveController = new SaveController(saveService);
-            TerrainGenerationController terrainController = new TerrainGenerationController(terrainService, saveController, sceneManager.AssetCollection);
+            TerrainGenerationController terrainController = new TerrainGenerationController(terrainService, saveController, sceneManager.AssetCollection.Value);
             
             terrainController.GenerateTerrain(sceneManager.TerrainSettings);
         }
