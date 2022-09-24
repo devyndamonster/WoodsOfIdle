@@ -28,7 +28,7 @@ namespace WoodsOfIdle
             {
                 assetCollection.LoadedFarmingNodeData = loadedFarmingNodeData.ToDictionary(farmingNodeData => farmingNodeData.Value.NodeType, farmingNodeData => farmingNodeData.Value);
             });
-
+            
             onLoaded(assetCollection);
         }
 

@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 90
+  controlID: 27
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 91
+  controlID: 28
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +164,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 798
+    width: 854
     height: 1299
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 152
+  controlID: 38
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -189,12 +189,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 798
+    width: 854
     height: 863
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 124
+  controlID: 22
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,10 +212,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 377
+    width: 402
     height: 863
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -236,9 +236,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 377
+    x: 402
     y: 0
-    width: 421
+    width: 452
     height: 863
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
@@ -264,7 +264,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 863
-    width: 798
+    width: 854
     height: 436
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
@@ -290,12 +290,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 798
+    x: 854
     y: 0
-    width: 1915
+    width: 1859
     height: 1299
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -447,7 +447,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 376
+    width: 401
     height: 842
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -458,7 +458,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 76eafeff36ebfefff4eefeff56f2feff16f3feffd6f6feffe670ffff2afbffff
+      m_ExpandedIDs: c0b3feff80b4feff30b8feff34bcfefff4bcfeff86c0feff2ac2feffeac2feff9ac6feff36cafefff6cafeffa6cefeff52d2feff12d3feffbcd6feffd0e1feff90e2feff3ae6feff70f8feff30f9feffe0fcfeff680fffff2810ffffd813ffff8e19ffff4e1afffffe1dffffc421ffff8422ffff3426fffffe29ffffbe2affff6e2effff6c3effff2c3fffffdc42ffff2c47ffffec47ffffd04bffff0655ffffc655ffff7659ffff9467ffff5468ffff046cffff3270fffff270ffffa274ffff5278ffff1279ffffc27cffffac8bffff6c8cffff5090ffff7691ffff3692ffff0e96ffff5e97ffff1e98ffffd29bffff2afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -503,9 +503,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 377
+    x: 402
     y: 73
-    width: 419
+    width: 450
     height: 842
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -547,7 +547,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 936
-    width: 797
+    width: 853
     height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -566,22 +566,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Tests/PlayMode/Helpers
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Tests/PlayMode/Helpers
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: E:\Unity\Projects\WoodsOfIdle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 293}
-    m_SelectedIDs: 367f0000
-    m_LastClickedID: 32566
-    m_ExpandedIDs: 00000000427100004471000046710000487100004a7100004c7100004e710000507100005271000054710000567100005871000086720000927200009c72000000ca9a3b
+    scrollPos: {x: 0, y: 95}
+    m_SelectedIDs: 4c710000
+    m_LastClickedID: 29004
+    m_ExpandedIDs: 000000004c7100004e71000050710000527100005471000056710000587100005a7100005c7100005e71000060710000627100001c7200002672000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,7 +609,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000427100004471000046710000487100004a7100004c7100004e7100005071000052710000547100005671000058710000
+    m_ExpandedIDs: 000000004c7100004e71000050710000527100005471000056710000587100005a7100005c7100005e7100006071000062710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -688,7 +688,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 936
-    width: 797
+    width: 853
     height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -716,14 +716,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 936
-    width: 797
+    width: 853
     height: 415
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 4607
+    ID: 3859
     splitterInitialOffset: 197
     currentActiveSplitter: -1
     realSizes:
@@ -754,9 +754,9 @@ MonoBehaviour:
       uniqueId: '[WoodsOfIdle][suite]'
       name: WoodsOfIdle
       fullName: WoodsOfIdle
-      resultStatus: 2
-      duration: 0.1426039
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.6593695
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -770,9 +770,9 @@ MonoBehaviour:
       uniqueId: '[PlayModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll][suite]'
       name: PlayModeTests.dll
       fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll
-      resultStatus: 2
-      duration: 0.0578024
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.5594366
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -786,9 +786,9 @@ MonoBehaviour:
       uniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
       name: TerrainInitializationTests
       fullName: TerrainInitializationTests
-      resultStatus: 2
-      duration: 0.0510817
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.553825
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -798,93 +798,36 @@ MonoBehaviour:
       categories: []
       parentId: 1043
       parentUniqueId: '[PlayModeTests][E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll][suite]'
+    - id: 1002
+      uniqueId: PlayModeTests.dll/TerrainInitializationTests/[PlayModeTests][TerrainInitializationTests.AssetsWillBeLoaded]
+      name: AssetsWillBeLoaded
+      fullName: TerrainInitializationTests.AssetsWillBeLoaded
+      resultStatus: 1
+      duration: 0.5360987
+      messages: 
+      output: 'Generating farming nodes: 3
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
     - id: 1042
       uniqueId: PlayModeTests.dll/TerrainInitializationTests/[PlayModeTests][TerrainInitializationTests.TerrainWillBeGenerated]
       name: TerrainWillBeGenerated
       fullName: TerrainInitializationTests.TerrainWillBeGenerated
-      resultStatus: 2
-      duration: 0.0387092
-      messages: 'Unhandled log message: ''[Exception] NullReferenceException: Object
-        reference not set to an instance of an object''. Use UnityEngine.TestTools.LogAssert.Expect'
-      output: 'NullReferenceException: Object reference not set to an instance of
-        an object
+      resultStatus: 1
+      duration: 0.5344048
+      messages: 
+      output: 'Generating farming nodes: 3
 
 '
-      stacktrace: 'UnityEngine.AddressableAssets.AddressablesImpl.GetResourceLocations
-        (System.Collections.IEnumerable keys, System.Type type, UnityEngine.AddressableAssets.Addressables+MergeMode
-        merge, System.Collections.Generic.IList`1[UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation]&
-        locations) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:353)
-
-        UnityEngine.AddressableAssets.AddressablesImpl+LoadResourceLocationKeysOp.Execute
-        () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:672)
-
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-        () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-        (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-        dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-        UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-        (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-        operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-        dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-        UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-        (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-        mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:702)
-
-        UnityEngine.AddressableAssets.AddressablesImpl+<>c__DisplayClass81_0.<LoadResourceLocationsWithChain>b__0
-        (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle op)
-        (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-        UnityEngine.ResourceManagement.ChainOperationTypelessDepedency`1[TObject].Execute
-        () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/ChainOperation.cs:185)
-
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-        () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-        UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-        (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-        dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-        UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-        (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-        operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-        dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-        UnityEngine.ResourceManagement.ResourceManager.CreateChainOperation[TObject]
-        (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dependentOp,
-        System.Func`2[T,TResult] callback) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:822)
-
-        UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsWithChain
-        (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dep,
-        System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-        mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-        UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-        (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-        mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:698)
-
-        UnityEngine.AddressableAssets.Addressables.LoadResourceLocationsAsync
-        (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-        mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/Addressables.cs:875)
-
-        WoodsOfIdle.AddressableLoaderService+<LoadAssets>d__1`1[T].MoveNext
-        () (at Assets/Scripts/Services/AddressableLoaderService.cs:37)
-
-        UnityEngine.SetupCoroutine.InvokeMoveNext
-        (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress)
-        (at <4a31731933e0419ca5a995305014ad37>:0)
-
-        UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-
-        WoodsOfIdle.SceneManagerComponent:Start()
-        (at Assets/Scripts/Components/SceneManagerComponent.cs:38)
-
-        
-
-'
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -898,15 +841,24 @@ MonoBehaviour:
       name: TerrainWillBeLoadedFromSave
       fullName: TerrainInitializationTests.TerrainWillBeLoadedFromSave
       resultStatus: 2
-      duration: 0.0142224
+      duration: 10.009289
       messages: "  Expected: True\r\n  But was:  False\r\n"
-      output: 'Init!
+      output: 'Start of scene
 
         Test 1
 
+        3
+
+        Scene manager
+        init
+
+        Loading farming nodes from save
+
+        Test 1 End
+
 '
-      stacktrace: 'at TerrainInitializationTests+<TerrainWillBeLoadedFromSave>d__1.MoveNext
-        () [0x00038] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\PlayMode\TerrainInitializationTests.cs:24
+      stacktrace: 'at TerrainInitializationTests+<TerrainWillBeLoadedFromSave>d__4.MoveNext
+        () [0x0004b] in E:\Unity\Projects\WoodsOfIdle\Assets\Tests\PlayMode\TerrainInitializationTests.cs:56
 
         at
         UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a]
@@ -921,167 +873,13 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1040
       parentUniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
-    m_ResultText: 'TerrainWillBeGenerated (0.039s)
+    m_ResultText: 'TerrainWillBeGenerated (0.534s)
 
       ---
 
-      Unhandled log
-      message: ''[Exception] NullReferenceException: Object reference not set to
-      an instance of an object''. Use UnityEngine.TestTools.LogAssert.Expect
-
-      ---
-
-      UnityEngine.AddressableAssets.AddressablesImpl.GetResourceLocations
-      (System.Collections.IEnumerable keys, System.Type type, UnityEngine.AddressableAssets.Addressables+MergeMode
-      merge, System.Collections.Generic.IList`1[UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation]&
-      locations) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:353)
-
-      UnityEngine.AddressableAssets.AddressablesImpl+LoadResourceLocationKeysOp.Execute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:672)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-      (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-      UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-      operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:702)
-
-      UnityEngine.AddressableAssets.AddressablesImpl+<>c__DisplayClass81_0.<LoadResourceLocationsWithChain>b__0
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle op) (at
-      Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-      UnityEngine.ResourceManagement.ChainOperationTypelessDepedency`1[TObject].Execute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/ChainOperation.cs:185)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-      (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-      UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-      operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-      UnityEngine.ResourceManagement.ResourceManager.CreateChainOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dependentOp,
-      System.Func`2[T,TResult] callback) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:822)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsWithChain
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dep, System.Collections.IEnumerable
-      keys, UnityEngine.AddressableAssets.Addressables+MergeMode mode, System.Type
-      type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:698)
-
-      UnityEngine.AddressableAssets.Addressables.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/Addressables.cs:875)
-
-      WoodsOfIdle.AddressableLoaderService+<LoadAssets>d__1`1[T].MoveNext
-      () (at Assets/Scripts/Services/AddressableLoaderService.cs:37)
-
-      UnityEngine.SetupCoroutine.InvokeMoveNext
-      (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress)
-      (at <4a31731933e0419ca5a995305014ad37>:0)
-
-      UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-
-      WoodsOfIdle.SceneManagerComponent:Start()
-      (at Assets/Scripts/Components/SceneManagerComponent.cs:38)
-
-      ---
-
-      NullReferenceException:
-      Object reference not set to an instance of an object'
-    m_ResultStacktrace: 'UnityEngine.AddressableAssets.AddressablesImpl.GetResourceLocations
-      (System.Collections.IEnumerable keys, System.Type type, UnityEngine.AddressableAssets.Addressables+MergeMode
-      merge, System.Collections.Generic.IList`1[UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation]&
-      locations) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:353)
-
-      UnityEngine.AddressableAssets.AddressablesImpl+LoadResourceLocationKeysOp.Execute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:672)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-      (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-      UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-      operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:702)
-
-      UnityEngine.AddressableAssets.AddressablesImpl+<>c__DisplayClass81_0.<LoadResourceLocationsWithChain>b__0
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle op) (at
-      Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-      UnityEngine.ResourceManagement.ChainOperationTypelessDepedency`1[TObject].Execute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/ChainOperation.cs:185)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].InvokeExecute
-      () (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:469)
-
-      UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject].Start
-      (UnityEngine.ResourceManagement.ResourceManager rm, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency, DelegateList`1[T] updateCallbacks) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs:464)
-
-      UnityEngine.ResourceManagement.ResourceManager.StartOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationBase`1[TObject]
-      operation, UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle
-      dependency) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:452)
-
-      UnityEngine.ResourceManagement.ResourceManager.CreateChainOperation[TObject]
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dependentOp,
-      System.Func`2[T,TResult] callback) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/ResourceManager/ResourceManager.cs:822)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsWithChain
-      (UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationHandle dep, System.Collections.IEnumerable
-      keys, UnityEngine.AddressableAssets.Addressables+MergeMode mode, System.Type
-      type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:690)
-
-      UnityEngine.AddressableAssets.AddressablesImpl.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/AddressablesImpl.cs:698)
-
-      UnityEngine.AddressableAssets.Addressables.LoadResourceLocationsAsync
-      (System.Collections.IEnumerable keys, UnityEngine.AddressableAssets.Addressables+MergeMode
-      mode, System.Type type) (at Library/PackageCache/com.unity.addressables@1.19.19/Runtime/Addressables.cs:875)
-
-      WoodsOfIdle.AddressableLoaderService+<LoadAssets>d__1`1[T].MoveNext
-      () (at Assets/Scripts/Services/AddressableLoaderService.cs:37)
-
-      UnityEngine.SetupCoroutine.InvokeMoveNext
-      (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress)
-      (at <4a31731933e0419ca5a995305014ad37>:0)
-
-      UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-
-      WoodsOfIdle.SceneManagerComponent:Start()
-      (at Assets/Scripts/Components/SceneManagerComponent.cs:38)
-
-      
-
-'
+      Generating farming
+      nodes: 3'
+    m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 3176f358
@@ -1724,9 +1522,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 798
+    x: 854
     y: 73
-    width: 1913
+    width: 1857
     height: 1278
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -1929,9 +1727,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 30.107508, y: 86.77881, z: -37.91639}
+    m_Target: {x: 21.583895, y: 49.182056, z: -29.706491}
     speed: 2
-    m_Value: {x: 30.107508, y: 86.77881, z: -37.91639}
+    m_Value: {x: 21.583895, y: 49.182056, z: -29.706491}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1978,9 +1776,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.49497586, y: -0.339699, z: 0.21867482, w: 0.769239}
+    m_Target: {x: 0.1658148, y: -0.13891543, z: 0.023687849, w: 0.9760066}
     speed: 2
-    m_Value: {x: 0.49466118, y: -0.34086204, z: 0.21942319, w: 0.7687502}
+    m_Value: {x: 0.16728348, y: -0.13888377, z: 0.023896866, w: 0.9757851}
   m_Size:
     m_Target: 10.609186
     speed: 2

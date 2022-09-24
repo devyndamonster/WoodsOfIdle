@@ -25,6 +25,7 @@ namespace WoodsOfIdle
         protected IFarmingNodeService farmingNodeService;
         protected ITerrainService terrainService;
         protected static string nextSaveToOpen;
+        protected bool isSceneInit;
 
         protected event Action OnUpdated;
         protected event Action OnDestroyed;
@@ -63,6 +64,8 @@ namespace WoodsOfIdle
             gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
 
             InitEvents();
+
+            isSceneInit = true;
         }
 
         private void InitEvents()
@@ -80,6 +83,11 @@ namespace WoodsOfIdle
             {
                 terrainReceiver.ApplyTerrain(cells, farmingNodePrefabs, TerrainSettings);
             }
+        }
+
+        public bool IsSceneInitialized()
+        {
+            return isSceneInit;
         }
         
         public static void SetNextSaveToOpen(string saveName)
