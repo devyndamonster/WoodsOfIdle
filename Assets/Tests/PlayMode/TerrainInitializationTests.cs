@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using WoodsOfIdle;
@@ -10,22 +13,43 @@ using WoodsOfIdle;
 public class TerrainInitializationTests
 {
     public ObservableTerrainReceiver TerrainReceiver;
-    public SceneManagerComponent SceneManager;
+    public SceneManagerComponent SceneManagerComponent;
 
-    /* TODO
-     * - Need to start loading assets from scriptable objects because addressable loader is throwing errors (plus its probably good to test asset loading)
-     */
-
-    [SetUp]
-    public void SetUp()
+    private IEnumerator SetupNewScene(string saveName)
     {
+        yield return ClearScene();
+        SetTestSave(saveName);
+        SceneManagerComponent.SetNextSaveToOpen(saveName);
+
         TerrainReceiver = ObservableTerrainReceiver.Create();
 
         GameObject sceneManagerObject = new GameObject();
-        SceneManager = sceneManagerObject.AddComponent<SceneManagerComponent>();
-        SceneManager.InventoryPanel = GetTestUIDocument();
-        SceneManager.TerrainSettings = GetTestTerrainGenerationSettings();
-        SceneManager.AssetCollection = GetTestAssetCollection();
+        SceneManagerComponent = sceneManagerObject.AddComponent<SceneManagerComponent>();
+        SceneManagerComponent.InventoryPanel = GetTestUIDocument();
+        SceneManagerComponent.TerrainSettings = GetTestTerrainGenerationSettings();
+        SceneManagerComponent.AssetCollection = GetTestAssetCollection();
+    }
+
+    private IEnumerator ClearScene()
+    {
+        foreach (GameObject o in Object.FindObjectsOfType<GameObject>())
+        {
+            GameObject.Destroy(o);
+        }
+
+        yield return new WaitForEndOfFrame();
+    }
+
+    [UnityTest]
+    public IEnumerator AssetsWillBeLoaded()
+    {
+        yield return SetupNewScene("AssetsWillBeLoaded");
+
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Assert.That(SceneManagerComponent.AssetCollection.Value.LoadedFarmingNodeData.Count(), Is.EqualTo(3));
+        Assert.That(SceneManagerComponent.AssetCollection.Value.LoadedItemData.Count(), Is.EqualTo(3));
+        Assert.That(SceneManagerComponent.AssetCollection.Value.LoadedFarmingNodePrefabs.Count(), Is.EqualTo(3));
     }
 
     [UnityTest]
@@ -43,13 +67,12 @@ public class TerrainInitializationTests
     [UnityTest]
     public IEnumerator TerrainWillBeGenerated()
     {
-        Debug.Log("Test 2");
+        yield return SetupNewScene("TerrainWillBeGenerated");
 
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(0.5f);
 
-        Debug.Log("Test 2 End");
-
-        Assert.That(false);
+        Assert.That(TerrainReceiver.CellData.GetLength(0), Is.EqualTo(50));
+        Assert.That(TerrainReceiver.CellData.GetLength(1), Is.EqualTo(100));
     }
 
     private UIDocument GetTestUIDocument()
@@ -63,7 +86,7 @@ public class TerrainInitializationTests
     {
         return new TerrainGenerationSettings
         {
-            Size = new Vector2Int(50, 50),
+            Size = new Vector2Int(50, 100),
             CellSize = seed,
             HeightMapSettings = new List<PerlinNoiseSettings> 
             {
@@ -104,78 +127,13 @@ public class TerrainInitializationTests
 
     private AssetReferenceCollectionScriptable GetTestAssetCollection()
     {
-        AssetReferenceCollectionScriptable assetCollection = ScriptableObject.CreateInstance<AssetReferenceCollectionScriptable>();
-        assetCollection.Value = new AssetReferenceCollection
-        {
-            LoadedItemData = GetTestItemData(),
-            LoadedFarmingNodeData = GetTestFarmingNodeData(),
-            LoadedFarmingNodePrefabs = GetTestFarmingNodePrefabs(GetTestFarmingNodeData())
-        };
-        return assetCollection;
+        return AssetDatabase.LoadAssetAtPath<AssetReferenceCollectionScriptable>("Assets/Tests/PlayMode/TestAssets/TestAssetReferences.asset");
     }
 
-    private Dictionary<ItemType, ItemData> GetTestItemData()
+    private void SetTestSave(string saveName)
     {
-        return new Dictionary<ItemType, ItemData>
-        {
-            { ItemType.Dirt, new ItemData { ItemType = ItemType.Dirt, ItemIcon = null } },
-            { ItemType.Wood, new ItemData { ItemType = ItemType.Wood, ItemIcon = null } },
-            { ItemType.Stone, new ItemData { ItemType = ItemType.Stone, ItemIcon  = null } },
-        };
-    }
-
-    private Dictionary<FarmingNodeType, FarmingNodeData> GetTestFarmingNodeData()
-    {
-        return new Dictionary<FarmingNodeType, FarmingNodeData>
-        {
-            {
-                FarmingNodeType.Dirt,
-                new FarmingNodeData
-                {
-                    NodeType = FarmingNodeType.Dirt,
-                    SpawnChance = 0.01f,
-                    AllowedCellTypes = new List<CellType>{ CellType.Forest },
-                    DefaultTimeToHarvest = 1f,
-                    HarvestableItems = new List<FarmingNodeItemOption> { new FarmingNodeItemOption { ItemType = ItemType.Dirt, ChanceToFarm = 1 } },
-                }
-            },
-            {
-                FarmingNodeType.Forest,
-                new FarmingNodeData
-                {
-                    NodeType = FarmingNodeType.Forest,
-                    SpawnChance = 0.01f,
-                    AllowedCellTypes = new List<CellType>{ CellType.Forest },
-                    DefaultTimeToHarvest = 1f,
-                    HarvestableItems = new List<FarmingNodeItemOption> { new FarmingNodeItemOption { ItemType = ItemType.Wood, ChanceToFarm = 1 } },
-                }
-            },
-            {
-                FarmingNodeType.Boulder,
-                new FarmingNodeData
-                {
-                    NodeType = FarmingNodeType.Boulder,
-                    SpawnChance = 0.01f,
-                    AllowedCellTypes = new List<CellType>{ CellType.Forest },
-                    DefaultTimeToHarvest = 1f,
-                    HarvestableItems = new List<FarmingNodeItemOption> { new FarmingNodeItemOption { ItemType = ItemType.Stone, ChanceToFarm = 1 } },
-                }
-            },
-        };
-    }
-
-    private Dictionary<FarmingNodeType, GameObject> GetTestFarmingNodePrefabs(Dictionary<FarmingNodeType, FarmingNodeData> farmingNodeData)
-    {
-        var farmingNodePrefabs = new Dictionary<FarmingNodeType, GameObject>();
-
-        foreach (FarmingNodeType type in farmingNodeData.Keys)
-        {
-            GameObject nodeObject = new GameObject();
-            FarmingNodeComponent nodeComponent = nodeObject.AddComponent<FarmingNodeComponent>();
-            nodeComponent.NodeType = type;
-            farmingNodePrefabs[type] = nodeObject;
-        }
-
-        return farmingNodePrefabs;
+        ISaveService saveService = new SaveService();
+        saveService.DeleteSave(saveName);
+        SceneManagerComponent.SetNextSaveToOpen(saveName);
     }
 }

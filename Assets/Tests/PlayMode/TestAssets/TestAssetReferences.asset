@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62b533affe878b4289e74e792244265, type: 3}
+  m_Name: TestAssetReferences
+  m_EditorClassIdentifier: 
+  Value:
+    ItemDataReferences:
+    - m_AssetGUID: 5168928fd9a06224396c1c6a40b86bc4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: e00ec9b626703d542bdb0edf84a2f6df
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b9149262dcf832248bf2c9ee7451a20b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    FarmingNodeDataReferences:
+    - m_AssetGUID: 3aace12bef4289546b0c94f5e563daa6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: cb5b571b95e2c6646aab736a05f674c2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f8834d5841356ac438c0aa2629934553
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    FarmingNodePrefabReferences:
+    - m_AssetGUID: fd81fea53848b4e4c9f65208a92bf939
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: c3e78ce9d10d6564a98856151b32dcc8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: d47c5c6c3cdab4641bed5b73196d171f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

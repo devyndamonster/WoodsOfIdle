@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TestAssets
+  m_EditorClassIdentifier: 
+  m_GroupName: TestAssets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a1d1aa3263df8c34b96e57e6addb1891
+  m_SerializeEntries:
+  - m_GUID: fd81fea53848b4e4c9f65208a92bf939
+    m_Address: Assets/Tests/PlayMode/TestAssets/DirtNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c3e78ce9d10d6564a98856151b32dcc8
+    m_Address: Assets/Tests/PlayMode/TestAssets/ForestNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d47c5c6c3cdab4641bed5b73196d171f
+    m_Address: Assets/Tests/PlayMode/TestAssets/StoneNode.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3aace12bef4289546b0c94f5e563daa6
+    m_Address: Assets/Tests/PlayMode/TestAssets/DirtNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b9149262dcf832248bf2c9ee7451a20b
+    m_Address: Assets/Tests/PlayMode/TestAssets/DirtData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cb5b571b95e2c6646aab736a05f674c2
+    m_Address: Assets/Tests/PlayMode/TestAssets/BoulderNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8834d5841356ac438c0aa2629934553
+    m_Address: Assets/Tests/PlayMode/TestAssets/ForestNode.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5168928fd9a06224396c1c6a40b86bc4
+    m_Address: Assets/Tests/PlayMode/TestAssets/StoneData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e00ec9b626703d542bdb0edf84a2f6df
+    m_Address: Assets/Tests/PlayMode/TestAssets/WoodData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 41b70bcb4b1a77b48a5e4fb591206fe1, type: 2}
+  m_SchemaSet:
+    m_Schemas: []
