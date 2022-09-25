@@ -47,6 +47,7 @@ namespace WoodsOfIdle
                 .Select(item => itemData[item.ItemType].ItemIcon.texture);
 
             harvestOption.SetItemIcons(itemIcons);
+            harvestOption.SetHarvestText(farmingNode.Data.HarvestText);
             harvestOption.HarvestButton.clicked += farmingNode.ToggleActive;
             farmingNode.HarvestProgressChanged += harvestOption.ProgressBar.SetProgress;
 

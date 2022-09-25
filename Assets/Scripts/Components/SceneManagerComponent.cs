@@ -57,6 +57,8 @@ namespace WoodsOfIdle
             
             terrainGenerationController = new TerrainGenerationController(terrainService, saveController, assetCollection);
             var generatedTerrainData = terrainGenerationController.GenerateTerrain(TerrainSettings);
+            saveController.CurrentSaveState.Cells = generatedTerrainData.CellData;
+            saveController.CurrentSaveState.FarmingNodes = generatedTerrainData.FarmingNodes.ToDictionary(node => node.State.Position, node => node.State);
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
             
             inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);

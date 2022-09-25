@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     NodeType: 1
-    DefaultTimeToHarvest: 1
+    HarvestText: Collect Stones
+    DefaultTimeToHarvest: 20
     SpawnChance: 0.01
     AllowedCellTypes: 01000000
     HarvestableItems:
     - ItemType: 1
+      ChanceToFarm: 2
+    - ItemType: 5
       ChanceToFarm: 1

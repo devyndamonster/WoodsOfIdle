@@ -53,6 +53,14 @@ MonoBehaviour:
     m_Address: Assets/GameAssets/Items/Data/DirtData.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 1a14941e3643283489eb6dd457bdf866
+    m_Address: Assets/GameAssets/Items/Data/ThatchData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 36847ddd7cb5b6744aa08bb164caac7a
+    m_Address: Assets/GameAssets/Items/Data/FlintData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 41b70bcb4b1a77b48a5e4fb591206fe1, type: 2}
   m_SchemaSet:

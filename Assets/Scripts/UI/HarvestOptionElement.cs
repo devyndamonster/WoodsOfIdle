@@ -93,5 +93,10 @@ namespace WoodsOfIdle
                 iconContainer.Add(iconImage);
             }
         }
+
+        public void SetHarvestText(string text)
+        {
+            this.Q<Button>("HarvestOptionButton").text = text;
+        }
     }
 }

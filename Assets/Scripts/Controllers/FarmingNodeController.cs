@@ -44,8 +44,12 @@ namespace WoodsOfIdle
 
             if (numberOfHarvests > 0)
             {
-                ItemType harvestedItem = farmingNodeService.GetItemHarvested(Data);
-                Harvested?.Invoke(harvestedItem, numberOfHarvests);
+                Dictionary<ItemType, int> harvestedItems = farmingNodeService.GetItemsHarvested(Data, numberOfHarvests);
+                
+                foreach(var harvestQuantity in harvestedItems)
+                {
+                    Harvested?.Invoke(harvestQuantity.Key, harvestQuantity.Value);
+                }
             }
 
             HarvestProgressChanged?.Invoke(farmingNodeService.CalculateHarvestProgress(State, DateTime.Now));

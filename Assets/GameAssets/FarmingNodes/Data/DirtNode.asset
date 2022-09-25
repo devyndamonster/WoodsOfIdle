@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     NodeType: 2
-    DefaultTimeToHarvest: 1
+    HarvestText: Dig Soil
+    DefaultTimeToHarvest: 15
     SpawnChance: 0.01
     AllowedCellTypes: 01000000
     HarvestableItems:
     - ItemType: 2
+      ChanceToFarm: 5
+    - ItemType: 1
       ChanceToFarm: 1

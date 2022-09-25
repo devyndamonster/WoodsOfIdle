@@ -39,7 +39,7 @@ public class TerrainInitializationTests
 
         ObservableTerrainReceiver terrainReceiverB = GameObject.FindObjectOfType<ObservableTerrainReceiver>();
         CellData[,] cellsB = terrainReceiverB.CellData;
-
+        
         for(int row = 0; row < cellsB.GetLength(0); row++)
         {
             for(int col = 0; col < cellsB.GetLength(1); col++)

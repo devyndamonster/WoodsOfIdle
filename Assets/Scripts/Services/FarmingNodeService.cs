@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -30,23 +31,25 @@ namespace WoodsOfIdle
             state.IsActive = isActive;
         }
 
-        public ItemType GetItemHarvested(FarmingNodeData data)
+        public Dictionary<ItemType, int> GetItemsHarvested(FarmingNodeData data, int quantityHarvested)
         {
-            float combinedProbability = data.HarvestableItems.Sum(x => x.ChanceToFarm);
-            float randomValue = UnityEngine.Random.Range(0f, combinedProbability);
-            float probabilitySum = 0f;
-
-            foreach (var harvestableItem in data.HarvestableItems)
+            Dictionary<ItemType, int> harvestedItems = new Dictionary<ItemType, int>();
+            
+            for(int harvestIndex = 0; harvestIndex < quantityHarvested; harvestIndex++)
             {
-                probabilitySum += harvestableItem.ChanceToFarm;
-
-                if (probabilitySum >= randomValue)
+                ItemType selectedItem = data.HarvestableItems.GetRandomFromWeight(item => item.ChanceToFarm).ItemType;
+                
+                if (harvestedItems.ContainsKey(selectedItem))
                 {
-                    return harvestableItem.ItemType;
+                    harvestedItems[selectedItem] += 1;
+                }
+                else
+                {
+                    harvestedItems[selectedItem] = 1;
                 }
             }
-
-            return data.HarvestableItems.Last().ItemType;
+            
+            return harvestedItems;
         }
 
         public float CalculateHarvestProgress(FarmingNodeState state, DateTime currentTime)

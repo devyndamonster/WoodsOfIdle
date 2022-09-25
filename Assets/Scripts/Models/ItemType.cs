@@ -8,6 +8,11 @@ namespace WoodsOfIdle
     {
         Wood,
         Stone,
-        Dirt
+        Dirt,
+        Thatch,
+        PrimitiveString,
+        Flint,
+        PrimitiveHatchet,
+        PrimitiveKnife
     }
 }

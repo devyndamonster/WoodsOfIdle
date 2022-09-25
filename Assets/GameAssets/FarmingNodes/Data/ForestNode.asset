@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     NodeType: 0
-    DefaultTimeToHarvest: 1
+    HarvestText: Collect Brush
+    DefaultTimeToHarvest: 30
     SpawnChance: 0.01
     AllowedCellTypes: 01000000
     HarvestableItems:
     - ItemType: 0
+      ChanceToFarm: 3
+    - ItemType: 3
       ChanceToFarm: 1

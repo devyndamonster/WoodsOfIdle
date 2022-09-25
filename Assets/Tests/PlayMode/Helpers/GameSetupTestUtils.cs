@@ -69,8 +69,9 @@ public static class GameSetupTestUtils
     {
         return new TerrainGenerationSettings
         {
+            Seed = seed,
             Size = new Vector2Int(50, 100),
-            CellSize = seed,
+            CellSize = 1,
             HeightMapSettings = new List<PerlinNoiseSettings>
             {
                 new PerlinNoiseSettings
