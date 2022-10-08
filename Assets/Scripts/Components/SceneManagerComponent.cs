@@ -10,7 +10,6 @@ namespace WoodsOfIdle
 {
     public class SceneManagerComponent : MonoBehaviour
     {
-        public UIDocument InventoryPanel;
         public AssetReferenceCollectionScriptable AssetCollection;
         public TerrainGenerationSettings TerrainSettings = new TerrainGenerationSettings();
 
@@ -61,8 +60,7 @@ namespace WoodsOfIdle
             saveController.CurrentSaveState.FarmingNodes = generatedTerrainData.FarmingNodes.ToDictionary(node => node.State.Position, node => node.State);
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
             
-            inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData, InventoryPanel);
-            gameUIController = new GameUIController(InventoryPanel, assetCollection.LoadedItemData, generatedTerrainData.FarmingNodes);
+            inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData);
             gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
 
             InitEvents();

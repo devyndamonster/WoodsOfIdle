@@ -7,7 +7,7 @@ namespace WoodsOfIdle
 {
     public class InventoryService : IInventoryService
     {
-        public List<InventoryChangeRequest> GetInventoryChanges(List<InventorySlotState> slotStates, ItemType itemType, int quantityChange)
+        public List<InventoryChangeRequest> GetInventoryChanges(IEnumerable<InventorySlotState> slotStates, ItemType itemType, int quantityChange)
         {
             if(quantityChange > 0)
             {
@@ -23,7 +23,7 @@ namespace WoodsOfIdle
         }
 
 
-        private List<InventoryChangeRequest> GetInventoryChangesFromAddition(List<InventorySlotState> slotStates, ItemType itemType, int quantityToAdd)
+        private List<InventoryChangeRequest> GetInventoryChangesFromAddition(IEnumerable<InventorySlotState> slotStates, ItemType itemType, int quantityToAdd)
         {
             List<InventoryChangeRequest> changes = new List<InventoryChangeRequest>();
 
@@ -59,7 +59,7 @@ namespace WoodsOfIdle
         }
 
 
-        private List<InventoryChangeRequest> GetInventoryChangesFromRemoval(List<InventorySlotState> slotStates, ItemType itemType, int quantityToRemove)
+        private List<InventoryChangeRequest> GetInventoryChangesFromRemoval(IEnumerable<InventorySlotState> slotStates, ItemType itemType, int quantityToRemove)
         {
             List<InventoryChangeRequest> changes = new List<InventoryChangeRequest>();
             List<InventorySlotState> slotsWithItem = slotStates.Where(slot => slot.ItemType == itemType).ToList();
@@ -92,7 +92,7 @@ namespace WoodsOfIdle
             return changes;
         }
 
-        public void ApplyInventoryChange(InventoryChangeRequest changeRequest, List<InventorySlotState> slotStates)
+        public void ApplyInventoryChange(InventoryChangeRequest changeRequest, IEnumerable<InventorySlotState> slotStates)
         {
             InventorySlotState targetSlotState = slotStates.First(slot => slot.SlotId == changeRequest.SlotId);
             targetSlotState.Quantity = changeRequest.NewQuantity;

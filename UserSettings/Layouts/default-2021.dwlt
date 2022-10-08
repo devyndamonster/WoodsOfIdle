@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 3440
     height: 1349
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 371}
   m_MaxSize: {x: 10000, y: 10000}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 46
+  controlID: 87
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 47
+  controlID: 88
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 48
+  controlID: 89
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 49
+  controlID: 48
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,8 +214,8 @@ MonoBehaviour:
     y: 0
     width: 402
     height: 863
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -240,8 +240,8 @@ MonoBehaviour:
     y: 0
     width: 452
     height: 863
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: Builder
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -294,15 +294,15 @@ MonoBehaviour:
     y: 0
     width: 1859
     height: 1299
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 20}
   - {fileID: 22}
   - {fileID: 21}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,8 +322,8 @@ MonoBehaviour:
     y: 0
     width: 727
     height: 1299
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -391,7 +391,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -404,20 +404,20 @@ MonoBehaviour:
       y: 21
       width: 726
       height: 1257
-    m_Scale: {x: 0.52375, y: 0.52375}
-    m_Translation: {x: 363, y: 628.5}
+    m_Scale: {x: 0.5325, y: 0.5325}
+    m_Translation: {x: 363, y: 628.4999}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -693.07874
-      y: -1200
-      width: 1386.1575
-      height: 2400
+      x: -681.6901
+      y: -1180.2814
+      width: 1363.3802
+      height: 2360.5632
     m_MinimalGUI: 1
-  m_defaultScale: 0.52375
+  m_defaultScale: 0.5325
   m_LastWindowPixelSize: {x: 726, y: 1278}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -458,7 +458,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0e37ffff6038ffff2039ffff163dffffd840ffff9841ffff5a45ffff5646ffff1647ffffc64afffffe55ffffbe56ffff6e5affffda5dffff9a5effff4a62ffff4264ffff0265ffffc468ffff3e6afffffe6affffae6efffffe6fffffbe70ffff6e74ffff987fffff5880ffff0884ffff488fffff0890ffffb893ffff2897ffffe897ffff989bffff349ffffff49fffffa4a3ffff44a8ffff04a9ffffb4acfffffcafffffbcb0ffff6cb4ffff7cb5ffff3cb6ffffecb9ffff3cbbfffffcbbffffacbfffff26c1ffffe6c1ffffacc5ffff2afbffff
+      m_ExpandedIDs: e0faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -566,22 +566,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Tests/PlayMode/Helpers
+    - Assets/Scripts/Input
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Tests/PlayMode/Helpers
+  - Assets/Scripts/Input
   m_LastFoldersGridSize: 96
   m_LastProjectPath: E:\Unity\Projects\WoodsOfIdle
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 277}
-    m_SelectedIDs: 38720000
-    m_LastClickedID: 29240
-    m_ExpandedIDs: 000000004e71000050710000527100005471000056710000587100005a7100005c7100005e710000607100006271000064710000207200003472000000ca9a3b
+    scrollPos: {x: 0, y: 89}
+    m_SelectedIDs: c2710000
+    m_LastClickedID: 29122
+    m_ExpandedIDs: 00000000ee700000a6710000b671000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -609,7 +609,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004e71000050710000527100005471000056710000587100005a7100005c7100005e710000607100006271000064710000
+    m_ExpandedIDs: 00000000ee700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -636,8 +636,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c623000000000000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300000000000074710000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -723,7 +723,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 1112
+    ID: 1677
     splitterInitialOffset: 197
     currentActiveSplitter: -1
     realSizes:
@@ -746,7 +746,7 @@ MonoBehaviour:
     oldMinSizes: 
     oldMaxSizes: 
     oldSplitSize: 0
-  m_TestTypeToolbarIndex: 1
+  m_TestTypeToolbarIndex: 0
   m_PlayModeTestListGUI:
     m_Window: {fileID: 19}
     m_NewResultList:
@@ -755,7 +755,7 @@ MonoBehaviour:
       name: WoodsOfIdle
       fullName: WoodsOfIdle
       resultStatus: 1
-      duration: 0.7104548
+      duration: 1.3417693
       messages: 
       output: 
       stacktrace: 
@@ -771,7 +771,7 @@ MonoBehaviour:
       name: PlayModeTests.dll
       fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/PlayModeTests.dll
       resultStatus: 1
-      duration: 0.6243899
+      duration: 1.0931828
       messages: 
       output: 
       stacktrace: 
@@ -787,7 +787,7 @@ MonoBehaviour:
       name: TerrainInitializationTests
       fullName: TerrainInitializationTests
       resultStatus: 1
-      duration: 0.6187625
+      duration: 1.0803764
       messages: 
       output: 
       stacktrace: 
@@ -803,7 +803,7 @@ MonoBehaviour:
       name: AssetsWillBeLoaded
       fullName: TerrainInitializationTests.AssetsWillBeLoaded
       resultStatus: 1
-      duration: 0.4350603
+      duration: 0.4310818
       messages: 
       output: 'Generating farming nodes: 3
 
@@ -822,7 +822,7 @@ MonoBehaviour:
       name: TerrainWillBeGenerated
       fullName: TerrainInitializationTests.TerrainWillBeGenerated
       resultStatus: 1
-      duration: 0.0990708
+      duration: 0.2227298
       messages: 
       output: 'Generating farming nodes: 3
 
@@ -841,11 +841,11 @@ MonoBehaviour:
       name: TerrainWillBeLoadedFromSave
       fullName: TerrainInitializationTests.TerrainWillBeLoadedFromSave
       resultStatus: 1
-      duration: 0.066905
+      duration: 0.4102484
       messages: 
       output: 'Generating farming nodes: 3
 
-        Generating farming nodes: 3
+        Loading farming nodes from save
 
 '
       stacktrace: 
@@ -857,17 +857,19 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1040
       parentUniqueId: PlayModeTests.dll/[PlayModeTests][TerrainInitializationTests][suite]
-    m_ResultText: 'AssetsWillBeLoaded (0.435s)
+    m_ResultText: 'TerrainWillBeLoadedFromSave (0.410s)
 
       ---
 
-      Generating farming
-      nodes: 3'
+      Generating
+      farming nodes: 3
+
+      Loading farming nodes from save'
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b9f4f19d
-      m_LastClickedID: -1645087559
+      m_SelectedIDs: 12f1a732
+      m_LastClickedID: 849867026
       m_ExpandedIDs: 7f681fe69de349f3bdb958f4a3cf7f41d98f01479d215857b9a1b867ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -903,7 +905,7 @@ MonoBehaviour:
       name: WoodsOfIdle
       fullName: WoodsOfIdle
       resultStatus: 1
-      duration: 0.178027
+      duration: 0.1602048
       messages: 
       output: 
       stacktrace: 
@@ -919,7 +921,7 @@ MonoBehaviour:
       name: EditModeTests.dll
       fullName: E:/Unity/Projects/WoodsOfIdle/Library/ScriptAssemblies/EditModeTests.dll
       resultStatus: 1
-      duration: 0.1143318
+      duration: 0.1142964
       messages: 
       output: 
       stacktrace: 
@@ -935,7 +937,7 @@ MonoBehaviour:
       name: FarmingNodeServiceTests
       fullName: FarmingNodeServiceTests
       resultStatus: 1
-      duration: 0.0054639
+      duration: 0.0224472
       messages: 
       output: 
       stacktrace: 
@@ -951,7 +953,7 @@ MonoBehaviour:
       name: WillFarmTenItemsInTenSeconds
       fullName: FarmingNodeServiceTests.WillFarmTenItemsInTenSeconds
       resultStatus: 1
-      duration: 0.0014416
+      duration: 0.009914
       messages: 
       output: 
       stacktrace: 
@@ -968,7 +970,7 @@ MonoBehaviour:
       name: WillSetTimeLastHarvestedCorrectly
       fullName: FarmingNodeServiceTests.WillSetTimeLastHarvestedCorrectly
       resultStatus: 1
-      duration: 0.0011159
+      duration: 0.0012308
       messages: 
       output: 
       stacktrace: 
@@ -985,7 +987,7 @@ MonoBehaviour:
       name: WontFarmFromBeforeReactivated
       fullName: FarmingNodeServiceTests.WontFarmFromBeforeReactivated
       resultStatus: 1
-      duration: 0.0002434
+      duration: 0.0002852
       messages: 
       output: 
       stacktrace: 
@@ -1002,7 +1004,7 @@ MonoBehaviour:
       name: WontFarmWhenInactive
       fullName: FarmingNodeServiceTests.WontFarmWhenInactive
       resultStatus: 1
-      duration: 0.0001595
+      duration: 0.0002189
       messages: 
       output: 
       stacktrace: 
@@ -1019,7 +1021,7 @@ MonoBehaviour:
       name: InventoryServiceTests
       fullName: InventoryServiceTests
       resultStatus: 1
-      duration: 0.0355545
+      duration: 0.0116434
       messages: 
       output: 
       stacktrace: 
@@ -1035,7 +1037,7 @@ MonoBehaviour:
       name: ApplyingChangesEffectsCorrectSlot
       fullName: InventoryServiceTests.ApplyingChangesEffectsCorrectSlot
       resultStatus: 1
-      duration: 0.0036676
+      duration: 0.0007544
       messages: 
       output: 
       stacktrace: 
@@ -1052,7 +1054,7 @@ MonoBehaviour:
       name: ChangesAddToOnlyOneSlot
       fullName: InventoryServiceTests.ChangesAddToOnlyOneSlot
       resultStatus: 1
-      duration: 0.0008063
+      duration: 0.0003263
       messages: 
       output: 
       stacktrace: 
@@ -1069,7 +1071,7 @@ MonoBehaviour:
       name: ChangesAddToSlotThatAlreadyHasItems
       fullName: InventoryServiceTests.ChangesAddToSlotThatAlreadyHasItems
       resultStatus: 1
-      duration: 0.000903
+      duration: 0.0004313
       messages: 
       output: 
       stacktrace: 
@@ -1086,7 +1088,7 @@ MonoBehaviour:
       name: ChangesRemoveFromCorrectSlot
       fullName: InventoryServiceTests.ChangesRemoveFromCorrectSlot
       resultStatus: 1
-      duration: 0.0007698
+      duration: 0.0005034
       messages: 
       output: 
       stacktrace: 
@@ -1103,7 +1105,7 @@ MonoBehaviour:
       name: ChangesRemoveFromMultipleSlots
       fullName: InventoryServiceTests.ChangesRemoveFromMultipleSlots
       resultStatus: 1
-      duration: 0.0003127
+      duration: 0.0002512
       messages: 
       output: 
       stacktrace: 
@@ -1120,7 +1122,7 @@ MonoBehaviour:
       name: ChangesRemoveFromOnlyOneSlot
       fullName: InventoryServiceTests.ChangesRemoveFromOnlyOneSlot
       resultStatus: 1
-      duration: 0.0002881
+      duration: 0.0002508
       messages: 
       output: 
       stacktrace: 
@@ -1137,7 +1139,7 @@ MonoBehaviour:
       name: RemovingFromEmptyInventoryHasNoChanges
       fullName: InventoryServiceTests.RemovingFromEmptyInventoryHasNoChanges
       resultStatus: 1
-      duration: 0.0001481
+      duration: 0.0001596
       messages: 
       output: 
       stacktrace: 
@@ -1154,7 +1156,7 @@ MonoBehaviour:
       name: RemovingNothingHasNoChanges
       fullName: InventoryServiceTests.RemovingNothingHasNoChanges
       resultStatus: 1
-      duration: 0.0001465
+      duration: 0.0001556
       messages: 
       output: 
       stacktrace: 
@@ -1171,7 +1173,7 @@ MonoBehaviour:
       name: SaveServiceTests
       fullName: SaveServiceTests
       resultStatus: 1
-      duration: 0.0376753
+      duration: 0.0347502
       messages: 
       output: 
       stacktrace: 
@@ -1187,7 +1189,7 @@ MonoBehaviour:
       name: DataIsSavedProperly
       fullName: SaveServiceTests.DataIsSavedProperly
       resultStatus: 1
-      duration: 0.0236099
+      duration: 0.0175596
       messages: 
       output: 
       stacktrace: 
@@ -1204,7 +1206,7 @@ MonoBehaviour:
       name: SaveDeletesProperly
       fullName: SaveServiceTests.SaveDeletesProperly
       resultStatus: 1
-      duration: 0.0012667
+      duration: 0.0014492
       messages: 
       output: 
       stacktrace: 
@@ -1221,7 +1223,7 @@ MonoBehaviour:
       name: SaveDoesNotExist
       fullName: SaveServiceTests.SaveDoesNotExist
       resultStatus: 1
-      duration: 0.000239
+      duration: 0.0002794
       messages: 
       output: 
       stacktrace: 
@@ -1238,7 +1240,7 @@ MonoBehaviour:
       name: SaveExists
       fullName: SaveServiceTests.SaveExists
       resultStatus: 1
-      duration: 0.0029786
+      duration: 0.003289
       messages: 
       output: 
       stacktrace: 
@@ -1255,7 +1257,7 @@ MonoBehaviour:
       name: SavesAreInSaveList
       fullName: SaveServiceTests.SavesAreInSaveList
       resultStatus: 1
-      duration: 0.00346
+      duration: 0.0041757
       messages: 
       output: 
       stacktrace: 
@@ -1272,7 +1274,7 @@ MonoBehaviour:
       name: TerrainServiceTests
       fullName: TerrainServiceTests
       resultStatus: 1
-      duration: 0.0342791
+      duration: 0.0433432
       messages: 
       output: 
       stacktrace: 
@@ -1288,7 +1290,7 @@ MonoBehaviour:
       name: CellsWillBeCorrectDimensions
       fullName: TerrainServiceTests.CellsWillBeCorrectDimensions
       resultStatus: 1
-      duration: 0.0013691
+      duration: 0.0019612
       messages: 
       output: 
       stacktrace: 
@@ -1305,7 +1307,7 @@ MonoBehaviour:
       name: CellsWillBeDifferentOnDifferentSeed
       fullName: TerrainServiceTests.CellsWillBeDifferentOnDifferentSeed
       resultStatus: 1
-      duration: 0.0026841
+      duration: 0.004559
       messages: 
       output: 
       stacktrace: 
@@ -1322,7 +1324,7 @@ MonoBehaviour:
       name: CellsWillBeSameOnSameSeed
       fullName: TerrainServiceTests.CellsWillBeSameOnSameSeed
       resultStatus: 1
-      duration: 0.0025552
+      duration: 0.0045476
       messages: 
       output: 
       stacktrace: 
@@ -1339,7 +1341,7 @@ MonoBehaviour:
       name: NodesWillNotOverlap
       fullName: TerrainServiceTests.NodesWillNotOverlap
       resultStatus: 1
-      duration: 0.0154599
+      duration: 0.0163218
       messages: 
       output: 
       stacktrace: 
@@ -1356,7 +1358,7 @@ MonoBehaviour:
       name: NodesWilLoadFromStateCorrectly
       fullName: TerrainServiceTests.NodesWilLoadFromStateCorrectly
       resultStatus: 1
-      duration: 0.001573
+      duration: 0.0016272
       messages: 
       output: 
       stacktrace: 
@@ -1373,7 +1375,7 @@ MonoBehaviour:
       name: NodesWillOnlySpawnOnValidCells
       fullName: TerrainServiceTests.NodesWillOnlySpawnOnValidCells
       resultStatus: 1
-      duration: 0.0009265
+      duration: 0.0012553
       messages: 
       output: 
       stacktrace: 
@@ -1390,7 +1392,7 @@ MonoBehaviour:
       name: NodesWontSpawnWhenNoValidCells
       fullName: TerrainServiceTests.NodesWontSpawnWhenNoValidCells
       resultStatus: 1
-      duration: 0.0011746
+      duration: 0.0014298
       messages: 
       output: 
       stacktrace: 
@@ -1407,7 +1409,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeHalf
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeHalf
       resultStatus: 1
-      duration: 0.0008074
+      duration: 0.0007303
       messages: 
       output: 
       stacktrace: 
@@ -1424,7 +1426,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeOne
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeOne
       resultStatus: 1
-      duration: 0.0003234
+      duration: 0.000422
       messages: 
       output: 
       stacktrace: 
@@ -1441,7 +1443,7 @@ MonoBehaviour:
       name: SpawnPositionCorrectOnCellSizeTwo
       fullName: TerrainServiceTests.SpawnPositionCorrectOnCellSizeTwo
       resultStatus: 1
-      duration: 0.000298
+      duration: 0.0003276
       messages: 
       output: 
       stacktrace: 
@@ -1453,7 +1455,7 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1021
       parentUniqueId: EditModeTests.dll/[EditModeTests][TerrainServiceTests][suite]
-    m_ResultText: NodesWillNotOverlap (0.015s)
+    m_ResultText: NodesWillNotOverlap (0.016s)
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
@@ -1711,9 +1713,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 21.583895, y: 49.182056, z: -29.706491}
+    m_Target: {x: -2.9152212, y: 8.331253, z: -21.297285}
     speed: 2
-    m_Value: {x: 21.583895, y: 49.182056, z: -29.706491}
+    m_Value: {x: -2.9152212, y: 8.331253, z: -21.297285}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1760,13 +1762,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.1658148, y: -0.13891543, z: 0.023687849, w: 0.9760066}
+    m_Target: {x: -0.11912702, y: -0.71055996, z: 0.123973295, w: -0.6822684}
     speed: 2
-    m_Value: {x: 0.1658196, y: -0.13891946, z: 0.023688534, w: 0.9760349}
+    m_Value: {x: 0.11912701, y: 0.71055996, z: -0.123973295, w: 0.6822683}
   m_Size:
-    m_Target: 10.609186
+    m_Target: 79.87123
     speed: 2
-    m_Value: 10.609186
+    m_Value: 79.87123
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -2061,10 +2063,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 976
-    y: 81
-    width: 1602
-    height: 1262
+    x: 854
+    y: 73
+    width: 1857
+    height: 1278
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default

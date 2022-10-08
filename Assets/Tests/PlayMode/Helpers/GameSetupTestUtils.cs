@@ -21,7 +21,6 @@ public static class GameSetupTestUtils
 
         GameObject sceneManagerObject = new GameObject();
         SceneManagerComponent sceneComp = sceneManagerObject.AddComponent<SceneManagerComponent>();
-        sceneComp.InventoryPanel = GetTestUIDocument();
         sceneComp.TerrainSettings = GetTestTerrainGenerationSettings(seed);
         sceneComp.AssetCollection = GetTestAssetCollection();
     }

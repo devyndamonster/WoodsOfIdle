@@ -88,12 +88,6 @@
     background-color: rgb(95, 255, 121);
 }
 
-.HarvestProgressBar VisualElement {
-    width: auto;
-    height: 100%;
-    background-color: rgb(255, 0, 0);
-}
-
 .HarvestOptionUpperContainer {
     flex-direction: row;
     flex-grow: 1;
@@ -122,4 +116,15 @@
     height: 100px;
     background-color: rgb(123, 123, 123);
     background-image: url('project://database/Assets/GameAssets/Items/Icons/icon_stiick.png?fileID=2800000&guid=58cdfc0054b69a240881a345beab19e1&type=3#icon_stiick');
+}
+
+.TimeDisplayElement {
+    height: 150px;
+    background-color: rgb(188, 222, 236);
+    border-top-width: 10px;
+    border-bottom-width: 10px;
+    border-left-color: rgb(135, 135, 135);
+    border-right-color: rgb(135, 135, 135);
+    border-top-color: rgb(135, 135, 135);
+    border-bottom-color: rgb(135, 135, 135);
 }

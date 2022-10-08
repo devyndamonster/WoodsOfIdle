@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Styles/InventoryStyles.uss?fileID=7433441132597879392&amp;guid=2e9fcc388a5f0fd47a1c0dad0559150d&amp;type=3#InventoryStyles" />
-    <ui:VisualElement name="FarmingOption" style="background-color: rgb(213, 255, 230); height: auto; border-bottom-width: 10px; border-left-color: rgb(128, 128, 128); border-right-color: rgb(128, 128, 128); border-top-color: rgb(128, 128, 128); border-bottom-color: rgb(128, 128, 128); border-top-width: 10px; flex-direction: column;">
+    <ui:VisualElement name="FarmingOption">
         <ui:VisualElement name="ItemContainer" class="HarvestOptionUpperContainer">
             <ui:Button text="Collect Wood" display-tooltip-when-elided="true" name="HarvestButton" class="GameMenuNavButton" />
             <ui:VisualElement name="HarvestedItemContainer" class="HarvestOptionItemContainer">
@@ -10,5 +10,4 @@
         </ui:VisualElement>
         <WoodsOfIdle.SimpleProgressBar Progress="0.45" class="HarvestProgressBar" />
     </ui:VisualElement>
-    <WoodsOfIdle.HarvestOptionElement Sample_Image_Count="3" Option_Text="Collect Sticks" />
 </ui:UXML>

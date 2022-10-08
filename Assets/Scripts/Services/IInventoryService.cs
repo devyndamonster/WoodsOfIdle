@@ -7,9 +7,9 @@ namespace WoodsOfIdle
 {
     public interface IInventoryService
     {
-        public List<InventoryChangeRequest> GetInventoryChanges(List<InventorySlotState> slotStates, ItemType itemType, int quantityChange);
+        public List<InventoryChangeRequest> GetInventoryChanges(IEnumerable<InventorySlotState> slotStates, ItemType itemType, int quantityChange);
 
-        public void ApplyInventoryChange(InventoryChangeRequest changeRequest, List<InventorySlotState> slotStates);
+        public void ApplyInventoryChange(InventoryChangeRequest changeRequest, IEnumerable<InventorySlotState> slotStates);
 
         public void SwapInventoryContents(InventorySlotState slotFrom, InventorySlotState slotTo);
     }

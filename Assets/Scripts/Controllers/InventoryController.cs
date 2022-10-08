@@ -10,81 +10,43 @@ namespace WoodsOfIdle
     {
         protected IInventoryService inventoryService;
         protected SaveController saveController;
-        protected UIDocument inventoryPanel;
-        protected Dictionary<string, DragAndDropSlot> dragAndDropSlots;
         protected Dictionary<ItemType, ItemData> itemData;
         
-        public InventoryController(SaveController saveController, IInventoryService inventoryService, Dictionary<ItemType, ItemData> itemData, UIDocument inventoryPanel)
+        public InventoryController(SaveController saveController, IInventoryService inventoryService, Dictionary<ItemType, ItemData> itemData)
         {
             this.saveController = saveController;
             this.inventoryService = inventoryService;
-            this.inventoryPanel = inventoryPanel;
             this.itemData = itemData;
-
-            SetupEvents();
-            PopulateDragAndDropSlots();
-            ApplySlotStates(saveController.CurrentSaveState.InventoryInSlots);
+            
         }
-
-        private void SetupEvents()
-        {
-            FarmingNodeController.Harvested += ChangeStoredItemsQuantity;
-            DragAndDropElement.InventorySlotDragged += SwapInventorySlots;
-        }
-
-        private void PopulateDragAndDropSlots()
-        {
-            dragAndDropSlots = inventoryPanel.rootVisualElement
-                .Query<DragAndDropSlot>()
-                .ToList()
-                .ToDictionary(slot => slot.SlotId);
-        }
-
-        private void ApplySlotStates(IDictionary<string, InventorySlotState> inventoryInSlots)
-        {
-            foreach (var slotPair in dragAndDropSlots)
-            {
-                if (!inventoryInSlots.ContainsKey(slotPair.Value.SlotId))
-                {
-                    inventoryInSlots[slotPair.Value.SlotId] = new InventorySlotState
-                    {
-                        SlotId = slotPair.Value.SlotId,
-                        CanAutoInsert = slotPair.Value.CanAutoInsert
-                    };
-                }
-
-                InventorySlotState slotState = inventoryInSlots[slotPair.Value.SlotId];
-                slotPair.Value.SetSlotState(itemData[slotState.ItemType], slotState.Quantity);
-            }
-        }
-
-        public void ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
+        
+        public IEnumerable<InventorySlotState> ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
         {
             IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
-            List<InventorySlotState> targetSlotStates = dragAndDropSlots.Select(slot => savedSlotStates[slot.Key]).ToList();
-
-            List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(targetSlotStates, itemType, quantityChange);
+            List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(savedSlotStates.Values, itemType, quantityChange);
+            List<InventorySlotState> updatedStates = new List<InventorySlotState>();
 
             foreach (InventoryChangeRequest change in changes)
             {
-                inventoryService.ApplyInventoryChange(change, targetSlotStates);
-                dragAndDropSlots[change.SlotId].SetSlotState(itemData[change.ItemType], change.NewQuantity);
+                inventoryService.ApplyInventoryChange(change, savedSlotStates.Values);
+                updatedStates.Add(savedSlotStates[change.SlotId]);
             }
-        }
 
-        public void SwapInventorySlots(DragAndDropSlot slotTo, DragAndDropSlot slotFrom)
+            return updatedStates;
+        }
+        
+        public IEnumerable<InventorySlotState> SwapInventorySlots(string slotIdTo, string slotIdFrom)
         {
             IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
 
-            if (!savedSlotStates.ContainsKey(slotTo.SlotId) || !savedSlotStates.ContainsKey(slotFrom.SlotId)) return;
+            if (!savedSlotStates.ContainsKey(slotIdTo) || !savedSlotStates.ContainsKey(slotIdFrom)) return Enumerable.Empty<InventorySlotState>();
 
-            InventorySlotState slotStateTo = savedSlotStates[slotTo.SlotId];
-            InventorySlotState slotStateFrom = savedSlotStates[slotFrom.SlotId];
+            InventorySlotState slotStateTo = savedSlotStates[slotIdTo];
+            InventorySlotState slotStateFrom = savedSlotStates[slotIdFrom];
 
             inventoryService.SwapInventoryContents(slotStateFrom, slotStateTo);
 
-            slotTo.SetSlotState(itemData[slotStateTo.ItemType], slotStateTo.Quantity);
-            slotFrom.SetSlotState(itemData[slotStateFrom.ItemType], slotStateFrom.Quantity);
+            return new InventorySlotState[] { slotStateTo, slotStateFrom };
         }
     }
 }
