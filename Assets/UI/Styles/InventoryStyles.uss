@@ -26,6 +26,7 @@
     border-bottom-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    background-image: url('project://database/Assets/GameAssets/Items/Icons/icon_stiick.png?fileID=2800000&guid=58cdfc0054b69a240881a345beab19e1&type=3#icon_stiick');
 }
 
 .DragAndDropInventoryGrid {

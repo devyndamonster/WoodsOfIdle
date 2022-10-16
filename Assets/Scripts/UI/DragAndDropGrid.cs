@@ -54,9 +54,10 @@ namespace WoodsOfIdle
             for (int index = 0; index < Columns * Rows; index++)
             {
                 DragAndDropSlot slot = new DragAndDropSlot();
-                slot.BelongsToPlayer = BelongsToPlayer;
-                slot.SlotId = "Grid-" + index;
-                slot.CanAutoInsert = CanAutoInsert;
+                slot.SlotData = new InventorySlotData();
+                slot.SlotData.BelongsToPlayer = BelongsToPlayer;
+                slot.SlotData.SlotId = "Grid-" + index;
+                slot.SlotData.CanAutoInsert = CanAutoInsert;
                 slot.name = "DragAndDropSlot";
                 slot.AddToClassList("DragAndDropSlot");
                 Add(slot);

@@ -8,43 +8,67 @@ namespace WoodsOfIdle
 {
     public class InventoryController
     {
-        protected IInventoryService inventoryService;
-        protected SaveController saveController;
-        protected Dictionary<ItemType, ItemData> itemData;
-        
-        public InventoryController(SaveController saveController, IInventoryService inventoryService, Dictionary<ItemType, ItemData> itemData)
+        private IInventoryService _inventoryService;
+        private SaveController _saveController;
+        private AssetReferenceCollection _assetCollection;
+        private InventoryRelay _inventoryRelay;
+
+        public InventoryController(
+            SaveController saveController,
+            IInventoryService inventoryService,
+            AssetReferenceCollection assetCollection,
+            InventoryRelay inventoryRelay)
         {
-            this.saveController = saveController;
-            this.inventoryService = inventoryService;
-            this.itemData = itemData;
-            
+            _saveController = saveController;
+            _inventoryService = inventoryService;
+            _assetCollection = assetCollection;
+            _inventoryRelay = inventoryRelay;
+        }
+
+        public void OnItemQuantityChanged(ItemType itemType, int quantityChange)
+        {
+            _inventoryRelay.RelayInventorySlotUpdates(ChangeStoredItemsQuantity(itemType, quantityChange));
+        }
+
+        public void InitializeSlotsFromData(IEnumerable<InventorySlotData> slotData)
+        {
+            var savedSlots = _saveController.CurrentSaveState.InventoryInSlots;
+
+            foreach (var slot in slotData)
+            {
+                if (!savedSlots.ContainsKey(slot.SlotId))
+                {
+                    savedSlots[slot.SlotId] = new InventorySlotState
+                    {
+                        SlotId = slot.SlotId,
+                        CanAutoInsert = slot.CanAutoInsert
+                    };
+                }
+            }
+        }
+
+        public IEnumerable<InventorySlotState> GetSlotStates(IEnumerable<string> slotIds)
+        {
+            return slotIds.Select(slotId => _saveController.CurrentSaveState.InventoryInSlots[slotId]);
         }
         
         public IEnumerable<InventorySlotState> ChangeStoredItemsQuantity(ItemType itemType, int quantityChange)
         {
-            IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
-            List<InventoryChangeRequest> changes = inventoryService.GetInventoryChanges(savedSlotStates.Values, itemType, quantityChange);
-            List<InventorySlotState> updatedStates = new List<InventorySlotState>();
-
-            foreach (InventoryChangeRequest change in changes)
-            {
-                inventoryService.ApplyInventoryChange(change, savedSlotStates.Values);
-                updatedStates.Add(savedSlotStates[change.SlotId]);
-            }
-
+            var savedSlotStates = _saveController.CurrentSaveState.InventoryInSlots;
+            var updatedStates = _inventoryService.GetInventorySlotStatesFromQuantityChange(savedSlotStates, itemType, quantityChange);
             return updatedStates;
         }
         
         public IEnumerable<InventorySlotState> SwapInventorySlots(string slotIdTo, string slotIdFrom)
         {
-            IDictionary<string, InventorySlotState> savedSlotStates = saveController.CurrentSaveState.InventoryInSlots;
+            var savedSlotStates = _saveController.CurrentSaveState.InventoryInSlots;
 
             if (!savedSlotStates.ContainsKey(slotIdTo) || !savedSlotStates.ContainsKey(slotIdFrom)) return Enumerable.Empty<InventorySlotState>();
+            
+            var slotStateTo = savedSlotStates[slotIdTo];
+            var slotStateFrom = savedSlotStates[slotIdFrom];
 
-            InventorySlotState slotStateTo = savedSlotStates[slotIdTo];
-            InventorySlotState slotStateFrom = savedSlotStates[slotIdFrom];
-
-            inventoryService.SwapInventoryContents(slotStateFrom, slotStateTo);
+            _inventoryService.SwapInventoryContents(slotStateFrom, slotStateTo);
 
             return new InventorySlotState[] { slotStateTo, slotStateFrom };
         }

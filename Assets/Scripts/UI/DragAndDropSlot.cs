@@ -8,9 +8,7 @@ namespace WoodsOfIdle
 {
     public class DragAndDropSlot : VisualElement
     {
-        public string SlotId { get; set; }
-        public bool BelongsToPlayer { get; set; }
-        public bool CanAutoInsert { get; set; }
+        public InventorySlotData SlotData { get; set; }
 
         public DragAndDropElement currentElement;
 
@@ -32,33 +30,12 @@ namespace WoodsOfIdle
                 base.Init(visualElement, bag, context);
                 var dragAndDrop = visualElement as DragAndDropSlot;
 
-                dragAndDrop.SlotId = SlotIdAttr.GetValueFromBag(bag, context);
-                dragAndDrop.BelongsToPlayer = BelongsToPlayerAttr.GetValueFromBag(bag, context);
-                dragAndDrop.CanAutoInsert = CanAutoInsertAttr.GetValueFromBag(bag, context);
+                dragAndDrop.SlotData = new InventorySlotData();
+                dragAndDrop.SlotData.SlotId = SlotIdAttr.GetValueFromBag(bag, context);
+                dragAndDrop.SlotData.BelongsToPlayer = BelongsToPlayerAttr.GetValueFromBag(bag, context);
+                dragAndDrop.SlotData.CanAutoInsert = CanAutoInsertAttr.GetValueFromBag(bag, context);
 
                 dragAndDrop.Clear();
-            }
-        }
-
-        public void SetSlotState(ItemData item, int quantity)
-        {
-            //If element should show
-            if(quantity > 0)
-            {
-                if (currentElement is null)
-                {
-                    currentElement = new DragAndDropElement(this);
-                    Add(currentElement);
-                }
-
-                currentElement.style.backgroundImage = new StyleBackground(item.ItemIcon);
-                currentElement.SetQuantity(quantity);
-            }
-            else
-            {
-                //Destroy the current element
-                Clear();
-                currentElement = null;
             }
         }
     }

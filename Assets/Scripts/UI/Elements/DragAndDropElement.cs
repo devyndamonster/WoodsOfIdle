@@ -10,40 +10,21 @@ namespace WoodsOfIdle
 {
     public class DragAndDropElement : VisualElement
     {
-        public static event InventorySlotDragged InventorySlotDragged;
+        public event InventorySlotDragged Dragged;
 
         private DragAndDropSlot previousSlot;
-        private Label quantityLabel;
         private bool isDragging;
 
         public DragAndDropElement(DragAndDropSlot slot)
         {
             previousSlot = slot;
-
-            Clear();
-            SetupVisuals();
             
             RegisterCallback<MouseDownEvent>(OnMouseDown);
             RegisterCallback<MouseUpEvent>(OnMouseUp);
             RegisterCallback<MouseMoveEvent>(OnMouseMove);
             RegisterCallback<MouseLeaveEvent>(OnMouseLeave);
         }
-
-        public void SetQuantity(int quantity)
-        {
-            quantityLabel.text = quantity.ToString();
-        }
-
-        private void SetupVisuals()
-        {
-            AddToClassList("DragAndDropElement");
-
-            quantityLabel = new Label();
-            quantityLabel.text = "0";
-            quantityLabel.AddToClassList("DragAndDropElementLabel");
-            Add(quantityLabel);
-        }
-
+        
         private void OnMouseDown(MouseDownEvent mouseEvent)
         {
             StartDragging(mouseEvent.mousePosition);
@@ -96,7 +77,7 @@ namespace WoodsOfIdle
 
                 if (!destinationSlot.Equals(previousSlot))
                 {
-                    InventorySlotDragged(destinationSlot, previousSlot);
+                    Dragged(destinationSlot, previousSlot);
                 }
             }
         }

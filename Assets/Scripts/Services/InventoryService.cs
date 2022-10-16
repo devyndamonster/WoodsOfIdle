@@ -110,6 +110,21 @@ namespace WoodsOfIdle
             slotTo.Quantity = tempQuantity;
             slotTo.ItemType = tempType;
         }
+
+        public IEnumerable<InventorySlotState> GetInventorySlotStatesFromQuantityChange(IDictionary<string, InventorySlotState> slotStates, ItemType itemType, int quantityChange)
+        {
+            var changes = GetInventoryChanges(slotStates.Values, itemType, quantityChange);
+            var updatedStates = new List<InventorySlotState>();
+
+            foreach (InventoryChangeRequest change in changes)
+            {
+                ApplyInventoryChange(change, slotStates.Values);
+                updatedStates.Add(slotStates[change.SlotId]);
+            }
+
+            return updatedStates;
+        }
     }
+
 }
 

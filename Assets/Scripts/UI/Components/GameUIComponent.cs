@@ -11,12 +11,22 @@ namespace WoodsOfIdle
         public UIDocument UIDocument;
         public VisualTreeAsset GameViewAsset;
         public VisualTreeAsset FarmingNodeMenuAsset;
-        
+        public VisualTreeAsset InventoryElementAsset;
+
+        private InventoryUIController _inventoryUIController;
         private VisualElement _popoutContainer;
 
         private void Awake()
         {
             UIDocument.visualTreeAsset = GameViewAsset;
+        }
+
+        private void Initialize(InventoryRelay inventoryRelay, InventoryElementFactory inventoryElementFactory)
+        {
+            //TODO: should this object have a dependancy injection container? How do we link this to the base game container?
+            // Probably should come up with dependancy injection map on design doc
+            
+            _inventoryUIController = new InventoryUIController(inventoryElementFactory, UIDocument, inventoryRelay);
         }
 
         public void OnNodeClicked(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
@@ -29,27 +39,7 @@ namespace WoodsOfIdle
         {
             ClearTopPopoutMenuContent();
         }
-
-        /*
-        private void ApplySlotStates(IDictionary<string, InventorySlotState> inventoryInSlots)
-        {
-            foreach (var slotPair in dragAndDropSlots)
-            {
-                if (!inventoryInSlots.ContainsKey(slotPair.Value.SlotId))
-                {
-                    inventoryInSlots[slotPair.Value.SlotId] = new InventorySlotState
-                    {
-                        SlotId = slotPair.Value.SlotId,
-                        CanAutoInsert = slotPair.Value.CanAutoInsert
-                    };
-                }
-
-                InventorySlotState slotState = inventoryInSlots[slotPair.Value.SlotId];
-                slotPair.Value.SetSlotState(itemData[slotState.ItemType], slotState.Quantity);
-            }
-        }
-        */
-
+        
         private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
         {
             HarvestOptionElement harvestOption = new HarvestOptionElement();

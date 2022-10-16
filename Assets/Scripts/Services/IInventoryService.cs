@@ -12,6 +12,8 @@ namespace WoodsOfIdle
         public void ApplyInventoryChange(InventoryChangeRequest changeRequest, IEnumerable<InventorySlotState> slotStates);
 
         public void SwapInventoryContents(InventorySlotState slotFrom, InventorySlotState slotTo);
+
+        public IEnumerable<InventorySlotState> GetInventorySlotStatesFromQuantityChange(IDictionary<string, InventorySlotState> slotStates, ItemType itemType, int quantityChange);
     }
 }
 
