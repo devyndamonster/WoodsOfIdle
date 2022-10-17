@@ -81,7 +81,7 @@ namespace WoodsOfIdle
 
             selectSaveButton.clicked += () =>
             {
-                SceneManagerComponent.SetNextSaveToOpen(saveName);
+                GameContainerComponent.SetNextSaveToOpen(saveName);
                 SceneManager.LoadScene("EmptyIdleScene", LoadSceneMode.Single);
             };
         }

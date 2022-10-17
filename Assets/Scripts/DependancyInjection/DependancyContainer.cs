@@ -36,5 +36,14 @@ namespace WoodsOfIdle
             _dependancies.Add(typeof(TResult), instance);
         }
 
+        public T Resolve<T>()
+        {
+            return (T)_dependancies[typeof(T)];
+        }
+
+        public IEnumerable<T> CollectImplementationsOfType<T>()
+        {
+            return _dependancies.Values.OfType<T>();
+        }
     }
 }

@@ -10,19 +10,18 @@ namespace WoodsOfIdle
     {
         private IInventoryService _inventoryService;
         private SaveController _saveController;
-        private AssetReferenceCollection _assetCollection;
         private InventoryRelay _inventoryRelay;
 
         public InventoryController(
             SaveController saveController,
             IInventoryService inventoryService,
-            AssetReferenceCollection assetCollection,
             InventoryRelay inventoryRelay)
         {
             _saveController = saveController;
             _inventoryService = inventoryService;
-            _assetCollection = assetCollection;
             _inventoryRelay = inventoryRelay;
+
+            _inventoryRelay.Link(this);
         }
 
         public void OnItemQuantityChanged(ItemType itemType, int quantityChange)

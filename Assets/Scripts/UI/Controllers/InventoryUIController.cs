@@ -18,6 +18,8 @@ namespace WoodsOfIdle
             _inventoryElementFactory = inventoryElementFactory;
             _uiDocument = uiDocument;
             _inventoryRelay = inventoryRelay;
+
+            _inventoryRelay.Link(this);
             
             _dragAndDropSlots = _uiDocument.rootVisualElement
                 .Query<DragAndDropSlot>()

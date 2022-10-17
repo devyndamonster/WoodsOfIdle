@@ -34,8 +34,7 @@ namespace WoodsOfIdle
         private void Start()
         {
             InitServices();
-            IEnumerator routine = addressableLoaderService.LoadAssets(AssetCollection.Value, (loadedAssetCollection) => InitScene(loadedAssetCollection));
-            StartCoroutine(routine);
+            
         }
 
         private void InitServices()
@@ -60,7 +59,7 @@ namespace WoodsOfIdle
             saveController.CurrentSaveState.FarmingNodes = generatedTerrainData.FarmingNodes.ToDictionary(node => node.State.Position, node => node.State);
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
             
-            inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData);
+            //inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData);
             gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
 
             InitEvents();
@@ -90,10 +89,6 @@ namespace WoodsOfIdle
             return isSceneInit;
         }
         
-        public static void SetNextSaveToOpen(string saveName)
-        {
-            nextSaveToOpen = saveName;
-        }
 
         private void Update()
         {

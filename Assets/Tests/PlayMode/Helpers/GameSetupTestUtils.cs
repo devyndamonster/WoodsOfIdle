@@ -61,7 +61,7 @@ public static class GameSetupTestUtils
     {
         ISaveService saveService = new SaveService();
         saveService.DeleteSave(saveName);
-        SceneManagerComponent.SetNextSaveToOpen(saveName);
+        GameContainerComponent.SetNextSaveToOpen(saveName);
     }
 
     private static TerrainGenerationSettings GetTestTerrainGenerationSettings(int seed = 0)

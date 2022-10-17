@@ -10,10 +10,10 @@ namespace WoodsOfIdle
         private AssetReferenceCollection _assetCollection;
         private VisualTreeAsset _inventoryIconAsset;
 
-        public InventoryElementFactory(AssetReferenceCollection assetCollection, VisualTreeAsset inventoryIconAsset)
+        public InventoryElementFactory(AssetReferenceCollection assetCollection)
         {
             _assetCollection = assetCollection;
-            _inventoryIconAsset = inventoryIconAsset;
+            _inventoryIconAsset = assetCollection.InventoryElementAsset;
         }
 
         

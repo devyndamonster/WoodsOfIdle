@@ -9,9 +9,13 @@ namespace WoodsOfIdle
         private InventoryController _inventoryController;
         private InventoryUIController _inventoryUIController;
         
-        public InventoryRelay(InventoryController inventoryController, InventoryUIController inventoryUIController)
+        public void Link(InventoryController inventoryController)
         {
             _inventoryController = inventoryController;
+        }
+
+        public void Link(InventoryUIController inventoryUIController)
+        {
             _inventoryUIController = inventoryUIController;
         }
         

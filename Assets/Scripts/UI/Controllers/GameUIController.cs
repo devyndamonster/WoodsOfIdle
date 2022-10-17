@@ -6,27 +6,13 @@ using UnityEngine.UIElements;
 
 namespace WoodsOfIdle
 {
-    public class GameUIComponent : MonoBehaviour
+    public class GameUIController
     {
-        public UIDocument UIDocument;
-        public VisualTreeAsset GameViewAsset;
-        public VisualTreeAsset FarmingNodeMenuAsset;
-        public VisualTreeAsset InventoryElementAsset;
-
-        private InventoryUIController _inventoryUIController;
-        private VisualElement _popoutContainer;
-
-        private void Awake()
+        private UIDocument _uiDocument;
+        
+        public GameUIController(UIDocument gameUIPanel)
         {
-            UIDocument.visualTreeAsset = GameViewAsset;
-        }
-
-        private void Initialize(InventoryRelay inventoryRelay, InventoryElementFactory inventoryElementFactory)
-        {
-            //TODO: should this object have a dependancy injection container? How do we link this to the base game container?
-            // Probably should come up with dependancy injection map on design doc
-            
-            _inventoryUIController = new InventoryUIController(inventoryElementFactory, UIDocument, inventoryRelay);
+            _uiDocument = gameUIPanel;
         }
 
         public void OnNodeClicked(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
@@ -39,7 +25,7 @@ namespace WoodsOfIdle
         {
             ClearTopPopoutMenuContent();
         }
-        
+
         private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
         {
             HarvestOptionElement harvestOption = new HarvestOptionElement();
@@ -58,15 +44,16 @@ namespace WoodsOfIdle
 
         public void SetTopPopoutMenuContent(VisualElement element)
         {
-            VisualElement popoutContainer = UIDocument.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
+            VisualElement popoutContainer = _uiDocument.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
             popoutContainer.Clear();
             popoutContainer.Add(element);
         }
 
         public void ClearTopPopoutMenuContent()
         {
-            VisualElement popoutContainer = UIDocument.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
+            VisualElement popoutContainer = _uiDocument.rootVisualElement.Q<VisualElement>("TopMenuPopoutContainer");
             popoutContainer.Clear();
         }
+
     }
 }
