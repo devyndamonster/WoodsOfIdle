@@ -6,6 +6,6 @@ namespace WoodsOfIdle
 {
     public interface ITerrainReceiver
     {
-        public void ApplyTerrain(CellData[,] cellData, Dictionary<Vector2Int, GameObject> farmingNodePrefabs, TerrainGenerationSettings settings);
+        public void ApplyTerrain(TerrainGenerationData terrainData, TerrainGenerationSettings settings);
     }
 }

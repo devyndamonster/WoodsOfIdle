@@ -12,12 +12,6 @@ namespace WoodsOfIdle
         private SaveController saveController;
         private AssetReferenceCollection assetReferences;
         
-        public class TerrainResult
-        {
-            public CellData[,] CellData;
-            public List<FarmingNodeController> FarmingNodes;
-            public Dictionary<Vector2Int, GameObject> FarmingNodePrefabs;
-        }
 
         public TerrainGenerationController(ITerrainService terrainService, SaveController saveController, AssetReferenceCollection assetReferences)
         {
@@ -26,13 +20,13 @@ namespace WoodsOfIdle
             this.assetReferences = assetReferences;
         }
         
-        public TerrainResult GenerateTerrain(TerrainGenerationSettings settings)
+        public TerrainGenerationData GenerateTerrain(TerrainGenerationSettings settings)
         {
             CellData[,] cells = GetGeneratedCellData(settings);
             List<FarmingNodeController> farmingNodeControllers = GetGeneratedFarmingNodeControllers(cells, settings);
             Dictionary<Vector2Int, GameObject> farmingNodePrefabs = GetGeneratedFarmingNodePrefabs(farmingNodeControllers);
 
-            return new TerrainResult { CellData = cells, FarmingNodes = farmingNodeControllers, FarmingNodePrefabs = farmingNodePrefabs };
+            return new TerrainGenerationData { CellData = cells, FarmingNodes = farmingNodeControllers, FarmingNodePrefabs = farmingNodePrefabs };
         }
 
         private CellData[,] GetGeneratedCellData(TerrainGenerationSettings settings)

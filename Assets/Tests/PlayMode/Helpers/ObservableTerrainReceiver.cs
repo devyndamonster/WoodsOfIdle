@@ -8,11 +8,11 @@ public class ObservableTerrainReceiver : MonoBehaviour, ITerrainReceiver
     public CellData[,] CellData;
     public Dictionary<Vector2Int, GameObject> FarmingNodePrefabs;
     public TerrainGenerationSettings TerrainSettings;
-
-    public void ApplyTerrain(CellData[,] cellData, Dictionary<Vector2Int, GameObject> farmingNodePrefabs, TerrainGenerationSettings settings)
+    
+    public void ApplyTerrain(TerrainGenerationData terrainData, TerrainGenerationSettings settings)
     {
-        CellData = cellData;
-        FarmingNodePrefabs = farmingNodePrefabs;
+        CellData = terrainData.CellData;
+        FarmingNodePrefabs = terrainData.FarmingNodePrefabs;
         TerrainSettings = settings;
     }
 

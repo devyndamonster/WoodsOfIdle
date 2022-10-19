@@ -10,10 +10,10 @@ namespace WoodsOfIdle
 
         private ITerrainService terrainService = new TerrainService(new FarmingNodeService());
 
-        public void ApplyTerrain(CellData[,] cellData, Dictionary<Vector2Int, GameObject> farmingNodePrefabs, TerrainGenerationSettings settings)
+        public void ApplyTerrain(TerrainGenerationData terrainData, TerrainGenerationSettings settings)
         {
-            GenerateTerrain(cellData, settings);
-            SpawnFarmingNodes(farmingNodePrefabs, settings);
+            GenerateTerrain(terrainData.CellData, settings);
+            SpawnFarmingNodes(terrainData.FarmingNodePrefabs, settings);
         }
         
         private void GenerateTerrain(CellData[,] cells, TerrainGenerationSettings settings)

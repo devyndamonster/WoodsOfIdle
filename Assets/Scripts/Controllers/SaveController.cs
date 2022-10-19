@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class SaveController
+    public class SaveController : IDestroyReceiver, IPauseReceiver, IFocusReceiver
     {
         [HideInInspector] public SaveState CurrentSaveState { get; protected set; }
         
@@ -24,27 +25,36 @@ namespace WoodsOfIdle
 
             CurrentSaveState = saveService.LoadOrCreate(saveName);
         }
+
+        public void UpdateSaveStateFromTerrainData(TerrainGenerationData terrainData)
+        {
+            CurrentSaveState.Cells = terrainData.CellData;
+            CurrentSaveState.FarmingNodes = terrainData.FarmingNodes.ToDictionary(node => node.State.Position, node => node.State);
+        }
         
-        public void OnDestroy()
+        public void Destroy()
         {
             saveService.SaveGame(CurrentSaveState);
         }
 
-        public void OnApplicationPause(bool pause)
+        public void Pause()
         {
-            if (!Application.isEditor && pause)
+            if (!Application.isEditor)
             {
                 saveService.SaveGame(CurrentSaveState);
             }
         }
 
-        public void OnApplicationFocus(bool focus)
+        public void Unfocus()
         {
-            if (!Application.isEditor && !focus)
+            if (!Application.isEditor)
             {
                 saveService.SaveGame(CurrentSaveState);
             }
         }
+        
+        public void Unpause() { }
 
+        public void Focus() { }
     }
 }

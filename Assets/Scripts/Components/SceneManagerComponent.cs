@@ -60,27 +60,16 @@ namespace WoodsOfIdle
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrainData.CellData, generatedTerrainData.FarmingNodePrefabs);
             
             //inventoryController = new InventoryController(saveController, inventoryService, assetCollection.LoadedItemData);
-            gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
-
-            InitEvents();
-
+            //gameController = new GameController(saveController, generatedTerrainData.FarmingNodes);
+            
             isSceneInit = true;
         }
-
-        private void InitEvents()
-        {
-            OnApplicationPauseChanged += saveController.OnApplicationPause;
-            OnApplicationFocusChanged += saveController.OnApplicationPause;
-            OnDestroyed += saveController.OnDestroy;
-
-            OnUpdated += gameController.Update;
-        }
-
+        
         private void ApplyGeneratedTerrain(IEnumerable<ITerrainReceiver> receivers, CellData[,] cells, Dictionary<Vector2Int, GameObject> farmingNodePrefabs)
         {
             foreach (ITerrainReceiver terrainReceiver in receivers)
             {
-                terrainReceiver.ApplyTerrain(cells, farmingNodePrefabs, TerrainSettings);
+                //terrainReceiver.ApplyTerrain(cells, farmingNodePrefabs, TerrainSettings);
             }
         }
 

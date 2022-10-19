@@ -6,15 +6,13 @@ using UnityEngine.UI;
 
 namespace WoodsOfIdle
 {
-    public class GameController
+    public class GameController : IUpdateReceiver
     {
-        protected SaveController saveController;
-        protected List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
+        private TerrainGenerationData _terrainData;
 
-        public GameController(SaveController saveController, IEnumerable<FarmingNodeController> farmingNodes)
+        public GameController(TerrainGenerationData terrainData)
         {
-            this.saveController = saveController;
-            this.farmingNodes = farmingNodes.ToList();
+            _terrainData = terrainData;
         }
 
         public void Update()
@@ -24,7 +22,7 @@ namespace WoodsOfIdle
 
         private void UpdateFarmingNodes()
         {
-            foreach(FarmingNodeController farmingNode in farmingNodes)
+            foreach(FarmingNodeController farmingNode in _terrainData.FarmingNodes)
             {
                 farmingNode.UpdateState();
             }
