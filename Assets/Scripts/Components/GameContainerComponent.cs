@@ -13,8 +13,10 @@ namespace WoodsOfIdle
         public TerrainGenerationSettings terrainSettings;
         public AssetReferenceCollectionScriptable assetReferences;
 
-        protected DependancyContainer _container = new DependancyContainer();
-        protected static string nextSaveToOpen;
+        public bool IsInitialized { get; private set; }
+
+        private DependancyContainer _container = new DependancyContainer();
+        private static string _nextSaveToOpen;
 
         private void Start()
         {
@@ -23,6 +25,8 @@ namespace WoodsOfIdle
                 BindDependancies(loadedAssets);
                 InitScene();
                 InitEvents();
+                
+                IsInitialized = true;
             });
         }
 
@@ -48,7 +52,7 @@ namespace WoodsOfIdle
             
             //Bind save controller and load save state for upcoming bindings
             _container.Bind<SaveController>();
-            _container.Resolve<SaveController>().OpenSave(nextSaveToOpen);
+            _container.Resolve<SaveController>().OpenSave(_nextSaveToOpen);
 
             _container.Bind<TerrainGenerationController>();
             _container.Bind<GameUIController>();
@@ -85,7 +89,7 @@ namespace WoodsOfIdle
         //TODO why does this object need to know about the next save to open, get rid of this
         public static void SetNextSaveToOpen(string saveName)
         {
-            nextSaveToOpen = saveName;
+            _nextSaveToOpen = saveName;
         }
 
         private void ApplyGeneratedTerrain(

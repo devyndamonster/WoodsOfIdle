@@ -16,22 +16,21 @@ public static class GameSetupTestUtils
     public static IEnumerator SetNewSceneWithCurrentSave(int seed = 0)
     {
         yield return ClearScene();
-
-        ObservableTerrainReceiver.Create();
-
-        GameObject sceneManagerObject = new GameObject();
-        SceneManagerComponent sceneComp = sceneManagerObject.AddComponent<SceneManagerComponent>();
-        sceneComp.TerrainSettings = GetTestTerrainGenerationSettings(seed);
-        sceneComp.AssetCollection = GetTestAssetCollection();
+        
+        GameObject gameContainer = new GameObject();
+        GameContainerComponent sceneComp = gameContainer.AddComponent<GameContainerComponent>();
+        sceneComp.terrainSettings = GetTestTerrainGenerationSettings(seed);
+        sceneComp.assetReferences = GetTestAssetCollection();
+        sceneComp.uiDocument = GetTestUIDocument();
     }
     
     public static IEnumerator WaitUntilSceneLoaded()
     {
-        SceneManagerComponent sceneComp = GameObject.FindObjectOfType<SceneManagerComponent>();
+        GameContainerComponent gameContainer = GameObject.FindObjectOfType<GameContainerComponent>();
         
         yield return new WaitUntil(() =>
         {
-            return sceneComp.IsSceneInitialized();
+            return gameContainer.IsInitialized;
         });
     }
 
