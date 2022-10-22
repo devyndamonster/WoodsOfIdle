@@ -67,11 +67,11 @@ namespace WoodsOfIdle
             _container.Bind<InventoryElementFactory>();
             _container.Bind<InventoryController>();
             _container.Bind<InventoryUIController>();
-            
         }
         
         private void InitScene()
         {
+            //TODO We should be creating the terrain dynamically, with dependancy injection, and not searching for terrain receivers like this
             var generatedTerrain = _container.Resolve<TerrainGenerationData>();
             IEnumerable<ITerrainReceiver> terrainReceivers = FindObjectsOfType<MonoBehaviour>().OfType<ITerrainReceiver>();
             ApplyGeneratedTerrain(terrainReceivers, generatedTerrain, terrainSettings);
