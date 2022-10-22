@@ -40,7 +40,7 @@ namespace WoodsOfIdle
             _container.Bind<IInventoryService, InventoryService>();
             _container.Bind<IFarmingNodeService, FarmingNodeService>();
             _container.Bind<ITerrainService, TerrainService>();
-
+            
             //Bind scene specific dependancies
             _container.Bind<TerrainGenerationSettings>(terrainSettings);
             _container.Bind<AssetReferenceCollection>(assets);
@@ -75,11 +75,11 @@ namespace WoodsOfIdle
 
         private void InitEvents() 
         {
-            //TODO we still need to pass these values into something that handles these events
-            _container.CollectImplementationsOfType<IUpdateReceiver>();
-            _container.CollectImplementationsOfType<IDestroyReceiver>();
-            _container.CollectImplementationsOfType<IPauseReceiver>();
-            _container.CollectImplementationsOfType<IFocusReceiver>();
+            GameEventComponent.Create()
+                .WithReceivers(_container.CollectImplementationsOfType<IUpdateReceiver>())
+                .WithReceivers(_container.CollectImplementationsOfType<IDestroyReceiver>())
+                .WithReceivers(_container.CollectImplementationsOfType<IPauseReceiver>())
+                .WithReceivers(_container.CollectImplementationsOfType<IFocusReceiver>());
         }
         
         //TODO why does this object need to know about the next save to open, get rid of this

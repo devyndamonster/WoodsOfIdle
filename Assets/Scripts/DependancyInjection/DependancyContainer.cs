@@ -18,7 +18,7 @@ namespace WoodsOfIdle
             _dependancies.Add(typeof(TMatch), instance);
         }
         
-        public void Bind<TResult>()
+        public void Bind<TResult>() where TResult : class
         {
             var parameterTypes = typeof(TResult).GetConstructors()[0].GetParameters().Select(parameter => parameter.ParameterType).ToList();
             var parameters = parameterTypes.Select(parameterType => _dependancies[parameterType]).ToArray();
