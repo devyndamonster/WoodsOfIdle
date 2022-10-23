@@ -53,19 +53,21 @@ namespace WoodsOfIdle
             //Bind save controller and load save state for upcoming bindings
             _container.Bind<SaveController>();
             _container.Resolve<SaveController>().OpenSave(_nextSaveToOpen);
-
-            _container.Bind<TerrainGenerationController>();
-            _container.Bind<GameUIController>();
-
+            
             //Bind Generated terrain data
+            _container.Bind<TerrainGenerationController>();
             var terrainData = _container.Resolve<TerrainGenerationController>().GenerateTerrain(terrainSettings);
             _container.Resolve<SaveController>().UpdateSaveStateFromTerrainData(terrainData);
             _container.Bind<TerrainGenerationData>(terrainData);
-            
+
+            _container.Bind<GameController>();
+            _container.Bind<GameRelay>();
+            _container.Bind<GameUIController>();
+
             //Bind inventory controllers
-            _container.Bind<InventoryRelay>();
             _container.Bind<InventoryElementFactory>();
             _container.Bind<InventoryController>();
+            _container.Bind<InventoryRelay>();
             _container.Bind<InventoryUIController>();
         }
         

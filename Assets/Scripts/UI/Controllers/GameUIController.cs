@@ -9,15 +9,20 @@ namespace WoodsOfIdle
     public class GameUIController
     {
         private UIDocument _uiDocument;
-        
-        public GameUIController(UIDocument gameUIPanel)
+        private GameRelay _gameRelay;
+
+        public GameUIController(UIDocument gameUIPanel, GameRelay gameRelay)
         {
             _uiDocument = gameUIPanel;
-        }
+            _gameRelay = gameRelay;
 
-        public void OnNodeClicked(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
+            _gameRelay.OnFarmingNodeClicked += OnNodeClicked;
+        }
+        
+        public void OnNodeClicked(FarmingNodeController farmingNode)
         {
-            HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNode, itemData);
+            //TODO replace with factory
+            HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNode, null);
             SetTopPopoutMenuContent(harvestOption);
         }
 

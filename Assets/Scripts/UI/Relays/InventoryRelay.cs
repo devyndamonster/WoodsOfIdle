@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,14 @@ namespace WoodsOfIdle
     public class InventoryRelay
     {
         private InventoryController _inventoryController;
-        private InventoryUIController _inventoryUIController;
-        
-        public void Link(InventoryController inventoryController)
+
+        public event Action<IEnumerable<InventorySlotState>> OnInventoryStateChanged;
+
+        public InventoryRelay(InventoryController inventoryController)
         {
             _inventoryController = inventoryController;
-        }
 
-        public void Link(InventoryUIController inventoryUIController)
-        {
-            _inventoryUIController = inventoryUIController;
+            _inventoryController.OnInventoryStateChanged += (slotStates) => OnInventoryStateChanged?.Invoke(slotStates);
         }
         
         public IEnumerable<InventorySlotState> RelayInventoryElementsDragged(string slotIdFrom, string slotIdTo)
@@ -32,11 +31,6 @@ namespace WoodsOfIdle
         public IEnumerable<InventorySlotState> RequestInventorySlotStates(IEnumerable<string> slotIds)
         {
             return _inventoryController.GetSlotStates(slotIds);
-        }
-
-        public void RelayInventorySlotUpdates(IEnumerable<InventorySlotState> slotStates)
-        {
-            _inventoryUIController.UpdateSlotsFromStates(slotStates);
         }
     }
 }

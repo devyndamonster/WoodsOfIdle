@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,18 @@ namespace WoodsOfIdle
     {
         private IInventoryService _inventoryService;
         private SaveController _saveController;
-        private InventoryRelay _inventoryRelay;
 
-        public InventoryController(
-            SaveController saveController,
-            IInventoryService inventoryService,
-            InventoryRelay inventoryRelay)
+        public event Action<IEnumerable<InventorySlotState>> OnInventoryStateChanged;
+
+        public InventoryController(SaveController saveController, IInventoryService inventoryService)
         {
             _saveController = saveController;
             _inventoryService = inventoryService;
-            _inventoryRelay = inventoryRelay;
-
-            _inventoryRelay.Link(this);
         }
 
         public void OnItemQuantityChanged(ItemType itemType, int quantityChange)
         {
-            _inventoryRelay.RelayInventorySlotUpdates(ChangeStoredItemsQuantity(itemType, quantityChange));
+            OnInventoryStateChanged?.Invoke(ChangeStoredItemsQuantity(itemType, quantityChange));
         }
 
         public void InitializeSlotsFromData(IEnumerable<InventorySlotData> slotData)

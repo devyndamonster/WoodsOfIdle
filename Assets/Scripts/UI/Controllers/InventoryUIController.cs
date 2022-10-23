@@ -19,7 +19,7 @@ namespace WoodsOfIdle
             _uiDocument = uiDocument;
             _inventoryRelay = inventoryRelay;
 
-            _inventoryRelay.Link(this);
+            _inventoryRelay.OnInventoryStateChanged += UpdateSlotsFromStates;
             
             _dragAndDropSlots = _uiDocument.rootVisualElement
                 .Query<DragAndDropSlot>()

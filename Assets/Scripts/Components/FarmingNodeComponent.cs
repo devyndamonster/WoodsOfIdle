@@ -8,7 +8,7 @@ namespace WoodsOfIdle
 {
     public class FarmingNodeComponent : MonoBehaviour, IClickable
     {
-        public static event Action<Vector2Int> NodeClicked;
+        public event Action<Vector2Int> NodeClicked;
 
         public FarmingNodeType NodeType;
         [HideInInspector] public Vector2Int Position;

@@ -9,7 +9,7 @@ namespace WoodsOfIdle
         public MeshRenderer terrainMesh;
 
         private ITerrainService terrainService = new TerrainService(new FarmingNodeService());
-
+        
         public void ApplyTerrain(TerrainGenerationData terrainData, TerrainGenerationSettings settings)
         {
             GenerateTerrain(terrainData.CellData, settings);
