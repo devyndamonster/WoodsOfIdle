@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace WoodsOfIdle
 {
-    public class FarmingNodeComponentFactory
+    public class FarmingNodeComponentFactory : IFarmingNodeComponentFactory
     {
         private GameController _gameController;
         private AssetReferenceCollection _assetReferences;

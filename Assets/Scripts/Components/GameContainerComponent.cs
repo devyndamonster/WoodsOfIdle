@@ -69,14 +69,16 @@ namespace WoodsOfIdle
             _container.Bind<InventoryController>();
             _container.Bind<InventoryRelay>();
             _container.Bind<InventoryUIController>();
+
+            //Bind the controllers responsible for generating world terrain
+            _container.Bind<ITerrainMeshFactory, TerrainMeshFactory>();
+            _container.Bind<IFarmingNodeComponentFactory, FarmingNodeComponentFactory>();
+            _container.BindComponent<TerrainGenerationComponent>();
         }
         
         private void InitScene()
         {
-            //TODO We should be creating the terrain dynamically, with dependancy injection, and not searching for terrain receivers like this
-            var generatedTerrain = _container.Resolve<TerrainGenerationData>();
-            IEnumerable<ITerrainReceiver> terrainReceivers = FindObjectsOfType<MonoBehaviour>().OfType<ITerrainReceiver>();
-            ApplyGeneratedTerrain(terrainReceivers, generatedTerrain, terrainSettings);
+            _container.Resolve<TerrainGenerationComponent>().BuildTerrain();
         }
 
         private void InitEvents() 
@@ -92,17 +94,6 @@ namespace WoodsOfIdle
         public static void SetNextSaveToOpen(string saveName)
         {
             _nextSaveToOpen = saveName;
-        }
-
-        private void ApplyGeneratedTerrain(
-            IEnumerable<ITerrainReceiver> receivers,
-            TerrainGenerationData terrainData,
-            TerrainGenerationSettings terrainSettings)
-        {
-            foreach (ITerrainReceiver terrainReceiver in receivers)
-            {
-                terrainReceiver.ApplyTerrain(terrainData, terrainSettings);
-            }
         }
     }
 }
