@@ -19,7 +19,8 @@ public static class GameSetupTestUtils
         
         GameObject gameContainer = new GameObject();
         GameContainerComponent sceneComp = gameContainer.AddComponent<GameContainerComponent>();
-        sceneComp.terrainSettings = GetTestTerrainGenerationSettings(seed);
+        sceneComp.terrainSettings = ScriptableObject.CreateInstance<TerrainGenerationSettingsScriptable>();
+        sceneComp.terrainSettings.Value = GetTestTerrainGenerationSettings(seed);
         sceneComp.assetReferences = GetTestAssetCollection();
         sceneComp.uiDocument = GetTestUIDocument();
     }

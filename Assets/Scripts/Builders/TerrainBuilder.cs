@@ -24,7 +24,7 @@ namespace WoodsOfIdle
 
             terrainGenerationSteps = new List<TerrainGenerationStep>();
             random = new System.Random(seed);
-            globalOffset = new Vector2(random.Next(100000), random.Next(100000));
+            globalOffset = new Vector2(random.NextFloat(100000), random.NextFloat(100000));
             
             CreateCells(size);
         }
@@ -50,6 +50,7 @@ namespace WoodsOfIdle
             AddTerrainGenerationStep((CellData cellData, int x, int y) =>
             {
                 cellData.Height += GetPerlinNoise(x, y, scale, offset) * strength;
+                Debug.Log($"X: {x}, Y: {y}, offset: {offset}, globaloffset: {globalOffset}, strength: {strength}, scale:{scale}, Height: {cellData.Height}");
             });
             
             return this;
@@ -132,6 +133,7 @@ namespace WoodsOfIdle
         {
             float sampleX = (x + origin.x + globalOffset.x + offset.x) / scale;
             float sampleY = (y + origin.y + globalOffset.y + offset.y) / scale;
+            Debug.Log($"samplex: {sampleX}, sampley: {sampleY}");
             return Mathf.PerlinNoise(sampleX, sampleY);
         }
 

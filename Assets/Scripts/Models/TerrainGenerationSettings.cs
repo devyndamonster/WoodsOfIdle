@@ -15,6 +15,7 @@ namespace WoodsOfIdle
         public List<PerlinNoiseSettings> HeightMapSettings = new List<PerlinNoiseSettings>();
         public List<TileMapSettings> TileMapSettings = new List<TileMapSettings>();
         public List<TileColorSettings> TileColorSettings = new List<TileColorSettings>();
+        public Material TerrainMaterial;
     }
 
     [System.Serializable]

@@ -10,7 +10,7 @@ namespace WoodsOfIdle
     public class GameContainerComponent : MonoBehaviour
     {
         public UIDocument uiDocument;
-        public TerrainGenerationSettings terrainSettings;
+        public TerrainGenerationSettingsScriptable terrainSettings;
         public AssetReferenceCollectionScriptable assetReferences;
 
         public bool IsInitialized { get; private set; }
@@ -46,7 +46,7 @@ namespace WoodsOfIdle
             _container.Bind<ITerrainService, TerrainService>();
             
             //Bind scene specific dependancies
-            _container.Bind<TerrainGenerationSettings>(terrainSettings);
+            _container.Bind<TerrainGenerationSettings>(terrainSettings.Value);
             _container.Bind<AssetReferenceCollection>(assets);
             _container.Bind<UIDocument>(uiDocument);
             
@@ -56,7 +56,7 @@ namespace WoodsOfIdle
             
             //Bind Generated terrain data
             _container.Bind<TerrainGenerationController>();
-            var terrainData = _container.Resolve<TerrainGenerationController>().GenerateTerrain(terrainSettings);
+            var terrainData = _container.Resolve<TerrainGenerationController>().GenerateTerrain(terrainSettings.Value);
             _container.Resolve<SaveController>().UpdateSaveStateFromTerrainData(terrainData);
             _container.Bind<TerrainGenerationData>(terrainData);
 

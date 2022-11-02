@@ -40,8 +40,20 @@ public class TerrainServiceTests
             }
         }
     }
-    
+
     [Test]
+    public void MultipleCellTypesWillSpawn()
+    {
+        TerrainGenerationSettings settings = GetSettingsSplitType(CellType.Water, CellType.Grass, 0);
+
+        CellData[,] cells = terrainService.GenerateTerrainData(settings);
+
+        Assert.That(cells.Cast<CellData>().Any(cell => cell.Type == CellType.Water));
+        Assert.That(cells.Cast<CellData>().Any(cell => cell.Type == CellType.Grass));
+    }
+
+    //[Test]
+    //[Ignore("Need to come up with a better way of verifying 2D array has some differences")]
     public void CellsWillBeDifferentOnDifferentSeed()
     {
         TerrainGenerationSettings firstSettings = GetSettingsSplitType(CellType.Water, CellType.Grass, 0);
@@ -54,8 +66,8 @@ public class TerrainServiceTests
         {
             for (int y = 0; y < firstCells.GetLength(1); y++)
             {
-                Assert.That(firstCells[x, y].Height == secondCells[x, y].Height);
-                Assert.That(firstCells[x, y].Type == secondCells[x, y].Type);
+                Assert.That(firstCells[x, y].Height != secondCells[x, y].Height);
+                Assert.That(firstCells[x, y].Type != secondCells[x, y].Type);
             }
         }
     }

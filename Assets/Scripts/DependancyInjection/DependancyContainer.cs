@@ -40,6 +40,7 @@ namespace WoodsOfIdle
             GameObject gameObject = new GameObject(typeof(TImplementation).Name);
             TImplementation instance = gameObject.AddComponent<TImplementation>();
             InjectDependanciesWithAttribute(instance);
+            _dependancies.Add(typeof(TImplementation), instance);
         }
 
         public T Resolve<T>()

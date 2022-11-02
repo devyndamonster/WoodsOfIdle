@@ -11,6 +11,11 @@ public static class RandomExtensions
         return (float)random.NextDouble();
     }
 
+    public static float NextFloat(this System.Random random, float max)
+    {
+        return (float)(random.NextDouble() * max);
+    }
+
     public static TSource GetRandomFromWeight<TSource>(this IEnumerable<TSource> source, Func<TSource, float> weightSelector)
     {
         float combinedWeight = source.Sum(x => weightSelector(x));

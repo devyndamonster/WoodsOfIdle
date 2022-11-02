@@ -60,3 +60,9 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    GameViewAsset: {fileID: 9197481963319205126, guid: b96fe283dcf034e43849e97428ea758e,
+      type: 3}
+    FarmingNodeMenuAsset: {fileID: 9197481963319205126, guid: 675a377446186eb4083c13fee9641cc9,
+      type: 3}
+    InventoryElementAsset: {fileID: 9197481963319205126, guid: 2d49b086380c99241924a15522d4d69d,
+      type: 3}
