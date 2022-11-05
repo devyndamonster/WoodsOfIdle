@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     Origin: {x: 0, y: 0}
-    Size: {x: 100, y: 100}
+    Size: {x: 1, y: 1}
     CellSize: 1
     Seed: 1
     HeightMapSettings:
@@ -23,9 +23,9 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
     TileMapSettings:
     - CellType: 0
-      HeightRange: {x: 0, y: 0.5}
+      HeightRange: {x: 0, y: 0}
     - CellType: 1
-      HeightRange: {x: 0.5, y: 1}
+      HeightRange: {x: 0, y: 1}
     TileColorSettings:
     - CellType: 0
       Color: {r: 0, g: 0.06311941, b: 1, a: 0}

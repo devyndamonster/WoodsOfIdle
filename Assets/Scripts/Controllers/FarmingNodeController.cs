@@ -7,17 +7,17 @@ namespace WoodsOfIdle
 {
     public class FarmingNodeController
     {
-        public static event ChangeStorageQuantity Harvested;
+        public event ChangeStorageQuantity Harvested;
         public event Action<float> HarvestProgressChanged;
         
         public FarmingNodeData Data;
         public FarmingNodeState State;
 
-        protected IFarmingNodeService farmingNodeService = new FarmingNodeService();
+        private IFarmingNodeService _farmingNodeService;
 
         public FarmingNodeController(IFarmingNodeService farmingNodeService, FarmingNodeData data, Vector2Int position)
         {
-            this.farmingNodeService = farmingNodeService;
+            _farmingNodeService = farmingNodeService;
             
             Data = data;
             State = farmingNodeService.GetDefaultFarmingNodeState(data);
@@ -26,27 +26,29 @@ namespace WoodsOfIdle
 
         public FarmingNodeController(IFarmingNodeService farmingNodeService, FarmingNodeData data, FarmingNodeState state)
         {
-            this.farmingNodeService = farmingNodeService;
+            _farmingNodeService = farmingNodeService;
             
             Data = data;
             State = state;
         }
-
+        
         public void ToggleActive()
         {
-            farmingNodeService.SetNodeActiveState(State, !State.IsActive);
+            _farmingNodeService.SetNodeActiveState(State, !State.IsActive);
 
             if (!State.IsActive) HarvestProgressChanged?.Invoke(0);
         }
         
         public void UpdateState()
         {
-            int numberOfHarvests = farmingNodeService.CalculateNumberOfHarvests(State, DateTime.Now);
-            State.TimeLastHarvested = farmingNodeService.CalculateLastHarvestTime(State, numberOfHarvests);
+            if (!State.IsActive) return;
+
+            int numberOfHarvests = _farmingNodeService.CalculateNumberOfHarvests(State, DateTime.Now);
+            State.TimeLastHarvested = _farmingNodeService.CalculateLastHarvestTime(State, numberOfHarvests);
 
             if (numberOfHarvests > 0)
             {
-                Dictionary<ItemType, int> harvestedItems = farmingNodeService.GetItemsHarvested(Data, numberOfHarvests);
+                Dictionary<ItemType, int> harvestedItems = _farmingNodeService.GetItemsHarvested(Data, numberOfHarvests);
                 
                 foreach(var harvestQuantity in harvestedItems)
                 {
@@ -54,7 +56,8 @@ namespace WoodsOfIdle
                 }
             }
 
-            HarvestProgressChanged?.Invoke(farmingNodeService.CalculateHarvestProgress(State, DateTime.Now));
+            var harvestProgress = _farmingNodeService.CalculateHarvestProgress(State, DateTime.Now);
+            HarvestProgressChanged?.Invoke(harvestProgress);
         }
 
     }

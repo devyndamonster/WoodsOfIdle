@@ -28,7 +28,7 @@ namespace WoodsOfIdle
             PopulateHarvestItemContainer(harvestItemContainer, farmingNode);
             BindHarvestProgressBar(harvestProgressBar, farmingNode);
             BindHarvestButton(harvestButton, farmingNode);
-
+            
             return harvestOptionElement;
         }
 

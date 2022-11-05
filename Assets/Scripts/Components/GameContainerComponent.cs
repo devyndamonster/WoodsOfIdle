@@ -54,23 +54,25 @@ namespace WoodsOfIdle
             _container.Bind<SaveController>();
             _container.Resolve<SaveController>().OpenSave(_nextSaveToOpen);
             
+            //Bind UI Factories
+            _container.Bind<IHarvestOptionElementFactory, HarvestOptionElementFactory>();
+            _container.Bind<IInventoryElementFactory, InventoryElementFactory>();
+            
+            _container.Bind<InventoryController>();
+            _container.Bind<InventoryRelay>();
+            _container.Bind<InventoryUIController>();
+
             //Bind Generated terrain data
+            _container.Bind<IFarmingNodeControllerFactory, FarmingNodeControllerFactory>();
             _container.Bind<TerrainGenerationController>();
             var terrainData = _container.Resolve<TerrainGenerationController>().GenerateTerrain(terrainSettings.Value);
             _container.Resolve<SaveController>().UpdateSaveStateFromTerrainData(terrainData);
             _container.Bind<TerrainGenerationData>(terrainData);
-
-            //Bind UI Factories
-            _container.Bind<IHarvestOptionElementFactory, HarvestOptionElementFactory>();
-            _container.Bind<IInventoryElementFactory, InventoryElementFactory>();
-
+            
             //Bind UI Controllers
             _container.Bind<GameController>();
             _container.Bind<GameRelay>();
             _container.Bind<GameUIController>();
-            _container.Bind<InventoryController>();
-            _container.Bind<InventoryRelay>();
-            _container.Bind<InventoryUIController>();
 
             //Bind the controllers responsible for generating world terrain
             _container.Bind<ITerrainMeshFactory, TerrainMeshFactory>();

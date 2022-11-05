@@ -16,7 +16,7 @@ MonoBehaviour:
     NodeType: 1
     HarvestText: Collect Stones
     DefaultTimeToHarvest: 20
-    SpawnChance: 0.01
+    SpawnChance: 1
     AllowedCellTypes: 01000000
     HarvestableItems:
     - ItemType: 1
