@@ -60,12 +60,14 @@ namespace WoodsOfIdle
             _container.Resolve<SaveController>().UpdateSaveStateFromTerrainData(terrainData);
             _container.Bind<TerrainGenerationData>(terrainData);
 
+            //Bind UI Factories
+            _container.Bind<IHarvestOptionElementFactory, HarvestOptionElementFactory>();
+            _container.Bind<IInventoryElementFactory, InventoryElementFactory>();
+
+            //Bind UI Controllers
             _container.Bind<GameController>();
             _container.Bind<GameRelay>();
             _container.Bind<GameUIController>();
-
-            //Bind inventory controllers
-            _container.Bind<InventoryElementFactory>();
             _container.Bind<InventoryController>();
             _container.Bind<InventoryRelay>();
             _container.Bind<InventoryUIController>();

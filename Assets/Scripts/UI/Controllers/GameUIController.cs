@@ -10,41 +10,26 @@ namespace WoodsOfIdle
     {
         private UIDocument _uiDocument;
         private GameRelay _gameRelay;
+        private IHarvestOptionElementFactory _harvestOptionElementFactory;
 
-        public GameUIController(UIDocument gameUIPanel, GameRelay gameRelay)
+        public GameUIController(UIDocument gameUIPanel, GameRelay gameRelay, IHarvestOptionElementFactory harvestElementFactory)
         {
             _uiDocument = gameUIPanel;
             _gameRelay = gameRelay;
+            _harvestOptionElementFactory = harvestElementFactory;
 
             _gameRelay.OnFarmingNodeClicked += OnNodeClicked;
         }
         
         public void OnNodeClicked(FarmingNodeController farmingNode)
         {
-            //TODO replace with factory
-            HarvestOptionElement harvestOption = CreateHarvestOptionElement(farmingNode, null);
+            VisualElement harvestOption = _harvestOptionElementFactory.CreateElement(farmingNode);
             SetTopPopoutMenuContent(harvestOption);
         }
 
         public void OnNothingClicked(Vector2 screenPosition)
         {
             ClearTopPopoutMenuContent();
-        }
-
-        private HarvestOptionElement CreateHarvestOptionElement(FarmingNodeController farmingNode, Dictionary<ItemType, ItemData> itemData)
-        {
-            HarvestOptionElement harvestOption = new HarvestOptionElement();
-
-            IEnumerable<Texture> itemIcons = farmingNode.Data.HarvestableItems
-                .OrderByDescending(item => item.ChanceToFarm)
-                .Select(item => itemData[item.ItemType].ItemIcon.texture);
-
-            harvestOption.SetItemIcons(itemIcons);
-            harvestOption.SetHarvestText(farmingNode.Data.HarvestText);
-            harvestOption.HarvestButton.clicked += farmingNode.ToggleActive;
-            farmingNode.HarvestProgressChanged += harvestOption.ProgressBar.SetProgress;
-
-            return harvestOption;
         }
 
         public void SetTopPopoutMenuContent(VisualElement element)

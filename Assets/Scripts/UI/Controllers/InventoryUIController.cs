@@ -8,12 +8,13 @@ namespace WoodsOfIdle
 {
     public class InventoryUIController
     {
-        private Dictionary<string, DragAndDropSlot> _dragAndDropSlots;
-        private InventoryElementFactory _inventoryElementFactory;
+        private IInventoryElementFactory _inventoryElementFactory;
         private UIDocument _uiDocument;
         private InventoryRelay _inventoryRelay;
 
-        public InventoryUIController(InventoryElementFactory inventoryElementFactory, UIDocument uiDocument, InventoryRelay inventoryRelay)
+        private Dictionary<string, DragAndDropSlot> _dragAndDropSlots;
+
+        public InventoryUIController(IInventoryElementFactory inventoryElementFactory, UIDocument uiDocument, InventoryRelay inventoryRelay)
         {
             _inventoryElementFactory = inventoryElementFactory;
             _uiDocument = uiDocument;

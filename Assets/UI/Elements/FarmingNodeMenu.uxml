@@ -3,11 +3,11 @@
     <ui:VisualElement name="FarmingOption">
         <ui:VisualElement name="ItemContainer" class="HarvestOptionUpperContainer">
             <ui:Button text="Collect Wood" display-tooltip-when-elided="true" name="HarvestButton" class="GameMenuNavButton" />
-            <ui:VisualElement name="HarvestedItemContainer" class="HarvestOptionItemContainer">
+            <ui:VisualElement name="HarvestItemContainer" class="HarvestOptionItemContainer">
                 <ui:VisualElement name="FarmingLocationIcon" class="HarvestOptionItemIcon" />
                 <ui:VisualElement name="FarmingLocationIcon" style="width: 100px; height: 100px; background-color: rgb(123, 123, 123); background-image: url(&apos;project://database/Assets/GameAssets/Items/Icons/icon_thatch.png?fileID=2800000&amp;guid=30ce1c9ed92f7b345be9cb992e288d9c&amp;type=3#icon_thatch&apos;);" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <WoodsOfIdle.SimpleProgressBar Progress="0.45" class="HarvestProgressBar" />
+        <WoodsOfIdle.SimpleProgressBar Progress="0.45" name="HarvestProgressBar" class="HarvestProgressBar" />
     </ui:VisualElement>
 </ui:UXML>
