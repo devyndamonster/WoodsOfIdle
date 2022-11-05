@@ -8,9 +8,15 @@ namespace WoodsOfIdle
     {
         public CellData[,] GenerateTerrainData(TerrainGenerationSettings settings);
 
-        public List<FarmingNodeController> GenerateFarmingNodeControllers(TerrainGenerationSettings settings, CellData[,] cells, IEnumerable<FarmingNodeData> farmingNodeData);
-
-        public List<FarmingNodeController> GetFarmingNodeControllersFromState(IEnumerable<FarmingNodeState> states, IDictionary<FarmingNodeType, FarmingNodeData> data);
+        public IEnumerable<FarmingNodeController> GenerateFarmingNodeControllers(
+            TerrainGenerationSettings settings,
+            IFarmingNodeControllerFactory farmingNodeFactory,
+            CellData[,] cells,
+            IEnumerable<FarmingNodeData> farmingNodeData);
+        
+        public IEnumerable<FarmingNodeController> GetFarmingNodeControllersFromState(
+            IFarmingNodeControllerFactory farmingNodeFactory,
+            IEnumerable<FarmingNodeState> states);
         
         public Vector3 GetSpawnPositionOffset(TerrainGenerationSettings settings);
 

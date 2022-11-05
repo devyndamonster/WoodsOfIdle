@@ -22,9 +22,9 @@ namespace WoodsOfIdle
         
         public TerrainGenerationData GenerateTerrain(TerrainGenerationSettings settings)
         {
-            CellData[,] cells = GetGeneratedCellData(settings);
-            List<FarmingNodeController> farmingNodeControllers = GetGeneratedFarmingNodeControllers(cells, settings);
-            Dictionary<Vector2Int, GameObject> farmingNodePrefabs = GetGeneratedFarmingNodePrefabs(farmingNodeControllers);
+            var cells = GetGeneratedCellData(settings);
+            var farmingNodeControllers = GetGeneratedFarmingNodeControllers(cells, settings);
+            var farmingNodePrefabs = GetGeneratedFarmingNodePrefabs(farmingNodeControllers);
 
             return new TerrainGenerationData { CellData = cells, FarmingNodes = farmingNodeControllers, FarmingNodePrefabs = farmingNodePrefabs };
         }
@@ -45,28 +45,26 @@ namespace WoodsOfIdle
             return cells;
         }
 
-        private List<FarmingNodeController> GetGeneratedFarmingNodeControllers(CellData[,] cells, TerrainGenerationSettings settings)
+        private IEnumerable<FarmingNodeController> GetGeneratedFarmingNodeControllers(CellData[,] cells, TerrainGenerationSettings settings)
         {
-            List<FarmingNodeController> farmingNodeControllers;
-            
             if (saveController.CurrentSaveState.FarmingNodes != null && saveController.CurrentSaveState.FarmingNodes.Count() > 0)
             {
                 Debug.Log("Loading farming nodes from save");
-                farmingNodeControllers = terrainService.GetFarmingNodeControllersFromState(saveController.CurrentSaveState.FarmingNodes.Values, assetReferences.LoadedFarmingNodeData);
+                return terrainService.GetFarmingNodeControllersFromState(null, saveController.CurrentSaveState.FarmingNodes.Values);
             }
             else
             {
                 Debug.Log("Generating farming nodes: " + assetReferences.LoadedFarmingNodeData.Count());
-                farmingNodeControllers = terrainService.GenerateFarmingNodeControllers(settings, cells, assetReferences.LoadedFarmingNodeData.Values);
+                return terrainService.GenerateFarmingNodeControllers(settings, null, cells, assetReferences.LoadedFarmingNodeData.Values);
             }
-            
-            return farmingNodeControllers;
         }
         
-        private Dictionary<Vector2Int, GameObject> GetGeneratedFarmingNodePrefabs(List<FarmingNodeController> farmingNodeControllers)
+        private Dictionary<Vector2Int, GameObject> GetGeneratedFarmingNodePrefabs(IEnumerable<FarmingNodeController> farmingNodeControllers)
         {
             Dictionary<Vector2Int, GameObject> farmingNodePrefabs = farmingNodeControllers
-                .ToDictionary(controller => controller.State.Position, controller => assetReferences.LoadedFarmingNodePrefabs[controller.Data.NodeType]);
+                .ToDictionary(
+                    controller => controller.State.Position, 
+                    controller => assetReferences.LoadedFarmingNodePrefabs[controller.Data.NodeType]);
 
             return farmingNodePrefabs;
         }

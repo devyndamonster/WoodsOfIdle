@@ -7,7 +7,7 @@ namespace WoodsOfIdle
     public class TerrainGenerationData
     {
         public CellData[,] CellData;
-        public List<FarmingNodeController> FarmingNodes;
+        public IEnumerable<FarmingNodeController> FarmingNodes;
         public Dictionary<Vector2Int, GameObject> FarmingNodePrefabs;
     }
 }

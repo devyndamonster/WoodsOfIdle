@@ -54,6 +54,8 @@ namespace WoodsOfIdle
 
         public float CalculateHarvestProgress(FarmingNodeState state, DateTime currentTime)
         {
+            if (!state.IsActive) return 0;
+
             return Mathf.Clamp01((float)((currentTime - state.TimeLastHarvested).TotalSeconds / state.TimeToHarvest));
         }
 

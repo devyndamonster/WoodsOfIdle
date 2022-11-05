@@ -35,6 +35,8 @@ namespace WoodsOfIdle
         public void ToggleActive()
         {
             farmingNodeService.SetNodeActiveState(State, !State.IsActive);
+
+            if (!State.IsActive) HarvestProgressChanged?.Invoke(0);
         }
         
         public void UpdateState()

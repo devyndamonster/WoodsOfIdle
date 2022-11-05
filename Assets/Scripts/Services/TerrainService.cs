@@ -7,13 +7,6 @@ namespace WoodsOfIdle
 {
     public class TerrainService : ITerrainService
     {
-        private IFarmingNodeService farmingNodeService;
-
-        public TerrainService(IFarmingNodeService farmingNodeService)
-        {
-            this.farmingNodeService = farmingNodeService;
-        }
-        
         public CellData[,] GenerateTerrainData(TerrainGenerationSettings settings)
         {
             TerrainBuilder terrainBuilder = new TerrainBuilder(settings.Origin, settings.Size, settings.Seed);
@@ -36,38 +29,30 @@ namespace WoodsOfIdle
             return terrainBuilder.GetCells();
         }
         
-        public List<FarmingNodeController> GenerateFarmingNodeControllers(TerrainGenerationSettings settings, CellData[,] cells, IEnumerable<FarmingNodeData> farmingNodeData)
+        public IEnumerable<FarmingNodeController> GenerateFarmingNodeControllers(
+            TerrainGenerationSettings settings, 
+            IFarmingNodeControllerFactory farmingNodeFactory, 
+            CellData[,] cells, 
+            IEnumerable<FarmingNodeData> farmingNodeData)
         {
             List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
-
+            
             foreach (var nodeData in farmingNodeData)
             {
-                var spawnedNodes = GenerateFarmingNodeControllers(settings, cells, nodeData, farmingNodes.Select(node => node.State.Position));
-                farmingNodes.AddRange(spawnedNodes);
+                var excludedSpawnPositions = farmingNodes.Select(node => node.State.Position);
+                var selectedSpawnPositions = GetSpawnPositionsForFarmingNode(settings, nodeData, cells, excludedSpawnPositions);
+                var farmingNodeControllers = selectedSpawnPositions.Select(position => farmingNodeFactory.CreateFarmingNodeController(nodeData.NodeType, position));
+                farmingNodes.AddRange(farmingNodeControllers);
             }
 
             return farmingNodes;
         }
 
-        private List<FarmingNodeController> GenerateFarmingNodeControllers(TerrainGenerationSettings settings, CellData[,] cells,  FarmingNodeData data, IEnumerable<Vector2Int> excludedPositions)
+        public IEnumerable<FarmingNodeController> GetFarmingNodeControllersFromState(
+            IFarmingNodeControllerFactory farmingNodeFactory,
+            IEnumerable<FarmingNodeState> states)
         {
-            List<FarmingNodeController> farmingNodes = new List<FarmingNodeController>();
-            List<Vector2Int> spawnPositions = GetSpawnPositionsForFarmingNode(settings, data, cells, excludedPositions);
-
-            foreach (Vector2Int cellPosition in spawnPositions)
-            {
-                FarmingNodeController nodeController = new FarmingNodeController(farmingNodeService, data, cellPosition);
-                farmingNodes.Add(nodeController);
-            }
-
-            return farmingNodes;
-        }
-
-        public List<FarmingNodeController> GetFarmingNodeControllersFromState(IEnumerable<FarmingNodeState> states, IDictionary<FarmingNodeType, FarmingNodeData> data)
-        {
-            return states
-                .Select(state => new FarmingNodeController(farmingNodeService, data[state.NodeType], state))
-                .ToList();
+            return states.Select(state => farmingNodeFactory.CreateFarmingNodeController(state));
         }
         
         private List<Vector2Int> GetSpawnPositionsForFarmingNode(TerrainGenerationSettings settings, FarmingNodeData nodeData, CellData[,] cells, IEnumerable<Vector2Int> excludedPositions)

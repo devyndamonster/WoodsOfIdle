@@ -9,7 +9,7 @@ using WoodsOfIdle;
 
 public class TerrainServiceTests
 {
-    private ITerrainService terrainService = new TerrainService(new FarmingNodeService());
+    private ITerrainService terrainService = new TerrainService();
 
     [Test]
     public void CellsWillBeCorrectDimensions()
@@ -84,7 +84,7 @@ public class TerrainServiceTests
             AllowedCellTypes = new List<CellType>() { CellType.Grass }
         };
 
-        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
+        IEnumerable<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, null, cells, new FarmingNodeData[] { nodeData });
 
         Assert.That(nodes, Is.Empty);
     }
@@ -102,7 +102,7 @@ public class TerrainServiceTests
             AllowedCellTypes = new List<CellType>() { CellType.Grass }
         };
 
-        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { nodeData });
+        IEnumerable<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, null, cells, new FarmingNodeData[] { nodeData });
 
         Assert.That(nodes.All(node => cells[node.State.Position.x, node.State.Position.y].Type == CellType.Grass));
     }
@@ -129,7 +129,7 @@ public class TerrainServiceTests
             NodeType = FarmingNodeType.Boulder
         };
 
-        List<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, cells, new FarmingNodeData[] { firstNodeData, secondNodeData });
+        IEnumerable<FarmingNodeController> nodes = terrainService.GenerateFarmingNodeControllers(terrainSettings, null, cells, new FarmingNodeData[] { firstNodeData, secondNodeData });
         Vector2Int[] positions = nodes.Select(node => node.State.Position).ToArray();
         
         Assert.That(positions, Is.Unique);
@@ -152,11 +152,11 @@ public class TerrainServiceTests
             }
         };
 
-        List<FarmingNodeController> nodes = terrainService.GetFarmingNodeControllersFromState(states, dataDict);
+        IEnumerable<FarmingNodeController> nodes = terrainService.GetFarmingNodeControllersFromState(null, states);
 
         Assert.That(nodes.Count() == 1);
-        Assert.That(nodes[0].State.Equals(states[0]));
-        Assert.That(nodes[0].Data.Equals(nodeData));
+        Assert.That(nodes.First().State.Equals(states[0]));
+        Assert.That(nodes.First().Data.Equals(nodeData));
     }
 
 
