@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,15 @@ namespace WoodsOfIdle
 {
     public class DragAndDropElement : VisualElement
     {
-        public event InventorySlotDragged Dragged;
+        public event InventorySlotDragged OnDragged;
 
         private DragAndDropSlot previousSlot;
         private bool isDragging;
 
         public DragAndDropElement(DragAndDropSlot slot)
         {
+            AddToClassList("DragAndDropElementContainer");
+
             previousSlot = slot;
             
             RegisterCallback<MouseDownEvent>(OnMouseDown);
@@ -77,7 +80,7 @@ namespace WoodsOfIdle
 
                 if (!destinationSlot.Equals(previousSlot))
                 {
-                    Dragged(destinationSlot, previousSlot);
+                    OnDragged?.Invoke(destinationSlot.SlotData.SlotId, previousSlot.SlotData.SlotId);
                 }
             }
         }

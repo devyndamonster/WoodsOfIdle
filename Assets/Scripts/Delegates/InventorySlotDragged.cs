@@ -1,5 +1,5 @@
 ﻿
 namespace WoodsOfIdle
 {
-    public delegate void InventorySlotDragged(DragAndDropSlot slotTo, DragAndDropSlot slotFrom);
+    public delegate void InventorySlotDragged(string slotIdTo, string slotIdFrom);
 }

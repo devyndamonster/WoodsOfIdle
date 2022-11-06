@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,17 +17,20 @@ namespace WoodsOfIdle
             _inventoryIconAsset = assetCollection.InventoryElementAsset;
         }
         
-        public DragAndDropElement CreateElement(InventorySlotState state, DragAndDropSlot initialSlot)
+        public DragAndDropElement CreateElement(InventorySlotState state, DragAndDropSlot initialSlot, InventorySlotDragged onDrag)
         {
-            var itemIcon = _assetCollection.LoadedItemData[state.ItemType].ItemIcon;
             var dragElement = new DragAndDropElement(initialSlot);
+            _inventoryIconAsset.CloneTree(dragElement);
 
-            //TODO we probably want to turn InventoryIconElement creation to just be a factory
-            var inventoryIconElement = new InventoryIconElement(_inventoryIconAsset, itemIcon, state.Quantity);
+            var itemIcon = _assetCollection.LoadedItemData[state.ItemType].ItemIcon;
+            var itemLabel = dragElement.Q<Label>("ItemLabel");
+            var itemIconElement = dragElement.Q("IconElement");
 
-            dragElement.Add(inventoryIconElement);
+            itemLabel.text = state.Quantity.ToString();
+            itemIconElement.style.backgroundImage = new StyleBackground(itemIcon);
+            dragElement.OnDragged += onDrag;
             
-            return null;
+            return dragElement;
         }
     }
 }

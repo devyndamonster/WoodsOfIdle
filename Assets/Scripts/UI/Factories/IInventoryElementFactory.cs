@@ -6,6 +6,6 @@ namespace WoodsOfIdle
 {
     public interface IInventoryElementFactory
     {
-        public DragAndDropElement CreateElement(InventorySlotState state, DragAndDropSlot initialSlot);
+        public DragAndDropElement CreateElement(InventorySlotState state, DragAndDropSlot initialSlot, InventorySlotDragged onDrag);
     }
 }

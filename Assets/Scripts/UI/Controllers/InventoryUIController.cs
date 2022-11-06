@@ -57,7 +57,7 @@ namespace WoodsOfIdle
 
             if (slotState.Quantity > 0)
             {
-                VisualElement inventoryElement = _inventoryElementFactory.CreateElement(slotState, slot);
+                VisualElement inventoryElement = _inventoryElementFactory.CreateElement(slotState, slot, HandleElementDragged);
                 slot.Add(inventoryElement);
             }
         }
